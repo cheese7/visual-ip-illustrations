@@ -140,6 +140,29 @@ Public generated Hermes samples remain pending behind the public sample review g
 
 Hermes Agent route documentation does not claim official Hermes Agent project affiliation, approval, sponsorship, endorsement, or impersonation. Default Hermes Agent output also excludes product-poster output, CLI screenshots, web hero graphics, broad assistant framing, Greek messenger framing, winged sandals, winged helmet, and caduceus imagery unless a future release review records a different approved scope.
 
+## Linux Mascot Source Attribution and Public Sample Gate
+
+Linux Mascot source context records the explicit `source-reviewed` uploaded-image article-illustration route for the `linux` route.
+
+- Route: Linux Mascot
+- Display name: `Linux Mascot`
+- Aliases: `Linux Mascot`, `Linux mascot`, `Linux`, `linux`, `Tux`, `tux`, `Linux penguin`, and `Tux penguin`
+- Route id: `linux`
+- Route status: `source-reviewed`
+- Source authority: `skills/visual-ip-illustrations/references/ips/linux/source.md`
+- Output path: `assets/<article-slug>-linux/`
+- Docs validation token: `assets/&lt;article-slug&gt;-linux/`
+- Uploaded-image authority: local source image `/Users/longnv/Downloads/Linux-logo.jpg` is the identity authority for this route.
+- Tux source context: Tux creator Larry Ewing; Linux 2.0 Penguins source URL <https://isc.tamu.edu/~lewing/linux/>; The GIMP attribution condition.
+- Linux word-mark guidance: Linux Foundation trademark guidance <https://www.linuxfoundation.org/legal/trademark-usage>; Linux mark ownership context <https://www.linuxfoundation.org/legal/the-linux-mark>; Linux is the registered trademark of Linus Torvalds in the U.S. and other countries.
+- Linux ownership attribution pattern: Linux mark ownership and trademark guidance are recorded for word-mark and claim review; Tux source attribution is recorded separately for mascot image context.
+- Boundary context: uploaded-image-only Tux article illustration output, route isolation, distro-logo boundary, product-output boundary, official endorsement boundary, certification boundary, compatibility-claim boundary, Linux Foundation logo boundary, product-poster boundary, CLI screenshot boundary, web hero graphic boundary, kernel dashboard screenshot boundary, and operating-system marketing graphic boundary.
+- Release-review terms: official endorsement, certification, compatibility, distro-logo use, Linux Foundation logo use, product advertising, product-poster output, CLI screenshots, web hero graphics, kernel dashboard screenshots, and operating-system marketing graphics require maintainer review and neutral article-concept wording.
+
+Public generated Linux Mascot samples remain pending behind the public sample review gate. No public generated Linux Mascot sample assets are approved for `examples/images/`, `examples/images-en/`, `skills/visual-ip-illustrations/assets/examples/`, public README galleries, or release materials until reviewer, date, approval status, allowed directories, release channels, Tux source outcome, GIMP attribution outcome, Linux trademark outcome, uploaded-image identity outcome, route-isolation outcome, distro-logo boundary outcome, endorsement/certification boundary outcome, product-output outcome, and public-sample decision are recorded.
+
+Linux Mascot route documentation does not claim official Linux project affiliation, approval, sponsorship, endorsement, certification, compatibility, distro approval, Linux Foundation endorsement, or product marketing status.
+
 Author links:
 
 - GitHub: <https://github.com/helloianneo>
