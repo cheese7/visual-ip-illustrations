@@ -38,11 +38,11 @@
 
 ### Validation and Release Evidence
 
-- [ ] **VAL-01**: Validator fails when Linux Mascot route metadata, source record, required references, output paths, docs, examples, NOTICE, release checklist, or agent metadata drift from the v1.11 contract.
-- [ ] **VAL-02**: Validator fails when Linux Mascot identity markers leak into Xiaohei, Littlebox, Tom, Ferris, Seal, OpenClaw, Go Gopher, Cai Xukun, or Hermes Agent route-local packs.
-- [ ] **VAL-03**: Validator fails when public generated Linux Mascot samples appear without explicit release checklist approval.
-- [ ] **VAL-04**: Node tests cover Linux Mascot route parsing, route ordering, default preservation, output path markers, uploaded-image markers, Tux attribution markers, Linux trademark-boundary markers, smoke prompts, leakage fixtures, public asset gates, and full-pass output.
-- [ ] **VAL-05**: Final release evidence records validator output, Node test output, `git diff --check`, Linux Mascot route smoke, uploaded-image and source-boundary smoke, docs consistency, leakage scan, trademark-boundary scan, and public sample gate status.
+- [x] **VAL-01**: Validator fails when Linux Mascot route metadata, source record, required references, output paths, docs, examples, NOTICE, release checklist, or agent metadata drift from the v1.11 contract.
+- [x] **VAL-02**: Validator fails when Linux Mascot identity markers leak into Xiaohei, Littlebox, Tom, Ferris, Seal, OpenClaw, Go Gopher, Cai Xukun, or Hermes Agent route-local packs.
+- [x] **VAL-03**: Validator fails when public generated Linux Mascot samples appear without explicit release checklist approval.
+- [x] **VAL-04**: Node tests cover Linux Mascot route parsing, route ordering, default preservation, output path markers, uploaded-image markers, Tux attribution markers, Linux trademark-boundary markers, smoke prompts, leakage fixtures, public asset gates, and full-pass output.
+- [x] **VAL-05**: Final release evidence records validator output, Node test output, `git diff --check`, Linux Mascot route smoke, uploaded-image and source-boundary smoke, docs consistency, leakage scan, trademark-boundary scan, and public sample gate status.
 
 ## Future Requirements
 
@@ -106,11 +106,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 | DOC-03 | Phase 56 | Complete |
 | DOC-04 | Phase 56 | Complete |
 | DOC-05 | Phase 56 | Complete |
-| VAL-01 | Phase 57 | Pending |
-| VAL-02 | Phase 57 | Pending |
-| VAL-03 | Phase 57 | Pending |
-| VAL-04 | Phase 57 | Pending |
-| VAL-05 | Phase 57 | Pending |
+| VAL-01 | Phase 57 | Complete |
+| VAL-02 | Phase 57 | Complete |
+| VAL-03 | Phase 57 | Complete |
+| VAL-04 | Phase 57 | Complete |
+| VAL-05 | Phase 57 | Complete |
 | MNF-01 | Future | Future |
 | MNF-02 | Future | Future |
 | AST-01 | Future | Future |
