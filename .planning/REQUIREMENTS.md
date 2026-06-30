@@ -7,11 +7,11 @@
 
 ### Route and Source
 
-- [ ] **ROUTE-01**: User can select Linux Mascot as an explicit visual IP route through clear aliases including `Linux Mascot`, `Linux mascot`, `Linux`, `linux`, `Tux`, `tux`, `Linux penguin`, and `Tux penguin` while Xiaohei remains the omitted-IP default.
-- [ ] **ROUTE-02**: User can rely on route id `linux`, display name `Linux Mascot`, output suffix `linux`, and output directory `assets/<article-slug>-linux/`.
-- [ ] **ROUTE-03**: Maintainer can inspect Linux Mascot routing metadata and see all required references, uploaded-image authority, Tux source context, Linux trademark-boundary context, route status `source-reviewed`, and `default=false`.
-- [ ] **SRC-01**: Maintainer can inspect `references/ips/linux/source.md` and see Larry Ewing Tux attribution, GIMP attribution condition, Linux Foundation trademark guidance, Linux trademark ownership context, uploaded local image authority, public sample policy, review owner, route status, and source-image context.
-- [ ] **SRC-02**: User and maintainer can see that `/Users/longnv/Downloads/Linux-logo.jpg` is the route visual authority, with stable markers for a glossy black rounded penguin head and body, white face eye patches, large oval eyes with dark pupils and small highlights, yellow-orange beak with two nostril dots, white oval belly, long black flippers, seated rounded posture, and oversized yellow-orange webbed feet.
+- [x] **ROUTE-01**: User can select Linux Mascot as an explicit visual IP route through clear aliases including `Linux Mascot`, `Linux mascot`, `Linux`, `linux`, `Tux`, `tux`, `Linux penguin`, and `Tux penguin` while Xiaohei remains the omitted-IP default.
+- [x] **ROUTE-02**: User can rely on route id `linux`, display name `Linux Mascot`, output suffix `linux`, and output directory `assets/<article-slug>-linux/`.
+- [x] **ROUTE-03**: Maintainer can inspect Linux Mascot routing metadata and see all required references, uploaded-image authority, Tux source context, Linux trademark-boundary context, route status `source-reviewed`, and `default=false`.
+- [x] **SRC-01**: Maintainer can inspect `references/ips/linux/source.md` and see Larry Ewing Tux attribution, GIMP attribution condition, Linux Foundation trademark guidance, Linux trademark ownership context, uploaded local image authority, public sample policy, review owner, route status, and source-image context.
+- [x] **SRC-02**: User and maintainer can see that `/Users/longnv/Downloads/Linux-logo.jpg` is the route visual authority, with stable markers for a glossy black rounded penguin head and body, white face eye patches, large oval eyes with dark pupils and small highlights, yellow-orange beak with two nostril dots, white oval belly, long black flippers, seated rounded posture, and oversized yellow-orange webbed feet.
 
 ### Linux Mascot IP Pack
 
@@ -87,11 +87,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| ROUTE-01 | Phase 53 | Pending |
-| ROUTE-02 | Phase 53 | Pending |
-| ROUTE-03 | Phase 53 | Pending |
-| SRC-01 | Phase 53 | Pending |
-| SRC-02 | Phase 53 | Pending |
+| ROUTE-01 | Phase 53 | Complete |
+| ROUTE-02 | Phase 53 | Complete |
+| ROUTE-03 | Phase 53 | Complete |
+| SRC-01 | Phase 53 | Complete |
+| SRC-02 | Phase 53 | Complete |
 | PACK-01 | Phase 54 | Pending |
 | PACK-02 | Phase 54 | Pending |
 | PACK-03 | Phase 54 | Pending |

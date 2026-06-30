@@ -2,15 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.11
 milestone_name: Linux Mascot IP Integration
-status: planning
-last_updated: "2026-07-01T02:18:04+0800"
-last_activity: 2026-07-01
+status: Phase 54 ready
+stopped_at: Completed 53-01-PLAN.md
+last_updated: "2026-06-30T19:20:44.028Z"
+last_activity: 2026-07-01 -- Completed Phase 53 Plan 53-01 Linux Mascot source and route contract
 progress:
   total_phases: 5
-  completed_phases: 0
-  total_plans: 5
-  completed_plans: 0
-  percent: 0
+  completed_phases: 1
+  total_plans: 1
+  completed_plans: 1
+  percent: 20
 ---
 
 # Project State
@@ -20,14 +21,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-07-01)
 
 **Core value:** Users can choose a visual IP and receive article illustrations whose character, style rules, prompts, QA gates, and saved outputs stay consistent with that IP.
-**Current focus:** Milestone v1.11 Linux Mascot IP Integration roadmap ready, Phase 53 next
+**Current focus:** Phase 54 Linux Mascot canonical pack next
 
 ## Current Position
 
-Phase: 53
-Plan: 53-01 pending
-Status: Roadmap ready
-Last activity: 2026-07-01 -- Milestone v1.11 Linux Mascot IP Integration roadmap ready
+Phase: 54
+Plan: 54-01 pending
+Status: Phase 54 ready
+Last activity: 2026-07-01 -- Completed Phase 53 Plan 53-01 Linux Mascot source and route contract
 
 ## Previous Shipping
 
@@ -144,6 +145,7 @@ Last activity: 2026-07-01 -- Milestone v1.11 Linux Mascot IP Integration roadmap
 | Phase 41 P41-01 | 49min | 3 tasks | 17 files |
 | Phase 42 P01 | 22m12s | 3 tasks | 4 files |
 | Phase 52 P52-01 | ~1h | 3 tasks | 3 files |
+| Phase 53 P53-01 | 4min | 3 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -271,6 +273,9 @@ Recent decisions affecting current work:
 - [Quick 260617-efv]: Root README variants now integrate Go Gopher in Outputs, escaped path markers, Visual IP Routes, Route Reference, operational route facts, Quick Examples, Workflow, Directory Structure, and Maintainer Validation. The trailing Go Gopher route-surface addendum was removed. Validator coverage reports 128/128 and Node tests report 96/96.
 - [Quick 260617-ewb]: Root README Example Gallery tables now cover Xiaohei, Littlebox, Tom, Ferris, Seal, OpenClaw, and Go Gopher across all 13 README variants, backed by public OpenClaw and Go Gopher sample assets plus release approvals. Validator coverage reports 129/129 and Node tests report 96/96 after merging the Chinese gallery check.
 - [Quick 260617-pk4]: Go Gopher visual authority moved to `skills/visual-ip-illustrations/references/ips/gopher/gopher.png`; root `gopher.png` and stale README hero assets were removed. Validator coverage reports 129/129 and Node tests report 96/96.
+- [Phase 53]: Linux Mascot uses explicit route id linux, display name Linux Mascot, status source-reviewed, output suffix linux, and default=false.
+- [Phase 53]: Phase 53 keeps Linux Mascot required references limited to references/ips/linux/source.md; Phase 54 owns the full route-local pack.
+- [Phase 53]: /Users/longnv/Downloads/Linux-logo.jpg is the uploaded visual authority for the Linux Mascot route.
 
 ### Pending Todos
 
@@ -336,6 +341,6 @@ Items acknowledged and carried forward from previous milestone close:
 
 ## Session Continuity
 
-Last session: 2026-06-16T21:55:14.449Z
-Stopped at: Completed 42-01-PLAN.md
+Last session: 2026-06-30T19:20:13.486Z
+Stopped at: Completed 53-01-PLAN.md
 Resume file: None
