@@ -647,6 +647,7 @@ export function outputPathTokens() {
       "assets/<article-slug>-gopher/",
       "assets/<article-slug>-caixukun/",
       "assets/<article-slug>-hermes/",
+      "assets/<article-slug>-linux/",
     ],
     escaped: [
       "assets/&lt;article-slug&gt;-illustrations/",
@@ -658,6 +659,7 @@ export function outputPathTokens() {
       "assets/&lt;article-slug&gt;-gopher/",
       "assets/&lt;article-slug&gt;-caixukun/",
       "assets/&lt;article-slug&gt;-hermes/",
+      "assets/&lt;article-slug&gt;-linux/",
     ],
   };
 }
@@ -674,6 +676,7 @@ function publicDocsOutputPathTokens() {
       "assets/<article-slug>-gopher/",
       "assets/<article-slug>-caixukun/",
       "assets/<article-slug>-hermes/",
+      "assets/<article-slug>-linux/",
     ],
     escaped: [
       "assets/&lt;article-slug&gt;-illustrations/",
@@ -685,6 +688,7 @@ function publicDocsOutputPathTokens() {
       "assets/&lt;article-slug&gt;-gopher/",
       "assets/&lt;article-slug&gt;-caixukun/",
       "assets/&lt;article-slug&gt;-hermes/",
+      "assets/&lt;article-slug&gt;-linux/",
     ],
   };
 }
@@ -745,6 +749,15 @@ export function parsePublicHermesSampleApproval(releaseChecklistText) {
     .find((line) => line.includes("Hermes Agent public asset policy for"));
 
   return parseHermesApprovalLine(approvalLine, "public");
+}
+
+export function parsePublicLinuxSampleApproval(releaseChecklistText) {
+  const approvalLine = releaseChecklistText
+    .split("\n")
+    .map((line) => line.trim())
+    .find((line) => line.includes("Linux Mascot public asset policy for"));
+
+  return parseLinuxApprovalLine(approvalLine, "public");
 }
 
 export function parseGeneratedFerrisSampleApproval(releaseChecklistText) {
@@ -816,6 +829,18 @@ export function parseGeneratedHermesSampleApproval(releaseChecklistText) {
     .find((line) => line.includes("Record generated sample review:"));
 
   return parseHermesApprovalLine(approvalLine, "generated");
+}
+
+export function parseGeneratedLinuxSampleApproval(releaseChecklistText) {
+  const linuxSection = releaseChecklistText
+    .split("## Linux Mascot Source, Trademark, Uploaded-Image Authority, and Public Sample Gate")[1]
+    ?.split("## Installable Package Boundary")[0] ?? "";
+  const approvalLine = linuxSection
+    .split("\n")
+    .map((line) => line.trim())
+    .find((line) => line.includes("Record generated sample review:"));
+
+  return parseLinuxApprovalLine(approvalLine, "generated");
 }
 
 function parsePublicRouteSampleApproval(releaseChecklistText, routeName) {
@@ -1101,6 +1126,51 @@ function emptyHermesApproval() {
     routeIsolationOutcomePresent: false,
     uploadedCharacterOnlyOutcomePresent: false,
     claimReviewOutcomePresent: false,
+    articleMetaphorOutcomePresent: false,
+    publicSampleOutcomePresent: false,
+    complete: false,
+  };
+}
+
+function emptyLinuxApproval() {
+  return {
+    found: false,
+    checked: false,
+    status: "",
+    reviewer: "",
+    reviewDate: "",
+    approvalStatus: "",
+    allowedDirectories: [],
+    internalReviewDirectories: [],
+    publicDirectories: [],
+    releaseChannels: "",
+    sourceOutcome: "",
+    gimpAttributionOutcome: "",
+    trademarkOutcome: "",
+    uploadedImageIdentityOutcome: "",
+    distroLogoBoundaryOutcome: "",
+    endorsementCertificationBoundaryOutcome: "",
+    productOutputOutcome: "",
+    routeIsolationOutcome: "",
+    uploadedImageOnlyOutcome: "",
+    articleMetaphorOutcome: "",
+    publicSampleOutcome: "",
+    reviewerPresent: false,
+    datePresent: false,
+    approvalStatusPresent: false,
+    allowedDirectoriesPresent: false,
+    internalReviewDirectoriesPresent: false,
+    publicDirectoriesPresent: false,
+    releaseChannelsPresent: false,
+    sourceOutcomePresent: false,
+    gimpAttributionOutcomePresent: false,
+    trademarkOutcomePresent: false,
+    uploadedImageIdentityOutcomePresent: false,
+    distroLogoBoundaryOutcomePresent: false,
+    endorsementCertificationBoundaryOutcomePresent: false,
+    productOutputOutcomePresent: false,
+    routeIsolationOutcomePresent: false,
+    uploadedImageOnlyOutcomePresent: false,
     articleMetaphorOutcomePresent: false,
     publicSampleOutcomePresent: false,
     complete: false,
@@ -1761,6 +1831,166 @@ function parseHermesApprovalLine(approvalLine, kind) {
   };
 }
 
+function parseLinuxApprovalLine(approvalLine, kind) {
+  if (!approvalLine) {
+    return emptyLinuxApproval();
+  }
+
+  const checked = /^\-\s+\[[xX]\]/.test(approvalLine);
+  const recordMatch = approvalLine.match(/:\s*(.+?)(?:\.)?$/);
+  const approvalRecord = recordMatch?.[1] ?? "";
+  const fields = approvalRecord.split(/\s+\/(?=\s)/).map((field) => field.trim().replace(/\.$/, ""));
+  const [
+    status = "",
+    reviewer = "",
+    reviewDate = "",
+    approvalStatus = "",
+    firstDirectoryText = "",
+    secondDirectoryOrChannels = "",
+    releaseChannelsOrSource = "",
+    sourceOrGimp = "",
+    gimpOrTrademark = "",
+    trademarkOrUploadedImage = "",
+    uploadedImageOrDistroLogo = "",
+    distroLogoOrEndorsement = "",
+    endorsementOrProduct = "",
+    productOrRouteIsolation = "",
+    routeIsolationOrUploadedOnly = "",
+    uploadedOnlyOrArticle = "",
+    articleOrPublicSample = "",
+  ] = fields;
+
+  const parseDirectories = (value) =>
+    value
+      .split(/,|;|\band\b/)
+      .map((directory) => directory.trim())
+      .map((directory) => directory.replace(/^`+|`+$/g, "").replace(/[./]+$/g, ""))
+      .filter(Boolean);
+
+  const publicRequiredDirectories = ["examples/images", "examples/images-en", "skills/visual-ip-illustrations/assets/examples"];
+  const generatedRequiredInternalDirectories = ["assets/<article-slug>-linux"];
+  const generatedRequiredPublicDirectories = ["examples/images", "skills/visual-ip-illustrations/assets/examples"];
+  const allowedDirectories = kind === "public" ? parseDirectories(firstDirectoryText) : [];
+  const internalReviewDirectories = kind === "generated" ? parseDirectories(firstDirectoryText) : [];
+  const publicDirectories = kind === "generated" ? parseDirectories(secondDirectoryOrChannels) : [];
+  const releaseChannels = kind === "public" ? secondDirectoryOrChannels : releaseChannelsOrSource;
+  const sourceOutcome = kind === "public" ? releaseChannelsOrSource : sourceOrGimp;
+  const gimpAttributionOutcome = kind === "public" ? sourceOrGimp : gimpOrTrademark;
+  const trademarkOutcome = kind === "public" ? gimpOrTrademark : trademarkOrUploadedImage;
+  const uploadedImageIdentityOutcome = kind === "public" ? trademarkOrUploadedImage : uploadedImageOrDistroLogo;
+  const distroLogoBoundaryOutcome = kind === "public" ? uploadedImageOrDistroLogo : distroLogoOrEndorsement;
+  const endorsementCertificationBoundaryOutcome = kind === "public" ? distroLogoOrEndorsement : endorsementOrProduct;
+  const productOutputOutcome = kind === "public" ? endorsementOrProduct : productOrRouteIsolation;
+  const routeIsolationOutcome = kind === "public" ? productOrRouteIsolation : routeIsolationOrUploadedOnly;
+  const uploadedImageOnlyOutcome = kind === "public" ? routeIsolationOrUploadedOnly : "generated sample uses uploaded-image-only Tux route";
+  const articleMetaphorOutcome = kind === "public" ? uploadedOnlyOrArticle : uploadedOnlyOrArticle;
+  const publicSampleOutcome = kind === "public" ? articleOrPublicSample : "generated sample gated";
+  const reviewerPresent = Boolean(reviewer) && !/^reviewer$/i.test(reviewer);
+  const datePresent = isValidReviewDate(reviewDate);
+  const approvalStatusPresent =
+    Boolean(approvalStatus) &&
+    !/^approval status$/i.test(approvalStatus) &&
+    /(approved|complete|granted)/i.test(approvalStatus);
+  const allowedDirectoriesPresent =
+    kind === "public" && publicRequiredDirectories.every((directory) => allowedDirectories.includes(directory));
+  const internalReviewDirectoriesPresent =
+    kind === "generated" &&
+    generatedRequiredInternalDirectories.every((directory) => internalReviewDirectories.includes(directory));
+  const publicDirectoriesPresent =
+    kind === "generated" &&
+    generatedRequiredPublicDirectories.every((directory) => publicDirectories.includes(directory));
+  const releaseChannelsPresent = Boolean(releaseChannels) && !/^release channels\.?$/i.test(releaseChannels);
+  const sourceOutcomePresent = Boolean(sourceOutcome) && !/^Tux source outcome\.?$/i.test(sourceOutcome);
+  const gimpAttributionOutcomePresent =
+    Boolean(gimpAttributionOutcome) && !/^GIMP attribution outcome\.?$/i.test(gimpAttributionOutcome);
+  const trademarkOutcomePresent = Boolean(trademarkOutcome) && !/^Linux trademark outcome\.?$/i.test(trademarkOutcome);
+  const uploadedImageIdentityOutcomePresent =
+    Boolean(uploadedImageIdentityOutcome) && !/^uploaded-image identity outcome\.?$/i.test(uploadedImageIdentityOutcome);
+  const distroLogoBoundaryOutcomePresent =
+    Boolean(distroLogoBoundaryOutcome) && !/^distro-logo boundary outcome\.?$/i.test(distroLogoBoundaryOutcome);
+  const endorsementCertificationBoundaryOutcomePresent =
+    Boolean(endorsementCertificationBoundaryOutcome) &&
+    !/^endorsement\/certification boundary outcome\.?$/i.test(endorsementCertificationBoundaryOutcome);
+  const productOutputOutcomePresent =
+    Boolean(productOutputOutcome) && !/^product-output outcome\.?$/i.test(productOutputOutcome);
+  const routeIsolationOutcomePresent =
+    Boolean(routeIsolationOutcome) && !/^route-isolation outcome\.?$/i.test(routeIsolationOutcome);
+  const uploadedImageOnlyOutcomePresent =
+    Boolean(uploadedImageOnlyOutcome) &&
+    !/^uploaded-image-only Tux article illustration outcome\.?$/i.test(uploadedImageOnlyOutcome);
+  const articleMetaphorOutcomePresent =
+    Boolean(articleMetaphorOutcome) && !/^article-metaphor quality outcome\.?$/i.test(articleMetaphorOutcome);
+  const publicSampleOutcomePresent =
+    Boolean(publicSampleOutcome) && !/^public-sample decision\.?$/i.test(publicSampleOutcome);
+  const directoryFieldsPresent =
+    kind === "public" ? allowedDirectoriesPresent : internalReviewDirectoriesPresent && publicDirectoriesPresent;
+  const sharedOutcomesPresent =
+    sourceOutcomePresent &&
+    gimpAttributionOutcomePresent &&
+    trademarkOutcomePresent &&
+    uploadedImageIdentityOutcomePresent &&
+    distroLogoBoundaryOutcomePresent &&
+    endorsementCertificationBoundaryOutcomePresent &&
+    productOutputOutcomePresent &&
+    routeIsolationOutcomePresent &&
+    articleMetaphorOutcomePresent;
+  const complete =
+    checked &&
+    /(approved|complete|granted)/i.test(status) &&
+    !/pending/i.test(status) &&
+    reviewerPresent &&
+    datePresent &&
+    approvalStatusPresent &&
+    !/pending/i.test(approvalStatus) &&
+    directoryFieldsPresent &&
+    releaseChannelsPresent &&
+    sharedOutcomesPresent &&
+    (kind === "public" ? uploadedImageOnlyOutcomePresent && publicSampleOutcomePresent : true);
+
+  return {
+    found: true,
+    checked,
+    status,
+    reviewer,
+    reviewDate,
+    approvalStatus,
+    allowedDirectories,
+    internalReviewDirectories,
+    publicDirectories,
+    releaseChannels,
+    sourceOutcome,
+    gimpAttributionOutcome,
+    trademarkOutcome,
+    uploadedImageIdentityOutcome,
+    distroLogoBoundaryOutcome,
+    endorsementCertificationBoundaryOutcome,
+    productOutputOutcome,
+    routeIsolationOutcome,
+    uploadedImageOnlyOutcome,
+    articleMetaphorOutcome,
+    publicSampleOutcome,
+    reviewerPresent,
+    datePresent,
+    approvalStatusPresent,
+    allowedDirectoriesPresent,
+    internalReviewDirectoriesPresent,
+    publicDirectoriesPresent,
+    releaseChannelsPresent,
+    sourceOutcomePresent,
+    gimpAttributionOutcomePresent,
+    trademarkOutcomePresent,
+    uploadedImageIdentityOutcomePresent,
+    distroLogoBoundaryOutcomePresent,
+    endorsementCertificationBoundaryOutcomePresent,
+    productOutputOutcomePresent,
+    routeIsolationOutcomePresent,
+    uploadedImageOnlyOutcomePresent,
+    articleMetaphorOutcomePresent,
+    publicSampleOutcomePresent,
+    complete,
+  };
+}
+
 function readmeVariantFiles() {
   const rootReadmes = fs.readdirSync(REPO_ROOT).filter((fileName) => fileName === README_FILE);
   const localizedReadmes = fs
@@ -2116,6 +2346,7 @@ function requiredPackageFiles() {
     ...gopherOperationalRefs(),
     ...caixukunOperationalRefs(),
     ...hermesOperationalRefs(),
+    ...linuxOperationalRefs(),
     ...legacyXiaoheiRefs().map((item) => item.root),
     "README.md",
     "examples/prompts.md",
@@ -2517,6 +2748,22 @@ function hermesOperationalRefs() {
   return hermesPlannedReferences().map((item) => path.join(PACKAGE_DIR, item));
 }
 
+function linuxPlannedReferences() {
+  return [
+    "references/ips/linux/index.md",
+    "references/ips/linux/source.md",
+    "references/ips/linux/style-dna.md",
+    "references/ips/linux/linux-ip.md",
+    "references/ips/linux/composition-patterns.md",
+    "references/ips/linux/prompt-template.md",
+    "references/ips/linux/qa-checklist.md",
+  ];
+}
+
+function linuxOperationalRefs() {
+  return linuxPlannedReferences().map((item) => path.join(PACKAGE_DIR, item));
+}
+
 function hermesUploadedVisualMarkers() {
   return [
     "monochrome full-body logo-style character",
@@ -2578,6 +2825,58 @@ function hermesBoundaryMarkers() {
     "sponsorship",
     "approval claim",
     "impersonation",
+  ];
+}
+
+function linuxUploadedVisualMarkers() {
+  return [
+    "glossy black rounded penguin head and body",
+    "white face eye patches",
+    "large oval eyes with dark pupils and small highlights",
+    "yellow-orange beak with two nostril dots",
+    "white oval belly",
+    "long black flippers",
+    "seated rounded posture",
+    "oversized yellow-orange webbed feet",
+  ];
+}
+
+function linuxSourceMarkers() {
+  return [
+    "/Users/longnv/Downloads/Linux-logo.jpg",
+    "071bc327e4a2814864f9e2fcdea99aa50482a92ef4e816de9d9ce5f40e17bb2a",
+    "Larry Ewing",
+    "https://isc.tamu.edu/~lewing/linux/",
+    "The GIMP",
+    "https://www.linuxfoundation.org/legal/trademark-usage",
+    "https://www.linuxfoundation.org/legal/the-linux-mark",
+    "Linux is the registered trademark of Linus Torvalds in the U.S. and other countries",
+    "source-reviewed",
+    "Public generated Linux Mascot samples require release review",
+    "Review Owner",
+    "Distribution Boundary",
+    "assets/<article-slug>-linux/",
+  ];
+}
+
+function linuxBoundaryMarkers() {
+  return [
+    "distro-logo drift",
+    "distro logos",
+    "distro mascots",
+    "distro badges",
+    "package-manager marks",
+    "Linux Foundation logo use",
+    "official endorsement claims",
+    "certification claims",
+    "compatibility claims",
+    "Linux Foundation campaign framing",
+    "product advertising",
+    "product-poster output",
+    "CLI screenshots",
+    "web hero graphics",
+    "kernel dashboard screenshots",
+    "operating-system marketing graphics",
   ];
 }
 
@@ -2680,6 +2979,14 @@ function rebrandRouteExpectations() {
       default: "false",
       status: "source-reviewed",
       outputSuffix: "hermes",
+      referenceCount: 7,
+    },
+    {
+      id: "linux",
+      aliases: ["Linux Mascot", "Linux mascot", "Linux", "linux", "Tux", "tux", "Linux penguin", "Tux penguin"],
+      default: "false",
+      status: "source-reviewed",
+      outputSuffix: "linux",
       referenceCount: 7,
     },
   ];
@@ -3193,6 +3500,30 @@ const checks = [
       "allow_implicit_invocation: true",
     ], "Hermes Agent discovery metadata, source-reviewed route status, uploaded-image authority, source/MIT boundaries, and default Xiaohei preservation");
   }),
+  defineCheck("AGENT-LINUX-001", "openai.yaml exposes Linux Mascot source-reviewed route metadata markers", () => {
+    assertIncludes(requireFile(OPENAI_AGENT_FILE), OPENAI_AGENT_FILE, [
+      "Visual IP Illustrations",
+      "$visual-ip-illustrations",
+      "$ian-xiaohei-illustrations",
+      "default Xiaohei",
+      "Linux Mascot",
+      "Tux",
+      "source-reviewed",
+      "uploaded-image article-illustration route",
+      "/Users/longnv/Downloads/Linux-logo.jpg",
+      "references/ips/linux/source.md",
+      "assets/<article-slug>-linux/",
+      "assets/&lt;article-slug&gt;-linux/",
+      "Larry Ewing Tux attribution",
+      "The GIMP attribution condition",
+      "Linux trademark boundary",
+      "distro logo",
+      "product poster",
+      "public sample review gate",
+      "route isolation",
+      "allow_implicit_invocation: true",
+    ], "Linux Mascot discovery metadata, source-reviewed route status, uploaded-image authority, trademark boundaries, and default Xiaohei preservation");
+  }),
   defineCheck("ROUTE-TABLE-001", "routing.md exposes the required route metadata columns and rows", () => {
     const text = requireFile(ROUTING_FILE);
     const columns = markdownTableHeader(text, "IP Routes");
@@ -3216,6 +3547,7 @@ const checks = [
       "gopher",
       "caixukun",
       "hermes",
+      "linux",
     ], ROUTING_FILE, "route ids");
   }),
   defineCheck("ROUTE-XH-001", "routing.md preserves the Xiaohei active route contract", () => {
@@ -3498,6 +3830,45 @@ const checks = [
       "Phase 52 Hermes Agent seven-file pack existence",
     );
   }),
+  defineCheck("ROUTE-LINUX-001", "routing.md preserves the Linux Mascot source-reviewed route contract", () => {
+    const row = routeById("linux");
+    const references = routeReferencePaths(row);
+    assertIncludes(Object.values(row).join(" "), ROUTING_FILE, [
+      "Linux Mascot",
+      "Linux mascot",
+      "Linux",
+      "linux",
+      "Tux",
+      "tux",
+      "Linux penguin",
+      "Tux penguin",
+      "source-reviewed",
+      "/Users/longnv/Downloads/Linux-logo.jpg",
+      "Larry Ewing",
+      "The GIMP attribution condition",
+      "Linux Foundation trademark guidance",
+      "Linux mark ownership context",
+      "distro-logo drift",
+      "product-poster output",
+      "references/ips/linux/source.md",
+    ], "Linux Mascot display name, aliases, suffix, uploaded-image authority, source/trademark context, boundaries, source record, and status");
+    if (row.default !== "false") {
+      throw new Error(`${ROUTING_FILE} expected linux default=false; observed ${row.default || "missing"}`);
+    }
+    if (row.output_suffix !== "linux") {
+      throw new Error(`${ROUTING_FILE} expected linux output_suffix=linux; observed ${row.output_suffix || "missing"}`);
+    }
+    if (references.join("\n") !== linuxPlannedReferences().join("\n")) {
+      throw new Error(
+        `${ROUTING_FILE} expected linux required_references=${linuxPlannedReferences().join(", ")}; observed ${references.join(", ") || "none"}`,
+      );
+    }
+    assertExistingFiles(
+      linuxPlannedReferences().map((reference) => path.join(PACKAGE_DIR, reference)),
+      ROUTING_FILE,
+      "Phase 57 Linux Mascot seven-file pack existence",
+    );
+  }),
   defineCheck("ROUTE-DEFAULT-001", "routing.md keeps Xiaohei as the only default active route", () => {
     const rows = routeRows();
     const defaults = rows.filter((row) => row.default === "true").map((row) => row.id);
@@ -3536,11 +3907,15 @@ const checks = [
     if (hermes.default !== "false") {
       throw new Error(`${ROUTING_FILE} expected hermes default=false; observed ${hermes.default || "missing"}`);
     }
+    const linux = routeById("linux");
+    if (linux.default !== "false") {
+      throw new Error(`${ROUTING_FILE} expected linux default=false; observed ${linux.default || "missing"}`);
+    }
   }),
   defineCheck("ROUTE-REFS-001", "routing.md required_references resolve inside the package", () => {
     for (const row of routeRows()) {
       const references = routeReferencePaths(row);
-      const expectedCounts = { xiaohei: 5, littlebox: 6, tom: 7, ferris: 7, seal: 7, openclaw: 7, gopher: 7, caixukun: 7, hermes: 7 };
+      const expectedCounts = { xiaohei: 5, littlebox: 6, tom: 7, ferris: 7, seal: 7, openclaw: 7, gopher: 7, caixukun: 7, hermes: 7, linux: 7 };
       const expectedCount = expectedCounts[row.id];
       if (references.length !== expectedCount) {
         throw new Error(
@@ -3603,6 +3978,14 @@ const checks = [
             throw new Error(`${ROUTING_FILE} expected hermes reference ${reference} to resolve under ${PACKAGE_DIR}/references/ips/hermes/`);
           }
         }
+        if (row.id === "linux") {
+          if (!reference.startsWith("references/ips/linux/")) {
+            throw new Error(`${ROUTING_FILE} expected linux reference ${reference} under references/ips/linux/`);
+          }
+          if (!displayPath(resolved).startsWith(`${PACKAGE_DIR}/references/ips/linux/`)) {
+            throw new Error(`${ROUTING_FILE} expected linux reference ${reference} to resolve under ${PACKAGE_DIR}/references/ips/linux/`);
+          }
+        }
         if (!fileExists(relative)) {
           throw new Error(`${ROUTING_FILE} expected ${row.id} reference ${reference} to exist; observed missing ${relative}`);
         }
@@ -3619,6 +4002,7 @@ const checks = [
     const gopher = routeById("gopher");
     const caixukun = routeById("caixukun");
     const hermes = routeById("hermes");
+    const linux = routeById("linux");
     if (xiaohei.output_suffix !== "illustrations") {
       throw new Error(`${ROUTING_FILE} expected xiaohei output_suffix=illustrations; observed ${xiaohei.output_suffix}`);
     }
@@ -3646,6 +4030,9 @@ const checks = [
     if (hermes.output_suffix !== "hermes") {
       throw new Error(`${ROUTING_FILE} expected hermes output_suffix=hermes; observed ${hermes.output_suffix}`);
     }
+    if (linux.output_suffix !== "linux") {
+      throw new Error(`${ROUTING_FILE} expected linux output_suffix=linux; observed ${linux.output_suffix}`);
+    }
     assertIncludes(requireFile(ROUTING_FILE), ROUTING_FILE, [
       "assets/<article-slug>-illustrations/",
       "assets/<article-slug>-littlebox/",
@@ -3663,6 +4050,8 @@ const checks = [
       "assets/&lt;article-slug&gt;-caixukun/",
       "assets/<article-slug>-hermes/",
       "assets/&lt;article-slug&gt;-hermes/",
+      "assets/<article-slug>-linux/",
+      "assets/&lt;article-slug&gt;-linux/",
     ], "output suffix to output directory mapping");
   }),
   defineCheck("ROUTE-MIXED-001", "routing.md preserves mixed-IP separate route group wording", () => {
@@ -3678,6 +4067,7 @@ const checks = [
       "`gopher` writes to `assets/<article-slug>-gopher/`",
       "`caixukun` writes to `assets/<article-slug>-caixukun/`",
       "`hermes` writes to `assets/<article-slug>-hermes/`",
+      "`linux` writes to `assets/<article-slug>-linux/`",
     ], "mixed-IP isolated reference and output-directory wording");
   }),
   defineCheck("REFS-XH-001", "Xiaohei canonical operational references and index exist", () => {
@@ -3920,6 +4310,48 @@ const checks = [
       "route leakage",
       "copied composition",
     ], "Hermes Agent route-local sample gate, route block, mythology/product boundaries, and drift markers");
+  }),
+  defineCheck("REFS-LINUX-001", "Linux Mascot canonical route references and shared markers exist", () => {
+    const linuxFiles = linuxOperationalRefs();
+    assertReadableFiles(linuxFiles, path.join(REFERENCES_DIR, "ips", "linux"), "Linux Mascot seven-file pack");
+    for (const relativePath of linuxFiles) {
+      assertIncludes(requireFile(relativePath), relativePath, [
+        "linux",
+        "Linux Mascot",
+        "Tux",
+        "source-reviewed",
+        "source.md",
+        "assets/<article-slug>-linux/",
+        "/Users/longnv/Downloads/Linux-logo.jpg",
+        "Larry Ewing",
+        "The GIMP attribution condition",
+        "Linux Foundation trademark guidance",
+        "Linux mark ownership context",
+        "release review",
+        ...linuxUploadedVisualMarkers(),
+      ], "Linux Mascot route-local shared operational markers");
+    }
+    assertIncludes(combinedText([
+      path.join(REFERENCES_DIR, "ips", "linux", "index.md"),
+      path.join(REFERENCES_DIR, "ips", "linux", "prompt-template.md"),
+      path.join(REFERENCES_DIR, "ips", "linux", "qa-checklist.md"),
+    ]), path.join(REFERENCES_DIR, "ips", "linux"), [
+      "Linux Mascot route block",
+      "Public sample review boundary",
+      "generic penguin drift",
+      "distro-logo drift",
+      "Linux Foundation logo",
+      "endorsement",
+      "certification",
+      "compatibility",
+      "product-poster",
+      "CLI screenshots",
+      "web hero graphics",
+      "kernel dashboard screenshots",
+      "operating-system marketing graphics",
+      "route leakage",
+      "copied composition",
+    ], "Linux Mascot route-local sample gate, route block, trademark/product boundaries, and drift markers");
   }),
   defineCheck("LEGACY-XH-001", "root Xiaohei compatibility files expose the current contract heading", () => {
     for (const item of legacyXiaoheiRefs()) {
@@ -4167,6 +4599,42 @@ const checks = [
       ...hermesUploadedVisualMarkers(),
       ...hermesBoundaryMarkers(),
     ], "Hermes Agent planning fields, generation prompt, source/MIT boundary, save reminder, and edit prompt families");
+  }),
+  defineCheck("PROMPT-LINUX-001", "Linux Mascot prompt template preserves planning, generation, edit, source, trademark, and boundary markers", () => {
+    const relativePath = path.join(REFERENCES_DIR, "ips", "linux", "prompt-template.md");
+    assertIncludes(requireFile(relativePath), relativePath, [
+      "Linux Mascot planning fields gate",
+      "Linux Mascot state",
+      "Linux Mascot action",
+      "Source context note",
+      "Trademark-boundary note",
+      "assets/<article-slug>-linux/",
+      "Linux Mascot one-image generation gate",
+      "/Users/longnv/Downloads/Linux-logo.jpg",
+      "Larry Ewing Tux attribution",
+      "The GIMP attribution condition",
+      "Linux Foundation trademark guidance",
+      "Linux mark ownership context",
+      "Stronger Linux Mascot Participation",
+      "Uploaded-Image Identity Repair",
+      "Trademark-Boundary Repair",
+      "Trademark-Boundary Repair gate",
+      "Route Leakage Repair",
+      "Unaffected-Content Preservation",
+      "delivery report states selected visual IP",
+      "route isolation status",
+      ...linuxUploadedVisualMarkers(),
+      "distro-logo drift",
+      "Linux Foundation logo use",
+      "official endorsement claims",
+      "certification claims",
+      "compatibility claims",
+      "operating-system marketing graphics",
+      "product-poster drift",
+      "CLI screenshots",
+      "web hero graphics",
+      "kernel dashboard screenshots",
+    ], "Linux Mascot planning fields, generation prompt, source/trademark boundary, save reminder, and edit prompt families");
   }),
   defineCheck("IP-XH-001", "Xiaohei canonical pack preserves objective IP markers", () => {
     const text = combinedText([
@@ -4448,6 +4916,35 @@ const checks = [
       "copied composition",
     ], "Hermes Agent source authority, uploaded-image identity cues, cognitive action gates, article metaphors, source/MIT boundaries, drift markers, and output path");
   }),
+  defineCheck("IP-LINUX-001", "Linux Mascot canonical pack preserves uploaded-image identity and action gates", () => {
+    const text = combinedText([
+      path.join(REFERENCES_DIR, "ips", "linux", "index.md"),
+      path.join(REFERENCES_DIR, "ips", "linux", "source.md"),
+      path.join(REFERENCES_DIR, "ips", "linux", "style-dna.md"),
+      path.join(REFERENCES_DIR, "ips", "linux", "linux-ip.md"),
+      path.join(REFERENCES_DIR, "ips", "linux", "composition-patterns.md"),
+    ]);
+    assertIncludes(text, path.join(REFERENCES_DIR, "ips", "linux"), [
+      "source-reviewed",
+      "uploaded visual authority",
+      "/Users/longnv/Downloads/Linux-logo.jpg",
+      "Larry Ewing",
+      "The GIMP attribution condition",
+      "Linux Foundation trademark guidance",
+      "Linux mark ownership context",
+      "Linux Mascot active-composition gate",
+      "Tux must perform the central cognitive article action",
+      "article metaphor",
+      "source.md",
+      ...linuxUploadedVisualMarkers(),
+      ...linuxBoundaryMarkers(),
+      "generic penguin drift",
+      "distro-logo drift",
+      "product-poster drift",
+      "route leakage",
+      "copied composition",
+    ], "Linux Mascot source authority, uploaded-image identity cues, cognitive action gates, article metaphors, trademark/product boundaries, drift markers, and output path");
+  }),
   defineCheck("QA-TOM-001", "Tom QA checklist preserves protected-route pass, fail, repair, and delivery markers", () => {
     const relativePath = path.join(REFERENCES_DIR, "ips", "tom", "qa-checklist.md");
     assertIncludes(requireFile(relativePath), relativePath, [
@@ -4697,6 +5194,45 @@ const checks = [
       ...hermesUploadedVisualMarkers(),
     ], "Hermes Agent QA pass criteria, source/MIT failures, mythology/product failures, route leakage failure, repair gates, and delivery judgment");
   }),
+  defineCheck("QA-LINUX-001", "Linux Mascot QA checklist preserves source-reviewed pass, fail, repair, and delivery markers", () => {
+    const relativePath = path.join(REFERENCES_DIR, "ips", "linux", "qa-checklist.md");
+    assertIncludes(requireFile(relativePath), relativePath, [
+      "Linux Mascot QA source-reviewed gate",
+      "Linux Mascot QA uploaded-image identity gate",
+      "Linux Mascot QA source and trademark context gate",
+      "Linux Mascot QA article-metaphor gate",
+      "Linux Mascot QA route isolation gate",
+      "Tux performs active cognitive participation",
+      "Source and trademark boundary is preserved through `source.md`",
+      "Delivery path uses `assets/<article-slug>-linux/`",
+      "generic penguin drift",
+      "distro-logo drift",
+      "Linux Foundation logo",
+      "endorsement",
+      "certification",
+      "compatibility",
+      "product-poster",
+      "UI screenshot",
+      "CLI screenshot",
+      "web hero graphic",
+      "kernel dashboard screenshot",
+      "operating-system marketing graphics",
+      "route leakage",
+      "Linux Mascot QA generic penguin drift failure",
+      "Linux Mascot QA distro-logo drift failure",
+      "Linux Mascot QA passive placement failure",
+      "Linux Mascot QA trademark-boundary failure",
+      "Linux Mascot QA route leakage failure",
+      "Stronger Linux Mascot Participation",
+      "Uploaded-Image Identity Repair",
+      "Trademark-Boundary Repair",
+      "Trademark drift repair",
+      "Route leakage repair",
+      "Linux Mascot QA unaffected-content preservation gate",
+      "Accepted Linux Mascot images keep Tux as the action subject",
+      ...linuxUploadedVisualMarkers(),
+    ], "Linux Mascot QA pass criteria, source/trademark failures, distro/product failures, route leakage failure, repair gates, and delivery judgment");
+  }),
   defineCheck("RIGHTS-TOM-001", "Tom rights record preserves required Phase 6 rights markers", () => {
     const relativePath = path.join(REFERENCES_DIR, "ips", "tom", "rights.md");
     assertIncludes(requireFile(relativePath), relativePath, [
@@ -4909,6 +5445,33 @@ const checks = [
       "product-poster boundary outcome",
       "public-sample decision",
     ], "Hermes Agent source headings, official source, MIT license, uploaded-image authority, route status, output path, and sample gate");
+  }),
+  defineCheck("SOURCE-LINUX-001", "Linux Mascot source record preserves source, trademark, uploaded-image, and sample gate markers", () => {
+    const relativePath = path.join(REFERENCES_DIR, "ips", "linux", "source.md");
+    assertIncludes(requireFile(relativePath), relativePath, [
+      "# Linux Mascot Source Record",
+      "## Source",
+      "## Tux Source Context",
+      "## Uploaded Linux Mascot Visual Markers",
+      "## Sample Policy",
+      "## Route Status",
+      "## Allowed Use",
+      "## Restricted Use",
+      "## Distribution Boundary",
+      "## Review Owner",
+      ...linuxSourceMarkers(),
+      ...linuxUploadedVisualMarkers(),
+      "Tux source outcome",
+      "GIMP attribution outcome",
+      "Linux trademark outcome",
+      "uploaded-image identity outcome",
+      "distro-logo boundary outcome",
+      "endorsement/certification boundary outcome",
+      "route-isolation outcome",
+      "product-poster output",
+      "sparse 16:9 article illustrations",
+      "public-sample decision",
+    ], "Linux Mascot source headings, official source, trademark context, uploaded-image authority, route status, output path, and sample gate");
   }),
   defineCheck("LOGO-SEAL-001", "Seal route keeps mascot logo-free", () => {
     const routeLocalFiles = [
@@ -5276,7 +5839,7 @@ const checks = [
       "Cai Xukun Metadata",
       "Source-image context:",
       "public generated sample release review",
-      "Mixed requests across Xiaohei, Littlebox, Tom, Ferris, Seal, OpenClaw, Go Gopher, Cai Xukun, and Hermes create separate route groups",
+      "Mixed requests across Xiaohei, Littlebox, Tom, Ferris, Seal, OpenClaw, Go Gopher, Cai Xukun, Hermes Agent, and Linux Mascot create separate route groups",
       "stylized mascot article-illustration route",
     ], "Cai Xukun routing metadata keeps equivalent source-image, review, route separation, and stylized mascot markers");
     assertIncludes(requireFile("NOTICE.md"), "NOTICE.md", [
@@ -5397,6 +5960,86 @@ const checks = [
         "Phase 52",
       ],
       "Hermes Agent docs, metadata, source authority, path-token consistency, public sample policy, and validator ownership markers",
+    );
+  }),
+  defineCheck("DOC-LINUX-001", "public docs expose Linux Mascot source-reviewed route and source-boundary markers", () => {
+    for (const relativePath of readmeVariantFiles()) {
+      assertIncludes(requireFile(relativePath), relativePath, [
+        "Linux Mascot",
+        "source-reviewed",
+        "skills/visual-ip-illustrations/references/ips/linux/source.md",
+        "assets/<article-slug>-linux/",
+        "assets/&lt;article-slug&gt;-linux/",
+      ], "Linux Mascot README variant route status, source authority, and path markers");
+    }
+    for (const relativePath of [
+      "README.md",
+      "examples/prompts.md",
+      "RELEASE_CHECKLIST.md",
+      ROUTING_FILE,
+      SKILL_FILE,
+    ]) {
+      assertIncludes(requireFile(relativePath), relativePath, [
+        "Linux Mascot",
+        "Tux",
+        "source-reviewed",
+        "/Users/longnv/Downloads/Linux-logo.jpg",
+        "references/ips/linux/source.md",
+        "assets/<article-slug>-linux/",
+        "assets/&lt;article-slug&gt;-linux/",
+        "uploaded-image authority",
+        "Larry Ewing Tux attribution",
+        "The GIMP attribution condition",
+        "Linux trademark",
+        "distro-logo",
+        "product",
+      ], "Linux Mascot route status, aliases, source authority, uploaded-image boundary, and path markers");
+    }
+    assertIncludes(requireFile("NOTICE.md"), "NOTICE.md", [
+      "Linux Mascot Source Attribution and Public Sample Gate",
+      "Route: Linux Mascot",
+      "Route status: `source-reviewed`",
+      "Source authority: `skills/visual-ip-illustrations/references/ips/linux/source.md`",
+      "/Users/longnv/Downloads/Linux-logo.jpg",
+      "Larry Ewing",
+      "The GIMP attribution condition",
+      "Linux Foundation trademark guidance",
+      "Linux mark ownership context",
+      "distro-logo boundary",
+      "product-output boundary",
+      "uploaded-image-only Tux article illustration output",
+    ], "Linux Mascot NOTICE source boundary and public sample gate wording");
+    assertIncludes(requireFile(OPENAI_AGENT_FILE), OPENAI_AGENT_FILE, [
+      "Linux Mascot",
+      "source-reviewed",
+      "uploaded-image article-illustration route",
+      "Larry Ewing",
+      "The GIMP attribution condition",
+      "Linux trademark",
+      "distro logo",
+      "product poster",
+    ], "Linux Mascot agent metadata route status wording");
+    assertIncludes(
+      combinedText(["README.md", "examples/prompts.md", "NOTICE.md", "RELEASE_CHECKLIST.md", ROUTING_FILE, OPENAI_AGENT_FILE, SKILL_FILE]),
+      "README.md + examples/prompts.md + NOTICE.md + RELEASE_CHECKLIST.md + routing.md + openai.yaml + SKILL.md",
+      [
+        "skills/visual-ip-illustrations/references/ips/linux/",
+        "skills/visual-ip-illustrations/references/ips/linux/source.md",
+        "Linux Mascot Source and Trademark Review",
+        "Linux Mascot Public Asset Policy",
+        "Linux Mascot Generated Sample Policy",
+        "uploaded-image authority",
+        "Larry Ewing Tux attribution",
+        "The GIMP attribution condition",
+        "Linux Foundation trademark guidance",
+        "Linux mark ownership context",
+        "public generated Linux Mascot samples",
+        "distro-logo boundary",
+        "product-output boundary",
+        "uploaded-image-only Tux article illustration output",
+        "Phase 57",
+      ],
+      "Linux Mascot docs, metadata, source authority, path-token consistency, public sample policy, and validator ownership markers",
     );
   }),
   defineCheck("NOTICE-IAN-001", "NOTICE keeps Ian Xiaohei attribution markers", () => {
@@ -5556,6 +6199,37 @@ const checks = [
       "route-isolation outcome",
       "public-sample decision",
     ], "Hermes Agent NOTICE source boundary, source/MIT review outcomes, and public sample gate");
+  }),
+  defineCheck("NOTICE-LINUX-001", "NOTICE keeps Linux Mascot source and public sample gate markers", () => {
+    assertIncludes(requireFile("NOTICE.md"), "NOTICE.md", [
+      "Linux Mascot Source Attribution and Public Sample Gate",
+      "source-reviewed",
+      "Route: Linux Mascot",
+      "Route id: `linux`",
+      "Aliases: `Linux Mascot`, `Linux mascot`, `Linux`, `linux`, `Tux`, `tux`, `Linux penguin`, and `Tux penguin`",
+      "Source authority: `skills/visual-ip-illustrations/references/ips/linux/source.md`",
+      "Output path: `assets/<article-slug>-linux/`",
+      "Docs validation token: `assets/&lt;article-slug&gt;-linux/`",
+      "Uploaded-image authority",
+      "/Users/longnv/Downloads/Linux-logo.jpg",
+      "Larry Ewing",
+      "The GIMP attribution condition",
+      "Linux Foundation trademark guidance",
+      "Linux mark ownership context",
+      "distro-logo boundary",
+      "product-output boundary",
+      "route isolation",
+      "uploaded-image-only Tux article illustration output",
+      "Tux source outcome",
+      "GIMP attribution outcome",
+      "Linux trademark outcome",
+      "uploaded-image identity outcome",
+      "distro-logo boundary outcome",
+      "endorsement/certification boundary outcome",
+      "product-output outcome",
+      "route-isolation outcome",
+      "public-sample decision",
+    ], "Linux Mascot NOTICE source boundary, source/trademark review outcomes, and public sample gate");
   }),
   defineCheck("SMOKE-DEFAULT-001", "examples prompts cover omitted-IP default Xiaohei smoke path", () => {
     assertIncludes(requireFile("examples/prompts.md"), "examples/prompts.md", [
@@ -5726,6 +6400,32 @@ const checks = [
       "### Smoke: Hermes Agent source-reviewed route status",
     ], "text-only explicit Hermes Agent route smoke, planning, generation, edit, path, source/MIT boundaries, and public-sample gate prompts");
   }),
+  defineCheck("SMOKE-LINUX-001", "examples prompts cover explicit Linux Mascot route smoke path", () => {
+    assertIncludes(requireFile("examples/prompts.md"), "examples/prompts.md", [
+      "## Route Smoke: Explicit Linux Mascot",
+      "Linux Mascot is an explicit `source-reviewed` uploaded-image article-illustration route",
+      "Explicit Linux Mascot aliases include Linux Mascot, Linux mascot, Linux, linux, Tux, tux, Linux penguin, and Tux penguin",
+      "Use $ian-xiaohei-illustrations with the Linux Mascot / Linux mascot / Linux / linux / Tux / tux / Linux penguin / Tux penguin route",
+      "route status `source-reviewed`",
+      "source authority `skills/visual-ip-illustrations/references/ips/linux/source.md`",
+      "route-local reference directory `skills/visual-ip-illustrations/references/ips/linux/`",
+      "planning fields include Placement, Core idea, Structure type, Linux Mascot state, Linux Mascot action, Supporting objects, Visible labels, Source context note, Trademark-boundary note, and Output path",
+      "assets/<article-slug>-linux/",
+      "assets/&lt;article-slug&gt;-linux/",
+      "uploaded-image authority from `/Users/longnv/Downloads/Linux-logo.jpg`",
+      "Larry Ewing Tux attribution",
+      "The GIMP attribution condition",
+      "Linux Foundation trademark guidance",
+      "Linux mark ownership context",
+      "public sample review gate",
+      "route isolation",
+      "distro-logo boundary",
+      "product-output boundary",
+      "uploaded-image-only Tux article illustration output",
+      "### Explicit Linux Mascot: route smoke check",
+      "### Explicit Linux Mascot: route smoke check",
+    ], "text-only explicit Linux Mascot route smoke, planning, generation, edit, path, source/trademark boundaries, and public-sample gate prompts");
+  }),
   defineCheck("SMOKE-MIXED-001", "examples prompts cover mixed-IP variant smoke path", () => {
     assertIncludes(requireFile("examples/prompts.md"), "examples/prompts.md", [
       "## Route Notes: Mixed-IP Requests",
@@ -5787,12 +6487,12 @@ const checks = [
       "keeps docs validation token `assets/&lt;article-slug&gt;-gopher/`",
       "route-local `skills/visual-ip-illustrations/references/ips/gopher/gopher.png` visual authority",
       "public sample gate",
-      "Go Gopher variant group, Cai Xukun variant group, and Hermes Agent variant group each use their own route-local references",
+      "Go Gopher variant group, Cai Xukun variant group, Hermes Agent variant group, and Linux Mascot variant group each use their own route-local references",
     ], "Go Gopher mixed prompt separation, route-local pack, source/license authority, output path, local visual identity, and public-sample gate");
   }),
-  defineCheck("SMOKE-MIXED-CAIXUKUN-001", "examples prompts cover nine-route mixed-IP Cai Xukun variant behavior", () => {
+  defineCheck("SMOKE-MIXED-CAIXUKUN-001", "examples prompts cover ten-route mixed-IP Cai Xukun variant behavior", () => {
     assertIncludes(requireFile("examples/prompts.md"), "examples/prompts.md", [
-      "nine separate variant groups: Xiaohei, Littlebox, Tom, Ferris, Seal, OpenClaw, Go Gopher, Cai Xukun, and Hermes Agent",
+      "ten separate variant groups: Xiaohei, Littlebox, Tom, Ferris, Seal, OpenClaw, Go Gopher, Cai Xukun, Hermes Agent, and Linux Mascot",
       "Xiaohei variant group",
       "Littlebox variant group",
       "Tom variant group",
@@ -5802,6 +6502,7 @@ const checks = [
       "Go Gopher variant group",
       "Cai Xukun variant group",
       "Hermes Agent variant group",
+      "Linux Mascot variant group",
       "Cai Xukun canonical pack is at `skills/visual-ip-illustrations/references/ips/caixukun/`",
       "Cai Xukun source authority is at `skills/visual-ip-illustrations/references/ips/caixukun/source.md`",
       "Expected: Cai Xukun variant group uses `skills/visual-ip-illustrations/references/ips/caixukun/`",
@@ -5815,12 +6516,12 @@ const checks = [
       "route isolation",
       "stylized mascot-only output",
       "endorsement, affiliation, impersonation, campaign, advertising, and fandom-promotion claims",
-      "Cai Xukun variant group, and Hermes Agent variant group each use their own route-local references",
-    ], "nine-route mixed prompt separation, Cai Xukun route-local pack, source authority, output path, uploaded-image authority, public-figure boundary, and public-sample gate");
+      "Cai Xukun variant group, Hermes Agent variant group, and Linux Mascot variant group each use their own route-local references",
+    ], "ten-route mixed prompt separation, Cai Xukun route-local pack, source authority, output path, uploaded-image authority, public-figure boundary, and public-sample gate");
   }),
-  defineCheck("SMOKE-MIXED-HERMES-001", "examples prompts cover nine-route mixed-IP Hermes Agent variant behavior", () => {
+  defineCheck("SMOKE-MIXED-HERMES-001", "examples prompts cover ten-route mixed-IP Hermes Agent variant behavior", () => {
     assertIncludes(requireFile("examples/prompts.md"), "examples/prompts.md", [
-      "nine separate variant groups: Xiaohei, Littlebox, Tom, Ferris, Seal, OpenClaw, Go Gopher, Cai Xukun, and Hermes Agent",
+      "ten separate variant groups: Xiaohei, Littlebox, Tom, Ferris, Seal, OpenClaw, Go Gopher, Cai Xukun, Hermes Agent, and Linux Mascot",
       "Xiaohei variant group",
       "Littlebox variant group",
       "Tom variant group",
@@ -5830,6 +6531,7 @@ const checks = [
       "Go Gopher variant group",
       "Cai Xukun variant group",
       "Hermes Agent variant group",
+      "Linux Mascot variant group",
       "Hermes Agent canonical pack is at `skills/visual-ip-illustrations/references/ips/hermes/`",
       "Hermes Agent source authority is at `skills/visual-ip-illustrations/references/ips/hermes/source.md`",
       "Expected: Hermes Agent variant group uses `skills/visual-ip-illustrations/references/ips/hermes/`",
@@ -5844,8 +6546,31 @@ const checks = [
       "public sample review gate",
       "route isolation",
       "uploaded-character-only article illustration output",
-      "Hermes Agent variant group each use their own route-local references",
-    ], "nine-route mixed prompt separation, Hermes Agent route-local pack, source authority, output path, uploaded-image authority, mythology/product boundary, and public-sample gate");
+      "Expected: Xiaohei variant group, Littlebox variant group, Tom variant group, Ferris variant group, Seal variant group, OpenClaw variant group, Go Gopher variant group, Cai Xukun variant group, Hermes Agent variant group, and Linux Mascot variant group each use their own route-local references",
+    ], "ten-route mixed prompt separation, Hermes Agent route-local pack, source authority, output path, uploaded-image authority, mythology/product boundary, and public-sample gate");
+  }),
+  defineCheck("SMOKE-MIXED-LINUX-001", "examples prompts cover ten-route mixed-IP Linux Mascot variant behavior", () => {
+    assertIncludes(requireFile("examples/prompts.md"), "examples/prompts.md", [
+      "ten separate variant groups: Xiaohei, Littlebox, Tom, Ferris, Seal, OpenClaw, Go Gopher, Cai Xukun, Hermes Agent, and Linux Mascot",
+      "Linux Mascot variant group",
+      "Linux Mascot canonical pack is at `skills/visual-ip-illustrations/references/ips/linux/`",
+      "Linux Mascot source authority is at `skills/visual-ip-illustrations/references/ips/linux/source.md`",
+      "Expected: Linux Mascot variant group uses `skills/visual-ip-illustrations/references/ips/linux/`",
+      "outputs to `assets/<article-slug>-linux/`",
+      "keeps docs validation token `assets/&lt;article-slug&gt;-linux/`",
+      "route status `source-reviewed`",
+      "uploaded-image authority from `/Users/longnv/Downloads/Linux-logo.jpg`",
+      "Larry Ewing Tux attribution",
+      "The GIMP attribution condition",
+      "Linux Foundation trademark guidance",
+      "Linux mark ownership context",
+      "distro-logo boundary",
+      "product-output boundary",
+      "public sample review gate",
+      "route isolation",
+      "uploaded-image-only Tux article illustration output",
+      "Linux Mascot variant group each use their own route-local references",
+    ], "ten-route mixed prompt separation, Linux Mascot route-local pack, source authority, output path, uploaded-image authority, trademark/product boundary, and public-sample gate");
   }),
   defineCheck("RELEASE-TOM-001", "release checklist keeps Tom rights and public sample gate markers", () => {
     assertIncludes(requireFile("RELEASE_CHECKLIST.md"), "RELEASE_CHECKLIST.md", [
@@ -6083,6 +6808,45 @@ const checks = [
       "git diff --check",
     ], "Hermes Agent release checklist source/MIT, uploaded-image authority, leakage, public asset, generated sample, validator, and final review markers");
   }),
+  defineCheck("RELEASE-LINUX-001", "release checklist keeps Linux Mascot source, trademark, uploaded-image, and public sample gates", () => {
+    assertIncludes(requireFile("RELEASE_CHECKLIST.md"), "RELEASE_CHECKLIST.md", [
+      "## Linux Mascot Source, Trademark, Uploaded-Image Authority, and Public Sample Gate",
+      "Linux Mascot Source and Trademark Review",
+      "Linux Mascot Uploaded-Image and Boundary Review",
+      "Linux Mascot Prompt Leakage Scan",
+      "Linux Mascot Public Asset Policy",
+      "Linux Mascot Generated Sample Policy",
+      "Final Linux Mascot Release Review",
+      "skills/visual-ip-illustrations/references/ips/linux/source.md",
+      "source-reviewed",
+      "https://isc.tamu.edu/~lewing/linux/",
+      "/Users/longnv/Downloads/Linux-logo.jpg",
+      "Larry Ewing Tux attribution",
+      "The GIMP attribution condition",
+      "Linux Foundation trademark guidance",
+      "Linux mark ownership context",
+      "Tux source outcome",
+      "GIMP attribution outcome",
+      "Linux trademark outcome",
+      "uploaded-image identity outcome",
+      "distro-logo boundary outcome",
+      "endorsement/certification boundary outcome",
+      "product-output outcome",
+      "route-isolation outcome",
+      "uploaded-image-only Tux article illustration outcome",
+      "Linux Mascot public asset policy for",
+      "Record generated sample review",
+      "allowed directories / release channels",
+      "article-metaphor quality outcome",
+      "public-sample decision",
+      "assets/<article-slug>-linux/",
+      "assets/&lt;article-slug&gt;-linux/",
+      "Phase 57",
+      "node scripts/validate-skill-package.mjs",
+      "node --test scripts/validate-skill-package.test.mjs",
+      "git diff --check",
+    ], "Linux Mascot release checklist source/trademark, uploaded-image authority, leakage, public asset, generated sample, validator, and final review markers");
+  }),
   defineCheck("REBRAND-CANON-001", "runtime metadata preserves Visual IP Illustrations canonical identity", () => {
     assertIncludes(requireFile(SKILL_FILE), SKILL_FILE, [
       "Visual IP Illustrations",
@@ -6134,6 +6898,7 @@ const checks = [
       "Seal",
       "OpenClaw",
       "Go Gopher",
+      "Linux Mascot",
       "illustrations",
       "littlebox",
       "tom",
@@ -6143,6 +6908,7 @@ const checks = [
       "gopher",
       "Cai Xukun",
       "caixukun",
+      "linux",
     ], "stable route display names and output suffix markers");
   }),
   defineCheck("REBRAND-COMPAT-001", "runtime metadata preserves legacy alias compatibility", () => {
@@ -6248,6 +7014,8 @@ const checks = [
       "skills/visual-ip-illustrations/references/ips/openclaw/source.md",
       "skills/visual-ip-illustrations/references/ips/gopher/source.md",
       "skills/visual-ip-illustrations/references/ips/caixukun/source.md",
+      "skills/visual-ip-illustrations/references/ips/hermes/source.md",
+      "skills/visual-ip-illustrations/references/ips/linux/source.md",
       "assets/<article-slug>-illustrations/",
       "assets/<article-slug>-littlebox/",
       "assets/<article-slug>-tom/",
@@ -6256,6 +7024,8 @@ const checks = [
       "assets/<article-slug>-openclaw/",
       "assets/<article-slug>-gopher/",
       "assets/<article-slug>-caixukun/",
+      "assets/<article-slug>-hermes/",
+      "assets/<article-slug>-linux/",
     ], "canonical name, invocation aliases, install markers, route statuses, authority paths, and output paths");
   }),
   defineCheck("LANG-POLICY-001", "language policy names every English-default surface", () => {
@@ -6677,6 +7447,45 @@ const checks = [
       assertNoMarkers(requireFile(relativePath), relativePath, leakMarkers, "no Hermes Agent route text leakage");
     }
   }),
+  defineCheck("BOUNDARY-LINUX-LEAK-001", "non-Linux route references keep Linux Mascot source-reviewed markers isolated", () => {
+    const leakMarkers = [
+      "Linux Mascot",
+      "Tux penguin",
+      "references/ips/linux",
+      "assets/<article-slug>-linux/",
+      "assets/&lt;article-slug&gt;-linux/",
+      "/Users/longnv/Downloads/Linux-logo.jpg",
+      "Larry Ewing Tux attribution",
+      "The GIMP attribution condition",
+      "Linux Foundation trademark guidance",
+      "Linux mark ownership context",
+      "uploaded-image-only Tux article illustration output",
+      ...linuxUploadedVisualMarkers(),
+      "distro-logo drift",
+      "Linux Foundation logo use",
+      "operating-system marketing graphics",
+    ];
+    const scannedPaths = [
+      path.join(REFERENCES_DIR, "ips", "xiaohei", "index.md"),
+      ...xiaoheiOperationalRefs(),
+      path.join(REFERENCES_DIR, "ips", "littlebox", "index.md"),
+      ...littleboxOperationalRefs(),
+      path.join(REFERENCES_DIR, "ips", "tom", "index.md"),
+      ...tomOperationalRefs(),
+      path.join(REFERENCES_DIR, "ips", "ferris", "index.md"),
+      path.join(REFERENCES_DIR, "ips", "ferris", "source.md"),
+      ...ferrisOperationalRefs(),
+      ...sealOperationalRefs(),
+      ...openclawOperationalRefs(),
+      ...gopherOperationalRefs(),
+      ...caixukunOperationalRefs(),
+      ...hermesOperationalRefs(),
+      ...legacyXiaoheiRefs().map((item) => item.root),
+    ];
+    for (const relativePath of scannedPaths) {
+      assertNoMarkers(requireFile(relativePath), relativePath, leakMarkers, "no Linux Mascot route text leakage");
+    }
+  }),
   defineCheck("BOUNDARY-TOM-IMG-001", "example asset directories keep Tom rendered assets behind release approval", () => {
     const releaseChecklist = requireFile("RELEASE_CHECKLIST.md");
     const approval = parsePublicTomSampleApproval(releaseChecklist);
@@ -6774,6 +7583,21 @@ const checks = [
       );
     }
   }),
+  defineCheck("BOUNDARY-LINUX-IMG-001", "example asset directories keep Linux Mascot rendered assets behind release approval", () => {
+    const releaseChecklist = requireFile("RELEASE_CHECKLIST.md");
+    const approval = parsePublicLinuxSampleApproval(releaseChecklist);
+    if (!approval.found) {
+      throw new Error("RELEASE_CHECKLIST.md expected Linux Mascot public asset policy approval record; observed missing line");
+    }
+    const matches = imageAssetPaths().filter((relativePath) =>
+      /linux|tux/i.test(relativePath),
+    );
+    if (!approval.complete && matches.length > 0) {
+      throw new Error(
+        `examples/images, examples/images-en, and ${PACKAGE_DIR}/assets/examples expected no rendered Linux Mascot assets until public-sample approval is complete; observed ${matches.join(", ")}; approval status=${approval.status || "missing"}, reviewer=${approval.reviewerPresent ? "present" : "missing"}, date=${approval.datePresent ? "present" : "missing"}, allowed directories=${approval.allowedDirectoriesPresent ? "present" : "missing"}, release channels=${approval.releaseChannelsPresent ? "present" : "missing"}, Tux source outcome=${approval.sourceOutcomePresent ? "present" : "missing"}, GIMP attribution outcome=${approval.gimpAttributionOutcomePresent ? "present" : "missing"}, Linux trademark outcome=${approval.trademarkOutcomePresent ? "present" : "missing"}, uploaded-image identity outcome=${approval.uploadedImageIdentityOutcomePresent ? "present" : "missing"}, distro-logo boundary outcome=${approval.distroLogoBoundaryOutcomePresent ? "present" : "missing"}, endorsement/certification boundary outcome=${approval.endorsementCertificationBoundaryOutcomePresent ? "present" : "missing"}, product-output outcome=${approval.productOutputOutcomePresent ? "present" : "missing"}, route-isolation outcome=${approval.routeIsolationOutcomePresent ? "present" : "missing"}, uploaded-image-only Tux article illustration outcome=${approval.uploadedImageOnlyOutcomePresent ? "present" : "missing"}, article-metaphor quality outcome=${approval.articleMetaphorOutcomePresent ? "present" : "missing"}, public-sample decision=${approval.publicSampleOutcomePresent ? "present" : "missing"}`,
+      );
+    }
+  }),
   defineCheck("BOUNDARY-FERRIS-GEN-001", "Ferris generated samples stay distinct from public rendered sample release gates", () => {
     const releaseChecklist = requireFile("RELEASE_CHECKLIST.md");
     const approval = parseGeneratedFerrisSampleApproval(releaseChecklist);
@@ -6849,6 +7673,18 @@ const checks = [
       "endorsement, affiliation, sponsorship, approval, impersonation review outcome",
       "article-metaphor quality outcome",
     ], "Hermes Agent generated sample workspace and public release distinction");
+  }),
+  defineCheck("BOUNDARY-LINUX-GEN-001", "Linux Mascot generated samples stay distinct from public rendered sample release gates", () => {
+    const releaseChecklist = requireFile("RELEASE_CHECKLIST.md");
+    const approval = parseGeneratedLinuxSampleApproval(releaseChecklist);
+    if (!approval.found) {
+      throw new Error("RELEASE_CHECKLIST.md expected Linux Mascot generated sample review record; observed missing line");
+    }
+    assertIncludes(releaseChecklist, "RELEASE_CHECKLIST.md", [
+      "Internal review samples under `assets/<article-slug>-linux/` may be used",
+      "Public generated samples from `assets/<article-slug>-linux/` require Linux Mascot Public Asset Policy approval",
+      "Record generated sample review: PENDING / reviewer / date / approval status / internal review directories / public directories / release channels / Tux source outcome / GIMP attribution outcome / Linux trademark outcome / uploaded-image identity outcome / distro-logo boundary outcome / endorsement/certification boundary outcome / product-output outcome / route-isolation outcome / article-metaphor quality outcome",
+    ], "Linux Mascot generated sample workspace and public release distinction");
   }),
   defineCheck("BOUNDARY-P5-001", "validator enforces live package and workspace output boundaries", () => {
     for (const row of routeRows()) {
