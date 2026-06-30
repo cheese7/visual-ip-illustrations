@@ -30,11 +30,11 @@
 
 ### Public Documentation
 
-- [ ] **DOC-01**: User can read README route selection, workflow, output path, and route descriptions with Linux Mascot as an explicit source-reviewed Tux route.
-- [ ] **DOC-02**: User can copy examples for Linux Mascot planning, generation, editing, and mixed-IP variants with `assets/<article-slug>-linux/` paths.
-- [ ] **DOC-03**: Maintainer can read NOTICE and release checklist entries that include Larry Ewing Tux attribution, GIMP attribution condition, Linux trademark guidance, uploaded-image authority, public sample policy, and release review gates.
-- [ ] **DOC-04**: User and maintainer can see Linux Mascot docs preserve default-route behavior, route isolation, source-reviewed route status, no endorsement claims, no distro-logo drift, and uploaded-image-only output.
-- [ ] **DOC-05**: Public release surfaces stay consistent across README variants, prompt examples, agent metadata, NOTICE, and release checklist when Linux Mascot is introduced.
+- [x] **DOC-01**: User can read README route selection, workflow, output path, and route descriptions with Linux Mascot as an explicit source-reviewed Tux route.
+- [x] **DOC-02**: User can copy examples for Linux Mascot planning, generation, editing, and mixed-IP variants with `assets/<article-slug>-linux/` paths.
+- [x] **DOC-03**: Maintainer can read NOTICE and release checklist entries that include Larry Ewing Tux attribution, GIMP attribution condition, Linux trademark guidance, uploaded-image authority, public sample policy, and release review gates.
+- [x] **DOC-04**: User and maintainer can see Linux Mascot docs preserve default-route behavior, route isolation, source-reviewed route status, no endorsement claims, no distro-logo drift, and uploaded-image-only output.
+- [x] **DOC-05**: Public release surfaces stay consistent across README variants, prompt examples, agent metadata, NOTICE, and release checklist when Linux Mascot is introduced.
 
 ### Validation and Release Evidence
 
@@ -101,11 +101,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 | RUN-02 | Phase 55 | Complete |
 | RUN-03 | Phase 55 | Complete |
 | RUN-04 | Phase 55 | Complete |
-| DOC-01 | Phase 56 | Pending |
-| DOC-02 | Phase 56 | Pending |
-| DOC-03 | Phase 56 | Pending |
-| DOC-04 | Phase 56 | Pending |
-| DOC-05 | Phase 56 | Pending |
+| DOC-01 | Phase 56 | Complete |
+| DOC-02 | Phase 56 | Complete |
+| DOC-03 | Phase 56 | Complete |
+| DOC-04 | Phase 56 | Complete |
+| DOC-05 | Phase 56 | Complete |
 | VAL-01 | Phase 57 | Pending |
 | VAL-02 | Phase 57 | Pending |
 | VAL-03 | Phase 57 | Pending |
