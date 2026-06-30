@@ -280,6 +280,7 @@ Recent decisions affecting current work:
 - [Phase 53]: /Users/longnv/Downloads/Linux-logo.jpg is the uploaded visual authority for the Linux Mascot route.
 - [Phase 54]: Linux Mascot uses the established seven-file source-reviewed route-local pack pattern.
 - [Phase 54]: source.md remains the Linux source authority while operational files hold style, identity, composition, prompt, edit, and QA behavior.
+- [Phase 54]: Linux routing now loads the full seven-file Linux pack in required-reference order.
 - [Phase 54]: Public generated Linux Mascot samples remain release-review gated.
 
 ### Pending Todos
