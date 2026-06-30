@@ -6,7 +6,7 @@
 
 [![skills.sh](https://skills.sh/b/yangchuansheng/visual-ip-illustrations)](https://skills.sh/yangchuansheng/visual-ip-illustrations)
 
-> Visual IP Illustrations هي Codex Skill متعددة IP مرئية لرسوم متن المقالات. Xiaohei هو المسار الافتراضي الضمني؛ Littlebox مسار صريح و active؛ Tom مسار protected-character صريح بحالة `gated-authorized`؛ Ferris مسار Rust-community mascot صريح بحالة `source-reviewed`؛ Seal مسار product-neutral hoodie seal صريح بحالة `active`؛ OpenClaw مسار logo-mascot صريح بحالة `source-reviewed`. Go Gopher is an explicit source-reviewed article-illustration mascot route with output path `assets/<article-slug>-gopher/`. Cai Xukun is an explicit `gated-public-figure` stylized mascot-only route with aliases `蔡徐坤`, `caixukun`, and `cxk`, source pointer `skills/visual-ip-illustrations/references/ips/caixukun/source.md`, output path `assets/<article-slug>-caixukun/`, uploaded-image authority, public-figure likeness boundary, source-image context boundary, public sample review gate, route isolation, and safety review for endorsement, affiliation, impersonation, campaign, advertising, and fandom-promotion claims.
+> Visual IP Illustrations هي Codex Skill متعددة IP مرئية لرسوم متن المقالات. Xiaohei هو المسار الافتراضي الضمني؛ Littlebox مسار صريح و active؛ Tom مسار protected-character صريح بحالة `gated-authorized`؛ Ferris مسار Rust-community mascot صريح بحالة `source-reviewed`؛ Seal مسار product-neutral hoodie seal صريح بحالة `active`؛ OpenClaw مسار logo-mascot صريح بحالة `source-reviewed`. Go Gopher is an explicit source-reviewed article-illustration mascot route with output path `assets/<article-slug>-gopher/`. Cai Xukun is an explicit `gated-public-figure` stylized mascot-only route with aliases `蔡徐坤`, `caixukun`, and `cxk`, source pointer `skills/visual-ip-illustrations/references/ips/caixukun/source.md`, output path `assets/<article-slug>-caixukun/`, uploaded-image authority, public-figure likeness boundary, source-image context boundary, public sample review gate, route isolation, and safety review for endorsement, affiliation, impersonation, campaign, advertising, and fandom-promotion claims. Hermes Agent is an explicit `source-reviewed` uploaded-image article-illustration route with aliases `Hermes Agent`, `Hermes`, `hermes`, `hermes-agent`, `Hermes logo`, and `Hermes Agent logo`, source pointer `skills/visual-ip-illustrations/references/ips/hermes/source.md`, output path `assets/<article-slug>-hermes/`, uploaded-image authority from `Generated image 1 (16).jpeg`, official source context, MIT license context, mythology-drift boundary, product-poster boundary, public sample review gate, route isolation, and uploaded-character-only article illustration output.
 >
 > أفقي 16:9 | عدة IP مرئية | رسوم متن المقالات | الاستدعاء القياسي: `$visual-ip-illustrations`
 
@@ -34,6 +34,7 @@
 - **OpenClaw**: مسار logo-mascot صريح بحالة `source-reviewed`. الطلبات التي تذكر `OpenClaw` أو `openclaw` أو `OpenClaw logo` أو `OpenClaw mascot` أو aliases الخاصة بOpenClaw المدرجة في `skills/visual-ip-illustrations/references/routing.md` تستخدم route OpenClaw.
 - **Go Gopher**: explicit source-reviewed article-illustration mascot route. Requests that name `Go Gopher`, `Gopher`, `golang gopher`, `Go mascot`, `Go 吉祥物`, `Gopher 吉祥物`, or Go Gopher aliases listed in `skills/visual-ip-illustrations/references/routing.md` use the Go Gopher route.
 - **Cai Xukun**: explicit `gated-public-figure` stylized mascot-only route. Requests that name `Cai Xukun`, `蔡徐坤`, `caixukun`, or `cxk` use the Cai Xukun route with uploaded-image authority, public-figure likeness boundary, source-image context boundary, public sample review gate, route isolation, source pointer `skills/visual-ip-illustrations/references/ips/caixukun/source.md`, output path `assets/<article-slug>-caixukun/`, and safety review for endorsement, affiliation, impersonation, campaign, advertising, and fandom-promotion claims.
+- **Hermes Agent**: explicit `source-reviewed` uploaded-image article-illustration route. Requests that name `Hermes Agent`, `Hermes`, `hermes`, `hermes-agent`, `Hermes logo`, or `Hermes Agent logo` use the Hermes route with source pointer `skills/visual-ip-illustrations/references/ips/hermes/source.md`, output path `assets/<article-slug>-hermes/`, uploaded-image authority from `Generated image 1 (16).jpeg`, official source context, MIT license context, public sample review gate, mythology-drift boundary, product-poster boundary, route isolation, uploaded-character-only article illustration output, and release review for official endorsement, affiliation, sponsorship, approval, and impersonation claims.
 
 القيمة الأساسية: يمكن للمستخدم اختيار IP مرئية والحصول على أصول رسوم للمقالات تبقى فيها الشخصية وقواعد الأسلوب وprompts وبوابات QA والمخرجات المحفوظة والإسناد وسياق المصدر وحدود العلامة متسقة مع تلك IP.
 
@@ -61,10 +62,12 @@
 - تكتب OpenClaw المخرجات في workspace path `assets/<article-slug>-openclaw/`.
 - تُحفظ مخرجات Go Gopher في workspace path `assets/<article-slug>-gopher/`.
 - Cai Xukun outputs to workspace path `assets/<article-slug>-caixukun/`.
+- Hermes Agent outputs to workspace path `assets/<article-slug>-hermes/`.
 
 تحافظ docs validation أيضاً على علامات route escaped بصيغة HTML: `assets/&lt;article-slug&gt;-illustrations/`، `assets/&lt;article-slug&gt;-littlebox/`، `assets/&lt;article-slug&gt;-tom/`، `assets/&lt;article-slug&gt;-ferris/`، و`assets/&lt;article-slug&gt;-seal/` و`assets/&lt;article-slug&gt;-openclaw/`.
 Docs validation also keeps Go Gopher escaped marker: `assets/&lt;article-slug&gt;-gopher/`.
 Docs validation also keeps Cai Xukun escaped marker: `assets/&lt;article-slug&gt;-caixukun/`.
+Docs validation also keeps Hermes Agent escaped marker: `assets/&lt;article-slug&gt;-hermes/`.
 
 ---
 
@@ -120,6 +123,14 @@ Aliases: `Cai Xukun`, `蔡徐坤`, `caixukun`, `cxk`.
 
 Safety boundary: generated text and release copy must keep endorsement, affiliation, impersonation, campaign, advertising, and fandom-promotion claims inside maintainer review and rewrite them as neutral article-concept labels.
 
+### Hermes Agent
+
+Hermes Agent is an explicit `source-reviewed` uploaded-image article-illustration route. The uploaded visual authority is `Generated image 1 (16).jpeg`, and public docs use source pointer `skills/visual-ip-illustrations/references/ips/hermes/source.md`, official source context, MIT license context, output path `assets/<article-slug>-hermes/`, public sample review gate, mythology-drift boundary, product-poster boundary, route isolation, and uploaded-character-only article illustration output. It works for sparse 16:9 article illustrations where the uploaded Hermes Agent character performs the central cognitive action.
+
+Aliases: `Hermes Agent`, `Hermes`, `hermes`, `hermes-agent`, `Hermes logo`, `Hermes Agent logo`.
+
+Release boundary: generated public Hermes Agent sample assets remain pending behind the public sample review gate, and release copy for official endorsement, affiliation, sponsorship, approval, impersonation, broad assistant, Greek messenger, winged sandals, and caduceus claims requires review.
+
 ### مرجع المسارات
 
 يمكن للمشرفين مراجعة route metadata fields في `skills/visual-ip-illustrations/references/routing.md`: `id` و`display_name` و`aliases` و`default` و`output_suffix` و`required_references` و`attribution_context` و`status`.
@@ -134,6 +145,7 @@ Canonical packs:
 - OpenClaw: `skills/visual-ip-illustrations/references/ips/openclaw/`, source/license authority `skills/visual-ip-illustrations/references/ips/openclaw/source.md`
 - Go Gopher: `skills/visual-ip-illustrations/references/ips/gopher/`, source/license authority `skills/visual-ip-illustrations/references/ips/gopher/source.md`
 - Cai Xukun: `skills/visual-ip-illustrations/references/ips/caixukun/`, source authority `skills/visual-ip-illustrations/references/ips/caixukun/source.md`
+- Hermes Agent: `skills/visual-ip-illustrations/references/ips/hermes/`, source authority `skills/visual-ip-illustrations/references/ips/hermes/source.md`
 
 عندما يطلب الطلب عدة visual IPs، قدّم مجموعات variants منفصلة واكتب كل مجموعة في دليل إخراج خاص بها. تحتفظ OpenClaw بمجموعة route خاصة بها وroute-local references ودليل output خاص.
 
@@ -145,12 +157,13 @@ Route operational data:
 - OpenClaw: route id `openclaw`; default=false; status `source-reviewed`; source/license authority `skills/visual-ip-illustrations/references/ips/openclaw/source.md`; output path `assets/<article-slug>-openclaw/`; docs validation token `assets/&lt;article-slug&gt;-openclaw/`; output suffix `openclaw`; uploaded-logo identity uses a red round body, side claw-like arms, two antennae, black eyes, cyan pupils, and short legs; public rendered samples require the `RELEASE_CHECKLIST.md` public-sample gate and final OpenClaw release evidence.
 - Go Gopher: route id `gopher`; default=false; status `source-reviewed`; source/license authority `skills/visual-ip-illustrations/references/ips/gopher/source.md`; output path `assets/<article-slug>-gopher/`; docs validation token `assets/&lt;article-slug&gt;-gopher/`; output suffix `gopher`; local visual authority route-local `skills/visual-ip-illustrations/references/ips/gopher/gopher.png`; attribution Renee French; license boundary Creative Commons Attribution 4.0; public rendered samples require the `RELEASE_CHECKLIST.md` public-sample gate and Phase 42 Go Gopher release evidence; Go logo boundary and official endorsement boundary stay attached.
 - Cai Xukun: route id `caixukun`; default=false; status `gated-public-figure`; source authority `skills/visual-ip-illustrations/references/ips/caixukun/source.md`; output path `assets/<article-slug>-caixukun/`; docs validation token `assets/&lt;article-slug&gt;-caixukun/`; output suffix `caixukun`; aliases `Cai Xukun`, `蔡徐坤`, `caixukun`, and `cxk`; uploaded-image authority and source-image context boundary stay attached; public-figure likeness boundary keeps the route in stylized mascot-only output; route isolation keeps Cai Xukun separate from Xiaohei, Littlebox, Tom, Ferris, Seal, OpenClaw, and Go Gopher; public generated sample assets are approved for the Trust Bridge public README gallery through the public sample review gate; endorsement, affiliation, impersonation, campaign, advertising, and fandom-promotion claims require maintainer review and neutral article-concept wording.
+- Hermes Agent: route id `hermes`; default=false; status `source-reviewed`; source authority `skills/visual-ip-illustrations/references/ips/hermes/source.md`; output path `assets/<article-slug>-hermes/`; docs validation token `assets/&lt;article-slug&gt;-hermes/`; output suffix `hermes`; aliases `Hermes Agent`, `Hermes`, `hermes`, `hermes-agent`, `Hermes logo`, and `Hermes Agent logo`; uploaded-image authority from `Generated image 1 (16).jpeg`; official website, official repository, docs URL, and MIT license context stay attached; public generated Hermes samples remain pending behind the public sample review gate; mythology-drift boundary, product-poster boundary, route isolation, uploaded-character-only article illustration output, and endorsement, affiliation, sponsorship, approval, and impersonation review wording stay attached.
 
 ---
 
 ## معرض الأمثلة
 
-These images are approved public English calibration examples for the current visual IP routes with approved public sample assets: Xiaohei, Littlebox, Tom, Ferris, Seal, OpenClaw, Go Gopher, and Cai Xukun. Cai Xukun currently appears in the Trust Bridge row through the public sample review gate. Each row keeps the same concept and shows how each approved public-sample IP translates the action through its route-local style, character rules, source boundaries, and QA gates.
+These images are approved public English calibration examples for the current visual IP routes with approved public sample assets: Xiaohei, Littlebox, Tom, Ferris, Seal, OpenClaw, Go Gopher, and Cai Xukun. Cai Xukun currently appears in the Trust Bridge row through the public sample review gate. Hermes Agent is documented as a `source-reviewed` uploaded-image article-illustration route, and public generated Hermes Agent sample assets remain pending behind the public sample review gate. Each row keeps the same concept and shows how each approved public-sample IP translates the action through its route-local style, character rules, source boundaries, and QA gates.
 
 ### Two Breakpoints
 
@@ -268,7 +281,7 @@ Requirements: hand-drawn, spacious, sparse visible labels in the user's language
 
 ```text
 Use $visual-ip-illustrations. Do not generate images yet.
-Create separate Xiaohei, Littlebox, Tom, Ferris, Seal, OpenClaw, Go Gopher, and Cai Xukun shot-list groups from the same idea.
+Create separate Xiaohei, Littlebox, Tom, Ferris, Seal, OpenClaw, Go Gopher, Cai Xukun, and Hermes Agent shot-list groups from the same idea.
 Each group must keep its own IP, character action, visible labels, and output path.
 
 Idea: trust is built by placing one piece of evidence after another.
@@ -283,12 +296,12 @@ Idea: trust is built by placing one piece of evidence after another.
 ## سير العمل
 
 1. اقرأ المقال أو Markdown أو محتوى Notion أو screenshot أو الموضوع الذي يقدمه المستخدم.
-2. اختر visual IP: حذف IP يختار Xiaohei؛ Littlebox الصريح يختار Littlebox؛ Tom aliases تختار Tom protected-character route؛ Ferris aliases تختار Ferris source-reviewed pack؛ Seal aliases تختار active Seal pack; OpenClaw aliases الصريحة تختار OpenClaw source-reviewed pack. Explicit Go Gopher aliases select the Go Gopher source-reviewed pack. Explicit Cai Xukun aliases select the Cai Xukun gated-public-figure pack.
+2. اختر visual IP: حذف IP يختار Xiaohei؛ Littlebox الصريح يختار Littlebox؛ Tom aliases تختار Tom protected-character route؛ Ferris aliases تختار Ferris source-reviewed pack؛ Seal aliases تختار active Seal pack; OpenClaw aliases الصريحة تختار OpenClaw source-reviewed pack. Explicit Go Gopher aliases select the Go Gopher source-reviewed pack. Explicit Cai Xukun aliases select the Cai Xukun gated-public-figure pack. Explicit Hermes Agent aliases select the Hermes Agent source-reviewed pack.
 3. استخرج core claims وcognitive turns وworkflow structures وvisualizable paragraphs.
 4. أنشئ shot list أولاً؛ تحصل كل صورة على cognitive anchor واحد.
 5. اختر structure type واحداً لكل صورة: Workflow أو system local view أو before/after أو character state أو concept metaphor أو method layers أو map route أو comic panels.
 6. حمّل canonical pack للIP المختارة، واجمع prompts، وولّد الصور واحدة تلو الأخرى. تنشئ Mixed-IP requests مجموعات route منفصلة وoutput directories منفصلة، مع احتفاظ Xiaohei, Littlebox, Tom, Ferris, Seal, OpenClaw, Go Gopher, and Cai Xukun each keep route-local references.
-7. افحص character identity وcomposition وbackground وlabels وoutput path وفق QA checklist الخاصة بالIP المختارة. يحتفظ Tom ب`gated-authorized` و`skills/visual-ip-illustrations/references/ips/tom/rights.md`؛ يحتفظ Ferris ب`source-reviewed` وsource/trademark note و`skills/visual-ip-illustrations/references/ips/ferris/source.md`؛ يحتفظ Seal ب`active` وsource-history authority وhoodie seal identity note وlogo-free note و`skills/visual-ip-illustrations/references/ips/seal/source.md`; تحتفظ OpenClaw ب`source-reviewed` وsource/license authority وuploaded-logo identity وpublic-sample gate و`skills/visual-ip-illustrations/references/ips/openclaw/source.md`. Go Gopher keeps `source-reviewed`, source/license authority, route-local `skills/visual-ip-illustrations/references/ips/gopher/gopher.png`, public-sample gate, and `references/ips/gopher/source.md` in the delivery notes. Cai Xukun keeps `gated-public-figure`, uploaded-image authority, public-figure likeness boundary, source-image context boundary, public sample review gate, route isolation, stylized mascot-only output, `skills/visual-ip-illustrations/references/ips/caixukun/source.md`, and `assets/<article-slug>-caixukun/` in the delivery notes.
+7. افحص character identity وcomposition وbackground وlabels وoutput path وفق QA checklist الخاصة بالIP المختارة. يحتفظ Tom ب`gated-authorized` و`skills/visual-ip-illustrations/references/ips/tom/rights.md`؛ يحتفظ Ferris ب`source-reviewed` وsource/trademark note و`skills/visual-ip-illustrations/references/ips/ferris/source.md`؛ يحتفظ Seal ب`active` وsource-history authority وhoodie seal identity note وlogo-free note و`skills/visual-ip-illustrations/references/ips/seal/source.md`; تحتفظ OpenClaw ب`source-reviewed` وsource/license authority وuploaded-logo identity وpublic-sample gate و`skills/visual-ip-illustrations/references/ips/openclaw/source.md`. Go Gopher keeps `source-reviewed`, source/license authority, route-local `skills/visual-ip-illustrations/references/ips/gopher/gopher.png`, public-sample gate, and `references/ips/gopher/source.md` in the delivery notes. Cai Xukun keeps `gated-public-figure`, uploaded-image authority, public-figure likeness boundary, source-image context boundary, public sample review gate, route isolation, stylized mascot-only output, `skills/visual-ip-illustrations/references/ips/caixukun/source.md`, and `assets/<article-slug>-caixukun/` in the delivery notes. Hermes Agent keeps `source-reviewed`, source authority `skills/visual-ip-illustrations/references/ips/hermes/source.md`, uploaded-image authority from `Generated image 1 (16).jpeg`, official source context, MIT license context, mythology-drift boundary, product-poster boundary, public sample review gate, route isolation, uploaded-character-only article illustration output, and `assets/<article-slug>-hermes/` in the delivery notes.
 8. احفظ ملفات PNG النهائية واذكر الغرض والمسار.
 
 ---
@@ -389,11 +402,19 @@ Idea: trust is built by placing one piece of evidence after another.
                 │   ├── composition-patterns.md
                 │   ├── prompt-template.md
                 │   └── qa-checklist.md
-                └── caixukun/
+                ├── caixukun/
+                │   ├── index.md
+                │   ├── source.md
+                │   ├── style-dna.md
+                │   ├── caixukun-ip.md
+                │   ├── composition-patterns.md
+                │   ├── prompt-template.md
+                │   └── qa-checklist.md
+                └── hermes/
                     ├── index.md
                     ├── source.md
                     ├── style-dna.md
-                    ├── caixukun-ip.md
+                    ├── hermes-ip.md
                     ├── composition-patterns.md
                     ├── prompt-template.md
                     └── qa-checklist.md
@@ -418,7 +439,7 @@ node scripts/validate-skill-package.mjs
 تغطي validation عناصر skill package shape وroute table وcanonical packs الخاصة بXiaohei وLittlebox وTom وFerris وSeal وlegacy Xiaohei paths وpublic docs links وoutput path markers وNOTICE attribution وTom `gated-authorized` route markers وFerris `source-reviewed` route markers وSeal `active` route markers وsource-history authority وhoodie seal identity note وlogo-free note وPhase 32 full validator restoration evidence.
 
 تغطي validation أيضاً OpenClaw canonical pack markers وOpenClaw `source-reviewed` route markers وsource/license authority وuploaded-logo identity note وPhase 37 final release evidence.
-Validation also covers Go Gopher canonical pack markers, Go Gopher `source-reviewed` route markers, source/license authority, route-local `skills/visual-ip-illustrations/references/ips/gopher/gopher.png`, public sample gate, Phase 42 final release evidence, and Go Gopher validator checks. Phase 46 public docs cover Cai Xukun canonical pack markers, Cai Xukun `gated-public-figure` route markers, source authority `skills/visual-ip-illustrations/references/ips/caixukun/source.md`, uploaded-image authority, public-figure likeness boundary, source-image context boundary, public sample review gate, route isolation, stylized mascot-only output, `assets/<article-slug>-caixukun/`, `assets/&lt;article-slug&gt;-caixukun/`, and endorsement, affiliation, impersonation, campaign, advertising, and fandom-promotion review terms; Phase 47 owns validator hardening and final release evidence.
+Validation also covers Go Gopher canonical pack markers, Go Gopher `source-reviewed` route markers, source/license authority, route-local `skills/visual-ip-illustrations/references/ips/gopher/gopher.png`, public sample gate, Phase 42 final release evidence, and Go Gopher validator checks. Phase 46 public docs cover Cai Xukun canonical pack markers, Cai Xukun `gated-public-figure` route markers, source authority `skills/visual-ip-illustrations/references/ips/caixukun/source.md`, uploaded-image authority, public-figure likeness boundary, source-image context boundary, public sample review gate, route isolation, stylized mascot-only output, `assets/<article-slug>-caixukun/`, `assets/&lt;article-slug&gt;-caixukun/`, and endorsement, affiliation, impersonation, campaign, advertising, and fandom-promotion review terms; Phase 47 owns validator hardening and final release evidence. Phase 51 public docs cover Hermes Agent public route markers, source pointer `skills/visual-ip-illustrations/references/ips/hermes/source.md`, uploaded-image authority from `Generated image 1 (16).jpeg`, MIT license context, public sample review gate, mythology-drift boundary, product-poster boundary, route isolation, uploaded-character-only article illustration output, `assets/<article-slug>-hermes/`, and `assets/&lt;article-slug&gt;-hermes/`; Phase 52 owns Hermes validator hardening, Node tests, final release evidence, leakage scan, and public sample gate automation.
 
 أوامر validation الحالية للمشرفين:
 

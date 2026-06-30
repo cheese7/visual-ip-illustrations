@@ -15,7 +15,9 @@ This file defines visual-IP selection rules and verifiable route metadata for th
 - Go Gopher route matching requires Go Gopher, Gopher, golang gopher, or a Go Gopher-qualified route phrase; generic aliases such as `go`, `blue mascot`, `animal`, and `logo` remain outside the Go Gopher alias set.
 - `蔡徐坤`, `Cai Xukun`, `caixukun`, and `cxk` select the same `caixukun` route and keep route status `gated-public-figure`.
 - Cai Xukun route matching requires `蔡徐坤`, `Cai Xukun`, `caixukun`, or `cxk`; broad celebrity, idol, duck, yellow mascot, and fandom words remain outside the Cai Xukun alias set.
-- Mixed requests across Xiaohei, Littlebox, Tom, Ferris, Seal, OpenClaw, Go Gopher, and Cai Xukun create separate route groups. Compatibility marker: 每个 route group 只加载自己的 `required_references`; each group writes to its own output directory.
+- `Hermes Agent`, `Hermes`, `hermes`, `hermes-agent`, `Hermes logo`, and `Hermes Agent logo` select the same `hermes` route and keep route status `source-reviewed`.
+- Hermes Agent route matching requires `Hermes Agent`, `Hermes`, `hermes`, `hermes-agent`, `Hermes logo`, or `Hermes Agent logo`; broad assistant, AI agent, logo, anime, monochrome girl, fashion figure, Greek messenger, winged sandals, and caduceus terms remain outside the Phase 48 Hermes alias set.
+- Mixed requests across Xiaohei, Littlebox, Tom, Ferris, Seal, OpenClaw, Go Gopher, Cai Xukun, and Hermes create separate route groups. Compatibility marker: 每个 route group 只加载自己的 `required_references`; each group writes to its own output directory.
 - Routes store only selection, references, output suffixes, and attribution context. Style, character identity, prompt wording, and QA rules live in the selected IP's reference files.
 - Ferris is an explicit Rust-community mascot route with status source-reviewed; generated public Ferris samples require release review for Rust trademark and endorsement-safe wording.
 - Ferris route-local reference directory: `skills/visual-ip-illustrations/references/ips/ferris/`.
@@ -32,6 +34,9 @@ This file defines visual-IP selection rules and verifiable route metadata for th
 - Cai Xukun is an explicit gated-public-figure stylized mascot article-illustration route; generated public Cai Xukun samples require release review for route-local uploaded visual authority recorded in `references/ips/caixukun/source.md` as uploaded reference image A and uploaded reference image B, public-figure likeness boundary, stylized mascot route framing, and realistic-person portrait output, official endorsement, affiliation, impersonation, campaign, celebrity advertising, and fandom promotion claim boundaries.
 - Cai Xukun route-local reference directory: `skills/visual-ip-illustrations/references/ips/caixukun/`.
 - Cai Xukun source and uploaded-image authority: `skills/visual-ip-illustrations/references/ips/caixukun/source.md`.
+- Hermes Agent is an explicit source-reviewed uploaded-image article-illustration route; generated public Hermes samples require release review for official Hermes Agent context, MIT license context, uploaded-image authority from conversation attachment `Generated image 1 (16).jpeg`, product-poster output boundary, mythology-drift boundary, and official endorsement, affiliation, sponsorship, approval, and impersonation claim boundaries.
+- Hermes Agent route-local reference directory: `skills/visual-ip-illustrations/references/ips/hermes/`.
+- Hermes Agent source and uploaded-image authority: `skills/visual-ip-illustrations/references/ips/hermes/source.md`.
 
 ## IP Routes
 
@@ -45,6 +50,7 @@ This file defines visual-IP selection rules and verifiable route metadata for th
 | `openclaw` | OpenClaw | `OpenClaw`, `openclaw`, `OpenClaw logo`, `OpenClaw mascot`, `OpenClaw 助手`, `OpenClaw 吉祥物` | `false` | `openclaw` | `references/ips/openclaw/index.md`; `references/ips/openclaw/source.md`; `references/ips/openclaw/style-dna.md`; `references/ips/openclaw/openclaw-ip.md`; `references/ips/openclaw/composition-patterns.md`; `references/ips/openclaw/prompt-template.md`; `references/ips/openclaw/qa-checklist.md` | Official OpenClaw repository https://github.com/openclaw/openclaw; MIT License; Copyright (c) 2026 OpenClaw Foundation; uploaded red OpenClaw logo visual authority; source-reviewed route status through `references/ips/openclaw/source.md` | `source-reviewed` |
 | `gopher` | Go Gopher | `Go Gopher`, `Gopher`, `golang gopher`, `Go mascot`, `Go 吉祥物`, `Gopher 吉祥物` | `false` | `gopher` | `references/ips/gopher/index.md`; `references/ips/gopher/source.md`; `references/ips/gopher/style-dna.md`; `references/ips/gopher/gopher-ip.md`; `references/ips/gopher/composition-patterns.md`; `references/ips/gopher/prompt-template.md`; `references/ips/gopher/qa-checklist.md` | Official Go blog source https://go.dev/blog/gopher; Go Gopher created by Renee French; Creative Commons Attribution 4.0 license context; route-local `skills/visual-ip-illustrations/references/ips/gopher/gopher.png` visual authority; public generated Go Gopher samples require release review; Go logo identity and official Go project affiliation, approval, sponsorship, and endorsement claims stay outside positive route identity | `source-reviewed` |
 | `caixukun` | Cai Xukun | `蔡徐坤`, `Cai Xukun`, `caixukun`, `cxk` | `false` | `caixukun` | `references/ips/caixukun/index.md`; `references/ips/caixukun/source.md`; `references/ips/caixukun/style-dna.md`; `references/ips/caixukun/caixukun-ip.md`; `references/ips/caixukun/composition-patterns.md`; `references/ips/caixukun/prompt-template.md`; `references/ips/caixukun/qa-checklist.md` | Route-local uploaded visual authority recorded in `references/ips/caixukun/source.md` as uploaded reference image A and uploaded reference image B; gated public-figure stylized mascot route; public generated Cai Xukun samples require release review; realistic-person portrait output, official endorsement, affiliation, impersonation, campaign, celebrity advertising, and fandom promotion claims stay outside route identity | `gated-public-figure` |
+| `hermes` | Hermes Agent | `Hermes Agent`, `Hermes`, `hermes`, `hermes-agent`, `Hermes logo`, `Hermes Agent logo` | `false` | `hermes` | `references/ips/hermes/index.md`; `references/ips/hermes/source.md`; `references/ips/hermes/style-dna.md`; `references/ips/hermes/hermes-ip.md`; `references/ips/hermes/composition-patterns.md`; `references/ips/hermes/prompt-template.md`; `references/ips/hermes/qa-checklist.md` | Hermes Agent source-reviewed uploaded-image route; official website https://hermes-agent.nousresearch.com/; official repository https://github.com/NousResearch/hermes-agent; MIT license context https://github.com/NousResearch/hermes-agent/blob/main/LICENSE; documentation https://hermes-agent.nousresearch.com/docs/; conversation attachment `Generated image 1 (16).jpeg` visual authority; public generated Hermes samples require release review; product-poster output, mythology-first imagery, official endorsement, affiliation, sponsorship, approval, and impersonation claims stay outside route identity | `source-reviewed` |
 
 ## OpenClaw Metadata
 
@@ -79,6 +85,24 @@ This file defines visual-IP selection rules and verifiable route metadata for th
 - Route framing: Cai Xukun is a gated public-figure stylized mascot article-illustration route with uploaded-image authority and public generated sample release review.
 - Source-image context: green reference background is source-image context; generated article illustrations keep the skill's sparse 16:9 white-background style.
 - Likeness boundary: realistic-person portrait output, official endorsement, affiliation, impersonation, campaign, celebrity advertising, and fandom promotion claims stay outside route identity.
+
+## Hermes Agent Metadata
+
+- Route id: `hermes`.
+- Display name: Hermes Agent.
+- Default marker: `default=false`.
+- Uploaded image authority: conversation attachment `Generated image 1 (16).jpeg`.
+- Route status: `source-reviewed`.
+- Output path: `assets/<article-slug>-hermes/`; escaped marker `assets/&lt;article-slug&gt;-hermes/`.
+- Source record: `references/ips/hermes/source.md`.
+- Route framing: Hermes Agent is a source-reviewed uploaded-image article-illustration route with official Hermes Agent context and MIT license context.
+- Source authority: official website `https://hermes-agent.nousresearch.com/`, official repository `https://github.com/NousResearch/hermes-agent`, MIT license URL `https://github.com/NousResearch/hermes-agent/blob/main/LICENSE`, and documentation URL `https://hermes-agent.nousresearch.com/docs/`.
+- Source-image context: monochrome full-body logo-style character, three-quarter side-facing standing pose, three-quarter left-facing manga face, large almond eyes with dark upper lashes, slim pointed nose, small slightly parted lips, pointed chin, cool reserved expression, blunt straight bangs, shoulder-length black hair with large C-shaped curled ends on both sides, bright white hair highlights, wide white over-head headset band, small black circular ear cup on the visible side, fitted black sleeveless spaghetti-strap mini dress, flared pleated skirt, small white neck/collar tag with an `A`-like mark, black thigh-high stockings, black Mary Jane platform high heels with strap and buckle, very long slim legs and reserved fashion-model posture.
+- Sample policy: public generated Hermes samples require release review before publication.
+- Output boundary: Generated Hermes outputs stay sparse 16:9 article illustrations.
+- Product boundary: product advertising, product-poster output, CLI screenshots, web hero graphics, official endorsement, affiliation, sponsorship, approval, and impersonation stay outside route identity.
+- Mythology boundary: mythological Hermes imagery stays outside default route behavior; winged sandals, winged helmet, caduceus, Greek messenger scenes, Olympian deity framing, and mythology-first symbols are mythology-drift markers.
+- Drift boundary: generic anime assistant drift, generic logo mascot drift, passive placement, route leakage, excessive text, and copied composition stay outside positive route identity.
 
 ## Seal Metadata
 
@@ -117,7 +141,9 @@ Root Xiaohei reference paths remain available during migration and point to cano
 - `gopher` filenames use ordered English slugs such as `01-topic-name.png`.
 - `caixukun` output directory is `assets/<article-slug>-caixukun/`; validation also keeps escaped marker `assets/&lt;article-slug&gt;-caixukun/`.
 - `caixukun` filenames use ordered English slugs such as `01-topic-name.png`.
-- Mixed-IP requests split by IP into separate route groups: `xiaohei` 写入 `assets/<article-slug>-illustrations/`, `littlebox` 写入 `assets/<article-slug>-littlebox/`, `tom` 写入 `assets/<article-slug>-tom/`, `ferris` 写入 `assets/<article-slug>-ferris/`, `seal` writes to `assets/<article-slug>-seal/`, `openclaw` writes to `assets/<article-slug>-openclaw/`, `gopher` writes to `assets/<article-slug>-gopher/`, and `caixukun` writes to `assets/<article-slug>-caixukun/`.
+- `hermes` output directory is `assets/<article-slug>-hermes/`; validation also keeps escaped marker `assets/&lt;article-slug&gt;-hermes/`.
+- `hermes` filenames use ordered English slugs such as `01-topic-name.png`.
+- Mixed-IP requests split by IP into separate route groups: `xiaohei` 写入 `assets/<article-slug>-illustrations/`, `littlebox` 写入 `assets/<article-slug>-littlebox/`, `tom` 写入 `assets/<article-slug>-tom/`, `ferris` 写入 `assets/<article-slug>-ferris/`, `seal` writes to `assets/<article-slug>-seal/`, `openclaw` writes to `assets/<article-slug>-openclaw/`, `gopher` writes to `assets/<article-slug>-gopher/`, `caixukun` writes to `assets/<article-slug>-caixukun/`, and `hermes` writes to `assets/<article-slug>-hermes/`.
 - Before output, inspect the target directory and choose a new filename to preserve historical results.
 
 ## Delivery Report Fields

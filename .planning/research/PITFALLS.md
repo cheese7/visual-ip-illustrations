@@ -1,87 +1,95 @@
-# Domain Pitfalls: OpenClaw Logo IP Integration
+# Domain Pitfalls: Hermes Agent Visual IP Integration
 
 **Project:** Visual IP Illustrations
-**Milestone:** v1.7 OpenClaw Logo IP Integration
-**Researched:** 2026-06-16
+**Milestone:** v1.10 Hermes Agent Visual IP Integration
+**Researched:** 2026-06-18
 
 ## Scope
 
-This file covers risks when adding OpenClaw as a source-reviewed logo-mascot route. The main challenge is preserving the exact uploaded-logo identity while turning it into article-illustration behavior that stays route-local, source-auditable, and compatible with existing route contracts.
+This file covers risks when adding Hermes Agent as a source-reviewed uploaded-image route. The main challenge is preserving the exact uploaded monochrome character identity while turning it into article-illustration behavior that stays route-local, source-auditable, and compatible with existing route contracts.
 
 ## Critical Pitfalls
 
-### 1. Treating the Logo as a Vague Mascot Hint
+### 1. Treating the Uploaded Image as a Vague Anime Style Hint
 
-**What goes wrong:** Prompts say "red mascot" or "crab-like creature" and the generated route drifts into a generic red creature.
-**Warning signs:** Missing exact marker list; QA accepts generic claws; source record lacks uploaded-logo authority.
-**Prevention:** Record the uploaded logo as visual authority and repeat stable markers: red round body, side claw-like arms, two antennae, black eyes, cyan pupils, short legs, simple logo-mascot proportions.
-**Automate:** Validator checks source, identity, prompt, and QA files for uploaded-logo authority and marker strings.
+**What goes wrong:** Prompts say "black-and-white anime agent" and the generated route drifts into a generic assistant, secretary, idol, or cyberpunk character.
+**Warning signs:** Missing exact marker list; QA accepts any headset character; source record lacks uploaded-image authority.
+**Prevention:** Record the uploaded image as visual authority and repeat stable markers: monochrome full-body logo-style character, black bob haircut with bright highlights, headset or earpiece, black sleeveless dress, white collar tag with an `A`-like mark, thigh-high stockings, platform heels, and slender fashion-figure posture.
+**Automate:** Validator checks source, identity, prompt, and QA files for uploaded-image authority and marker strings.
 
-### 2. Making OpenClaw a Brand Poster Route
+### 2. Confusing Hermes Agent With Mythological Hermes
 
-**What goes wrong:** OpenClaw images become product ads, logotype reproductions, or promotional hero graphics.
-**Warning signs:** Prompt asks for large OpenClaw wordmark; README examples center brand copy; QA lacks article-metaphor requirements.
-**Prevention:** Require one article idea, one cognitive action, sparse labels, white background, and mascot-as-actor composition.
+**What goes wrong:** Outputs become winged sandals, Greek messenger imagery, caduceus symbols, or classical mythology scenes.
+**Warning signs:** Aliases include generic `Hermes`; prompts mention wings or Greek messenger unless the user explicitly asks for mythology.
+**Prevention:** Route copy anchors the route to Hermes Agent by Nous Research and the uploaded character. Alias handling can accept `Hermes` only in contexts that mention article illustrations or visual IP routing.
+**Automate:** Validator checks prompt and QA for mythology drift vetoes.
+
+### 3. Making Hermes a Product Poster Route
+
+**What goes wrong:** Hermes images become product ads, CLI screenshots, web hero graphics, or promotional logo lockups.
+**Warning signs:** Prompt asks for large Hermes wordmark; README examples center brand copy; QA lacks article-metaphor requirements.
+**Prevention:** Require one article idea, one cognitive action, sparse labels, white background, and character-as-actor composition.
 **Automate:** Validator checks prompt and QA for article-illustration, cognitive-action, and sparse-label markers.
 
-### 3. Omitting Source and License Context
+### 4. Omitting Source and License Context
 
-**What goes wrong:** The route ships without official repository, MIT license, or source attribution in NOTICE and source record.
-**Warning signs:** Route row says only "uploaded image"; NOTICE lacks OpenClaw; release checklist has no source/license review.
-**Prevention:** Add `source.md`, NOTICE, and release checklist markers for official repo, MIT license, OpenClaw Foundation copyright, and uploaded-logo authority.
-**Automate:** Validator adds `SOURCE-OPENCLAW-001`, `NOTICE-OPENCLAW-001`, and `RELEASE-OPENCLAW-001`.
+**What goes wrong:** The route ships without official website, official repository, MIT license, or Nous Research attribution in NOTICE and source record.
+**Warning signs:** Route row says only "uploaded image"; NOTICE lacks Hermes; release checklist has no source/license review.
+**Prevention:** Add `source.md`, NOTICE, and release checklist markers for official site, repository, MIT license, Nous Research copyright, uploaded-image authority, and release review.
+**Automate:** Validator adds `SOURCE-HERMES-001`, `NOTICE-HERMES-001`, and `RELEASE-HERMES-001`.
 
-### 4. Accidental Default Route Expansion
+### 5. Accidental Default Route Expansion
 
-**What goes wrong:** OpenClaw becomes default for generic "AI assistant" or "red mascot" prompts.
-**Warning signs:** `default=true`; aliases include generic `assistant`, `red mascot`, `crab`, or `logo`; omitted-IP smoke output changes.
-**Prevention:** Keep OpenClaw explicit-only, with direct OpenClaw aliases.
-**Automate:** Validator enforces exactly one default route and rejects generic OpenClaw aliases.
+**What goes wrong:** Hermes becomes default for generic "agent", "AI assistant", "black-and-white character", or "headset" prompts.
+**Warning signs:** `default=true`; aliases include generic `agent`, `assistant`, `anime girl`, or `headset`.
+**Prevention:** Keep Hermes explicit-only, with direct Hermes Agent aliases.
+**Automate:** Validator enforces exactly one default route and rejects generic Hermes aliases.
 
-### 5. Route Leakage Into Seal or Ferris
+### 6. Route Leakage Into Xiaohei, Tom, or Cai Xukun
 
-**What goes wrong:** Red-claw, antenna, or OpenClaw source terms appear in other route packs.
-**Warning signs:** Seal prompt mentions claws; Ferris QA references OpenClaw; shared prompts include route-specific mascot anatomy.
-**Prevention:** Keep OpenClaw identity under `references/ips/openclaw/` plus bounded route/docs/release sections.
-**Automate:** Add non-OpenClaw leakage scan for `OpenClaw`, `cyan pupils`, `red round body`, and `uploaded OpenClaw logo`.
+**What goes wrong:** Headset, black dress, platform heels, or Hermes source terms appear in other route packs.
+**Warning signs:** Xiaohei prompt mentions headset; Tom QA references Hermes; shared prompts include route-specific fashion anatomy.
+**Prevention:** Keep Hermes identity under `references/ips/hermes/` plus bounded route/docs/release sections.
+**Automate:** Add non-Hermes leakage scan for `Hermes Agent`, `Nous Research`, `black sleeveless dress`, `platform heels`, and `headset character`.
 
-### 6. Public Sample Assets Ship Before Review
+### 7. Public Sample Assets Ship Before Review
 
-**What goes wrong:** Generated OpenClaw assets enter README galleries or skill example assets before identity and source review.
-**Warning signs:** Public example directories contain OpenClaw filenames; release checklist lacks approval line.
-**Prevention:** Keep generated OpenClaw public samples gated until release review records approval.
-**Automate:** Public asset scan blocks OpenClaw rendered assets without explicit approval marker.
+**What goes wrong:** Generated Hermes assets enter README galleries or skill example assets before identity and source review.
+**Warning signs:** Public example directories contain Hermes filenames; release checklist lacks approval line.
+**Prevention:** Keep generated Hermes public samples gated until release review records approval.
+**Automate:** Public asset scan blocks Hermes rendered assets without explicit approval marker.
 
-### 7. Weak Edit Prompts
+### 8. Weak Edit Prompts
 
-**What goes wrong:** Editing a generated image fixes one issue while losing antennae, claws, cyan pupils, or article readability.
+**What goes wrong:** Editing a generated image fixes one issue while losing the headset, hair silhouette, dress, stockings, platform heels, or article readability.
 **Warning signs:** Edit prompts lack unaffected-content preservation; QA has no repair prompts.
-**Prevention:** Add edit prompt families for stronger participation, identity repair, title removal, text reduction, and unaffected-content preservation.
+**Prevention:** Add edit prompt families for stronger participation, identity repair, title removal, text reduction, mythology-drift repair, and unaffected-content preservation.
 **Automate:** Validator checks `prompt-template.md` and `qa-checklist.md` for edit gate names.
 
-### 8. Output Path Ambiguity
+### 9. Output Path Ambiguity
 
-**What goes wrong:** OpenClaw outputs save into `assets/<article-slug>-illustrations/` or a generic logo folder.
-**Warning signs:** Missing `output_suffix`; README lacks raw/escaped path tokens; examples copy Seal path.
-**Prevention:** Use `assets/<article-slug>-openclaw/` consistently.
-**Automate:** Validator checks raw and escaped OpenClaw output tokens.
+**What goes wrong:** Hermes outputs save into `assets/<article-slug>-illustrations/` or a generic agent folder.
+**Warning signs:** Missing `output_suffix`; README lacks raw/escaped path tokens; examples copy Gopher or OpenClaw path.
+**Prevention:** Use `assets/<article-slug>-hermes/` consistently.
+**Automate:** Validator checks raw and escaped Hermes output tokens.
 
 ## Recommended Automated Checks
 
-1. `ROUTE-OPENCLAW-001`: route row contains aliases, `default=false`, `output_suffix=openclaw`, required references, source context, and status.
-2. `REFS-OPENCLAW-001`: seven route-local files exist.
-3. `SOURCE-OPENCLAW-001`: `source.md` records official repo, MIT license, uploaded-logo authority, sample policy, and review owner.
-4. `PROMPT-OPENCLAW-001`: prompt template includes planning fields, one-image gate, identity markers, edit gates, and output path.
-5. `QA-OPENCLAW-001`: QA checklist includes identity, action, article-metaphor, source-isolation, text, and delivery gates.
-6. `DOC-OPENCLAW-001`: README, examples, skill metadata, and agent metadata describe the OpenClaw route consistently.
-7. `NOTICE-OPENCLAW-001`: NOTICE includes source and MIT attribution.
-8. `SMOKE-OPENCLAW-001`: smoke prompts cover explicit OpenClaw and mixed-IP route groups.
-9. `BOUNDARY-OPENCLAW-LEAK-001`: non-OpenClaw packs avoid OpenClaw identity markers.
-10. `BOUNDARY-OPENCLAW-IMG-001`: public sample assets require release approval.
+1. `ROUTE-HERMES-001`: route row contains aliases, `default=false`, `output_suffix=hermes`, required references, source context, and status.
+2. `REFS-HERMES-001`: seven route-local files exist.
+3. `SOURCE-HERMES-001`: `source.md` records official site, official repository, MIT license, uploaded-image authority, sample policy, and review owner.
+4. `PROMPT-HERMES-001`: prompt template includes planning fields, one-image gate, identity markers, edit gates, and output path.
+5. `QA-HERMES-001`: QA checklist includes identity, action, article-metaphor, source-isolation, text, mythology-drift, and delivery gates.
+6. `DOC-HERMES-001`: README, examples, skill metadata, and agent metadata describe the Hermes route consistently.
+7. `NOTICE-HERMES-001`: NOTICE includes source and MIT attribution.
+8. `SMOKE-HERMES-001`: smoke prompts cover explicit Hermes and mixed-IP route groups.
+9. `BOUNDARY-HERMES-LEAK-001`: non-Hermes packs avoid Hermes identity markers.
+10. `BOUNDARY-HERMES-IMG-001`: public sample assets require release approval.
 
 ## Sources
 
-- OpenClaw official repository README: https://github.com/openclaw/openclaw
-- OpenClaw MIT license: https://github.com/openclaw/openclaw/blob/main/LICENSE
-- OpenClaw official logo asset reference: https://raw.githubusercontent.com/openclaw/openclaw/main/docs/assets/openclaw-logo-text.svg
-- User-provided uploaded logo: `openclaw-color.png` attached in the request.
+- Hermes Agent official website: https://hermes-agent.nousresearch.com/
+- Hermes Agent official repository: https://github.com/NousResearch/hermes-agent
+- Hermes Agent MIT license: https://github.com/NousResearch/hermes-agent/blob/main/LICENSE
+- Hermes Agent documentation: https://hermes-agent.nousresearch.com/docs/
+- User-provided uploaded image: conversation attachment `Generated image 1 (16).jpeg`.

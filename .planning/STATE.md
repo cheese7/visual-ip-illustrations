@@ -1,15 +1,16 @@
 ---
 gsd_state_version: 1.0
-milestone: v1.9
-milestone_name: Language-Neutral Skill Cleanup
+milestone: v1.10
+milestone_name: Hermes Agent Visual IP Integration
 status: shipped
-last_updated: "2026-06-18T03:15:15.000Z"
-last_activity: 2026-06-18 — Completed quick task 260618-fll: Replace every README hero image with the provided animated GIF asset
+stopped_at: Shipped via PR #6
+last_updated: "2026-07-01T01:42:22+0800"
+last_activity: 2026-07-01
 progress:
-  total_phases: 2
-  completed_phases: 2
-  total_plans: 2
-  completed_plans: 2
+  total_phases: 5
+  completed_phases: 5
+  total_plans: 6
+  completed_plans: 6
   percent: 100
 ---
 
@@ -17,23 +18,29 @@ progress:
 
 ## Project Reference
 
-See: .planning/PROJECT.md (updated 2026-06-17)
+See: .planning/PROJECT.md (updated 2026-06-18)
 
 **Core value:** Users can choose a visual IP and receive article illustrations whose character, style rules, prompts, QA gates, and saved outputs stay consistent with that IP.
-**Current focus:** v1.9 shipped — Language-Neutral Skill Cleanup PR #2
+**Current focus:** Milestone v1.10 shipped via PR #6
 
 ## Current Position
 
-Phase: 44 (Language Policy and Validation Hardening)
-Plan: 44-01 complete
-Status: v1.9 shipped — PR #2
-Last activity: 2026-06-18 - Completed quick task 260618-fll: replaced every README hero image with the provided animated GIF asset, verified validator 148/148 plus Node tests 108/108, and passed git diff whitespace checks
+Phase: 52
+Plan: 52-01 complete
+Status: Phase 52 shipped
+Last activity: 2026-07-01 -- Shipped milestone v1.10 on branch ship/hermes-identity-markers via PR #6
+
+## Shipping
+
+- Branch: `ship/hermes-identity-markers`
+- Pull request: https://github.com/yangchuansheng/visual-ip-illustrations/pull/6
+- Verification: `node scripts/validate-skill-package.mjs`, `node --test scripts/validate-skill-package.test.mjs`, `git diff --check`, and Phase 52 verification evidence passed.
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 65
+- Total plans completed: 72
 - Average duration: -
 - Total execution time: 0.1 hours
 
@@ -72,11 +79,16 @@ Last activity: 2026-06-18 - Completed quick task 260618-fll: replaced every READ
 | 35 | 1 | - | - |
 | 36 | 1 | - | - |
 | 37 | 1 | - | - |
+| 48 | 1 | - | - |
+| 49 | 2 | - | - |
+| 50 | 1 | - | - |
+| 51 | 1 | - | - |
+| 52 | 1 | ~1h | ~1h |
 
 **Recent Trend:**
 
-- Last 5 plans: Phase 40 wired Go Gopher controller behavior; Phase 41 updated Go Gopher public release surfaces; Phase 42 hardened Go Gopher validation and release evidence; Phase 43 cleaned runtime and Xiaohei language scope; Phase 44 hardened policy, attribution, agent metadata, validator, and tests.
-- Trend: v1.9 completed language-neutral scope cleanup across skill runtime, agent metadata, Xiaohei references, policy, NOTICE, release checklist, validator, and Node tests.
+- Last 5 plans: Phase 48 added the Hermes source/route contract; Phase 49 added the Hermes canonical pack; Phase 50 wired Hermes controller behavior; Phase 51 updated Hermes public release surfaces; Phase 52 hardened Hermes validation and release evidence.
+- Trend: v1.10 completed the Hermes Agent route with official Nous Research source context, MIT license context, uploaded conversation attachment authority, route-local pack, runtime controller integration, public docs, validator parity, Node tests, release evidence, leakage scan, mythology-drift guards, and sample gates across Phases 48-52.
 
 *Updated after each plan completion*
 | Phase 06 P01 | 3min | 2 tasks | 3 files |
@@ -130,6 +142,7 @@ Last activity: 2026-06-18 - Completed quick task 260618-fll: replaced every READ
 | Phase 40 P40-01 | 7 min | 3 tasks | 2 files |
 | Phase 41 P41-01 | 49min | 3 tasks | 17 files |
 | Phase 42 P01 | 22m12s | 3 tasks | 4 files |
+| Phase 52 P52-01 | ~1h | 3 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -257,9 +270,6 @@ Recent decisions affecting current work:
 - [Quick 260617-efv]: Root README variants now integrate Go Gopher in Outputs, escaped path markers, Visual IP Routes, Route Reference, operational route facts, Quick Examples, Workflow, Directory Structure, and Maintainer Validation. The trailing Go Gopher route-surface addendum was removed. Validator coverage reports 128/128 and Node tests report 96/96.
 - [Quick 260617-ewb]: Root README Example Gallery tables now cover Xiaohei, Littlebox, Tom, Ferris, Seal, OpenClaw, and Go Gopher across all 13 README variants, backed by public OpenClaw and Go Gopher sample assets plus release approvals. Validator coverage reports 129/129 and Node tests report 96/96 after merging the Chinese gallery check.
 - [Quick 260617-pk4]: Go Gopher visual authority moved to `skills/visual-ip-illustrations/references/ips/gopher/gopher.png`; root `gopher.png` and stale README hero assets were removed. Validator coverage reports 129/129 and Node tests report 96/96.
-- [Milestone v1.9]: Language-neutral skill cleanup removes stale Chinese-only scope wording from runtime skill discovery and Xiaohei route references while preserving Chinese aliases, approved prompt placeholders, user-language labels, localized examples, and compatibility smoke markers.
-- [Phase 43]: Runtime and Xiaohei canonical pack now describe article illustrations broadly, use user-language labels, and keep approved Chinese placeholders plus legacy markers. Legacy root Xiaohei compatibility references match the updated canonical pack.
-- [Phase 44]: Language policy, release checklist, NOTICE, and OpenAI agent metadata now avoid Chinese-only scope wording. Validator adds `SKILL-LANG-001` and `AGENT-LANG-001`; Node tests include both negative fixtures. Final evidence: validator 131/131, enforce validator 131/131, Node tests 98/98, and `git diff --check` clean.
 
 ### Pending Todos
 
@@ -285,10 +295,6 @@ Recent decisions affecting current work:
 
 | # | Description | Date | Commit | Directory |
 |---|-------------|------|--------|-----------|
-| 260618-fll | Replace every README hero image with the provided animated GIF asset | 2026-06-18 | this commit | [260618-fll-replace-every-readme-hero-image-with-the](./quick/260618-fll-replace-every-readme-hero-image-with-the/) |
-| 260618-eyo | Generate README hero image with all visual IP characters | 2026-06-18 | this commit | [260618-eyo-generate-a-readme-hero-image-with-all-vi](./quick/260618-eyo-generate-a-readme-hero-image-with-all-vi/) |
-| 260618-emo | Add Cai Xukun to README example images | 2026-06-18 | this commit | [260618-emo-readme](./quick/260618-emo-readme/) |
-| 260618-0ti | Convert residual Chinese runtime QA examples in SKILL.md to English | 2026-06-18 | this commit | [260618-0ti-convert-residual-chinese-runtime-qa-exam](./quick/260618-0ti-convert-residual-chinese-runtime-qa-exam/) |
 | 260617-pk4 | Remove root gopher image and unused assets | 2026-06-17 | this commit | [260617-pk4-remove-root-gopher-image-and-unused-asse](./quick/260617-pk4-remove-root-gopher-image-and-unused-asse/) |
 | 260617-pbq | Replace the lead image in every README with Downloads/20260617-181124.gif | 2026-06-17 | this commit | [260617-pbq-replace-the-lead-image-in-every-readme-w](./quick/260617-pbq-replace-the-lead-image-in-every-readme-w/) |
 | 260617-mwq | Create a HyperFrames animation from the README hero lineup | 2026-06-17 | this commit | [260617-mwq-create-a-hyperframes-animation-from-the-](./quick/260617-mwq-create-a-hyperframes-animation-from-the-/) |
@@ -315,6 +321,9 @@ Recent decisions affecting current work:
 | 260615-o4y | Replace English README example images with English-labeled Xiaohei examples | 2026-06-15 | 3dd2b77 | [260615-o4y-replace-english-readme-example-images-wi](./quick/260615-o4y-replace-english-readme-example-images-wi/) |
 | 260615-qbt | Rewrite GitHub repository description | 2026-06-15 | metadata-only | [260615-qbt-rewrite-github-repository-description](./quick/260615-qbt-rewrite-github-repository-description/) |
 | 260616-13w | Add multi-IP English example gallery to README | 2026-06-15 | 275eb2f | [260616-13w-add-multi-ip-english-example-gallery-to-](./quick/260616-13w-add-multi-ip-english-example-gallery-to-/) |
+| 260624-khz | Refine Hermes uploaded-image identity markers against the user-provided reference | 2026-06-24 | this commit | [260624-khz-refine-hermes-uploaded-image-identity-ma](./quick/260624-khz-refine-hermes-uploaded-image-identity-ma/) |
+| 260624-ncy | Tighten Hermes hair-end curls against the uploaded reference | 2026-06-24 | this commit | [260624-ncy-tighten-hermes-hair-end-curls-against-th](./quick/260624-ncy-tighten-hermes-hair-end-curls-against-th/) |
+| 260624-pcg | Tighten Hermes face markers against the uploaded reference | 2026-06-24 | this commit | [260624-pcg-tighten-hermes-face-markers-against-the-](./quick/260624-pcg-tighten-hermes-face-markers-against-the-/) |
 
 ## Deferred Items
 

@@ -167,11 +167,52 @@ Save outputs under `assets/<article-slug>-caixukun/`; docs validation token: `as
 <paste article>
 ```
 
+
+### Hermes Agent: canonical planning
+
+```text
+Use $visual-ip-illustrations with the Hermes Agent route. Do not generate images yet.
+Create a 4-image Hermes Agent route shot list for the article below.
+Aliases include Hermes Agent, Hermes, hermes, hermes-agent, Hermes logo, and Hermes Agent logo.
+Use route-local references from `skills/visual-ip-illustrations/references/ips/hermes/` and source authority `skills/visual-ip-illustrations/references/ips/hermes/source.md`.
+Keep route status `source-reviewed`, uploaded-image authority from `Generated image 1 (16).jpeg`, official source context, MIT license context, mythology-drift boundary, product-poster boundary, public sample review gate, route isolation, and uploaded-character-only article illustration output.
+For each image, include Placement, Core idea, Structure type, Hermes Agent state, Hermes Agent action, Supporting objects, Visible labels, Source context note, Mythology-drift note, Product-poster boundary note, and Output path.
+Save outputs under `assets/<article-slug>-hermes/`; docs validation token: `assets/&lt;article-slug&gt;-hermes/`.
+
+<paste article>
+```
+
+### Hermes Agent: canonical generation
+
+```text
+Use $visual-ip-illustrations with the Hermes Agent / Hermes / hermes / hermes-agent / Hermes logo / Hermes Agent logo route to generate 2 article body illustrations for the article below.
+Generate each image separately and use `skills/visual-ip-illustrations/references/ips/hermes/` route-local references.
+Keep route status `source-reviewed` and source authority `skills/visual-ip-illustrations/references/ips/hermes/source.md`.
+Preserve uploaded-image authority from `Generated image 1 (16).jpeg`, official source context, MIT license context, public sample review gate, route isolation, and uploaded-character-only article illustration output.
+Make Hermes Agent carry the core idea through sparse physical article metaphors. Keep mythology-drift boundary and product-poster boundary attached to the delivery report.
+For each image, report Hermes Agent state, Hermes Agent action, Source context note, Mythology-drift note, Product-poster boundary note, and Output path.
+Save outputs under `assets/<article-slug>-hermes/`; docs validation token: `assets/&lt;article-slug&gt;-hermes/`.
+Delivery report states that public generated Hermes samples remain pending behind the public sample review gate.
+
+<paste article>
+```
+
+### Hermes Agent: edit existing image
+
+```text
+Use $visual-ip-illustrations with the Hermes Agent route to edit this image.
+Preserve the selected Hermes Agent route, route status `source-reviewed`, source authority `skills/visual-ip-illustrations/references/ips/hermes/source.md`, output path, aspect ratio, article meaning, and preservation of unaffected content.
+Keep uploaded-image authority from `Generated image 1 (16).jpeg`, official source context, MIT license context, mythology-drift boundary, product-poster boundary, public sample review gate, route isolation, and uploaded-character-only article illustration output attached to the delivery report.
+Edit only the named issue: [participation / uploaded-image identity / title / text density / label typo / route leakage / mythology drift / product-poster drift].
+Preserve successful Hermes Agent action, uploaded-image identity cues, existing composition, visible labels that remain correct, supporting objects, paths, line style, color accents, 16:9 aspect ratio, and image quality.
+Save outputs under `assets/<article-slug>-hermes/`; docs validation token: `assets/&lt;article-slug&gt;-hermes/`.
+```
+
 ### Multi-IP: canonical planning
 
 ```text
 Use $visual-ip-illustrations. Do not generate images yet.
-Use one shared core idea to produce eight separate variant groups: Xiaohei, Littlebox, Tom, Ferris, Seal, OpenClaw, Go Gopher, and Cai Xukun.
+Use one shared core idea to produce nine separate variant groups: Xiaohei, Littlebox, Tom, Ferris, Seal, OpenClaw, Go Gopher, Cai Xukun, and Hermes Agent.
 Each group must use route-local references, route-local prompt template, route-local QA, and an independent output path.
 Xiaohei group uses `skills/visual-ip-illustrations/references/ips/xiaohei/` and `assets/<article-slug>-illustrations/`.
 Littlebox group uses `skills/visual-ip-illustrations/references/ips/littlebox/` and `assets/<article-slug>-littlebox/`.
@@ -181,6 +222,7 @@ Seal group uses `skills/visual-ip-illustrations/references/ips/seal/`, route sta
 OpenClaw group uses `skills/visual-ip-illustrations/references/ips/openclaw/`, route status `source-reviewed`, source/license authority `skills/visual-ip-illustrations/references/ips/openclaw/source.md`, uploaded-logo identity markers, public-sample gate, and `assets/<article-slug>-openclaw/`.
 Go Gopher group uses `skills/visual-ip-illustrations/references/ips/gopher/`, route status `source-reviewed`, source/license authority `skills/visual-ip-illustrations/references/ips/gopher/source.md`, route-local `skills/visual-ip-illustrations/references/ips/gopher/gopher.png` visual authority, Renee French attribution, Creative Commons Attribution 4.0 boundary, public sample gate, and `assets/<article-slug>-gopher/`.
 Cai Xukun group uses `skills/visual-ip-illustrations/references/ips/caixukun/`, route status `gated-public-figure`, source authority `skills/visual-ip-illustrations/references/ips/caixukun/source.md`, uploaded-image authority, public-figure likeness boundary, source-image context boundary, public sample review gate, route isolation, stylized mascot-only output, and `assets/<article-slug>-caixukun/`.
+Hermes Agent group uses `skills/visual-ip-illustrations/references/ips/hermes/`, route status `source-reviewed`, source authority `skills/visual-ip-illustrations/references/ips/hermes/source.md`, uploaded-image authority from `Generated image 1 (16).jpeg`, official source context, MIT license context, mythology-drift boundary, product-poster boundary, public sample review gate, route isolation, uploaded-character-only article illustration output, and `assets/<article-slug>-hermes/`.
 
 Core idea: trust is built by placing one piece of evidence after another.
 ```
@@ -632,17 +674,84 @@ Expected: endorsement, affiliation, impersonation, campaign, advertising, and fa
 Expected: public sample review gate is controlled by RELEASE_CHECKLIST.md; public generated Cai Xukun samples require release review.
 ```
 
+
+## Route Smoke: Explicit Hermes Agent
+
+Hermes Agent is an explicit `source-reviewed` uploaded-image article-illustration route. Public generated Hermes samples remain pending behind the public sample review gate.
+
+Explicit Hermes Agent aliases include Hermes Agent, Hermes, hermes, hermes-agent, Hermes logo, and Hermes Agent logo. Source authority is `skills/visual-ip-illustrations/references/ips/hermes/source.md`.
+
+### Explicit Hermes Agent: planning only
+
+```text
+Use $ian-xiaohei-illustrations with the Hermes Agent / Hermes / hermes / hermes-agent / Hermes logo / Hermes Agent logo route. Do not generate images yet.
+Create a 3-image Hermes Agent route shot list for the article below.
+For each image, include:
+- Placement
+- Core idea
+- Structure type
+- Hermes Agent state
+- Hermes Agent action
+- Supporting objects
+- Visible labels
+- Source context note
+- Mythology-drift note
+- Product-poster boundary note
+- Output path
+Keep route status `source-reviewed`.
+Keep route-local reference directory `skills/visual-ip-illustrations/references/ips/hermes/`.
+Keep source authority `skills/visual-ip-illustrations/references/ips/hermes/source.md`.
+Keep uploaded-image authority from `Generated image 1 (16).jpeg`, official source context, MIT license context, public sample review gate, route isolation, and uploaded-character-only article illustration output.
+Save outputs under `assets/<article-slug>-hermes/`; docs validation token: `assets/&lt;article-slug&gt;-hermes/`.
+
+<paste article>
+```
+
+### Explicit Hermes Agent: direct generation
+
+```text
+Use $ian-xiaohei-illustrations with the Hermes Agent route to generate 2 article body illustrations for the article below.
+Hermes Agent aliases include Hermes Agent, Hermes, hermes, hermes-agent, Hermes logo, and Hermes Agent logo.
+Generate each image separately and use `skills/visual-ip-illustrations/references/ips/hermes/` route-local references.
+Hermes Agent must carry the core idea's cognitive action as uploaded-character-only article illustration output.
+Keep route status `source-reviewed`.
+Keep source authority `skills/visual-ip-illustrations/references/ips/hermes/source.md`.
+Preserve uploaded-image authority from `Generated image 1 (16).jpeg`, official source context, MIT license context, mythology-drift boundary, product-poster boundary, public sample review gate, and route isolation.
+Save outputs under `assets/<article-slug>-hermes/`; docs validation token: `assets/&lt;article-slug&gt;-hermes/`.
+Delivery report keeps Source context note, Mythology-drift note, Product-poster boundary note, and states that public generated Hermes samples remain pending behind the public sample review gate.
+
+<paste article>
+```
+
+### Explicit Hermes Agent: route smoke check
+
+```text
+Use $ian-xiaohei-illustrations. Do not generate images yet.
+Text-only maintainer route audit. Use the Hermes Agent / Hermes / hermes / hermes-agent / Hermes logo / Hermes Agent logo route to create 1 route smoke shot list for this idea:
+Idea: convert a model-agent handoff into a checkable article workflow.
+Expected: selected IP is Hermes Agent.
+Expected: aliases include Hermes Agent, Hermes, hermes, hermes-agent, Hermes logo, and Hermes Agent logo.
+Expected: route status is `source-reviewed`.
+Expected: source authority is `skills/visual-ip-illustrations/references/ips/hermes/source.md`.
+Expected: route-local reference directory is `skills/visual-ip-illustrations/references/ips/hermes/`.
+Expected: uploaded-image authority from `Generated image 1 (16).jpeg`, official source context, MIT license context, mythology-drift boundary, product-poster boundary, public sample review gate, route isolation, and uploaded-character-only article illustration output are attached.
+Expected: output path is `assets/<article-slug>-hermes/`.
+Expected: docs validation token is `assets/&lt;article-slug&gt;-hermes/`.
+Expected: planning fields include Placement, Core idea, Structure type, Hermes Agent state, Hermes Agent action, Supporting objects, Visible labels, Source context note, Mythology-drift note, Product-poster boundary note, and Output path.
+Expected: public sample review gate is controlled by RELEASE_CHECKLIST.md; public generated Hermes samples require release review.
+```
+
 ## Route Notes: Mixed-IP Requests
 
-The same core idea can create separate variant groups by IP. Xiaohei group uses `assets/<article-slug>-illustrations/`, Littlebox group uses `assets/<article-slug>-littlebox/`, Tom group uses `assets/<article-slug>-tom/`, Ferris group uses `assets/<article-slug>-ferris/`, Seal group uses `assets/<article-slug>-seal/`, OpenClaw group uses `assets/<article-slug>-openclaw/`, Go Gopher group uses `assets/<article-slug>-gopher/`, and Cai Xukun group uses `assets/<article-slug>-caixukun/`; each group loads its own references, prompt template, QA, and output path.
+The same core idea can create separate variant groups by IP. Xiaohei group uses `assets/<article-slug>-illustrations/`, Littlebox group uses `assets/<article-slug>-littlebox/`, Tom group uses `assets/<article-slug>-tom/`, Ferris group uses `assets/<article-slug>-ferris/`, Seal group uses `assets/<article-slug>-seal/`, OpenClaw group uses `assets/<article-slug>-openclaw/`, Go Gopher group uses `assets/<article-slug>-gopher/`, Cai Xukun group uses `assets/<article-slug>-caixukun/`, and Hermes Agent group uses `assets/<article-slug>-hermes/`; each group loads its own references, prompt template, QA, and output path.
 
-Maintainer reference: Xiaohei canonical pack is at `skills/visual-ip-illustrations/references/ips/xiaohei/`, Littlebox canonical pack is at `skills/visual-ip-illustrations/references/ips/littlebox/`, Tom canonical pack is at `skills/visual-ip-illustrations/references/ips/tom/`, Tom rights record is at `skills/visual-ip-illustrations/references/ips/tom/rights.md`, Ferris canonical pack is at `skills/visual-ip-illustrations/references/ips/ferris/`, Ferris source/trademark authority is at `skills/visual-ip-illustrations/references/ips/ferris/source.md`, Seal canonical pack is at `skills/visual-ip-illustrations/references/ips/seal/`, Seal source-history authority is at `skills/visual-ip-illustrations/references/ips/seal/source.md`, OpenClaw canonical pack is at `skills/visual-ip-illustrations/references/ips/openclaw/`, OpenClaw source/license authority is at `skills/visual-ip-illustrations/references/ips/openclaw/source.md`, Go Gopher canonical pack is at `skills/visual-ip-illustrations/references/ips/gopher/`, Go Gopher source/license authority is at `skills/visual-ip-illustrations/references/ips/gopher/source.md`, `skills/visual-ip-illustrations/references/ips/gopher/gopher.png` is local visual authority, Cai Xukun canonical pack is at `skills/visual-ip-illustrations/references/ips/caixukun/`, Cai Xukun source authority is at `skills/visual-ip-illustrations/references/ips/caixukun/source.md`, and route metadata is at `skills/visual-ip-illustrations/references/routing.md`.
+Maintainer reference: Xiaohei canonical pack is at `skills/visual-ip-illustrations/references/ips/xiaohei/`, Littlebox canonical pack is at `skills/visual-ip-illustrations/references/ips/littlebox/`, Tom canonical pack is at `skills/visual-ip-illustrations/references/ips/tom/`, Tom rights record is at `skills/visual-ip-illustrations/references/ips/tom/rights.md`, Ferris canonical pack is at `skills/visual-ip-illustrations/references/ips/ferris/`, Ferris source/trademark authority is at `skills/visual-ip-illustrations/references/ips/ferris/source.md`, Seal canonical pack is at `skills/visual-ip-illustrations/references/ips/seal/`, Seal source-history authority is at `skills/visual-ip-illustrations/references/ips/seal/source.md`, OpenClaw canonical pack is at `skills/visual-ip-illustrations/references/ips/openclaw/`, OpenClaw source/license authority is at `skills/visual-ip-illustrations/references/ips/openclaw/source.md`, Go Gopher canonical pack is at `skills/visual-ip-illustrations/references/ips/gopher/`, Go Gopher source/license authority is at `skills/visual-ip-illustrations/references/ips/gopher/source.md`, `skills/visual-ip-illustrations/references/ips/gopher/gopher.png` is local visual authority, Cai Xukun canonical pack is at `skills/visual-ip-illustrations/references/ips/caixukun/`, Cai Xukun source authority is at `skills/visual-ip-illustrations/references/ips/caixukun/source.md`, Hermes Agent canonical pack is at `skills/visual-ip-illustrations/references/ips/hermes/`, Hermes Agent source authority is at `skills/visual-ip-illustrations/references/ips/hermes/source.md`, and route metadata is at `skills/visual-ip-illustrations/references/routing.md`.
 
 ### Mixed IP: variant planning only
 
 ```text
 Use $ian-xiaohei-illustrations. Do not generate images yet.
-Use one core idea to produce eight separate variant groups: Xiaohei, Littlebox, Tom, Ferris, Seal, OpenClaw, Go Gopher, and Cai Xukun.
+Use one core idea to produce nine separate variant groups: Xiaohei, Littlebox, Tom, Ferris, Seal, OpenClaw, Go Gopher, Cai Xukun, and Hermes Agent.
 Each group must use its own route-local references, planning fields, QA gates, route-specific status, source/rights/source-history note, and output directory.
 
 Xiaohei variant group:
@@ -719,13 +828,24 @@ Cai Xukun variant group:
 - Uploaded-image authority, public-figure likeness boundary, source-image context boundary, public sample review gate, route isolation, and stylized mascot-only output stay attached
 - Endorsement, affiliation, impersonation, campaign, advertising, and fandom-promotion claims are rewritten as neutral article-concept labels
 
+Hermes Agent variant group:
+- Use `skills/visual-ip-illustrations/references/ips/hermes/`
+- Keep source authority `skills/visual-ip-illustrations/references/ips/hermes/source.md`
+- Keep route status `source-reviewed`
+- Aliases include Hermes Agent, Hermes, hermes, hermes-agent, Hermes logo, and Hermes Agent logo
+- Include Hermes Agent state, Hermes Agent action, Supporting objects, Visible labels, Source context note, Mythology-drift note, Product-poster boundary note, and Output path
+- Output to `assets/<article-slug>-hermes/`
+- Docs validation token is `assets/&lt;article-slug&gt;-hermes/`
+- Uploaded-image authority from `Generated image 1 (16).jpeg`, official source context, MIT license context, public sample review gate, route isolation, and uploaded-character-only article illustration output stay attached
+- Public generated Hermes samples are controlled by the RELEASE_CHECKLIST.md public sample review gate
+
 <paste article or single idea>
 ```
 
 ### Mixed IP: generate eight groups from one idea
 
 ```text
-Use $ian-xiaohei-illustrations to generate eight separate variant groups: Xiaohei variant group, Littlebox variant group, Tom variant group, Ferris variant group, Seal variant group, OpenClaw variant group, Go Gopher variant group, and Cai Xukun variant group from the same core idea.
+Use $ian-xiaohei-illustrations to generate nine separate variant groups: Xiaohei variant group, Littlebox variant group, Tom variant group, Ferris variant group, Seal variant group, OpenClaw variant group, Go Gopher variant group, Cai Xukun variant group, and Hermes Agent variant group from the same core idea.
 
 Core idea: trust is built by placing one piece of evidence after another.
 
@@ -823,11 +943,24 @@ Cai Xukun variant group:
 - Docs validation token is `assets/&lt;article-slug&gt;-caixukun/`
 - Public generated Cai Xukun samples are controlled by the RELEASE_CHECKLIST.md public sample review gate
 - Endorsement, affiliation, impersonation, campaign, advertising, and fandom-promotion claims are rewritten as neutral article-concept labels
+
+Hermes Agent variant group:
+- Generate 2 images
+- Use `skills/visual-ip-illustrations/references/ips/hermes/`
+- Keep source authority `skills/visual-ip-illustrations/references/ips/hermes/source.md`
+- Hermes Agent aliases include Hermes Agent, Hermes, hermes, hermes-agent, Hermes logo, and Hermes Agent logo
+- Keep route status `source-reviewed`
+- Hermes Agent must carry the same core idea's cognitive action as uploaded-character-only article illustration output
+- Preserve uploaded-image authority from `Generated image 1 (16).jpeg`, official source context, MIT license context, mythology-drift boundary, and product-poster boundary
+- Include Hermes Agent state, Hermes Agent action, Supporting objects, Visible labels, Source context note, Mythology-drift note, Product-poster boundary note, and Output path
+- Output to `assets/<article-slug>-hermes/`
+- Docs validation token is `assets/&lt;article-slug&gt;-hermes/`
+- Public generated Hermes samples are controlled by the RELEASE_CHECKLIST.md public sample review gate
 ```
 
 ## Maintainer Validation Smoke Prompts
 
-Phase 46 owns Cai Xukun public documentation and release-surface parity. Phase 47 owns Cai Xukun validator hardening, Node tests, final release evidence, leakage scan, and public sample gate automation.
+Phase 46 owns Cai Xukun public documentation and release-surface parity. Phase 47 owns Cai Xukun validator hardening, Node tests, final release evidence, leakage scan, and public sample gate automation. Phase 51 owns Hermes Agent public documentation and release-surface parity. Phase 52 owns Hermes Agent validator hardening, Node tests, final release evidence, leakage scan, and public sample gate automation.
 
 Phase 42 owns Go Gopher validator parity, Node tests, final release evidence, docs consistency, leakage scan, and public sample gate automation.
 
@@ -913,11 +1046,25 @@ Expected: endorsement, affiliation, impersonation, campaign, advertising, and fa
 Expected: planning fields include Placement, Core idea, Structure type, Cai Xukun mascot state, Cai Xukun mascot action, Supporting objects, Visible labels, Output path, Likeness boundary note, Source-image context note.
 ```
 
+
+### Smoke: Hermes Agent source-reviewed route status
+
+```text
+Use $visual-ip-illustrations. Do not generate images yet.
+Text-only maintainer route audit. Use the Hermes Agent route to create 1 route-status shot list for this idea:
+Idea: turn agent orchestration uncertainty into one accountable review step.
+Expected: selected IP is Hermes Agent, route status is `source-reviewed`, source authority is `skills/visual-ip-illustrations/references/ips/hermes/source.md`.
+Expected: route-local reference directory is `skills/visual-ip-illustrations/references/ips/hermes/`.
+Expected: uploaded-image authority from `Generated image 1 (16).jpeg`, official source context, MIT license context, mythology-drift boundary, product-poster boundary, public sample review gate, route isolation, and uploaded-character-only article illustration output are attached.
+Expected: output path is `assets/<article-slug>-hermes/`; docs validation token is `assets/&lt;article-slug&gt;-hermes/`.
+Expected: planning fields include Placement, Core idea, Structure type, Hermes Agent state, Hermes Agent action, Supporting objects, Visible labels, Source context note, Mythology-drift note, Product-poster boundary note, and Output path.
+```
+
 ### Smoke: mixed-IP variant groups
 
 ```text
 Use $ian-xiaohei-illustrations. Do not generate images yet.
-Use one core idea to create eight separate variant groups: Xiaohei variant group, Littlebox variant group, Tom variant group, Ferris variant group, Seal variant group, OpenClaw variant group, Go Gopher variant group, and Cai Xukun variant group:
+Use one core idea to create nine separate variant groups: Xiaohei variant group, Littlebox variant group, Tom variant group, Ferris variant group, Seal variant group, OpenClaw variant group, Go Gopher variant group, Cai Xukun variant group, and Hermes Agent variant group:
 Idea: a good workflow places the next action directly in someone's hand.
 Expected: Xiaohei variant group uses `skills/visual-ip-illustrations/references/ips/xiaohei/` and outputs to `assets/<article-slug>-illustrations/`.
 Expected: Littlebox variant group uses `skills/visual-ip-illustrations/references/ips/littlebox/` and outputs to `assets/<article-slug>-littlebox/`.
@@ -927,7 +1074,8 @@ Expected: Seal variant group uses `skills/visual-ip-illustrations/references/ips
 Expected: OpenClaw variant group uses `skills/visual-ip-illustrations/references/ips/openclaw/`, outputs to `assets/<article-slug>-openclaw/`, and keeps route status `source-reviewed`, source/license authority `skills/visual-ip-illustrations/references/ips/openclaw/source.md`, uploaded-logo identity markers, and public-sample gate.
 Expected: Go Gopher variant group uses `skills/visual-ip-illustrations/references/ips/gopher/`, outputs to `assets/<article-slug>-gopher/`, keeps docs validation token `assets/&lt;article-slug&gt;-gopher/`, route status `source-reviewed`, source/license authority `skills/visual-ip-illustrations/references/ips/gopher/source.md`, route-local `skills/visual-ip-illustrations/references/ips/gopher/gopher.png` visual authority, Renee French attribution, Creative Commons Attribution 4.0 boundary, public sample gate, and Source/license note.
 Expected: Cai Xukun variant group uses `skills/visual-ip-illustrations/references/ips/caixukun/`, outputs to `assets/<article-slug>-caixukun/`, keeps docs validation token `assets/&lt;article-slug&gt;-caixukun/`, route status `gated-public-figure`, source authority `skills/visual-ip-illustrations/references/ips/caixukun/source.md`, uploaded-image authority, public-figure likeness boundary, source-image context boundary, public sample review gate, route isolation, stylized mascot-only output, and neutral article-concept label review for endorsement, affiliation, impersonation, campaign, advertising, and fandom-promotion claims.
-Expected: Xiaohei variant group, Littlebox variant group, Tom variant group, Ferris variant group, Seal variant group, OpenClaw variant group, Go Gopher variant group, and Cai Xukun variant group each use their own route-local references, planning fields, QA gates, route-specific status, source/rights/source-history/source-image note, and output directory.
+Expected: Hermes Agent variant group uses `skills/visual-ip-illustrations/references/ips/hermes/`, outputs to `assets/<article-slug>-hermes/`, keeps docs validation token `assets/&lt;article-slug&gt;-hermes/`, route status `source-reviewed`, source authority `skills/visual-ip-illustrations/references/ips/hermes/source.md`, uploaded-image authority from `Generated image 1 (16).jpeg`, official source context, MIT license context, mythology-drift boundary, product-poster boundary, public sample review gate, route isolation, uploaded-character-only article illustration output, Source context note, Mythology-drift note, and Product-poster boundary note.
+Expected: Xiaohei variant group, Littlebox variant group, Tom variant group, Ferris variant group, Seal variant group, OpenClaw variant group, Go Gopher variant group, Cai Xukun variant group, and Hermes Agent variant group each use their own route-local references, planning fields, QA gates, route-specific status, source/rights/source-history/source-image note, and output directory.
 ```
 
 Legacy six-route OpenClaw smoke fixture marker for validator compatibility:
