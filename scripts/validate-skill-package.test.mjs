@@ -24,6 +24,7 @@ const requiredCheckIds = [
   "AGENT-GOPHER-001",
   "AGENT-CAIXUKUN-001",
   "AGENT-HERMES-001",
+  "AGENT-LINUX-001",
   "ROUTE-TABLE-001",
   "ROUTE-XH-001",
   "ROUTE-LB-001",
@@ -34,6 +35,7 @@ const requiredCheckIds = [
   "ROUTE-GOPHER-001",
   "ROUTE-CAIXUKUN-001",
   "ROUTE-HERMES-001",
+  "ROUTE-LINUX-001",
   "ROUTE-DEFAULT-001",
   "ROUTE-REFS-001",
   "ROUTE-PATHS-001",
@@ -47,6 +49,7 @@ const requiredCheckIds = [
   "REFS-GOPHER-001",
   "REFS-CAIXUKUN-001",
   "REFS-HERMES-001",
+  "REFS-LINUX-001",
   "LEGACY-XH-001",
   "LEGACY-XH-002",
   "PROMPT-XH-001",
@@ -59,6 +62,7 @@ const requiredCheckIds = [
   "PROMPT-GOPHER-001",
   "PROMPT-CAIXUKUN-001",
   "PROMPT-HERMES-001",
+  "PROMPT-LINUX-001",
   "IP-XH-001",
   "IP-LB-001",
   "IP-TOM-001",
@@ -68,6 +72,7 @@ const requiredCheckIds = [
   "IP-GOPHER-001",
   "IP-CAIXUKUN-001",
   "IP-HERMES-001",
+  "IP-LINUX-001",
   "QA-TOM-001",
   "QA-FERRIS-001",
   "QA-SEAL-001",
@@ -75,6 +80,7 @@ const requiredCheckIds = [
   "QA-GOPHER-001",
   "QA-CAIXUKUN-001",
   "QA-HERMES-001",
+  "QA-LINUX-001",
   "RIGHTS-TOM-001",
   "SOURCE-FERRIS-001",
   "SOURCE-SEAL-001",
@@ -82,6 +88,7 @@ const requiredCheckIds = [
   "SOURCE-GOPHER-001",
   "SOURCE-CAIXUKUN-001",
   "SOURCE-HERMES-001",
+  "SOURCE-LINUX-001",
   "LOGO-SEAL-001",
   "DOC-LINKS-001",
   "DOC-ZH-GALLERY-001",
@@ -94,6 +101,7 @@ const requiredCheckIds = [
   "DOC-GOPHER-001",
   "DOC-CAIXUKUN-001",
   "DOC-HERMES-001",
+  "DOC-LINUX-001",
   "NOTICE-IAN-001",
   "NOTICE-LB-001",
   "NOTICE-TOM-001",
@@ -103,6 +111,7 @@ const requiredCheckIds = [
   "NOTICE-GOPHER-001",
   "NOTICE-CAIXUKUN-001",
   "NOTICE-HERMES-001",
+  "NOTICE-LINUX-001",
   "SMOKE-DEFAULT-001",
   "SMOKE-XH-001",
   "SMOKE-LB-001",
@@ -113,12 +122,14 @@ const requiredCheckIds = [
   "SMOKE-GOPHER-001",
   "SMOKE-CAIXUKUN-001",
   "SMOKE-HERMES-001",
+  "SMOKE-LINUX-001",
   "SMOKE-MIXED-001",
   "SMOKE-MIXED-SEAL-001",
   "SMOKE-MIXED-OPENCLAW-001",
   "SMOKE-MIXED-GOPHER-001",
   "SMOKE-MIXED-CAIXUKUN-001",
   "SMOKE-MIXED-HERMES-001",
+  "SMOKE-MIXED-LINUX-001",
   "RELEASE-TOM-001",
   "RELEASE-FERRIS-001",
   "RELEASE-SEAL-001",
@@ -126,6 +137,7 @@ const requiredCheckIds = [
   "RELEASE-GOPHER-001",
   "RELEASE-CAIXUKUN-001",
   "RELEASE-HERMES-001",
+  "RELEASE-LINUX-001",
   "REBRAND-CANON-001",
   "REBRAND-CANON-002",
   "REBRAND-CANON-003",
@@ -158,6 +170,7 @@ const requiredCheckIds = [
   "BOUNDARY-GOPHER-LEAK-001",
   "BOUNDARY-CAIXUKUN-LEAK-001",
   "BOUNDARY-HERMES-LEAK-001",
+  "BOUNDARY-LINUX-LEAK-001",
   "BOUNDARY-TOM-IMG-001",
   "BOUNDARY-FERRIS-IMG-001",
   "BOUNDARY-SEAL-IMG-001",
@@ -165,12 +178,14 @@ const requiredCheckIds = [
   "BOUNDARY-GOPHER-IMG-001",
   "BOUNDARY-CAIXUKUN-IMG-001",
   "BOUNDARY-HERMES-IMG-001",
+  "BOUNDARY-LINUX-IMG-001",
   "BOUNDARY-FERRIS-GEN-001",
   "BOUNDARY-SEAL-GEN-001",
   "BOUNDARY-OPENCLAW-GEN-001",
   "BOUNDARY-GOPHER-GEN-001",
   "BOUNDARY-CAIXUKUN-GEN-001",
   "BOUNDARY-HERMES-GEN-001",
+  "BOUNDARY-LINUX-GEN-001",
   "BOUNDARY-P5-001",
 ];
 
@@ -438,6 +453,46 @@ function completeGeneratedHermesSampleLine(
   return `- [x] Record generated sample review: APPROVED / Jane Reviewer / ${reviewDate} / approved / assets/<article-slug>-hermes / examples/images, skills/visual-ip-illustrations/assets/examples / release notes / ${sourceOutcome} / ${licenseOutcome} / ${uploadedImageIdentityOutcome} / ${mythologyDriftOutcome} / ${productPosterBoundaryOutcome} / ${routeIsolationOutcome} / ${claimReviewOutcome} / ${articleMetaphorOutcome}.`;
 }
 
+function pendingLinuxPublicAssetApprovalLine() {
+  return "- [ ] Linux Mascot public asset policy for `examples/images/`, `examples/images-en/`, and `skills/visual-ip-illustrations/assets/examples/`: PENDING / reviewer / date / approval status / allowed directories / release channels / Tux source outcome / GIMP attribution outcome / Linux trademark outcome / uploaded-image identity outcome / distro-logo boundary outcome / endorsement/certification boundary outcome / product-output outcome / route-isolation outcome / uploaded-image-only Tux article illustration outcome / article-metaphor quality outcome / public-sample decision.";
+}
+
+function completeLinuxPublicAssetApprovalLine(
+  reviewDate = "2026-06-13",
+  sourceOutcome = "Tux source approved",
+  gimpAttributionOutcome = "GIMP attribution approved",
+  trademarkOutcome = "Linux trademark approved",
+  uploadedImageIdentityOutcome = "uploaded-image identity approved",
+  distroLogoBoundaryOutcome = "distro-logo boundary approved",
+  endorsementCertificationBoundaryOutcome = "endorsement/certification boundary approved",
+  productOutputOutcome = "product-output approved",
+  routeIsolationOutcome = "route-isolation approved",
+  uploadedImageOnlyOutcome = "uploaded-image-only Tux article illustration approved",
+  articleMetaphorOutcome = "article-metaphor quality approved",
+  publicSampleOutcome = "public-sample decision approved",
+) {
+  return `- [x] Linux Mascot public asset policy for \`examples/images/\`, \`examples/images-en/\`, and \`skills/visual-ip-illustrations/assets/examples/\`: APPROVED / Jane Reviewer / ${reviewDate} / approved / examples/images, examples/images-en, skills/visual-ip-illustrations/assets/examples / release notes / ${sourceOutcome} / ${gimpAttributionOutcome} / ${trademarkOutcome} / ${uploadedImageIdentityOutcome} / ${distroLogoBoundaryOutcome} / ${endorsementCertificationBoundaryOutcome} / ${productOutputOutcome} / ${routeIsolationOutcome} / ${uploadedImageOnlyOutcome} / ${articleMetaphorOutcome} / ${publicSampleOutcome}.`;
+}
+
+function pendingGeneratedLinuxSampleLine() {
+  return "- [ ] Record generated sample review: PENDING / reviewer / date / approval status / internal review directories / public directories / release channels / Tux source outcome / GIMP attribution outcome / Linux trademark outcome / uploaded-image identity outcome / distro-logo boundary outcome / endorsement/certification boundary outcome / product-output outcome / route-isolation outcome / article-metaphor quality outcome.";
+}
+
+function completeGeneratedLinuxSampleLine(
+  reviewDate = "2026-06-13",
+  sourceOutcome = "Tux source approved",
+  gimpAttributionOutcome = "GIMP attribution approved",
+  trademarkOutcome = "Linux trademark approved",
+  uploadedImageIdentityOutcome = "uploaded-image identity approved",
+  distroLogoBoundaryOutcome = "distro-logo boundary approved",
+  endorsementCertificationBoundaryOutcome = "endorsement/certification boundary approved",
+  productOutputOutcome = "product-output approved",
+  routeIsolationOutcome = "route-isolation approved",
+  articleMetaphorOutcome = "article-metaphor quality approved",
+) {
+  return `- [x] Record generated sample review: APPROVED / Jane Reviewer / ${reviewDate} / approved / assets/<article-slug>-linux / examples/images, skills/visual-ip-illustrations/assets/examples / release notes / ${sourceOutcome} / ${gimpAttributionOutcome} / ${trademarkOutcome} / ${uploadedImageIdentityOutcome} / ${distroLogoBoundaryOutcome} / ${endorsementCertificationBoundaryOutcome} / ${productOutputOutcome} / ${routeIsolationOutcome} / ${articleMetaphorOutcome}.`;
+}
+
 test("validator command prints deterministic harness smoke logs", () => {
   const result = runValidator();
 
@@ -450,7 +505,7 @@ test("validator command prints deterministic harness smoke logs", () => {
   assert.match(result.stdout, /\[PASS\] ROUTE-TABLE-001 /);
   assert.match(result.stdout, /\[PASS\] ROUTE-FERRIS-001 /);
   assert.match(result.stdout, /\[PASS\] SMOKE-FERRIS-001 /);
-  assert.match(result.stdout, /Summary: total=164 passed=164 failed=0 skipped=0/);
+  assert.match(result.stdout, /Summary: total=179 passed=179 failed=0 skipped=0/);
 
   assert.equal(result.stderr, "");
 });
@@ -713,7 +768,7 @@ test("validator emits the full Phase 47 matrix with zero failures", () => {
     resultLines.map((line) => line.match(/^\[PASS\] ([A-Z0-9-]+) /)?.[1]),
     requiredCheckIds,
   );
-  assert.match(result.stdout, /Summary: total=164 passed=164 failed=0 skipped=0/);
+  assert.match(result.stdout, /Summary: total=179 passed=179 failed=0 skipped=0/);
 
   assert.equal(result.stderr, "");
 });
@@ -816,7 +871,7 @@ test("validator fixture reports approved multilingual tokens in enforce mode", (
 
     assert.equal(result.status, 0);
     assert.match(result.stdout, /\[PASS\] LANG-SCAN-001 /);
-    assert.match(result.stdout, /Summary: total=164 passed=164 failed=0 skipped=0/);
+    assert.match(result.stdout, /Summary: total=179 passed=179 failed=0 skipped=0/);
 
   } finally {
     rmSync(fixtureRoot, { recursive: true, force: true });
@@ -1244,7 +1299,7 @@ test("parser helpers expose current package contract primitives", async () => {
   assert.ok(!frontmatter.data.description.includes("Chinese articles"));
 
   const routes = validators.parseMarkdownTable(routingText, "IP Routes");
-  assert.equal(routes.length, 9);
+  assert.equal(routes.length, 10);
   assert.deepEqual(routes.map((route) => route.id), [
     "xiaohei",
     "littlebox",
@@ -1255,6 +1310,7 @@ test("parser helpers expose current package contract primitives", async () => {
     "gopher",
     "caixukun",
     "hermes",
+    "linux",
   ]);
   assert.equal(routes[0].output_suffix, "illustrations");
   assert.equal(routes[0].default, "true");
@@ -1324,6 +1380,19 @@ test("parser helpers expose current package contract primitives", async () => {
   assert.equal(routes[8].output_suffix, "hermes");
   assert.equal(routes[8].default, "false");
   assert.equal(routes[8].status, "source-reviewed");
+  assert.deepEqual(validators.splitRouteAliases(routes[9].aliases), [
+    "Linux Mascot",
+    "Linux mascot",
+    "Linux",
+    "linux",
+    "Tux",
+    "tux",
+    "Linux penguin",
+    "Tux penguin",
+  ]);
+  assert.equal(routes[9].output_suffix, "linux");
+  assert.equal(routes[9].default, "false");
+  assert.equal(routes[9].status, "source-reviewed");
   assert.equal(routes[4].output_suffix, "seal");
   assert.equal(routes[4].default, "false");
   assert.equal(routes[4].status, "active");
@@ -1392,6 +1461,15 @@ test("parser helpers expose current package contract primitives", async () => {
     "references/ips/hermes/composition-patterns.md",
     "references/ips/hermes/prompt-template.md",
     "references/ips/hermes/qa-checklist.md",
+  ]);
+  assert.deepEqual(validators.splitRouteCell(routes[9].required_references), [
+    "references/ips/linux/index.md",
+    "references/ips/linux/source.md",
+    "references/ips/linux/style-dna.md",
+    "references/ips/linux/linux-ip.md",
+    "references/ips/linux/composition-patterns.md",
+    "references/ips/linux/prompt-template.md",
+    "references/ips/linux/qa-checklist.md",
   ]);
   assert.deepEqual(validators.splitRouteCell("`one`; `two`; three"), ["one", "two", "three"]);
 
@@ -1943,6 +2021,75 @@ test("approval parser helpers expose current release primitives", async () => {
   assert.equal(completeGeneratedHermesApproval.routeIsolationOutcomePresent, true);
   assert.equal(completeGeneratedHermesApproval.claimReviewOutcomePresent, true);
   assert.equal(completeGeneratedHermesApproval.articleMetaphorOutcomePresent, true);
+
+  const pendingLinuxApproval = validators.parsePublicLinuxSampleApproval(releaseChecklistText);
+  assert.equal(pendingLinuxApproval.found, true);
+  assert.equal(pendingLinuxApproval.checked, false);
+  assert.equal(pendingLinuxApproval.complete, false);
+  assert.equal(pendingLinuxApproval.allowedDirectoriesPresent, false);
+  assert.equal(pendingLinuxApproval.sourceOutcomePresent, false);
+  assert.equal(pendingLinuxApproval.gimpAttributionOutcomePresent, false);
+  assert.equal(pendingLinuxApproval.trademarkOutcomePresent, false);
+  assert.equal(pendingLinuxApproval.uploadedImageIdentityOutcomePresent, false);
+  assert.equal(pendingLinuxApproval.distroLogoBoundaryOutcomePresent, false);
+  assert.equal(pendingLinuxApproval.endorsementCertificationBoundaryOutcomePresent, false);
+  assert.equal(pendingLinuxApproval.productOutputOutcomePresent, false);
+  assert.equal(pendingLinuxApproval.routeIsolationOutcomePresent, false);
+  assert.equal(pendingLinuxApproval.uploadedImageOnlyOutcomePresent, false);
+  assert.equal(pendingLinuxApproval.articleMetaphorOutcomePresent, false);
+  assert.equal(pendingLinuxApproval.publicSampleOutcomePresent, false);
+
+  const approvedLinuxText = releaseChecklistText.replace(
+    pendingLinuxPublicAssetApprovalLine(),
+    completeLinuxPublicAssetApprovalLine(),
+  );
+  const approvedLinux = validators.parsePublicLinuxSampleApproval(approvedLinuxText);
+  assert.equal(approvedLinux.complete, true);
+  assert.deepEqual(approvedLinux.allowedDirectories, [
+    "examples/images",
+    "examples/images-en",
+    "skills/visual-ip-illustrations/assets/examples",
+  ]);
+  assert.equal(approvedLinux.sourceOutcomePresent, true);
+  assert.equal(approvedLinux.gimpAttributionOutcomePresent, true);
+  assert.equal(approvedLinux.trademarkOutcomePresent, true);
+  assert.equal(approvedLinux.uploadedImageIdentityOutcomePresent, true);
+  assert.equal(approvedLinux.distroLogoBoundaryOutcomePresent, true);
+  assert.equal(approvedLinux.endorsementCertificationBoundaryOutcomePresent, true);
+  assert.equal(approvedLinux.productOutputOutcomePresent, true);
+  assert.equal(approvedLinux.routeIsolationOutcomePresent, true);
+  assert.equal(approvedLinux.uploadedImageOnlyOutcomePresent, true);
+  assert.equal(approvedLinux.articleMetaphorOutcomePresent, true);
+  assert.equal(approvedLinux.publicSampleOutcomePresent, true);
+
+  const pendingGeneratedLinuxApproval = validators.parseGeneratedLinuxSampleApproval(releaseChecklistText);
+  assert.equal(pendingGeneratedLinuxApproval.found, true);
+  assert.equal(pendingGeneratedLinuxApproval.checked, false);
+  assert.equal(pendingGeneratedLinuxApproval.complete, false);
+  assert.equal(pendingGeneratedLinuxApproval.internalReviewDirectoriesPresent, false);
+  assert.equal(pendingGeneratedLinuxApproval.publicDirectoriesPresent, false);
+
+  const completeGeneratedLinuxText = releaseChecklistText.replace(
+    pendingGeneratedLinuxSampleLine(),
+    completeGeneratedLinuxSampleLine(),
+  );
+  const completeGeneratedLinuxApproval =
+    validators.parseGeneratedLinuxSampleApproval(completeGeneratedLinuxText);
+  assert.equal(completeGeneratedLinuxApproval.complete, true);
+  assert.deepEqual(completeGeneratedLinuxApproval.internalReviewDirectories, ["assets/<article-slug>-linux"]);
+  assert.deepEqual(completeGeneratedLinuxApproval.publicDirectories, [
+    "examples/images",
+    "skills/visual-ip-illustrations/assets/examples",
+  ]);
+  assert.equal(completeGeneratedLinuxApproval.sourceOutcomePresent, true);
+  assert.equal(completeGeneratedLinuxApproval.gimpAttributionOutcomePresent, true);
+  assert.equal(completeGeneratedLinuxApproval.trademarkOutcomePresent, true);
+  assert.equal(completeGeneratedLinuxApproval.uploadedImageIdentityOutcomePresent, true);
+  assert.equal(completeGeneratedLinuxApproval.distroLogoBoundaryOutcomePresent, true);
+  assert.equal(completeGeneratedLinuxApproval.endorsementCertificationBoundaryOutcomePresent, true);
+  assert.equal(completeGeneratedLinuxApproval.productOutputOutcomePresent, true);
+  assert.equal(completeGeneratedLinuxApproval.routeIsolationOutcomePresent, true);
+  assert.equal(completeGeneratedLinuxApproval.articleMetaphorOutcomePresent, true);
 });
 
 test("validator fixture rejects Tom route metadata drift", () => {
@@ -2684,7 +2831,7 @@ test("validator fixture reports Cai Xukun release surface drift", () => {
     [
       "mixed",
       "examples/prompts.md",
-      "nine separate variant groups: Xiaohei, Littlebox, Tom, Ferris, Seal, OpenClaw, Go Gopher, Cai Xukun, and Hermes Agent",
+      "ten separate variant groups: Xiaohei, Littlebox, Tom, Ferris, Seal, OpenClaw, Go Gopher, Cai Xukun, Hermes Agent, and Linux Mascot",
       "SMOKE-MIXED-CAIXUKUN-001",
     ],
     ["release", "RELEASE_CHECKLIST.md", "Cai Xukun Source Review", "RELEASE-CAIXUKUN-001"],
@@ -2865,12 +3012,144 @@ test("validator fixture reports Hermes release surface drift", () => {
     [
       "mixed",
       "examples/prompts.md",
-      "nine separate variant groups: Xiaohei, Littlebox, Tom, Ferris, Seal, OpenClaw, Go Gopher, Cai Xukun, and Hermes Agent",
+      "ten separate variant groups: Xiaohei, Littlebox, Tom, Ferris, Seal, OpenClaw, Go Gopher, Cai Xukun, Hermes Agent, and Linux Mascot",
       "SMOKE-MIXED-HERMES-001",
     ],
     ["release", "RELEASE_CHECKLIST.md", "Hermes Agent Source and MIT License Review", "RELEASE-HERMES-001"],
   ]) {
     assertHermesSurfaceDrift(name, relativePath, searchValue, expectedId);
+  }
+});
+
+function assertLinuxSurfaceDrift(name, relativePath, searchValue, expectedId, alternateExpectedIds = []) {
+  const fixtureRoot = copyFixture(`linux-${name}-parity-drift`);
+  try {
+    replaceAllInFixture(fixtureRoot, relativePath, searchValue, `removed ${name} marker`);
+
+    const result = runFixtureValidator(fixtureRoot);
+
+    assert.equal(result.status, 1);
+    const expectedIds = [expectedId, ...alternateExpectedIds];
+    assert.match(result.stdout, new RegExp(`\\[FAIL\\] (${expectedIds.join("|")}) `));
+    assert.match(result.stdout, new RegExp(relativePath.split(path.sep).join("\\/").replace(/\./g, "\\.")));
+    assert.match(result.stdout, /observed missing marker\(s\)|expected no rendered Linux Mascot assets|forbidden marker/);
+  } finally {
+    rmSync(fixtureRoot, { recursive: true, force: true });
+  }
+}
+
+test("validator fixture rejects Linux Mascot route metadata drift", () => {
+  const fixtureRoot = copyFixture("linux-route");
+  try {
+    replaceInFixture(
+      fixtureRoot,
+      path.join("skills", "visual-ip-illustrations", "references", "routing.md"),
+      "| `linux` | Linux Mascot | `Linux Mascot`, `Linux mascot`, `Linux`, `linux`, `Tux`, `tux`, `Linux penguin`, `Tux penguin` | `false` | `linux` |",
+      "| `linux` | Linux Mascot | `Linux Mascot`, `Tux` | `false` | `linux` |",
+    );
+
+    const result = runFixtureValidator(fixtureRoot);
+
+    assert.equal(result.status, 1);
+    assert.match(result.stdout, /\[FAIL\] ROUTE-LINUX-001 /);
+    assert.match(result.stdout, /skills\/visual-ip-illustrations\/references\/routing\.md/);
+    assert.match(result.stdout, /observed missing marker\(s\): Linux mascot, tux, Linux penguin, Tux penguin/);
+  } finally {
+    rmSync(fixtureRoot, { recursive: true, force: true });
+  }
+});
+
+test("validator fixture reports Linux Mascot source marker drift", () => {
+  const fixtureRoot = copyFixture("linux-source");
+  try {
+    replaceAllInFixture(
+      fixtureRoot,
+      path.join("skills", "visual-ip-illustrations", "references", "ips", "linux", "source.md"),
+      "071bc327e4a2814864f9e2fcdea99aa50482a92ef4e816de9d9ce5f40e17bb2a",
+      "missing-sha",
+    );
+    replaceAllInFixture(
+      fixtureRoot,
+      path.join("skills", "visual-ip-illustrations", "references", "ips", "linux", "source.md"),
+      "/Users/longnv/Downloads/Linux-logo.jpg",
+      "/Users/longnv/Downloads/tux.jpg",
+    );
+
+    const result = runFixtureValidator(fixtureRoot);
+
+    assert.equal(result.status, 1);
+    assert.match(result.stdout, /\[FAIL\] SOURCE-LINUX-001 /);
+    assert.match(result.stdout, /skills\/visual-ip-illustrations\/references\/ips\/linux\/source\.md/);
+    assert.match(result.stdout, /071bc327e4a2814864f9e2fcdea99aa50482a92ef4e816de9d9ce5f40e17bb2a/);
+    assert.match(result.stdout, /\/Users\/longnv\/Downloads\/Linux-logo\.jpg/);
+  } finally {
+    rmSync(fixtureRoot, { recursive: true, force: true });
+  }
+});
+
+test("validator fixture reports Linux Mascot pack, prompt, QA, and identity drift", () => {
+  for (const [name, relativePath, searchValue, expectedId] of [
+    [
+      "prompt",
+      path.join("skills", "visual-ip-illustrations", "references", "ips", "linux", "prompt-template.md"),
+      "Linux Mascot planning fields gate",
+      "PROMPT-LINUX-001",
+    ],
+    [
+      "qa",
+      path.join("skills", "visual-ip-illustrations", "references", "ips", "linux", "qa-checklist.md"),
+      "Linux Mascot QA route leakage failure",
+      "QA-LINUX-001",
+    ],
+    [
+      "identity",
+      path.join("skills", "visual-ip-illustrations", "references", "ips", "linux", "composition-patterns.md"),
+      "Linux Mascot active-composition gate",
+      "IP-LINUX-001",
+    ],
+  ]) {
+    const fixtureRoot = copyFixture(`linux-${name}-drift`);
+    try {
+      replaceAllInFixture(fixtureRoot, relativePath, searchValue, `removed ${name} marker`);
+
+      const result = runFixtureValidator(fixtureRoot);
+
+      assert.equal(result.status, 1);
+      assert.match(result.stdout, new RegExp(`\\[FAIL\\] ${expectedId} `));
+      assert.match(result.stdout, /skills\/visual-ip-illustrations\/references\/ips\/linux/);
+      assert.match(result.stdout, /observed missing marker\(s\)/);
+    } finally {
+      rmSync(fixtureRoot, { recursive: true, force: true });
+    }
+  }
+});
+
+test("validator fixture reports Linux Mascot release surface drift", () => {
+  for (const [name, relativePath, searchValue, expectedId, alternateExpectedIds] of [
+    [
+      "agent",
+      path.join("skills", "visual-ip-illustrations", "agents", "openai.yaml"),
+      "allow_implicit_invocation: true",
+      "AGENT-LINUX-001",
+    ],
+    ["docs", "README.md", "skills/visual-ip-illustrations/references/ips/linux/source.md", "DOC-LINUX-001"],
+    [
+      "localized-readme",
+      path.join("readmes", "README.zh.md"),
+      "assets/&lt;article-slug&gt;-linux/",
+      "DOC-LINUX-001",
+    ],
+    ["notice", "NOTICE.md", "Linux Mascot Source Attribution and Public Sample Gate", "NOTICE-LINUX-001"],
+    ["smoke", "examples/prompts.md", "### Explicit Linux Mascot: route smoke check", "SMOKE-LINUX-001"],
+    [
+      "mixed",
+      "examples/prompts.md",
+      "ten separate variant groups: Xiaohei, Littlebox, Tom, Ferris, Seal, OpenClaw, Go Gopher, Cai Xukun, Hermes Agent, and Linux Mascot",
+      "SMOKE-MIXED-LINUX-001",
+    ],
+    ["release", "RELEASE_CHECKLIST.md", "Linux Mascot Source and Trademark Review", "RELEASE-LINUX-001"],
+  ]) {
+    assertLinuxSurfaceDrift(name, relativePath, searchValue, expectedId, alternateExpectedIds);
   }
 });
 
@@ -3507,7 +3786,7 @@ test("validator fixture enforces public Tom asset approval parsing", async () =>
     const approvedResult = runFixtureValidator(fixtureRoot);
     assert.equal(approvedResult.status, 0);
     assert.match(approvedResult.stdout, /\[PASS\] BOUNDARY-TOM-IMG-001 /);
-    assert.match(approvedResult.stdout, /Summary: total=164 passed=164 failed=0 skipped=0/);
+    assert.match(approvedResult.stdout, /Summary: total=179 passed=179 failed=0 skipped=0/);
 
   } finally {
     rmSync(fixtureRoot, { recursive: true, force: true });
@@ -3593,7 +3872,7 @@ test("validator fixture enforces public Ferris sample approval parsing", async (
     const approvedResult = runFixtureValidator(fixtureRoot);
     assert.equal(approvedResult.status, 0);
     assert.match(approvedResult.stdout, /\[PASS\] BOUNDARY-FERRIS-IMG-001 /);
-    assert.match(approvedResult.stdout, /Summary: total=164 passed=164 failed=0 skipped=0/);
+    assert.match(approvedResult.stdout, /Summary: total=179 passed=179 failed=0 skipped=0/);
 
   } finally {
     rmSync(fixtureRoot, { recursive: true, force: true });
@@ -3642,7 +3921,7 @@ test("validator fixture enforces public Seal sample approval parsing", async () 
     const approvedResult = runFixtureValidator(fixtureRoot);
     assert.equal(approvedResult.status, 0);
     assert.match(approvedResult.stdout, /\[PASS\] BOUNDARY-SEAL-IMG-001 /);
-    assert.match(approvedResult.stdout, /Summary: total=164 passed=164 failed=0 skipped=0/);
+    assert.match(approvedResult.stdout, /Summary: total=179 passed=179 failed=0 skipped=0/);
 
   } finally {
     rmSync(fixtureRoot, { recursive: true, force: true });
@@ -3694,7 +3973,7 @@ test("validator fixture enforces public OpenClaw sample approval parsing", async
     const approvedResult = runFixtureValidator(fixtureRoot);
     assert.equal(approvedResult.status, 0);
     assert.match(approvedResult.stdout, /\[PASS\] BOUNDARY-OPENCLAW-IMG-001 /);
-    assert.match(approvedResult.stdout, /Summary: total=164 passed=164 failed=0 skipped=0/);
+    assert.match(approvedResult.stdout, /Summary: total=179 passed=179 failed=0 skipped=0/);
 
   } finally {
     rmSync(fixtureRoot, { recursive: true, force: true });
@@ -3756,7 +4035,7 @@ test("validator fixture enforces public Go Gopher sample approval parsing", asyn
     const approvedResult = runFixtureValidator(fixtureRoot);
     assert.equal(approvedResult.status, 0);
     assert.match(approvedResult.stdout, /\[PASS\] BOUNDARY-GOPHER-IMG-001 /);
-    assert.match(approvedResult.stdout, /Summary: total=164 passed=164 failed=0 skipped=0/);
+    assert.match(approvedResult.stdout, /Summary: total=179 passed=179 failed=0 skipped=0/);
 
   } finally {
     rmSync(fixtureRoot, { recursive: true, force: true });
@@ -4113,7 +4392,7 @@ test("validator fixture enforces public Cai Xukun sample approval parsing", asyn
     const approvedResult = runFixtureValidator(fixtureRoot);
     assert.equal(approvedResult.status, 0);
     assert.match(approvedResult.stdout, /\[PASS\] BOUNDARY-CAIXUKUN-IMG-001 /);
-    assert.match(approvedResult.stdout, /Summary: total=164 passed=164 failed=0 skipped=0/);
+    assert.match(approvedResult.stdout, /Summary: total=179 passed=179 failed=0 skipped=0/);
 
   } finally {
     rmSync(fixtureRoot, { recursive: true, force: true });
@@ -4398,6 +4677,267 @@ test("validator fixture rejects Hermes public sample placeholder approvals", asy
 
       assert.equal(result.status, 1);
       assert.match(result.stdout, /\[FAIL\] BOUNDARY-HERMES-IMG-001 /);
+    } finally {
+      rmSync(fixtureRoot, { recursive: true, force: true });
+    }
+  }
+});
+
+test("validator fixture reports Linux Mascot leakage in non-Linux packs", () => {
+  for (const [name, relativePath] of [
+    ["xiaohei", path.join("skills", "visual-ip-illustrations", "references", "xiaohei-ip.md")],
+    ["littlebox", path.join("skills", "visual-ip-illustrations", "references", "ips", "littlebox", "littlebox-ip.md")],
+    ["tom", path.join("skills", "visual-ip-illustrations", "references", "ips", "tom", "tom-ip.md")],
+    ["ferris", path.join("skills", "visual-ip-illustrations", "references", "ips", "ferris", "ferris-ip.md")],
+    ["seal", path.join("skills", "visual-ip-illustrations", "references", "ips", "seal", "seal-ip.md")],
+    ["openclaw", path.join("skills", "visual-ip-illustrations", "references", "ips", "openclaw", "openclaw-ip.md")],
+    ["gopher", path.join("skills", "visual-ip-illustrations", "references", "ips", "gopher", "gopher-ip.md")],
+    ["caixukun", path.join("skills", "visual-ip-illustrations", "references", "ips", "caixukun", "caixukun-ip.md")],
+    ["hermes", path.join("skills", "visual-ip-illustrations", "references", "ips", "hermes", "hermes-ip.md")],
+  ]) {
+    const fixtureRoot = copyFixture(`linux-leak-${name}`);
+    try {
+      writeFileSync(
+        path.join(fixtureRoot, relativePath),
+        `${readFileSync(path.join(fixtureRoot, relativePath), "utf8")}\nLinux Mascot source-reviewed route marker leak.\n`,
+        "utf8",
+      );
+
+      const result = runFixtureValidator(fixtureRoot);
+
+      assert.equal(result.status, 1);
+      assert.match(result.stdout, /\[FAIL\] BOUNDARY-LINUX-LEAK-001 /);
+      assert.match(result.stdout, new RegExp(relativePath.split(path.sep).join("\\/").replace(/\./g, "\\.")));
+      assert.match(result.stdout, /forbidden marker\(s\): Linux Mascot/);
+    } finally {
+      rmSync(fixtureRoot, { recursive: true, force: true });
+    }
+  }
+});
+
+test("validator fixture enforces public Linux Mascot sample approval parsing", async () => {
+  const validators = await import(`${scriptPath}?linuxApproval=${Date.now()}`);
+  const fixtureRoot = copyFixture("linux-public-asset");
+  try {
+    writeFileSync(path.join(fixtureRoot, "examples", "images", "99-linux-test.png"), "fixture", "utf8");
+
+    const pendingResult = runFixtureValidator(fixtureRoot);
+
+    assert.equal(pendingResult.status, 1);
+    assert.match(pendingResult.stdout, /\[FAIL\] BOUNDARY-LINUX-IMG-001 /);
+    assert.match(pendingResult.stdout, /examples\/images, examples\/images-en, and skills\/visual-ip-illustrations\/assets\/examples/);
+    assert.match(pendingResult.stdout, /examples\/images\/99-linux-test\.png/);
+    assert.match(pendingResult.stdout, /approval status=PENDING/);
+    assert.match(pendingResult.stdout, /reviewer=missing/);
+    assert.match(pendingResult.stdout, /allowed directories=missing/);
+    assert.match(pendingResult.stdout, /Tux source outcome=missing/);
+    assert.match(pendingResult.stdout, /GIMP attribution outcome=missing/);
+    assert.match(pendingResult.stdout, /Linux trademark outcome=missing/);
+    assert.match(pendingResult.stdout, /uploaded-image identity outcome=missing/);
+    assert.match(pendingResult.stdout, /distro-logo boundary outcome=missing/);
+    assert.match(pendingResult.stdout, /endorsement\/certification boundary outcome=missing/);
+    assert.match(pendingResult.stdout, /product-output outcome=missing/);
+    assert.match(pendingResult.stdout, /route-isolation outcome=missing/);
+    assert.match(pendingResult.stdout, /uploaded-image-only Tux article illustration outcome=missing/);
+    assert.match(pendingResult.stdout, /article-metaphor quality outcome=missing/);
+    assert.match(pendingResult.stdout, /public-sample decision=missing/);
+
+    const releaseChecklistPath = path.join(fixtureRoot, "RELEASE_CHECKLIST.md");
+    const approvedText = readFileSync(releaseChecklistPath, "utf8").replace(
+      pendingLinuxPublicAssetApprovalLine(),
+      completeLinuxPublicAssetApprovalLine(),
+    );
+    writeFileSync(releaseChecklistPath, approvedText, "utf8");
+
+    const approval = validators.parsePublicLinuxSampleApproval(approvedText);
+    assert.equal(approval.complete, true);
+    assert.equal(approval.reviewerPresent, true);
+    assert.equal(approval.datePresent, true);
+    assert.equal(approval.allowedDirectoriesPresent, true);
+    assert.equal(approval.sourceOutcomePresent, true);
+    assert.equal(approval.gimpAttributionOutcomePresent, true);
+    assert.equal(approval.trademarkOutcomePresent, true);
+    assert.equal(approval.uploadedImageIdentityOutcomePresent, true);
+    assert.equal(approval.distroLogoBoundaryOutcomePresent, true);
+    assert.equal(approval.endorsementCertificationBoundaryOutcomePresent, true);
+    assert.equal(approval.productOutputOutcomePresent, true);
+    assert.equal(approval.routeIsolationOutcomePresent, true);
+    assert.equal(approval.uploadedImageOnlyOutcomePresent, true);
+    assert.equal(approval.articleMetaphorOutcomePresent, true);
+    assert.equal(approval.publicSampleOutcomePresent, true);
+
+    const approvedResult = runFixtureValidator(fixtureRoot);
+    assert.match(approvedResult.stdout, /\[PASS\] BOUNDARY-LINUX-IMG-001 /);
+  } finally {
+    rmSync(fixtureRoot, { recursive: true, force: true });
+  }
+});
+
+test("validator fixture rejects Linux Mascot public sample placeholder approvals", async () => {
+  const validators = await import(`${scriptPath}?linuxPlaceholderApproval=${Date.now()}`);
+  const releaseChecklistText = readFileSync(path.join(repoRoot, "RELEASE_CHECKLIST.md"), "utf8");
+
+  for (const [name, approvalLine, expectedFlag] of [
+    ["date", completeLinuxPublicAssetApprovalLine("TBD"), "datePresent"],
+    [
+      "source",
+      completeLinuxPublicAssetApprovalLine(
+        "2026-06-13",
+        "Tux source outcome",
+      ),
+      "sourceOutcomePresent",
+    ],
+    [
+      "gimp",
+      completeLinuxPublicAssetApprovalLine(
+        "2026-06-13",
+        "Tux source approved",
+        "GIMP attribution outcome",
+      ),
+      "gimpAttributionOutcomePresent",
+    ],
+    [
+      "trademark",
+      completeLinuxPublicAssetApprovalLine(
+        "2026-06-13",
+        "Tux source approved",
+        "GIMP attribution approved",
+        "Linux trademark outcome",
+      ),
+      "trademarkOutcomePresent",
+    ],
+    [
+      "uploaded-image",
+      completeLinuxPublicAssetApprovalLine(
+        "2026-06-13",
+        "Tux source approved",
+        "GIMP attribution approved",
+        "Linux trademark approved",
+        "uploaded-image identity outcome",
+      ),
+      "uploadedImageIdentityOutcomePresent",
+    ],
+    [
+      "distro-logo",
+      completeLinuxPublicAssetApprovalLine(
+        "2026-06-13",
+        "Tux source approved",
+        "GIMP attribution approved",
+        "Linux trademark approved",
+        "uploaded-image identity approved",
+        "distro-logo boundary outcome",
+      ),
+      "distroLogoBoundaryOutcomePresent",
+    ],
+    [
+      "endorsement",
+      completeLinuxPublicAssetApprovalLine(
+        "2026-06-13",
+        "Tux source approved",
+        "GIMP attribution approved",
+        "Linux trademark approved",
+        "uploaded-image identity approved",
+        "distro-logo boundary approved",
+        "endorsement/certification boundary outcome",
+      ),
+      "endorsementCertificationBoundaryOutcomePresent",
+    ],
+    [
+      "product-output",
+      completeLinuxPublicAssetApprovalLine(
+        "2026-06-13",
+        "Tux source approved",
+        "GIMP attribution approved",
+        "Linux trademark approved",
+        "uploaded-image identity approved",
+        "distro-logo boundary approved",
+        "endorsement/certification boundary approved",
+        "product-output outcome",
+      ),
+      "productOutputOutcomePresent",
+    ],
+    [
+      "route-isolation",
+      completeLinuxPublicAssetApprovalLine(
+        "2026-06-13",
+        "Tux source approved",
+        "GIMP attribution approved",
+        "Linux trademark approved",
+        "uploaded-image identity approved",
+        "distro-logo boundary approved",
+        "endorsement/certification boundary approved",
+        "product-output approved",
+        "route-isolation outcome",
+      ),
+      "routeIsolationOutcomePresent",
+    ],
+    [
+      "uploaded-image-only",
+      completeLinuxPublicAssetApprovalLine(
+        "2026-06-13",
+        "Tux source approved",
+        "GIMP attribution approved",
+        "Linux trademark approved",
+        "uploaded-image identity approved",
+        "distro-logo boundary approved",
+        "endorsement/certification boundary approved",
+        "product-output approved",
+        "route-isolation approved",
+        "uploaded-image-only Tux article illustration outcome",
+      ),
+      "uploadedImageOnlyOutcomePresent",
+    ],
+    [
+      "article-metaphor",
+      completeLinuxPublicAssetApprovalLine(
+        "2026-06-13",
+        "Tux source approved",
+        "GIMP attribution approved",
+        "Linux trademark approved",
+        "uploaded-image identity approved",
+        "distro-logo boundary approved",
+        "endorsement/certification boundary approved",
+        "product-output approved",
+        "route-isolation approved",
+        "uploaded-image-only Tux article illustration approved",
+        "article-metaphor quality outcome",
+      ),
+      "articleMetaphorOutcomePresent",
+    ],
+    [
+      "public-sample",
+      completeLinuxPublicAssetApprovalLine(
+        "2026-06-13",
+        "Tux source approved",
+        "GIMP attribution approved",
+        "Linux trademark approved",
+        "uploaded-image identity approved",
+        "distro-logo boundary approved",
+        "endorsement/certification boundary approved",
+        "product-output approved",
+        "route-isolation approved",
+        "uploaded-image-only Tux article illustration approved",
+        "article-metaphor quality approved",
+        "public-sample decision",
+      ),
+      "publicSampleOutcomePresent",
+    ],
+  ]) {
+    const approvalText = releaseChecklistText.replace(pendingLinuxPublicAssetApprovalLine(), approvalLine);
+    const approval = validators.parsePublicLinuxSampleApproval(approvalText);
+    assert.equal(approval.checked, true);
+    assert.equal(approval.complete, false);
+    assert.equal(approval[expectedFlag], false, name);
+
+    const fixtureRoot = copyFixture(`linux-placeholder-${name}`);
+    try {
+      writeFileSync(path.join(fixtureRoot, "examples", "images", "99-linux-test.png"), "fixture", "utf8");
+      replaceInFixture(fixtureRoot, "RELEASE_CHECKLIST.md", pendingLinuxPublicAssetApprovalLine(), approvalLine);
+
+      const result = runFixtureValidator(fixtureRoot);
+
+      assert.equal(result.status, 1);
+      assert.match(result.stdout, /\[FAIL\] BOUNDARY-LINUX-IMG-001 /);
     } finally {
       rmSync(fixtureRoot, { recursive: true, force: true });
     }
@@ -5062,6 +5602,168 @@ test("validator fixture distinguishes Generated Sample Hermes review outputs fro
     assert.equal(result.status, 0);
     assert.match(result.stdout, /\[PASS\] BOUNDARY-HERMES-GEN-001 /);
     assert.match(result.stdout, /\[PASS\] BOUNDARY-HERMES-IMG-001 /);
+  } finally {
+    rmSync(fixtureRoot, { recursive: true, force: true });
+  }
+});
+
+test("validator fixture distinguishes Generated Sample Linux Mascot review outputs from public samples", async () => {
+  const validators = await import(`${scriptPath}?generatedLinuxApproval=${Date.now()}`);
+  const releaseChecklistText = readFileSync(path.join(repoRoot, "RELEASE_CHECKLIST.md"), "utf8");
+
+  const pendingApproval = validators.parseGeneratedLinuxSampleApproval(releaseChecklistText);
+  assert.equal(pendingApproval.found, true);
+  assert.equal(pendingApproval.checked, false);
+  assert.equal(pendingApproval.complete, false);
+  assert.equal(pendingApproval.internalReviewDirectoriesPresent, false);
+  assert.equal(pendingApproval.publicDirectoriesPresent, false);
+
+  const completeText = releaseChecklistText.replace(
+    pendingGeneratedLinuxSampleLine(),
+    completeGeneratedLinuxSampleLine(),
+  );
+  const completeApproval = validators.parseGeneratedLinuxSampleApproval(completeText);
+  assert.equal(completeApproval.complete, true);
+  assert.equal(completeApproval.internalReviewDirectoriesPresent, true);
+  assert.equal(completeApproval.publicDirectoriesPresent, true);
+  assert.equal(completeApproval.sourceOutcomePresent, true);
+  assert.equal(completeApproval.gimpAttributionOutcomePresent, true);
+  assert.equal(completeApproval.trademarkOutcomePresent, true);
+  assert.equal(completeApproval.uploadedImageIdentityOutcomePresent, true);
+  assert.equal(completeApproval.distroLogoBoundaryOutcomePresent, true);
+  assert.equal(completeApproval.endorsementCertificationBoundaryOutcomePresent, true);
+  assert.equal(completeApproval.productOutputOutcomePresent, true);
+  assert.equal(completeApproval.routeIsolationOutcomePresent, true);
+  assert.equal(completeApproval.articleMetaphorOutcomePresent, true);
+
+  for (const [name, approvalLine, expectedFlag] of [
+    ["date", completeGeneratedLinuxSampleLine("TBD"), "datePresent"],
+    [
+      "source",
+      completeGeneratedLinuxSampleLine(
+        "2026-06-13",
+        "Tux source outcome",
+      ),
+      "sourceOutcomePresent",
+    ],
+    [
+      "gimp",
+      completeGeneratedLinuxSampleLine(
+        "2026-06-13",
+        "Tux source approved",
+        "GIMP attribution outcome",
+      ),
+      "gimpAttributionOutcomePresent",
+    ],
+    [
+      "trademark",
+      completeGeneratedLinuxSampleLine(
+        "2026-06-13",
+        "Tux source approved",
+        "GIMP attribution approved",
+        "Linux trademark outcome",
+      ),
+      "trademarkOutcomePresent",
+    ],
+    [
+      "uploaded-image",
+      completeGeneratedLinuxSampleLine(
+        "2026-06-13",
+        "Tux source approved",
+        "GIMP attribution approved",
+        "Linux trademark approved",
+        "uploaded-image identity outcome",
+      ),
+      "uploadedImageIdentityOutcomePresent",
+    ],
+    [
+      "distro-logo",
+      completeGeneratedLinuxSampleLine(
+        "2026-06-13",
+        "Tux source approved",
+        "GIMP attribution approved",
+        "Linux trademark approved",
+        "uploaded-image identity approved",
+        "distro-logo boundary outcome",
+      ),
+      "distroLogoBoundaryOutcomePresent",
+    ],
+    [
+      "endorsement",
+      completeGeneratedLinuxSampleLine(
+        "2026-06-13",
+        "Tux source approved",
+        "GIMP attribution approved",
+        "Linux trademark approved",
+        "uploaded-image identity approved",
+        "distro-logo boundary approved",
+        "endorsement/certification boundary outcome",
+      ),
+      "endorsementCertificationBoundaryOutcomePresent",
+    ],
+    [
+      "product-output",
+      completeGeneratedLinuxSampleLine(
+        "2026-06-13",
+        "Tux source approved",
+        "GIMP attribution approved",
+        "Linux trademark approved",
+        "uploaded-image identity approved",
+        "distro-logo boundary approved",
+        "endorsement/certification boundary approved",
+        "product-output outcome",
+      ),
+      "productOutputOutcomePresent",
+    ],
+    [
+      "route-isolation",
+      completeGeneratedLinuxSampleLine(
+        "2026-06-13",
+        "Tux source approved",
+        "GIMP attribution approved",
+        "Linux trademark approved",
+        "uploaded-image identity approved",
+        "distro-logo boundary approved",
+        "endorsement/certification boundary approved",
+        "product-output approved",
+        "route-isolation outcome",
+      ),
+      "routeIsolationOutcomePresent",
+    ],
+    [
+      "article-metaphor",
+      completeGeneratedLinuxSampleLine(
+        "2026-06-13",
+        "Tux source approved",
+        "GIMP attribution approved",
+        "Linux trademark approved",
+        "uploaded-image identity approved",
+        "distro-logo boundary approved",
+        "endorsement/certification boundary approved",
+        "product-output approved",
+        "route-isolation approved",
+        "article-metaphor quality outcome",
+      ),
+      "articleMetaphorOutcomePresent",
+    ],
+  ]) {
+    const placeholderText = releaseChecklistText.replace(pendingGeneratedLinuxSampleLine(), approvalLine);
+    const placeholderApproval = validators.parseGeneratedLinuxSampleApproval(placeholderText);
+    assert.equal(placeholderApproval.checked, true);
+    assert.equal(placeholderApproval.complete, false);
+    assert.equal(placeholderApproval[expectedFlag], false, name);
+  }
+
+  const fixtureRoot = copyFixture("linux-generated-sample");
+  try {
+    const workspaceOutputDir = path.join(fixtureRoot, "assets", "article-linux");
+    mkdirSync(workspaceOutputDir, { recursive: true });
+    writeFileSync(path.join(workspaceOutputDir, "99-linux-test.png"), "fixture", "utf8");
+
+    const result = runFixtureValidator(fixtureRoot);
+    assert.equal(result.status, 0);
+    assert.match(result.stdout, /\[PASS\] BOUNDARY-LINUX-GEN-001 /);
+    assert.match(result.stdout, /\[PASS\] BOUNDARY-LINUX-IMG-001 /);
   } finally {
     rmSync(fixtureRoot, { recursive: true, force: true });
   }
