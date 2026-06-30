@@ -1,8 +1,8 @@
 ---
 phase: 57-linux-mascot-validation-and-release-evidence
-fixed_at: 2026-06-30T23:46:01Z
+fixed_at: 2026-06-30T23:56:45Z
 review_path: .planning/phases/57-linux-mascot-validation-and-release-evidence/57-REVIEW.md
-iteration: 1
+iteration: 2
 findings_in_scope: 1
 fixed: 1
 skipped: 0
@@ -11,9 +11,9 @@ status: all_fixed
 
 # Phase 57: Code Review Fix Report
 
-**Fixed at:** 2026-06-30T23:46:01Z
+**Fixed at:** 2026-06-30T23:56:45Z
 **Source review:** `.planning/phases/57-linux-mascot-validation-and-release-evidence/57-REVIEW.md`
-**Iteration:** 1
+**Iteration:** 2
 
 **Summary:**
 - Findings in scope: 1
@@ -22,24 +22,27 @@ status: all_fixed
 
 ## Fixed Issues
 
-### CR-01: Linux approval parser accepts pending outcome text as complete
+### CR-01: Linux approval parser accepts explicit negative outcome text as complete
 
-**Files modified:** `scripts/validate-skill-package.mjs`, `scripts/validate-skill-package.test.mjs`
-**Commit:** c4be281
-**Applied fix:** Added shared Linux approval outcome semantics requiring affirmative approval/completion terms and rejecting pending/TBD/todo/incomplete placeholder language. Added public and generated Linux Mascot regression fixtures so pending source, attribution, trademark, and public-sample decisions fail the relevant gates. Added generated Linux sample output detection so `BOUNDARY-LINUX-GEN-001` fails when generated Linux/Tux samples exist without complete generated-sample approval.
+**Files modified:** `scripts/validate-skill-package.mjs`, `scripts/validate-skill-package.test.mjs`, `.planning/phases/57-linux-mascot-validation-and-release-evidence/57-REVIEW-FIX.md`
+**Commit:** current CR-01 re-review fix commit
+**Applied fix:** Added rejection filtering before affirmative Linux outcome matching so explicit negative outcomes such as `not approved`, `denied`, `rejected`, and `failed` cannot satisfy public or generated Linux sample approval gates. Added route-scoped regression fixtures for public Linux/Tux sample approval and generated Linux sample review, asserting parser flags and validator gate failures for negative source, GIMP attribution, Linux trademark, public-sample, and article-metaphor outcomes.
+
+**Re-review source:** Russell CR-01 blocker.
 
 **Verification:**
 - `node -c scripts/validate-skill-package.mjs`
 - `node -c scripts/validate-skill-package.test.mjs`
-- `node --test --test-name-pattern 'Linux Mascot' scripts/validate-skill-package.test.mjs` -> 10 passed
+- `node --test --test-name-pattern 'Linux Mascot.*negative|Linux Mascot.*pending|Linux Mascot.*approval' scripts/validate-skill-package.test.mjs` -> 4 passed
+- `node --test --test-name-pattern 'Linux Mascot' scripts/validate-skill-package.test.mjs` -> 11 passed
 - `node scripts/validate-skill-package.mjs` -> total=180 passed=180 failed=0 skipped=0
-- `node --test scripts/validate-skill-package.test.mjs` -> tests 127, pass 127, fail 0
+- `node --test scripts/validate-skill-package.test.mjs` -> tests 128, pass 128, fail 0
 - `git diff --check` -> exit 0
 
-**Notes:** `gsd-tools query commit` was not available in this worktree PATH, so the fix was committed atomically with `git commit` using the required English message format.
+**Risks:** Approval parsing remains intentionally route-scoped to Linux sample approval fields. Other route approval parsers keep their existing semantics.
 
 ---
 
-_Fixed: 2026-06-30T23:46:01Z_
+_Fixed: 2026-06-30T23:56:45Z_
 _Fixer: the agent (gsd-code-fixer)_
-_Iteration: 1_
+_Iteration: 2_

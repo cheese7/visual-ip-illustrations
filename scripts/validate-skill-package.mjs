@@ -1832,9 +1832,13 @@ function parseHermesApprovalLine(approvalLine, kind) {
 }
 
 function approvedLinuxOutcomePresent(value, placeholderPattern) {
+  const negativeOutcomePattern =
+    /\b(not\s+approved|unapproved|denied|rejected|failed|failure|fail|declined|blocked|disallowed)\b/i;
+
   return (
     Boolean(value) &&
     !placeholderPattern.test(value) &&
+    !negativeOutcomePattern.test(value) &&
     /\b(approved|complete|completed|granted)\b/i.test(value) &&
     !/\b(pending|tbd|todo|incomplete|reviewer|approval status)\b/i.test(value)
   );

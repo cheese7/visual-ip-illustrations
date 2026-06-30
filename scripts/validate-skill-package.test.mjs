@@ -5042,6 +5042,83 @@ test("validator fixture rejects Linux Mascot public sample pending approval outc
   }
 });
 
+test("validator fixture rejects Linux Mascot public sample negative approval outcomes", async () => {
+  const validators = await import(`${scriptPath}?linuxNegativeApproval=${Date.now()}`);
+  const releaseChecklistText = readFileSync(path.join(repoRoot, "RELEASE_CHECKLIST.md"), "utf8");
+
+  for (const [name, approvalLine, expectedFlag, expectedField] of [
+    [
+      "source-not-approved",
+      completeLinuxPublicAssetApprovalLine(
+        "2026-06-13",
+        "Tux source not approved",
+      ),
+      "sourceOutcomePresent",
+      "Tux source outcome=missing",
+    ],
+    [
+      "gimp-denied",
+      completeLinuxPublicAssetApprovalLine(
+        "2026-06-13",
+        "Tux source approved",
+        "GIMP attribution denied",
+      ),
+      "gimpAttributionOutcomePresent",
+      "GIMP attribution outcome=missing",
+    ],
+    [
+      "trademark-rejected",
+      completeLinuxPublicAssetApprovalLine(
+        "2026-06-13",
+        "Tux source approved",
+        "GIMP attribution approved",
+        "Linux trademark rejected",
+      ),
+      "trademarkOutcomePresent",
+      "Linux trademark outcome=missing",
+    ],
+    [
+      "public-sample-failed",
+      completeLinuxPublicAssetApprovalLine(
+        "2026-06-13",
+        "Tux source approved",
+        "GIMP attribution approved",
+        "Linux trademark approved",
+        "uploaded-image identity approved",
+        "distro-logo boundary approved",
+        "endorsement/certification boundary approved",
+        "product-output approved",
+        "route-isolation approved",
+        "uploaded-image-only Tux article illustration approved",
+        "article-metaphor quality approved",
+        "public-sample decision failed",
+      ),
+      "publicSampleOutcomePresent",
+      "public-sample decision=missing",
+    ],
+  ]) {
+    const approvalText = releaseChecklistText.replace(pendingLinuxPublicAssetApprovalLine(), approvalLine);
+    const approval = validators.parsePublicLinuxSampleApproval(approvalText);
+    assert.equal(approval.checked, true);
+    assert.equal(approval.complete, false);
+    assert.equal(approval[expectedFlag], false, name);
+
+    const fixtureRoot = copyFixture(`linux-negative-${name}`);
+    try {
+      writeFileSync(path.join(fixtureRoot, "examples", "images", "99-linux-test.png"), "fixture", "utf8");
+      replaceInFixture(fixtureRoot, "RELEASE_CHECKLIST.md", pendingLinuxPublicAssetApprovalLine(), approvalLine);
+
+      const result = runFixtureValidator(fixtureRoot);
+
+      assert.equal(result.status, 1);
+      assert.match(result.stdout, /\[FAIL\] BOUNDARY-LINUX-IMG-001 /);
+      assert.match(result.stdout, new RegExp(expectedField));
+    } finally {
+      rmSync(fixtureRoot, { recursive: true, force: true });
+    }
+  }
+});
+
 test("validator fixture distinguishes Generated Sample Ferris review outputs from public samples", async () => {
   const validators = await import(`${scriptPath}?generatedFerrisApproval=${Date.now()}`);
   const releaseChecklistText = readFileSync(path.join(repoRoot, "RELEASE_CHECKLIST.md"), "utf8");
@@ -5891,6 +5968,78 @@ test("validator fixture distinguishes Generated Sample Linux Mascot review outpu
     assert.equal(approval[expectedFlag], false, name);
 
     const fixtureRoot = copyFixture(`linux-generated-pending-${name}`);
+    try {
+      const workspaceOutputDir = path.join(fixtureRoot, "assets", "article-linux");
+      mkdirSync(workspaceOutputDir, { recursive: true });
+      writeFileSync(path.join(workspaceOutputDir, "99-linux-test.png"), "fixture", "utf8");
+      replaceInFixture(fixtureRoot, "RELEASE_CHECKLIST.md", pendingGeneratedLinuxSampleLine(), approvalLine);
+
+      const result = runFixtureValidator(fixtureRoot);
+
+      assert.equal(result.status, 1);
+      assert.match(result.stdout, /\[FAIL\] BOUNDARY-LINUX-GEN-001 /);
+      assert.match(result.stdout, new RegExp(expectedField));
+    } finally {
+      rmSync(fixtureRoot, { recursive: true, force: true });
+    }
+  }
+
+  for (const [name, approvalLine, expectedFlag, expectedField] of [
+    [
+      "source-not-approved",
+      completeGeneratedLinuxSampleLine(
+        "2026-06-13",
+        "Tux source not approved",
+      ),
+      "sourceOutcomePresent",
+      "Tux source outcome=missing",
+    ],
+    [
+      "gimp-denied",
+      completeGeneratedLinuxSampleLine(
+        "2026-06-13",
+        "Tux source approved",
+        "GIMP attribution denied",
+      ),
+      "gimpAttributionOutcomePresent",
+      "GIMP attribution outcome=missing",
+    ],
+    [
+      "trademark-rejected",
+      completeGeneratedLinuxSampleLine(
+        "2026-06-13",
+        "Tux source approved",
+        "GIMP attribution approved",
+        "Linux trademark rejected",
+      ),
+      "trademarkOutcomePresent",
+      "Linux trademark outcome=missing",
+    ],
+    [
+      "article-metaphor-failed",
+      completeGeneratedLinuxSampleLine(
+        "2026-06-13",
+        "Tux source approved",
+        "GIMP attribution approved",
+        "Linux trademark approved",
+        "uploaded-image identity approved",
+        "distro-logo boundary approved",
+        "endorsement/certification boundary approved",
+        "product-output approved",
+        "route-isolation approved",
+        "article-metaphor quality failed",
+      ),
+      "articleMetaphorOutcomePresent",
+      "article-metaphor quality outcome=missing",
+    ],
+  ]) {
+    const approvalText = releaseChecklistText.replace(pendingGeneratedLinuxSampleLine(), approvalLine);
+    const approval = validators.parseGeneratedLinuxSampleApproval(approvalText);
+    assert.equal(approval.checked, true);
+    assert.equal(approval.complete, false);
+    assert.equal(approval[expectedFlag], false, name);
+
+    const fixtureRoot = copyFixture(`linux-generated-negative-${name}`);
     try {
       const workspaceOutputDir = path.join(fixtureRoot, "assets", "article-linux");
       mkdirSync(workspaceOutputDir, { recursive: true });
