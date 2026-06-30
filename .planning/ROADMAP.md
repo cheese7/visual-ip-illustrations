@@ -58,7 +58,6 @@ Plans:
   5. User can apply QA gates that catch generic penguin drift, distro-logo drift, missing white belly, missing yellow-orange beak, missing oversized yellow-orange webbed feet, missing seated Tux posture, official endorsement claims, passive placement, route leakage, excessive text, and copied composition.
 
 **Plans**: 1 plan
-
 Plans:
 
 - [ ] 54-01-PLAN.md - Linux Mascot operational pack files
