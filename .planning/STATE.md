@@ -1,36 +1,35 @@
 ---
 gsd_state_version: 1.0
-milestone: v1.10
-milestone_name: Hermes Agent Visual IP Integration
-status: shipped
-stopped_at: Shipped via PR #6
-last_updated: "2026-07-01T01:42:22+0800"
+milestone: v1.11
+milestone_name: Linux Mascot IP Integration
+status: planning
+last_updated: "2026-07-01T02:18:04+0800"
 last_activity: 2026-07-01
 progress:
   total_phases: 5
-  completed_phases: 5
-  total_plans: 6
-  completed_plans: 6
-  percent: 100
+  completed_phases: 0
+  total_plans: 5
+  completed_plans: 0
+  percent: 0
 ---
 
 # Project State
 
 ## Project Reference
 
-See: .planning/PROJECT.md (updated 2026-06-18)
+See: .planning/PROJECT.md (updated 2026-07-01)
 
 **Core value:** Users can choose a visual IP and receive article illustrations whose character, style rules, prompts, QA gates, and saved outputs stay consistent with that IP.
-**Current focus:** Milestone v1.10 shipped via PR #6
+**Current focus:** Milestone v1.11 Linux Mascot IP Integration roadmap ready, Phase 53 next
 
 ## Current Position
 
-Phase: 52
-Plan: 52-01 complete
-Status: Phase 52 shipped
-Last activity: 2026-07-01 -- Shipped milestone v1.10 on branch ship/hermes-identity-markers via PR #6
+Phase: 53
+Plan: 53-01 pending
+Status: Roadmap ready
+Last activity: 2026-07-01 -- Milestone v1.11 Linux Mascot IP Integration roadmap ready
 
-## Shipping
+## Previous Shipping
 
 - Branch: `ship/hermes-identity-markers`
 - Pull request: https://github.com/yangchuansheng/visual-ip-illustrations/pull/6
@@ -84,11 +83,13 @@ Last activity: 2026-07-01 -- Shipped milestone v1.10 on branch ship/hermes-ident
 | 50 | 1 | - | - |
 | 51 | 1 | - | - |
 | 52 | 1 | ~1h | ~1h |
+| 53-57 | planned | - | - |
 
 **Recent Trend:**
 
 - Last 5 plans: Phase 48 added the Hermes source/route contract; Phase 49 added the Hermes canonical pack; Phase 50 wired Hermes controller behavior; Phase 51 updated Hermes public release surfaces; Phase 52 hardened Hermes validation and release evidence.
 - Trend: v1.10 completed the Hermes Agent route with official Nous Research source context, MIT license context, uploaded conversation attachment authority, route-local pack, runtime controller integration, public docs, validator parity, Node tests, release evidence, leakage scan, mythology-drift guards, and sample gates across Phases 48-52.
+- Current planning: v1.11 opens Linux Mascot route work across Phases 53-57 with `/Users/longnv/Downloads/Linux-logo.jpg` as uploaded Tux visual authority.
 
 *Updated after each plan completion*
 | Phase 06 P01 | 3min | 2 tasks | 3 files |

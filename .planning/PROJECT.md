@@ -4,23 +4,23 @@
 
 Visual IP Illustrations is a Codex Skill package for selectable visual-IP article illustrations. It turns article judgments, workflows, structures, states, and metaphors into 16:9 body illustrations while routing each image through the selected IP's character rules, prompt template, QA gates, output path, and source or brand boundary.
 
-The shipped baseline supports Xiaohei, Littlebox, Tom, Ferris, the hoodie Seal route, OpenClaw, Go Gopher, and Cai Xukun. The v1.10 milestone adds Hermes Agent as an explicit source-reviewed uploaded-image route using the user's uploaded monochrome logo-style character as the visual authority.
+The shipped baseline supports Xiaohei, Littlebox, Tom, Ferris, the hoodie Seal route, OpenClaw, Go Gopher, Cai Xukun, and Hermes Agent. The v1.11 milestone adds Linux Mascot as an explicit source-reviewed uploaded-image route using the user's uploaded Tux penguin image as the visual authority.
 
 ## Core Value
 
 Users can choose a visual IP and receive article illustrations whose character, style rules, prompts, QA gates, and saved outputs stay consistent with that IP.
 
-## Current Milestone: v1.10 Hermes Agent Visual IP Integration
+## Current Milestone: v1.11 Linux Mascot IP Integration
 
-**Goal:** Add Hermes Agent as a selectable source-reviewed visual IP route whose source record, uploaded-image authority, official Hermes Agent context, prompts, QA gates, docs, output path, and validation coverage preserve the user's uploaded monochrome character image as the route visual authority.
+**Goal:** Add Linux Mascot as a selectable source-reviewed visual IP route whose source record, uploaded-image authority, Tux attribution, Linux trademark boundary, prompts, QA gates, docs, output path, and validation coverage preserve the user's uploaded penguin image as the route visual authority.
 
 **Target features:**
 
-- Add the explicit `hermes` route with display name `Hermes Agent`, route-specific aliases including `Hermes Agent`, `Hermes`, `hermes`, `hermes-agent`, `Hermes logo`, and `Hermes Agent logo`, `default=false`, output suffix `hermes`, and output directory `assets/<article-slug>-hermes/`.
-- Add a Hermes source record that cites the official Hermes Agent website, Nous Research repository, MIT license, documentation, third-party icon context when confirmed, and the user-uploaded conversation attachment as visual authority.
-- Create an isolated Hermes route pack for style, identity, composition, prompt, edit, QA, source, mythology-drift guardrails, and public sample policy.
-- Wire Hermes into the skill controller, agent metadata, public docs, prompt examples, NOTICE, release checklist, and mixed-IP route grouping.
-- Extend validator and Node tests for Hermes route metadata, uploaded-image markers, official source/license markers, output paths, docs, smoke prompts, leakage checks, mythology-drift checks, public sample gates, and release evidence.
+- Add the explicit `linux` route with display name `Linux Mascot`, route-specific aliases including `Linux Mascot`, `Linux mascot`, `Linux`, `linux`, `Tux`, `tux`, `Linux penguin`, and `Tux penguin`, `default=false`, output suffix `linux`, and output directory `assets/<article-slug>-linux/`.
+- Add a Linux Mascot source record that cites Tux creator Larry Ewing, the GIMP attribution condition, Linux Foundation trademark context, Linux trademark ownership context, and `/Users/longnv/Downloads/Linux-logo.jpg` as uploaded visual authority.
+- Create an isolated Linux Mascot route pack for style, identity, composition, prompt, edit, QA, source, trademark-boundary guardrails, and public sample policy.
+- Wire Linux Mascot into the skill controller, agent metadata, public docs, prompt examples, NOTICE, release checklist, and mixed-IP route grouping.
+- Extend validator and Node tests for Linux Mascot route metadata, uploaded-image markers, Tux attribution markers, Linux trademark-boundary markers, output paths, docs, smoke prompts, leakage checks, public sample gates, and release evidence.
 
 ## Requirements
 
@@ -63,27 +63,31 @@ Users can choose a visual IP and receive article illustrations whose character, 
 - Complete: Go Gopher can be selected as an explicit source-reviewed route with route id `gopher`, display name `Go Gopher`, output suffix `gopher`, output directory `assets/<article-slug>-gopher/`, and local `gopher.png` visual authority - v1.8
 - Complete: Go Gopher ships with an isolated route-local pack, source/license record, docs, examples, metadata, NOTICE, release checklist, validator checks, and Node tests - v1.8
 - Complete: Go Gopher validation evidence records route metadata, source/license markers, output paths, docs, smoke prompts, leakage checks, public sample gates, and release readiness - v1.8
+- Complete: Cai Xukun can be selected as a gated public-figure stylized mascot route with uploaded-image authority, route-local likeness boundaries, docs, NOTICE, release checklist, validator checks, and Node tests - v1.9
+- Complete: Cai Xukun public-sample approval preserves the Trust Bridge sample across README gallery surfaces, skill-local examples, release checklist, NOTICE, and validator coverage - v1.9 follow-up
+- Complete: Hermes Agent can be selected as an explicit source-reviewed uploaded-image route with route id `hermes`, display name `Hermes Agent`, output suffix `hermes`, output directory `assets/<article-slug>-hermes/`, and uploaded monochrome character visual authority - v1.10
+- Complete: Hermes Agent ships with an isolated route-local pack, official Nous Research source context, MIT license context, docs, examples, metadata, NOTICE, release checklist, validator checks, and Node tests - v1.10
+- Complete: Hermes Agent validation evidence records route metadata, uploaded-image markers, source/license markers, mythology-drift guards, output paths, docs, smoke prompts, leakage checks, public sample gates, and release readiness - v1.10
 
 ### Active
 
-- Hermes Agent can be selected as an explicit source-reviewed route while Xiaohei remains the omitted-IP default.
-- Hermes route references preserve the uploaded monochrome logo-style character image as route visual authority.
-- Hermes source records expose the official Hermes Agent website, Nous Research repository, MIT license, documentation URL, uploaded-image authority, route status `source-reviewed`, public sample policy, and release review ownership.
-- Hermes prompts and QA treat the uploaded character as the cognitive action subject in sparse 16:9 article illustrations.
-- Hermes docs, NOTICE, release checklist, examples, and metadata expose the source/license context and `assets/<article-slug>-hermes/` output path.
-- Hermes validation covers route contract, source record, route-local pack, docs, smoke prompts, public asset gates, route leakage, mythology-drift guardrails, and uploaded-image identity markers.
+- Linux Mascot can be selected as an explicit source-reviewed route while Xiaohei remains the omitted-IP default.
+- Linux Mascot route references preserve `/Users/longnv/Downloads/Linux-logo.jpg` as uploaded visual authority.
+- Linux Mascot source records expose Larry Ewing Tux attribution, GIMP attribution condition, Linux Foundation trademark guidance, Linux trademark ownership context, uploaded-image authority, route status `source-reviewed`, public sample policy, and release review ownership.
+- Linux Mascot prompts and QA treat Tux as the cognitive action subject in sparse 16:9 article illustrations.
+- Linux Mascot docs, NOTICE, release checklist, examples, and metadata expose the source/trademark context and `assets/<article-slug>-linux/` output path.
+- Linux Mascot validation covers route contract, source record, route-local pack, docs, smoke prompts, public asset gates, route leakage, trademark-boundary guardrails, and uploaded-image identity markers.
 
 ### Out of Scope
 
-- Making Hermes Agent the default visual IP - Xiaohei remains the omitted-IP default.
-- Generic custom-IP import or marketplace behavior - v1.10 adds one concrete Hermes Agent route.
-- Public generated Hermes sample gallery before release review - public assets require sample approval.
-- Replacing the uploaded conversation attachment as route authority with unrelated Hermes, anime, assistant, or mythological images.
-- Mythological Hermes imagery such as winged sandals, caduceus symbols, or Greek messenger scenes unless the user explicitly asks for mythology.
-- Official endorsement, affiliation, campaign, or impersonation claims - source records preserve official source context and usage boundaries.
-- Turning Hermes route outputs into product advertising, CLI screenshots, or web hero graphics - images stay article illustrations.
+- Making Linux Mascot the default visual IP - Xiaohei remains the omitted-IP default.
+- Generic custom-IP import or marketplace behavior - v1.11 adds one concrete Linux Mascot route.
+- Public generated Linux Mascot sample gallery before release review - public assets require sample approval.
+- Replacing `/Users/longnv/Downloads/Linux-logo.jpg` as route authority with unrelated penguin images, Linux distro logos, or generic server mascots.
+- Official Linux endorsement, affiliation, certification, compatibility, distro, kernel, or Linux Foundation campaign claims - source records preserve source and trademark context.
+- Turning Linux Mascot route outputs into product advertising, distro branding, CLI screenshots, or web hero graphics - images stay article illustrations.
 - Changing Xiaohei default behavior - compatibility remains a core requirement.
-- Changing Littlebox, Tom, Ferris, Seal, OpenClaw, Go Gopher, or Cai Xukun route behavior - v1.10 is Hermes-route scoped.
+- Changing Littlebox, Tom, Ferris, Seal, OpenClaw, Go Gopher, Cai Xukun, or Hermes Agent route behavior - v1.11 is Linux Mascot-route scoped.
 - Changing root package identity or legacy `$ian-xiaohei-illustrations` invocation - Visual IP Illustrations remains the product identity.
 - Forcing user-visible labels into English - labels continue to follow the user's requested language.
 - Creating a hosted app, UI, API, database, or build runtime - the package remains a lightweight Codex Skill.
@@ -112,9 +116,11 @@ v1.7 completed the OpenClaw route milestone. OpenClaw is an explicit source-revi
 
 v1.8 completed the Go Gopher route milestone. Go Gopher is an explicit source-reviewed mascot route with route id `gopher`, route-local source/license records, local `gopher.png` authority, public documentation, release gates, validator coverage, and Node tests.
 
-v1.9 planned the Cai Xukun route. The user uploaded two stylized mascot references at `/Users/longnv/Downloads/Generated image 1 (9).png` and `/Users/longnv/Downloads/20260618-013721.jpeg`; these images are the route visual authority for the gated public-figure visual IP. The route has planned phases 43-47.
+v1.9 completed the Cai Xukun route. The user uploaded two stylized mascot references at `/Users/longnv/Downloads/Generated image 1 (9).png` and `/Users/longnv/Downloads/20260618-013721.jpeg`; these images are the route visual authority for the gated public-figure visual IP.
 
-v1.10 starts the Hermes Agent route milestone. Official Hermes Agent surfaces from Nous Research provide source, naming, docs, and MIT license context: `https://hermes-agent.nousresearch.com/`, `https://github.com/NousResearch/hermes-agent`, `https://github.com/NousResearch/hermes-agent/blob/main/LICENSE`, and `https://hermes-agent.nousresearch.com/docs/`. The user uploaded `Generated image 1 (16).jpeg` in the conversation; the local `/Users/carson/Downloads/Generated image 1 (16).jpeg` path was unavailable from this workspace, so the conversation attachment is the route visual authority. The reference identity is a monochrome full-body logo-style character with black bob haircut and bright highlights, headset or earpiece, black sleeveless dress, white collar tag with an `A`-like mark, black thigh-high stockings, platform heels, and slender fashion-figure posture.
+v1.10 completed the Hermes Agent route. Official Hermes Agent surfaces from Nous Research provide source, naming, docs, and MIT license context: `https://hermes-agent.nousresearch.com/`, `https://github.com/NousResearch/hermes-agent`, `https://github.com/NousResearch/hermes-agent/blob/main/LICENSE`, and `https://hermes-agent.nousresearch.com/docs/`. The user uploaded `Generated image 1 (16).jpeg` in the conversation; the conversation attachment is the route visual authority. The reference identity is a monochrome full-body logo-style character with black bob haircut and bright highlights, headset or earpiece, black sleeveless dress, white collar tag with an `A`-like mark, black thigh-high stockings, platform heels, and slender fashion-figure posture.
+
+v1.11 starts the Linux Mascot route milestone. The user uploaded `/Users/longnv/Downloads/Linux-logo.jpg` as the route visual authority; the file is a 3500x2300 JPEG showing Tux as a glossy black-and-white seated penguin on a clean white background, with a rounded black head and body, large white eyes with dark pupils and small highlights, white belly, yellow-orange beak, and oversized yellow-orange webbed feet. Source and boundary context comes from Larry Ewing's Tux permission note and Linux Foundation trademark guidance for the Linux mark.
 
 ## Constraints
 
@@ -136,7 +142,10 @@ v1.10 starts the Hermes Agent route milestone. Official Hermes Agent surfaces fr
 - **Hermes Source**: Hermes route references preserve the official Hermes Agent website, Nous Research repository, MIT license, documentation URL, and user-uploaded conversation attachment as source context through a route-local source record.
 - **Hermes Identity**: Hermes route outputs preserve the uploaded-image markers: monochrome full-body logo-style character, black bob haircut with bright highlights, headset or earpiece, black sleeveless dress, white collar tag with an `A`-like mark, black thigh-high stockings, platform heels, and slender fashion-figure posture.
 - **Hermes Boundary**: Hermes route outputs stay article illustrations, avoid product advertising, avoid generic anime assistant drift, avoid mythological Hermes imagery by default, and require release review before public rendered samples.
-- **Default Route**: Xiaohei remains the omitted-IP default; Hermes is explicit with `default=false`.
+- **Linux Mascot Source**: Linux Mascot route references preserve Larry Ewing Tux attribution, GIMP attribution condition, Linux Foundation trademark guidance, Linux trademark ownership context, and `/Users/longnv/Downloads/Linux-logo.jpg` as uploaded source context through a route-local source record.
+- **Linux Mascot Identity**: Linux Mascot route outputs preserve the uploaded-image markers: glossy black rounded penguin head and body, white face eye patches, large oval eyes with dark pupils and small highlights, yellow-orange beak with two nostril dots, white oval belly, long black flippers, seated rounded posture, and oversized yellow-orange webbed feet.
+- **Linux Mascot Boundary**: Linux Mascot route outputs stay article illustrations, avoid official endorsement or certification claims, avoid distro-logo drift, avoid generic server-mascot drift, avoid Linux Foundation logo use, and require release review before public rendered samples.
+- **Default Route**: Xiaohei remains the omitted-IP default; Linux Mascot is explicit with `default=false`.
 - **No Build Runtime**: The project stays usable as a lightweight skill package; validation can be script-based and dependency-free.
 - **Image Generation Dependency**: Final generation still depends on the host agent's `image_gen` capability.
 - **Documentation Language**: English is the default language for repository docs, skill instructions, reference docs, examples, release materials, validation output, code, scripts, comments, commit messages, and PR copy.
@@ -159,8 +168,9 @@ v1.10 starts the Hermes Agent route milestone. Official Hermes Agent surfaces fr
 | Debrand the Sealos Seal route into Seal | Sealos is a product name and can make a character route feel promotional; the useful IP is the seal character itself | Good |
 | Add OpenClaw as a source-reviewed logo-mascot route | The user selected the uploaded red OpenClaw logo as a new IP authority, and the official OpenClaw repository provides MIT source context | Good |
 | Add Go Gopher as a source-reviewed mascot route | The user selected local `gopher.png` as the route visual authority, and Go project pages provide Renee French attribution plus Creative Commons Attribution 4.0 context | Good |
-| Add Cai Xukun as a gated public-figure mascot route | The user selected two uploaded stylized mascot images as the route visual authority, and public-figure likeness boundaries require gated release review | Pending |
-| Add Hermes Agent as a source-reviewed uploaded-image route | The user selected the uploaded monochrome logo-style character as the route visual authority, and official Hermes Agent sources provide Nous Research and MIT license context | Pending |
+| Add Cai Xukun as a gated public-figure mascot route | The user selected two uploaded stylized mascot images as the route visual authority, and public-figure likeness boundaries require gated release review | Good |
+| Add Hermes Agent as a source-reviewed uploaded-image route | The user selected the uploaded monochrome logo-style character as the route visual authority, and official Hermes Agent sources provide Nous Research and MIT license context | Good |
+| Add Linux Mascot as a source-reviewed uploaded-image route | The user selected `/Users/longnv/Downloads/Linux-logo.jpg` as the route visual authority, and Tux source plus Linux trademark context require attribution and endorsement-safe wording | Pending |
 
 ## Evolution
 
@@ -180,4 +190,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-06-18 after starting v1.10 Hermes Agent Visual IP Integration*
+*Last updated: 2026-07-01 after starting v1.11 Linux Mascot IP Integration*
