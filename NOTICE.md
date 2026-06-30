@@ -115,6 +115,31 @@ Cai Xukun source context records the explicit `gated-public-figure` stylized mas
 
 Public generated Cai Xukun sample assets are approved for the Trust Bridge public README gallery through the public sample review gate. The approved assets are `examples/images/caixukun/08-trust-bridge.png`, `examples/images-en/caixukun/08-trust-bridge.png`, and `skills/visual-ip-illustrations/assets/examples/15-cai-xukun-trust-bridge.png`, with reviewer, date, approval status, allowed directories, release channels, uploaded-image identity outcome, public-figure likeness boundary outcome, source-image context boundary outcome, route-isolation outcome, stylized mascot-only output outcome, article-metaphor quality outcome, and public-sample decision recorded in `RELEASE_CHECKLIST.md`.
 
+
+## Hermes Agent Source Attribution and Public Sample Gate
+
+Hermes Agent source context records the explicit `source-reviewed` uploaded-image article-illustration route for the `hermes` route.
+
+- Route: Hermes Agent
+- Display name: `Hermes Agent`
+- Aliases: `Hermes Agent`, `Hermes`, `hermes`, `hermes-agent`, `Hermes logo`, `Hermes Agent logo`
+- Route id: `hermes`
+- Route status: `source-reviewed`
+- Official website: <https://hermes-agent.nousresearch.com/>
+- Official repository: <https://github.com/NousResearch/hermes-agent>
+- MIT license URL: <https://github.com/NousResearch/hermes-agent/blob/main/LICENSE>
+- Documentation URL: <https://hermes-agent.nousresearch.com/docs/>
+- Source authority: `skills/visual-ip-illustrations/references/ips/hermes/source.md`
+- Output path: `assets/<article-slug>-hermes/`
+- Docs validation token: `assets/&lt;article-slug&gt;-hermes/`
+- Uploaded-image authority: conversation attachment `Generated image 1 (16).jpeg` is the identity authority for this route.
+- Boundary context: official source context, MIT license context, mythology-drift boundary, product-poster boundary, route isolation, and uploaded-character-only article illustration output.
+- Release-review terms: official endorsement, affiliation, sponsorship, approval, and impersonation claims require maintainer review and neutral article-concept wording.
+
+Public generated Hermes samples remain pending behind the public sample review gate. No public generated Hermes sample assets are approved for `examples/images/`, `examples/images-en/`, `skills/visual-ip-illustrations/assets/examples/`, public README galleries, or release materials until reviewer, date, approval status, allowed directories, release channels, official source outcome, MIT license outcome, uploaded-image identity outcome, mythology-drift outcome, product-poster boundary outcome, route-isolation outcome, uploaded-character-only article illustration outcome, and public-sample decision are recorded.
+
+Hermes Agent route documentation does not claim official Hermes Agent project affiliation, approval, sponsorship, endorsement, or impersonation. Default Hermes Agent output also excludes product-poster output, CLI screenshots, web hero graphics, broad assistant framing, Greek messenger framing, winged sandals, winged helmet, and caduceus imagery unless a future release review records a different approved scope.
+
 Author links:
 
 - GitHub: <https://github.com/helloianneo>

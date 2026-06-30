@@ -1,6 +1,6 @@
 ---
 name: visual-ip-illustrations
-description: Visual IP Illustrations generates selectable visual-IP article-body illustrations for articles, posts, blogs, Notion docs, workflow docs, methods, processes, structures, states, metaphors, opinions, shot lists, title-removal edits, and image repair. The omitted visual IP default is Xiaohei, with localized route aliases preserved in references/routing.md; Littlebox, Tom, Ferris, Seal, OpenClaw, Go Gopher, and Cai Xukun are explicit selectable routes.
+description: Visual IP Illustrations generates selectable visual-IP article-body illustrations for articles, posts, blogs, Notion docs, workflow docs, methods, processes, structures, states, metaphors, opinions, shot lists, title-removal edits, and image repair. The omitted visual IP default is Xiaohei, with localized route aliases preserved in references/routing.md; Littlebox, Tom, Ferris, Seal, OpenClaw, Go Gopher, Cai Xukun, and Hermes Agent are explicit selectable routes.
 ---
 
 # Visual IP Illustrations
@@ -49,6 +49,10 @@ Go Gopher imagery preserves the source-reviewed mascot identity: blue rounded up
 Cai Xukun is an explicit gated public-figure stylized mascot route: route id `caixukun`, display name `Cai Xukun`, default=false, output_suffix: caixukun, route status `gated-public-figure`. Cai Xukun source authority is `references/ips/caixukun/source.md`, and planning, generation, QA, edit, and delivery surfaces keep the uploaded-image identity note, source-image context note, public-figure likeness boundary, public sample review boundary, route isolation status, and `assets/<article-slug>-caixukun/`.
 
 Cai Xukun imagery preserves uploaded-image identity markers from `references/ips/caixukun/source.md`: yellow duck-like rounded mascot body, silver layered idol hair, oversized white eyes, red cheek circles, orange beak, black high-collar top, white straps, white lower outfit, and compact black or gray boots. The green reference background is source-image context, while generated article illustrations use sparse 16:9 white-background style. Public generated Cai Xukun samples require release review before appearing in public examples or release surfaces.
+
+Hermes Agent is an explicit source-reviewed uploaded-image article-illustration route: route id `hermes`, display name `Hermes Agent`, default=false, output_suffix: hermes, route status `source-reviewed`. Hermes Agent source authority is `references/ips/hermes/source.md`, and planning, generation, QA, edit, and delivery surfaces keep uploaded visual authority from `Generated image 1 (16).jpeg`, official source context, MIT license context, public sample review boundary, mythology-drift boundary, product-poster boundary, route isolation status, and `assets/<article-slug>-hermes/`.
+
+Hermes Agent imagery preserves uploaded-image identity markers from `references/ips/hermes/source.md`: monochrome full-body logo-style character, black bob haircut with bright highlights, headset or earpiece, black sleeveless dress, white collar tag with an `A`-like mark, black thigh-high stockings, platform heels, and slender fashion-figure posture. Generated article illustrations use sparse 16:9 white-background article style. Public generated Hermes Agent samples require release review before appearing in public examples or release surfaces.
 
 ## Reference Loading
 
@@ -110,6 +114,13 @@ Read `references/routing.md` first, then load only the selected route's required
 - `references/ips/caixukun/composition-patterns.md`: Cai Xukun composition families, article-metaphor invention, mascot action patterns, supporting object pool, anti-repeat rules, and route leakage boundaries.
 - `references/ips/caixukun/prompt-template.md`: Cai Xukun planning fields, one-image prompt template, edit prompts, uploaded-image identity note, public-figure likeness-boundary repair, green-background carryover repair, route leakage repair, and output reminder.
 - `references/ips/caixukun/qa-checklist.md`: Cai Xukun pass/fail gates, uploaded-image identity checks, public-figure likeness checks, iteration moves, route leakage repair, public sample boundary, and delivery judgment.
+- `references/ips/hermes/index.md`: Hermes Agent pack navigation, route contract, uploaded marker set, failure categories, operational coherence, and output path.
+- `references/ips/hermes/source.md`: Hermes Agent official source context, MIT license context, uploaded-image authority, sample policy, product boundary, mythology boundary, review fields, and route status authority.
+- `references/ips/hermes/style-dna.md`: Hermes Agent sparse visual style, route isolation gate, product-poster gate, mythology-drift gate, and visual rejection patterns.
+- `references/ips/hermes/hermes-ip.md`: Hermes Agent identity, recognition rules, cognitive-action responsibility, action verbs, route boundary, and failure modes.
+- `references/ips/hermes/composition-patterns.md`: Hermes Agent composition families, active-composition gate, metaphor invention rule, supporting objects, action patterns, and anti-repeat rules.
+- `references/ips/hermes/prompt-template.md`: Hermes Agent planning fields, one-image prompt template, edit repairs, source notes, mythology-drift note, product-poster boundary note, and output reminder.
+- `references/ips/hermes/qa-checklist.md`: Hermes Agent pass/fail gates, uploaded-image identity checks, source and MIT license checks, iteration moves, route leakage repair, public sample boundary, and delivery judgment.
 - `references/style-dna.md`, `references/xiaohei-ip.md`, `references/composition-patterns.md`, `references/prompt-template.md`, `references/qa-checklist.md`: legacy root compatibility entry points for existing prompts and docs; current Xiaohei behavior reads the canonical `references/ips/xiaohei/` files.
 - `assets/examples/`: low-frequency visual calibration only. Use them for density and participation calibration, then create a fresh metaphor for the current article.
 
@@ -128,7 +139,8 @@ Read `references/routing.md` first and choose the route for the current task.
 - `OpenClaw`, `openclaw`, `OpenClaw logo`, `OpenClaw mascot`, and the OpenClaw aliases listed in `references/routing.md` select the same OpenClaw route: route id `openclaw`, display name `OpenClaw`, default=false, output_suffix: openclaw, route status `source-reviewed`, source/license pointer `references/ips/openclaw/source.md`.
 - `Go Gopher`, `Gopher`, `golang gopher`, `Go mascot`, and Go Gopher-qualified route phrases select the same Go Gopher route: route id `gopher`, display name `Go Gopher`, default=false, output_suffix: gopher, route status `source-reviewed`, source/license pointer `references/ips/gopher/source.md`, and route-local `skills/visual-ip-illustrations/references/ips/gopher/gopher.png` visual authority. Generic route phrases stay governed by `references/routing.md` and remain outside Go Gopher selection.
 - Cai Xukun aliases listed in `references/routing.md` select the same Cai Xukun route: route id `caixukun`, display name `Cai Xukun`, default=false, output_suffix: caixukun, route status `gated-public-figure`, source pointer `references/ips/caixukun/source.md`, and output path `assets/<article-slug>-caixukun/`. Broad celebrity, idol, duck, yellow mascot, and fandom words stay governed by `references/routing.md` and remain outside Cai Xukun selection.
-- Mixed requests across Xiaohei, Littlebox, Tom, Ferris, Seal, OpenClaw, Go Gopher, and Cai Xukun first identify one shared core idea, then create separate route groups. Each selected variant group uses its own route id, required_references, prompt template, composition rules, QA, edit repairs, output_suffix, route note, and output directory.
+- `Hermes Agent`, `Hermes`, `hermes`, `hermes-agent`, `Hermes logo`, and `Hermes Agent logo` select the same Hermes Agent route: route id `hermes`, display name `Hermes Agent`, default=false, output_suffix: hermes, route status `source-reviewed`, source pointer `references/ips/hermes/source.md`, uploaded visual authority from `Generated image 1 (16).jpeg`, and output path `assets/<article-slug>-hermes/`. Broad assistant, AI agent, logo, anime, monochrome girl, fashion figure, Greek messenger, winged sandals, and caduceus terms stay governed by `references/routing.md` and remain outside Hermes Agent selection.
+- Mixed requests across Xiaohei, Littlebox, Tom, Ferris, Seal, OpenClaw, Go Gopher, Cai Xukun, and Hermes Agent first identify one shared core idea, then create separate route groups. Each selected variant group uses its own route id, required_references, prompt template, composition rules, QA, edit repairs, output_suffix, route note, and output directory.
 - Xiaohei keeps the `$ian-xiaohei-illustrations` compatibility behavior and `assets/<article-slug>-illustrations/` output path; canonical invocation is `$visual-ip-illustrations`.
 - Littlebox uses `assets/<article-slug>-littlebox/`.
 - Tom uses `assets/<article-slug>-tom/` and keeps `gated-authorized` plus `references/ips/tom/rights.md` in planning, generation, QA, edit, and delivery.
@@ -137,6 +149,7 @@ Read `references/routing.md` first and choose the route for the current task.
 - OpenClaw uses `assets/<article-slug>-openclaw/` and keeps `source-reviewed` plus `references/ips/openclaw/source.md` in planning, generation, QA, edit, and delivery.
 - Go Gopher uses `assets/<article-slug>-gopher/` and keeps `source-reviewed`, `references/ips/gopher/source.md`, route-local `skills/visual-ip-illustrations/references/ips/gopher/gopher.png`, Renee French attribution, Creative Commons Attribution 4.0 boundary, public sample review boundary, Go logo boundary, and official endorsement boundary in planning, generation, QA, edit, and delivery.
 - Cai Xukun uses `assets/<article-slug>-caixukun/` and keeps `gated-public-figure`, `references/ips/caixukun/source.md`, uploaded-image identity note, public-figure likeness boundary, source-image context note, public sample review boundary, route isolation status, and neutral article-concept labels after public-figure claim sanitization in planning, generation, QA, edit, and delivery.
+- Hermes Agent uses `assets/<article-slug>-hermes/` and keeps `source-reviewed`, `references/ips/hermes/source.md`, uploaded-image authority status from `Generated image 1 (16).jpeg`, source context note, MIT license context, mythology-drift boundary, product-poster boundary status, public sample review boundary, route isolation status, and broad-term selection exclusions in planning, generation, QA, edit, and delivery.
 - Xiaohei `required_references` point to the canonical `references/ips/xiaohei/` pack; root paths remain compatibility entry points.
 - Littlebox `required_references` point to `references/ips/littlebox/`: `style-dna.md`, `littlebox-ip.md`, `composition-patterns.md`, `language-and-labels.md`, `prompt-template.md`, and `qa-checklist.md`.
 - Tom `required_references` point to `references/ips/tom/`: `index.md`, `rights.md`, `style-dna.md`, `tom-ip.md`, `composition-patterns.md`, `prompt-template.md`, and `qa-checklist.md`.
@@ -145,6 +158,7 @@ Read `references/routing.md` first and choose the route for the current task.
 - OpenClaw `required_references` point to `references/ips/openclaw/`: `index.md`, `source.md`, `style-dna.md`, `openclaw-ip.md`, `composition-patterns.md`, `prompt-template.md`, and `qa-checklist.md`.
 - Go Gopher `required_references` point to `references/ips/gopher/`: `index.md`, `source.md`, `style-dna.md`, `gopher-ip.md`, `composition-patterns.md`, `prompt-template.md`, and `qa-checklist.md`.
 - Cai Xukun `required_references` point to `references/ips/caixukun/`: `index.md`, `source.md`, `style-dna.md`, `caixukun-ip.md`, `composition-patterns.md`, `prompt-template.md`, and `qa-checklist.md`.
+- Hermes Agent `required_references` point to `references/ips/hermes/`: `index.md`, `source.md`, `style-dna.md`, `hermes-ip.md`, `composition-patterns.md`, `prompt-template.md`, and `qa-checklist.md`.
 - Each variant group loads only its own `required_references` and uses its own action library, metaphor rules, background rules, labels, QA, and output path.
 - The shared workflow handles article comprehension, cognitive-anchor selection, shot planning, one-image generation, QA handoff, asset preservation, and delivery reporting.
 - Visual style, character identity, prompt wording, and QA details come from the selected IP's reference files.
@@ -270,6 +284,24 @@ Cai Xukun shot-list entries use `references/ips/caixukun/prompt-template.md` and
 
 Cai Xukun planning prose can follow the user's language. Cai Xukun image-generation prompts stay English. Visible labels are copied exactly in the user's requested language after removing or rewriting official endorsement, affiliation, impersonation, campaign, celebrity advertising, and fandom-promotion claims into neutral article-concept labels. Cai Xukun performs the central cognitive action as a `gated-public-figure` stylized mascot route. Preserve the uploaded-image identity note from `references/ips/caixukun/source.md`, keep the green reference background as source-image context, keep generated output in sparse 16:9 white-background article style, and preserve the public sample review boundary.
 
+Hermes Agent shot-list entries use `references/ips/hermes/prompt-template.md` and include:
+
+- Placement
+- Core idea
+- Structure type
+- Selected IP `Hermes Agent`
+- Route status `source-reviewed`
+- Hermes Agent state
+- Hermes Agent action
+- Supporting objects
+- Visible labels copied exactly in the user's requested language
+- Source context note
+- Mythology-drift note
+- Product-poster boundary note
+- Output path: `assets/<article-slug>-hermes/`
+
+Hermes Agent planning prose can follow the user's language. Hermes Agent image-generation prompts stay English. Visible labels are copied exactly in the user's requested language. Hermes Agent performs the central cognitive action as a source-reviewed uploaded-image article-illustration route. Preserve uploaded visual authority from `Generated image 1 (16).jpeg`, keep official source context and MIT license context attached through `references/ips/hermes/source.md`, keep generated output in sparse 16:9 white-background article style, keep mythology-drift and product-poster boundary notes visible, and preserve the public sample review boundary.
+
 Mixed-IP shot lists first state the shared core idea, then split into independent selected route groups:
 
 - Xiaohei variant group: Xiaohei action, white-background hand-drawn metaphor, suggested labels, `references/ips/xiaohei/` QA, `assets/<article-slug>-illustrations/`
@@ -280,6 +312,7 @@ Mixed-IP shot lists first state the shared core idea, then split into independen
 - OpenClaw variant group: OpenClaw state, OpenClaw action, supporting objects, visible labels, `references/ips/openclaw/` QA, `assets/<article-slug>-openclaw/`, uploaded-logo identity note, source/license note, `source-reviewed`, `references/ips/openclaw/source.md`
 - Go Gopher variant group: Gopher state, Gopher action, supporting objects, visible labels, `references/ips/gopher/` QA, `assets/<article-slug>-gopher/`, route status `source-reviewed`, source pointer `references/ips/gopher/source.md`, route-local `gopher.png` identity note, source/license note, public sample review boundary, route isolation status
 - Cai Xukun variant group: route id `caixukun`, Cai Xukun mascot state, Cai Xukun mascot action, supporting objects, visible labels as neutral article-concept labels, required references `references/ips/caixukun/`, prompt template `references/ips/caixukun/prompt-template.md`, composition rules `references/ips/caixukun/composition-patterns.md`, QA checklist `references/ips/caixukun/qa-checklist.md`, edit gates from `references/ips/caixukun/prompt-template.md`, output_suffix: caixukun, route note, output directory `assets/<article-slug>-caixukun/`, route status `gated-public-figure`, source pointer `references/ips/caixukun/source.md`, uploaded-image identity status, public-figure likeness boundary status, source-image context status, public sample review boundary when relevant, and route isolation status
+- Hermes Agent variant group: route id `hermes`, Hermes Agent state, Hermes Agent action, supporting objects, visible labels, required references `references/ips/hermes/`, prompt template `references/ips/hermes/prompt-template.md`, composition rules `references/ips/hermes/composition-patterns.md`, QA checklist `references/ips/hermes/qa-checklist.md`, edit gates from `references/ips/hermes/prompt-template.md`, output_suffix: hermes, route note, output directory `assets/<article-slug>-hermes/`, route status `source-reviewed`, source pointer `references/ips/hermes/source.md`, uploaded-image authority status, source context note, MIT license context, mythology-drift boundary status, product-poster boundary status, public sample review boundary when relevant, and route isolation status
 
 Default to 4-8 images. Short articles usually need 1-3. Long articles usually stay within 9 images.
 
@@ -429,11 +462,34 @@ Cai Xukun loads only Cai Xukun `required_references`, uses `references/ips/caixu
 
 Cai Xukun repair behavior uses the edit prompts in `references/ips/caixukun/prompt-template.md`: Stronger Cai Xukun Participation, Uploaded-Image Identity Repair, Title Removal, Text Reduction, Public-Figure Likeness Boundary Repair, Route Leakage Repair, Green-Background Carryover Repair, and Unaffected-Content Preservation. Every repair keeps `gated-public-figure`, source pointer `references/ips/caixukun/source.md`, uploaded-image identity note, public-figure likeness boundary, source-image context boundary, public sample review boundary, route-local QA context, route isolation status, and `assets/<article-slug>-caixukun/`.
 
-Mixed-IP generation uses the same shared core idea to generate separated selected route groups. Xiaohei loads only `references/ips/xiaohei/`; Littlebox loads only `references/ips/littlebox/`; Tom loads only `references/ips/tom/`; Ferris loads only `references/ips/ferris/`; Seal loads only `references/ips/seal/`; OpenClaw loads only `references/ips/openclaw/`; Go Gopher loads only `references/ips/gopher/`; Cai Xukun loads only `references/ips/caixukun/`. Each group calls its own prompt template, composition rules, language rules, qa-checklist, edit gates, output_suffix, and route note. Go Gopher uses its own prompt template, composition rules, QA checklist, edit gates, output suffix, route note, and `assets/<article-slug>-gopher/`. Cai Xukun uses its own prompt template, composition rules, QA checklist, edit gates, output suffix, route note, and `assets/<article-slug>-caixukun/`, with uploaded-image identity status, public-figure likeness boundary status, source-image context status, public sample review boundary, and route isolation status. `assets/examples/` only calibrates style density and character participation; current-article metaphors are invented fresh.
+Hermes Agent loads only Hermes Agent `required_references`, uses `references/ips/hermes/prompt-template.md` plus `references/ips/hermes/composition-patterns.md`, then checks output with `references/ips/hermes/qa-checklist.md`. Hermes Agent generation context always keeps route status `source-reviewed`, source pointer `references/ips/hermes/source.md`, uploaded-image authority from `Generated image 1 (16).jpeg`, official source context, MIT license context, public sample review boundary, mythology-drift boundary, product-poster boundary, route isolation status, and output path `assets/<article-slug>-hermes/`. Hermes Agent prompts keep:
+
+- one standalone sparse 16:9 white-background article illustration
+- rough black hand-drawn linework with generous whitespace
+- Hermes Agent as the central cognitive action subject
+- uploaded-image authority from `Generated image 1 (16).jpeg`
+- monochrome full-body logo-style character
+- black bob haircut with bright highlights
+- headset or earpiece
+- black sleeveless dress
+- white collar tag with an `A`-like mark
+- black thigh-high stockings
+- platform heels
+- slender fashion-figure posture
+- sparse visible labels copied exactly in the user's requested language
+- Source context note: Hermes Agent is `source-reviewed`; `references/ips/hermes/source.md` records official Hermes Agent context, MIT license context, uploaded visual authority, public sample policy, product boundary, mythology boundary, and status changes
+- Mythology-drift note: mythological Hermes imagery fails the route, including winged sandals, winged helmet, caduceus, Greek messenger scenes, Olympian deity framing, mythology-first symbols, and deity-route framing
+- Product-poster boundary note: product advertising, product-poster output, CLI screenshots, web hero graphics, official endorsement, affiliation, sponsorship, approval claim, and impersonation fail the route
+- save reminder: `assets/<article-slug>-hermes/`
+- Hermes Agent route block: generic anime or assistant drift, mythological Hermes imagery, missing headset, missing bob-hair highlight silhouette, missing black sleeveless dress, missing collar tag, missing stockings or platform heels, product-poster drift, passive placement, route leakage, excessive text, copied composition, official endorsement, affiliation, sponsorship, approval claim, impersonation, missing `source-reviewed`, missing `references/ips/hermes/source.md`, and missing `assets/<article-slug>-hermes/` all fail the route
+
+Hermes Agent repair behavior uses the edit prompts in `references/ips/hermes/prompt-template.md`: Stronger Hermes Participation, Uploaded-Image Identity Repair, Title Removal, Text Reduction, Mythology-Drift Repair, Product-Poster Repair, Route Leakage Repair, and Unaffected-Content Preservation. Every repair keeps `source-reviewed`, source pointer `references/ips/hermes/source.md`, uploaded-image authority note, source context note, MIT license context, mythology-drift boundary, product-poster boundary, public sample review boundary, route-local QA context, route isolation status, and `assets/<article-slug>-hermes/`.
+
+Mixed-IP generation uses the same shared core idea to generate separated selected route groups. Xiaohei loads only `references/ips/xiaohei/`; Littlebox loads only `references/ips/littlebox/`; Tom loads only `references/ips/tom/`; Ferris loads only `references/ips/ferris/`; Seal loads only `references/ips/seal/`; OpenClaw loads only `references/ips/openclaw/`; Go Gopher loads only `references/ips/gopher/`; Cai Xukun loads only `references/ips/caixukun/`; Hermes Agent loads only `references/ips/hermes/`. Each group calls its own prompt template, composition rules, language rules, qa-checklist, edit gates, output_suffix, and route note. Go Gopher uses its own prompt template, composition rules, QA checklist, edit gates, output suffix, route note, and `assets/<article-slug>-gopher/`. Cai Xukun uses its own prompt template, composition rules, QA checklist, edit gates, output suffix, route note, and `assets/<article-slug>-caixukun/`, with uploaded-image identity status, public-figure likeness boundary status, source-image context status, public sample review boundary, and route isolation status. Hermes Agent uses its own prompt template, composition rules, QA checklist, edit gates, output suffix, route note, and `assets/<article-slug>-hermes/`, with uploaded-image authority status, source context note, MIT license context, mythology-drift boundary status, product-poster boundary status, public sample review boundary, and route isolation status. `assets/examples/` only calibrates style density and character participation; current-article metaphors are invented fresh.
 
 ### 5. QA and Iteration
 
-After generation, check the selected IP's QA reference. Xiaohei uses `references/ips/xiaohei/qa-checklist.md`; Littlebox uses `references/ips/littlebox/qa-checklist.md`; Tom uses `references/ips/tom/qa-checklist.md`; Ferris uses `references/ips/ferris/qa-checklist.md`; Seal uses `references/ips/seal/qa-checklist.md`; OpenClaw uses `references/ips/openclaw/qa-checklist.md`; Go Gopher uses `references/ips/gopher/qa-checklist.md`; Cai Xukun uses `references/ips/caixukun/qa-checklist.md`; `references/qa-checklist.md` remains the legacy root compatibility entry point.
+After generation, check the selected IP's QA reference. Xiaohei uses `references/ips/xiaohei/qa-checklist.md`; Littlebox uses `references/ips/littlebox/qa-checklist.md`; Tom uses `references/ips/tom/qa-checklist.md`; Ferris uses `references/ips/ferris/qa-checklist.md`; Seal uses `references/ips/seal/qa-checklist.md`; OpenClaw uses `references/ips/openclaw/qa-checklist.md`; Go Gopher uses `references/ips/gopher/qa-checklist.md`; Cai Xukun uses `references/ips/caixukun/qa-checklist.md`; Hermes Agent uses `references/ips/hermes/qa-checklist.md`; `references/qa-checklist.md` remains the legacy root compatibility entry point.
 
 Xiaohei high-risk failures:
 
@@ -592,7 +648,48 @@ Cai Xukun high-risk failures:
 - missing `references/ips/caixukun/source.md`
 - missing `assets/<article-slug>-caixukun/`
 
-When QA finds a failure, regenerate or edit through the selected IP's qa-checklist. Littlebox repairs prioritize closed lid, side-seam arms, single amber jagged seam tape, near-white body, rough linework, user's-language labels, balanced background, and active placement. Tom repairs use `references/ips/tom/prompt-template.md` edit gates: Tom edit participation repair gate, Tom off-model identity repair gate, Tom title removal edit gate, Tom text reduction edit gate, and Tom unaffected-content preservation gate; every repair keeps `gated-authorized`, `references/ips/tom/rights.md`, and route-local QA context. Ferris repairs use `references/ips/ferris/prompt-template.md` edit gates: participation, identity, trademark-boundary, title removal, text reduction, and unaffected-content preservation; every repair keeps `source-reviewed`, `references/ips/ferris/source.md`, source/trademark note, and route-local QA context. Seal repairs use `references/ips/seal/prompt-template.md` edit prompts; every repair keeps `active`, `references/ips/seal/source.md`, hoodie seal identity note, Logo-free note, product-neutral article metaphor context, route-local QA context, and `assets/<article-slug>-seal/`. OpenClaw repairs use `references/ips/openclaw/prompt-template.md` edit prompts; every repair keeps `source-reviewed`, `references/ips/openclaw/source.md`, uploaded-logo identity note, source/license note, original article-metaphor context, route-local QA context, and `assets/<article-slug>-openclaw/`. Go Gopher repairs use `references/ips/gopher/prompt-template.md` edit prompts; every repair keeps `source-reviewed`, `references/ips/gopher/source.md`, route-local `gopher.png` identity note, source/license note, original article-metaphor context, route-local QA context, public sample review boundary, route isolation status, and `assets/<article-slug>-gopher/`. Cai Xukun uses `references/ips/caixukun/qa-checklist.md` and repairs through `references/ips/caixukun/prompt-template.md`; every repair keeps `gated-public-figure`, `references/ips/caixukun/source.md`, uploaded-image identity note, public-figure likeness boundary, source-image context boundary, public sample review boundary, route-local QA context, route isolation status, and `assets/<article-slug>-caixukun/`.
+Hermes high-risk failures:
+
+- generic anime or assistant drift
+- mythological Hermes imagery
+- missing headset
+- missing bob-hair highlight silhouette
+- missing black sleeveless dress
+- missing collar tag
+- missing stockings or platform heels
+- missing monochrome full-body logo-style character
+- missing white collar tag with an `A`-like mark
+- missing black thigh-high stockings
+- missing platform heels
+- missing slender fashion-figure posture
+- missing uploaded-image authority status
+- missing source context note
+- missing MIT license context
+- product-poster drift
+- passive placement
+- route leakage
+- excessive text
+- copied composition
+- formal diagrams
+- UI screenshots
+- CLI screenshots
+- web hero graphics
+- poster layouts
+- top-left title artifacts
+- clean digital labels
+- official endorsement
+- affiliation
+- sponsorship
+- approval claim
+- impersonation
+- mythology-drift boundary loss
+- product-poster boundary status loss
+- public sample review boundary loss
+- missing `source-reviewed`
+- missing `references/ips/hermes/source.md`
+- missing `assets/<article-slug>-hermes/`
+
+When QA finds a failure, regenerate or edit through the selected IP's qa-checklist. Littlebox repairs prioritize closed lid, side-seam arms, single amber jagged seam tape, near-white body, rough linework, user's-language labels, balanced background, and active placement. Tom repairs use `references/ips/tom/prompt-template.md` edit gates: Tom edit participation repair gate, Tom off-model identity repair gate, Tom title removal edit gate, Tom text reduction edit gate, and Tom unaffected-content preservation gate; every repair keeps `gated-authorized`, `references/ips/tom/rights.md`, and route-local QA context. Ferris repairs use `references/ips/ferris/prompt-template.md` edit gates: participation, identity, trademark-boundary, title removal, text reduction, and unaffected-content preservation; every repair keeps `source-reviewed`, `references/ips/ferris/source.md`, source/trademark note, and route-local QA context. Seal repairs use `references/ips/seal/prompt-template.md` edit prompts; every repair keeps `active`, `references/ips/seal/source.md`, hoodie seal identity note, Logo-free note, product-neutral article metaphor context, route-local QA context, and `assets/<article-slug>-seal/`. OpenClaw repairs use `references/ips/openclaw/prompt-template.md` edit prompts; every repair keeps `source-reviewed`, `references/ips/openclaw/source.md`, uploaded-logo identity note, source/license note, original article-metaphor context, route-local QA context, and `assets/<article-slug>-openclaw/`. Go Gopher repairs use `references/ips/gopher/prompt-template.md` edit prompts; every repair keeps `source-reviewed`, `references/ips/gopher/source.md`, route-local `gopher.png` identity note, source/license note, original article-metaphor context, route-local QA context, public sample review boundary, route isolation status, and `assets/<article-slug>-gopher/`. Cai Xukun uses `references/ips/caixukun/qa-checklist.md` and repairs through `references/ips/caixukun/prompt-template.md`; every repair keeps `gated-public-figure`, `references/ips/caixukun/source.md`, uploaded-image identity note, public-figure likeness boundary, source-image context boundary, public sample review boundary, route-local QA context, route isolation status, and `assets/<article-slug>-caixukun/`. Hermes Agent uses `references/ips/hermes/qa-checklist.md` and repairs through `references/ips/hermes/prompt-template.md`; every repair keeps `source-reviewed`, `references/ips/hermes/source.md`, uploaded-image authority status, source context note, MIT license context, original article-metaphor context, mythology-drift boundary, product-poster boundary, public sample review boundary, route-local QA context, route isolation status, and `assets/<article-slug>-hermes/`.
 
 ### 6. Save and Deliver
 
@@ -609,6 +706,7 @@ assets/<article-slug>-seal/
 assets/<article-slug>-openclaw/
 assets/<article-slug>-gopher/
 assets/<article-slug>-caixukun/
+assets/<article-slug>-hermes/
 ```
 
 The save path comes from `references/routing.md` `output_suffix`:
@@ -621,7 +719,8 @@ The save path comes from `references/routing.md` `output_suffix`:
 - OpenClaw `output_suffix: openclaw` -> `assets/<article-slug>-openclaw/`
 - Go Gopher `output_suffix: gopher` -> `assets/<article-slug>-gopher/`
 - Cai Xukun `output_suffix: caixukun` -> `assets/<article-slug>-caixukun/`
-- Validation markers: Xiaohei `assets/&lt;article-slug&gt;-illustrations/`; Littlebox `assets/&lt;article-slug&gt;-littlebox/`; Tom `assets/&lt;article-slug&gt;-tom/`; Ferris `assets/&lt;article-slug&gt;-ferris/`; Seal `assets/&lt;article-slug&gt;-seal/`; OpenClaw `assets/&lt;article-slug&gt;-openclaw/`; Go Gopher `assets/&lt;article-slug&gt;-gopher/`; Cai Xukun `assets/&lt;article-slug&gt;-caixukun/`
+- Hermes Agent `output_suffix: hermes` -> `assets/<article-slug>-hermes/`
+- Validation markers: Xiaohei `assets/&lt;article-slug&gt;-illustrations/`; Littlebox `assets/&lt;article-slug&gt;-littlebox/`; Tom `assets/&lt;article-slug&gt;-tom/`; Ferris `assets/&lt;article-slug&gt;-ferris/`; Seal `assets/&lt;article-slug&gt;-seal/`; OpenClaw `assets/&lt;article-slug&gt;-openclaw/`; Go Gopher `assets/&lt;article-slug&gt;-gopher/`; Cai Xukun `assets/&lt;article-slug&gt;-caixukun/`; Hermes Agent `assets/&lt;article-slug&gt;-hermes/`
 
 Use ordered English slug filenames:
 
@@ -630,7 +729,7 @@ Use ordered English slug filenames:
 02-topic-name.png
 ```
 
-Seal accepted outputs use ordered English slug filenames such as `01-topic-name.png`. OpenClaw accepted outputs use ordered English slug filenames such as `01-topic-name.png`. Go Gopher accepted outputs use ordered English slug filenames such as `01-topic-name.png`. Cai Xukun accepted outputs use ordered English slug filenames such as `01-topic-name.png`. Mixed-IP requests write each separate route group to its own output directory: Xiaohei to `assets/<article-slug>-illustrations/`, Littlebox to `assets/<article-slug>-littlebox/`, Tom to `assets/<article-slug>-tom/`, Ferris to `assets/<article-slug>-ferris/`, Seal to `assets/<article-slug>-seal/`, OpenClaw to `assets/<article-slug>-openclaw/`, Go Gopher variants to `assets/<article-slug>-gopher/`, and Cai Xukun variants to `assets/<article-slug>-caixukun/`. Each variant group keeps its own file sequence and purpose notes.
+Seal accepted outputs use ordered English slug filenames such as `01-topic-name.png`. OpenClaw accepted outputs use ordered English slug filenames such as `01-topic-name.png`. Go Gopher accepted outputs use ordered English slug filenames such as `01-topic-name.png`. Cai Xukun accepted outputs use ordered English slug filenames such as `01-topic-name.png`. Hermes Agent accepted outputs use ordered English slug filenames such as `01-topic-name.png`. Mixed-IP requests write each separate route group to its own output directory: Xiaohei to `assets/<article-slug>-illustrations/`, Littlebox to `assets/<article-slug>-littlebox/`, Tom to `assets/<article-slug>-tom/`, Ferris to `assets/<article-slug>-ferris/`, Seal to `assets/<article-slug>-seal/`, OpenClaw to `assets/<article-slug>-openclaw/`, Go Gopher variants to `assets/<article-slug>-gopher/`, Cai Xukun variants to `assets/<article-slug>-caixukun/`, and Hermes Agent variants to `assets/<article-slug>-hermes/`. Each variant group keeps its own file sequence and purpose notes.
 
 Compatibility marker: preserve original generated files. Preserve original generated files and choose new filenames for new accepted outputs.
 
@@ -646,6 +745,8 @@ Pre-generation strategy output should be short and precise. Post-generation deli
 
 When the selected visual IP is `Cai Xukun`, post-generation delivery must include selected IP `Cai Xukun`, image count, purpose per image, save path `assets/<article-slug>-caixukun/`, route status `gated-public-figure`, source pointer `references/ips/caixukun/source.md`, uploaded-image identity status, public-figure likeness boundary status, source-image context status, route isolation status, public sample review boundary when relevant, route stability notes, and confirmation that prompt/report text uses the source pointer rather than maintainer-local source-image paths.
 
+When the selected visual IP is `Hermes Agent`, post-generation delivery must include selected IP `Hermes Agent`, image count, purpose per image, save path `assets/<article-slug>-hermes/`, route status `source-reviewed`, source pointer `references/ips/hermes/source.md`, uploaded-image authority status from `Generated image 1 (16).jpeg`, source context note, MIT license context, mythology-drift status, product-poster boundary status, route isolation status, public sample review boundary when relevant, route stability notes, and confirmation that prompt/report text keeps broad assistant, Greek messenger, winged sandals, and caduceus terms outside route identity.
+
 Mixed-IP delivery uses one block per IP:
 
 - Xiaohei block: shared core idea, image purposes, save path `assets/<article-slug>-illustrations/`, stability notes
@@ -656,5 +757,6 @@ Mixed-IP delivery uses one block per IP:
 - OpenClaw block: selected IP: OpenClaw, shared core idea, image purposes, save path `assets/<article-slug>-openclaw/`, route status `source-reviewed`, source/license note, source pointer `references/ips/openclaw/source.md`, uploaded-logo identity note: preserve red round body, side claw-like arms, two antennae, black eyes, cyan pupils, and short legs, route isolation status, stability notes
 - Go Gopher block: selected IP `Go Gopher`, shared core idea, image purposes, save path `assets/<article-slug>-gopher/`, route status `source-reviewed`, source/license note, source pointer `references/ips/gopher/source.md`, route-local `gopher.png` identity status, public sample review boundary when relevant, route isolation status, stability notes
 - Cai Xukun block: selected IP `Cai Xukun`, shared core idea for mixed-IP work, image count, purpose per image, save path `assets/<article-slug>-caixukun/`, route status `gated-public-figure`, source authority note, source pointer `references/ips/caixukun/source.md`, uploaded-image identity status, public-figure likeness boundary status, source-image context status, route isolation status, public sample review boundary when relevant, route stability notes
+- Hermes Agent block: selected IP `Hermes Agent`, shared core idea for mixed-IP work, image count, purpose per image, save path `assets/<article-slug>-hermes/`, route status `source-reviewed`, source context note, MIT license context, source pointer `references/ips/hermes/source.md`, uploaded-image authority status, mythology-drift boundary status, product-poster boundary status, public sample review boundary when relevant, route isolation status, route stability notes
 
-Before delivery, run the route-leakage delivery guard. Tom blocks keep `gated-authorized` and `references/ips/tom/rights.md`. Ferris blocks keep `source-reviewed`, `references/ips/ferris/source.md`, source/trademark note, route-local QA, and `assets/<article-slug>-ferris/`. Seal blocks keep `active`, `references/ips/seal/source.md`, hoodie seal identity note, route-local QA, source-history provenance markers, Logo-free note, product-neutral article-metaphor status, and `assets/<article-slug>-seal/`. OpenClaw blocks keep `source-reviewed`, `references/ips/openclaw/source.md`, source/license note, uploaded-logo identity note, route-local QA, original article-metaphor status, route isolation status, and `assets/<article-slug>-openclaw/`. Go Gopher blocks keep `source-reviewed`, `references/ips/gopher/source.md`, source/license note, route-local `gopher.png` identity status, route-local QA, original article-metaphor status, public sample review boundary, route isolation status, and `assets/<article-slug>-gopher/`. Cai Xukun blocks keep `gated-public-figure`, `references/ips/caixukun/source.md`, uploaded-image identity note, route-local QA, public-figure likeness boundary, source-image context boundary, public sample review boundary, route isolation status, and `assets/<article-slug>-caixukun/`, and prompt/report text must use the source pointer rather than maintainer-local source-image paths. Xiaohei and Littlebox blocks keep their route-local wording, QA, and output directories.
+Before delivery, run the route-leakage delivery guard. Tom blocks keep `gated-authorized` and `references/ips/tom/rights.md`. Ferris blocks keep `source-reviewed`, `references/ips/ferris/source.md`, source/trademark note, route-local QA, and `assets/<article-slug>-ferris/`. Seal blocks keep `active`, `references/ips/seal/source.md`, hoodie seal identity note, route-local QA, source-history provenance markers, Logo-free note, product-neutral article-metaphor status, and `assets/<article-slug>-seal/`. OpenClaw blocks keep `source-reviewed`, `references/ips/openclaw/source.md`, source/license note, uploaded-logo identity note, route-local QA, original article-metaphor status, route isolation status, and `assets/<article-slug>-openclaw/`. Go Gopher blocks keep `source-reviewed`, `references/ips/gopher/source.md`, source/license note, route-local `gopher.png` identity status, route-local QA, original article-metaphor status, public sample review boundary, route isolation status, and `assets/<article-slug>-gopher/`. Cai Xukun blocks keep `gated-public-figure`, `references/ips/caixukun/source.md`, uploaded-image identity note, route-local QA, public-figure likeness boundary, source-image context boundary, public sample review boundary, route isolation status, and `assets/<article-slug>-caixukun/`, and prompt/report text must use the source pointer rather than maintainer-local source-image paths. Hermes Agent blocks keep `source-reviewed`, `references/ips/hermes/source.md`, uploaded-image authority note, source context note, MIT license context, route-local QA, original article-metaphor status, mythology-drift boundary, product-poster boundary, public sample review boundary, route isolation status, and `assets/<article-slug>-hermes/`. Xiaohei and Littlebox blocks keep their route-local wording, QA, and output directories.

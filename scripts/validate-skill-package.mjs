@@ -646,6 +646,7 @@ export function outputPathTokens() {
       "assets/<article-slug>-openclaw/",
       "assets/<article-slug>-gopher/",
       "assets/<article-slug>-caixukun/",
+      "assets/<article-slug>-hermes/",
     ],
     escaped: [
       "assets/&lt;article-slug&gt;-illustrations/",
@@ -656,6 +657,7 @@ export function outputPathTokens() {
       "assets/&lt;article-slug&gt;-openclaw/",
       "assets/&lt;article-slug&gt;-gopher/",
       "assets/&lt;article-slug&gt;-caixukun/",
+      "assets/&lt;article-slug&gt;-hermes/",
     ],
   };
 }
@@ -671,6 +673,7 @@ function publicDocsOutputPathTokens() {
       "assets/<article-slug>-openclaw/",
       "assets/<article-slug>-gopher/",
       "assets/<article-slug>-caixukun/",
+      "assets/<article-slug>-hermes/",
     ],
     escaped: [
       "assets/&lt;article-slug&gt;-illustrations/",
@@ -681,6 +684,7 @@ function publicDocsOutputPathTokens() {
       "assets/&lt;article-slug&gt;-openclaw/",
       "assets/&lt;article-slug&gt;-gopher/",
       "assets/&lt;article-slug&gt;-caixukun/",
+      "assets/&lt;article-slug&gt;-hermes/",
     ],
   };
 }
@@ -732,6 +736,15 @@ export function parsePublicCaiXukunSampleApproval(releaseChecklistText) {
     .find((line) => line.includes("Cai Xukun public asset policy for"));
 
   return parseCaiXukunApprovalLine(approvalLine, "public");
+}
+
+export function parsePublicHermesSampleApproval(releaseChecklistText) {
+  const approvalLine = releaseChecklistText
+    .split("\n")
+    .map((line) => line.trim())
+    .find((line) => line.includes("Hermes Agent public asset policy for"));
+
+  return parseHermesApprovalLine(approvalLine, "public");
 }
 
 export function parseGeneratedFerrisSampleApproval(releaseChecklistText) {
@@ -791,6 +804,18 @@ export function parseGeneratedCaiXukunSampleApproval(releaseChecklistText) {
     .find((line) => line.includes("Record generated sample review:"));
 
   return parseCaiXukunApprovalLine(approvalLine, "generated");
+}
+
+export function parseGeneratedHermesSampleApproval(releaseChecklistText) {
+  const hermesSection = releaseChecklistText
+    .split("## Hermes Agent Source, MIT License, Uploaded-Image Authority, and Public Sample Gate")[1]
+    ?.split("## Installable Package Boundary")[0] ?? "";
+  const approvalLine = hermesSection
+    .split("\n")
+    .map((line) => line.trim())
+    .find((line) => line.includes("Record generated sample review:"));
+
+  return parseHermesApprovalLine(approvalLine, "generated");
 }
 
 function parsePublicRouteSampleApproval(releaseChecklistText, routeName) {
@@ -1032,6 +1057,49 @@ function emptyCaiXukunApproval() {
     sourceImageContextBoundaryOutcomePresent: false,
     routeIsolationOutcomePresent: false,
     stylizedMascotOnlyOutputOutcomePresent: false,
+    claimReviewOutcomePresent: false,
+    articleMetaphorOutcomePresent: false,
+    publicSampleOutcomePresent: false,
+    complete: false,
+  };
+}
+
+function emptyHermesApproval() {
+  return {
+    found: false,
+    checked: false,
+    status: "",
+    reviewer: "",
+    reviewDate: "",
+    approvalStatus: "",
+    allowedDirectories: [],
+    internalReviewDirectories: [],
+    publicDirectories: [],
+    releaseChannels: "",
+    sourceOutcome: "",
+    licenseOutcome: "",
+    uploadedImageIdentityOutcome: "",
+    mythologyDriftOutcome: "",
+    productPosterBoundaryOutcome: "",
+    routeIsolationOutcome: "",
+    uploadedCharacterOnlyOutcome: "",
+    claimReviewOutcome: "",
+    articleMetaphorOutcome: "",
+    publicSampleOutcome: "",
+    reviewerPresent: false,
+    datePresent: false,
+    approvalStatusPresent: false,
+    allowedDirectoriesPresent: false,
+    internalReviewDirectoriesPresent: false,
+    publicDirectoriesPresent: false,
+    releaseChannelsPresent: false,
+    sourceOutcomePresent: false,
+    licenseOutcomePresent: false,
+    uploadedImageIdentityOutcomePresent: false,
+    mythologyDriftOutcomePresent: false,
+    productPosterBoundaryOutcomePresent: false,
+    routeIsolationOutcomePresent: false,
+    uploadedCharacterOnlyOutcomePresent: false,
     claimReviewOutcomePresent: false,
     articleMetaphorOutcomePresent: false,
     publicSampleOutcomePresent: false,
@@ -1540,6 +1608,159 @@ function parseCaiXukunApprovalLine(approvalLine, kind) {
   };
 }
 
+function parseHermesApprovalLine(approvalLine, kind) {
+  if (!approvalLine) {
+    return emptyHermesApproval();
+  }
+
+  const checked = /^\-\s+\[[xX]\]/.test(approvalLine);
+  const recordMatch = approvalLine.match(/:\s*(.+?)(?:\.)?$/);
+  const approvalRecord = recordMatch?.[1] ?? "";
+  const fields = approvalRecord.split(/\s+\/(?=\s)/).map((field) => field.trim().replace(/\.$/, ""));
+  const [
+    status = "",
+    reviewer = "",
+    reviewDate = "",
+    approvalStatus = "",
+    firstDirectoryText = "",
+    secondDirectoryOrChannels = "",
+    releaseChannelsOrSource = "",
+    sourceOrLicense = "",
+    licenseOrUploadedImage = "",
+    uploadedImageOrMythology = "",
+    mythologyOrProductPoster = "",
+    productPosterOrRouteIsolation = "",
+    routeIsolationOrUploadedCharacter = "",
+    uploadedCharacterOrClaim = "",
+    claimOrArticle = "",
+    articleOrPublicSample = "",
+    publicSampleOutcomeText = "",
+  ] = fields;
+
+  const parseDirectories = (value) =>
+    value
+      .split(/,|;|\band\b/)
+      .map((directory) => directory.trim())
+      .map((directory) => directory.replace(/^`+|`+$/g, "").replace(/[./]+$/g, ""))
+      .filter(Boolean);
+
+  const publicRequiredDirectories = ["examples/images", "examples/images-en", "skills/visual-ip-illustrations/assets/examples"];
+  const generatedRequiredInternalDirectories = ["assets/<article-slug>-hermes"];
+  const generatedRequiredPublicDirectories = ["examples/images", "skills/visual-ip-illustrations/assets/examples"];
+  const allowedDirectories = kind === "public" ? parseDirectories(firstDirectoryText) : [];
+  const internalReviewDirectories = kind === "generated" ? parseDirectories(firstDirectoryText) : [];
+  const publicDirectories = kind === "generated" ? parseDirectories(secondDirectoryOrChannels) : [];
+  const releaseChannels = kind === "public" ? secondDirectoryOrChannels : releaseChannelsOrSource;
+  const sourceOutcome = kind === "public" ? releaseChannelsOrSource : sourceOrLicense;
+  const licenseOutcome = kind === "public" ? sourceOrLicense : licenseOrUploadedImage;
+  const uploadedImageIdentityOutcome = kind === "public" ? licenseOrUploadedImage : uploadedImageOrMythology;
+  const mythologyDriftOutcome = kind === "public" ? uploadedImageOrMythology : mythologyOrProductPoster;
+  const productPosterBoundaryOutcome = kind === "public" ? mythologyOrProductPoster : productPosterOrRouteIsolation;
+  const routeIsolationOutcome = kind === "public" ? productPosterOrRouteIsolation : routeIsolationOrUploadedCharacter;
+  const uploadedCharacterOnlyOutcome = kind === "public" ? routeIsolationOrUploadedCharacter : "generated sample uses uploaded-character route";
+  const claimReviewOutcome = kind === "public" ? "public asset claim review uses release policy" : uploadedCharacterOrClaim;
+  const articleMetaphorOutcome = kind === "public" ? uploadedCharacterOrClaim : claimOrArticle;
+  const publicSampleOutcome = kind === "public" ? claimOrArticle || articleOrPublicSample || publicSampleOutcomeText : "generated sample gated";
+  const reviewerPresent = Boolean(reviewer) && !/^reviewer$/i.test(reviewer);
+  const datePresent = isValidReviewDate(reviewDate);
+  const approvalStatusPresent =
+    Boolean(approvalStatus) &&
+    !/^approval status$/i.test(approvalStatus) &&
+    /(approved|complete|granted)/i.test(approvalStatus);
+  const allowedDirectoriesPresent =
+    kind === "public" && publicRequiredDirectories.every((directory) => allowedDirectories.includes(directory));
+  const internalReviewDirectoriesPresent =
+    kind === "generated" &&
+    generatedRequiredInternalDirectories.every((directory) => internalReviewDirectories.includes(directory));
+  const publicDirectoriesPresent =
+    kind === "generated" &&
+    generatedRequiredPublicDirectories.every((directory) => publicDirectories.includes(directory));
+  const releaseChannelsPresent = Boolean(releaseChannels) && !/^release channels\.?$/i.test(releaseChannels);
+  const sourceOutcomePresent = Boolean(sourceOutcome) && !/^official source outcome\.?$/i.test(sourceOutcome);
+  const licenseOutcomePresent = Boolean(licenseOutcome) && !/^MIT license outcome\.?$/i.test(licenseOutcome);
+  const uploadedImageIdentityOutcomePresent =
+    Boolean(uploadedImageIdentityOutcome) && !/^uploaded-image identity outcome\.?$/i.test(uploadedImageIdentityOutcome);
+  const mythologyDriftOutcomePresent =
+    Boolean(mythologyDriftOutcome) && !/^mythology-drift outcome\.?$/i.test(mythologyDriftOutcome);
+  const productPosterBoundaryOutcomePresent =
+    Boolean(productPosterBoundaryOutcome) && !/^product-poster boundary outcome\.?$/i.test(productPosterBoundaryOutcome);
+  const routeIsolationOutcomePresent =
+    Boolean(routeIsolationOutcome) && !/^route-isolation outcome\.?$/i.test(routeIsolationOutcome);
+  const uploadedCharacterOnlyOutcomePresent =
+    Boolean(uploadedCharacterOnlyOutcome) &&
+    !/^uploaded-character-only article illustration outcome\.?$/i.test(uploadedCharacterOnlyOutcome);
+  const claimReviewOutcomePresent =
+    Boolean(claimReviewOutcome) &&
+    !/^endorsement, affiliation, sponsorship, approval, impersonation review outcome\.?$/i.test(claimReviewOutcome);
+  const articleMetaphorOutcomePresent =
+    Boolean(articleMetaphorOutcome) && !/^article-metaphor quality outcome\.?$/i.test(articleMetaphorOutcome);
+  const publicSampleOutcomePresent =
+    Boolean(publicSampleOutcome) && !/^public-sample decision\.?$/i.test(publicSampleOutcome);
+  const directoryFieldsPresent =
+    kind === "public" ? allowedDirectoriesPresent : internalReviewDirectoriesPresent && publicDirectoriesPresent;
+  const sharedOutcomesPresent =
+    sourceOutcomePresent &&
+    licenseOutcomePresent &&
+    uploadedImageIdentityOutcomePresent &&
+    mythologyDriftOutcomePresent &&
+    productPosterBoundaryOutcomePresent &&
+    routeIsolationOutcomePresent &&
+    articleMetaphorOutcomePresent;
+  const complete =
+    checked &&
+    /(approved|complete|granted)/i.test(status) &&
+    !/pending/i.test(status) &&
+    reviewerPresent &&
+    datePresent &&
+    approvalStatusPresent &&
+    !/pending/i.test(approvalStatus) &&
+    directoryFieldsPresent &&
+    releaseChannelsPresent &&
+    sharedOutcomesPresent &&
+    (kind === "public" ? uploadedCharacterOnlyOutcomePresent && publicSampleOutcomePresent : claimReviewOutcomePresent);
+
+  return {
+    found: true,
+    checked,
+    status,
+    reviewer,
+    reviewDate,
+    approvalStatus,
+    allowedDirectories,
+    internalReviewDirectories,
+    publicDirectories,
+    releaseChannels,
+    sourceOutcome,
+    licenseOutcome,
+    uploadedImageIdentityOutcome,
+    mythologyDriftOutcome,
+    productPosterBoundaryOutcome,
+    routeIsolationOutcome,
+    uploadedCharacterOnlyOutcome,
+    claimReviewOutcome,
+    articleMetaphorOutcome,
+    publicSampleOutcome,
+    reviewerPresent,
+    datePresent,
+    approvalStatusPresent,
+    allowedDirectoriesPresent,
+    internalReviewDirectoriesPresent,
+    publicDirectoriesPresent,
+    releaseChannelsPresent,
+    sourceOutcomePresent,
+    licenseOutcomePresent,
+    uploadedImageIdentityOutcomePresent,
+    mythologyDriftOutcomePresent,
+    productPosterBoundaryOutcomePresent,
+    routeIsolationOutcomePresent,
+    uploadedCharacterOnlyOutcomePresent,
+    claimReviewOutcomePresent,
+    articleMetaphorOutcomePresent,
+    publicSampleOutcomePresent,
+    complete,
+  };
+}
+
 function readmeVariantFiles() {
   const rootReadmes = fs.readdirSync(REPO_ROOT).filter((fileName) => fileName === README_FILE);
   const localizedReadmes = fs
@@ -1894,6 +2115,7 @@ function requiredPackageFiles() {
     ...openclawOperationalRefs(),
     ...gopherOperationalRefs(),
     ...caixukunOperationalRefs(),
+    ...hermesOperationalRefs(),
     ...legacyXiaoheiRefs().map((item) => item.root),
     "README.md",
     "examples/prompts.md",
@@ -2141,6 +2363,13 @@ function assertPhase28CompatibilitySurface() {
     "caixukun",
     "cxk",
     "gated-public-figure",
+    "Hermes Agent",
+    "Hermes",
+    "hermes",
+    "hermes-agent",
+    "Hermes logo",
+    "Hermes Agent logo",
+    "source-reviewed",
   ], "canonical and legacy invocations, Chinese aliases, and visible-label behavior");
 
   const routingText = requireFile(ROUTING_FILE);
@@ -2272,6 +2501,86 @@ function caixukunOperationalRefs() {
   return caixukunPlannedReferences().map((item) => path.join(PACKAGE_DIR, item));
 }
 
+function hermesPlannedReferences() {
+  return [
+    "references/ips/hermes/index.md",
+    "references/ips/hermes/source.md",
+    "references/ips/hermes/style-dna.md",
+    "references/ips/hermes/hermes-ip.md",
+    "references/ips/hermes/composition-patterns.md",
+    "references/ips/hermes/prompt-template.md",
+    "references/ips/hermes/qa-checklist.md",
+  ];
+}
+
+function hermesOperationalRefs() {
+  return hermesPlannedReferences().map((item) => path.join(PACKAGE_DIR, item));
+}
+
+function hermesUploadedVisualMarkers() {
+  return [
+    "monochrome full-body logo-style character",
+    "three-quarter side-facing standing pose",
+    "three-quarter left-facing manga face",
+    "large almond eyes with dark upper lashes",
+    "slim pointed nose",
+    "small slightly parted lips",
+    "pointed chin",
+    "cool reserved expression",
+    "blunt straight bangs",
+    "shoulder-length black hair with large C-shaped curled ends on both sides",
+    "bright white hair highlights",
+    "wide white over-head headset band",
+    "small black circular ear cup on the visible side",
+    "fitted black sleeveless spaghetti-strap mini dress",
+    "flared pleated skirt",
+    "small white neck/collar tag with an `A`-like mark",
+    "black thigh-high stockings",
+    "black Mary Jane platform high heels with strap and buckle",
+    "very long slim legs and reserved fashion-model posture",
+  ];
+}
+
+function hermesSourceMarkers() {
+  return [
+    "https://hermes-agent.nousresearch.com/",
+    "https://github.com/NousResearch/hermes-agent",
+    "https://github.com/NousResearch/hermes-agent/blob/main/LICENSE",
+    "https://hermes-agent.nousresearch.com/docs/",
+    "source-reviewed",
+    "Generated image 1 (16).jpeg",
+    "Public generated Hermes samples require release review",
+    "Review Owner",
+    "Distribution Boundary",
+    "official Hermes Agent context",
+    "MIT license context",
+    "mythology-drift boundary",
+    "product-poster boundary",
+    "assets/<article-slug>-hermes/",
+  ];
+}
+
+function hermesBoundaryMarkers() {
+  return [
+    "mythological Hermes imagery",
+    "winged sandals",
+    "winged helmet",
+    "caduceus",
+    "Greek messenger scenes",
+    "Olympian deity framing",
+    "mythology-first symbols",
+    "product-poster drift",
+    "product advertising",
+    "CLI screenshots",
+    "web hero graphics",
+    "official endorsement",
+    "affiliation",
+    "sponsorship",
+    "approval claim",
+    "impersonation",
+  ];
+}
+
 function sealDriftMarkers() {
   return [
     "generic seals",
@@ -2363,6 +2672,14 @@ function rebrandRouteExpectations() {
       default: "false",
       status: "gated-public-figure",
       outputSuffix: "caixukun",
+      referenceCount: 7,
+    },
+    {
+      id: "hermes",
+      aliases: ["Hermes Agent", "Hermes", "hermes", "hermes-agent", "Hermes logo", "Hermes Agent logo"],
+      default: "false",
+      status: "source-reviewed",
+      outputSuffix: "hermes",
       referenceCount: 7,
     },
   ];
@@ -2842,21 +3159,39 @@ const checks = [
       "gated-public-figure",
       "stylized mascot-only route",
       "uploaded-image authority",
-      "public-figure likeness boundary",
-      "source-image context boundary",
-      "public sample review gate",
-      "route isolation",
       "skills/visual-ip-illustrations/references/ips/caixukun/source.md",
-      "assets/<article-slug>-caixukun/",
-      "assets/&lt;article-slug&gt;-caixukun/",
-      "endorsement",
-      "affiliation",
-      "impersonation",
-      "campaign",
-      "advertising",
-      "fandom-promotion",
       "allow_implicit_invocation: true",
     ], "Cai Xukun discovery metadata, gated-public-figure route status, public-figure boundaries, and default Xiaohei preservation");
+  }),
+  defineCheck("AGENT-HERMES-001", "openai.yaml exposes Hermes Agent source-reviewed route metadata markers", () => {
+    assertIncludes(requireFile(OPENAI_AGENT_FILE), OPENAI_AGENT_FILE, [
+      "Visual IP Illustrations",
+      "$visual-ip-illustrations",
+      "$ian-xiaohei-illustrations",
+      "default Xiaohei",
+      "Hermes Agent",
+      "Hermes",
+      "hermes-agent",
+      "Hermes logo",
+      "Hermes Agent logo",
+      "source-reviewed",
+      "uploaded-image article-illustration route",
+      "Generated image 1 (16).jpeg",
+      "skills/visual-ip-illustrations/references/ips/hermes/source.md",
+      "assets/<article-slug>-hermes/",
+      "assets/&lt;article-slug&gt;-hermes/",
+      "MIT license context",
+      "mythology-drift",
+      "product-poster boundary",
+      "public sample review gate",
+      "route isolation",
+      "official endorsement",
+      "affiliation",
+      "sponsorship",
+      "approval",
+      "impersonation",
+      "allow_implicit_invocation: true",
+    ], "Hermes Agent discovery metadata, source-reviewed route status, uploaded-image authority, source/MIT boundaries, and default Xiaohei preservation");
   }),
   defineCheck("ROUTE-TABLE-001", "routing.md exposes the required route metadata columns and rows", () => {
     const text = requireFile(ROUTING_FILE);
@@ -2880,6 +3215,7 @@ const checks = [
       "openclaw",
       "gopher",
       "caixukun",
+      "hermes",
     ], ROUTING_FILE, "route ids");
   }),
   defineCheck("ROUTE-XH-001", "routing.md preserves the Xiaohei active route contract", () => {
@@ -3126,6 +3462,42 @@ const checks = [
       "Phase 47 Cai Xukun seven-file pack existence",
     );
   }),
+  defineCheck("ROUTE-HERMES-001", "routing.md preserves the Hermes Agent source-reviewed route contract", () => {
+    const row = routeById("hermes");
+    const references = routeReferencePaths(row);
+    assertIncludes(Object.values(row).join(" "), ROUTING_FILE, [
+      "Hermes Agent",
+      "Hermes",
+      "hermes",
+      "hermes-agent",
+      "Hermes logo",
+      "Hermes Agent logo",
+      "source-reviewed",
+      "Generated image 1 (16).jpeg",
+      "official website",
+      "https://hermes-agent.nousresearch.com/",
+      "MIT license context",
+      "product-poster output",
+      "mythology-first imagery",
+      "references/ips/hermes/source.md",
+    ], "Hermes Agent display name, aliases, suffix, uploaded-image authority, source/MIT context, boundaries, source record, and status");
+    if (row.default !== "false") {
+      throw new Error(`${ROUTING_FILE} expected hermes default=false; observed ${row.default || "missing"}`);
+    }
+    if (row.output_suffix !== "hermes") {
+      throw new Error(`${ROUTING_FILE} expected hermes output_suffix=hermes; observed ${row.output_suffix || "missing"}`);
+    }
+    if (references.join("\n") !== hermesPlannedReferences().join("\n")) {
+      throw new Error(
+        `${ROUTING_FILE} expected hermes required_references=${hermesPlannedReferences().join(", ")}; observed ${references.join(", ") || "none"}`,
+      );
+    }
+    assertExistingFiles(
+      hermesPlannedReferences().map((reference) => path.join(PACKAGE_DIR, reference)),
+      ROUTING_FILE,
+      "Phase 52 Hermes Agent seven-file pack existence",
+    );
+  }),
   defineCheck("ROUTE-DEFAULT-001", "routing.md keeps Xiaohei as the only default active route", () => {
     const rows = routeRows();
     const defaults = rows.filter((row) => row.default === "true").map((row) => row.id);
@@ -3160,11 +3532,15 @@ const checks = [
     if (caixukun.default !== "false") {
       throw new Error(`${ROUTING_FILE} expected caixukun default=false; observed ${caixukun.default || "missing"}`);
     }
+    const hermes = routeById("hermes");
+    if (hermes.default !== "false") {
+      throw new Error(`${ROUTING_FILE} expected hermes default=false; observed ${hermes.default || "missing"}`);
+    }
   }),
   defineCheck("ROUTE-REFS-001", "routing.md required_references resolve inside the package", () => {
     for (const row of routeRows()) {
       const references = routeReferencePaths(row);
-      const expectedCounts = { xiaohei: 5, littlebox: 6, tom: 7, ferris: 7, seal: 7, openclaw: 7, gopher: 7, caixukun: 7 };
+      const expectedCounts = { xiaohei: 5, littlebox: 6, tom: 7, ferris: 7, seal: 7, openclaw: 7, gopher: 7, caixukun: 7, hermes: 7 };
       const expectedCount = expectedCounts[row.id];
       if (references.length !== expectedCount) {
         throw new Error(
@@ -3219,6 +3595,14 @@ const checks = [
             throw new Error(`${ROUTING_FILE} expected caixukun reference ${reference} to resolve under ${PACKAGE_DIR}/references/ips/caixukun/`);
           }
         }
+        if (row.id === "hermes") {
+          if (!reference.startsWith("references/ips/hermes/")) {
+            throw new Error(`${ROUTING_FILE} expected hermes reference ${reference} under references/ips/hermes/`);
+          }
+          if (!displayPath(resolved).startsWith(`${PACKAGE_DIR}/references/ips/hermes/`)) {
+            throw new Error(`${ROUTING_FILE} expected hermes reference ${reference} to resolve under ${PACKAGE_DIR}/references/ips/hermes/`);
+          }
+        }
         if (!fileExists(relative)) {
           throw new Error(`${ROUTING_FILE} expected ${row.id} reference ${reference} to exist; observed missing ${relative}`);
         }
@@ -3234,6 +3618,7 @@ const checks = [
     const openclaw = routeById("openclaw");
     const gopher = routeById("gopher");
     const caixukun = routeById("caixukun");
+    const hermes = routeById("hermes");
     if (xiaohei.output_suffix !== "illustrations") {
       throw new Error(`${ROUTING_FILE} expected xiaohei output_suffix=illustrations; observed ${xiaohei.output_suffix}`);
     }
@@ -3258,6 +3643,9 @@ const checks = [
     if (caixukun.output_suffix !== "caixukun") {
       throw new Error(`${ROUTING_FILE} expected caixukun output_suffix=caixukun; observed ${caixukun.output_suffix}`);
     }
+    if (hermes.output_suffix !== "hermes") {
+      throw new Error(`${ROUTING_FILE} expected hermes output_suffix=hermes; observed ${hermes.output_suffix}`);
+    }
     assertIncludes(requireFile(ROUTING_FILE), ROUTING_FILE, [
       "assets/<article-slug>-illustrations/",
       "assets/<article-slug>-littlebox/",
@@ -3273,6 +3661,8 @@ const checks = [
       "assets/&lt;article-slug&gt;-gopher/",
       "assets/<article-slug>-caixukun/",
       "assets/&lt;article-slug&gt;-caixukun/",
+      "assets/<article-slug>-hermes/",
+      "assets/&lt;article-slug&gt;-hermes/",
     ], "output suffix to output directory mapping");
   }),
   defineCheck("ROUTE-MIXED-001", "routing.md preserves mixed-IP separate route group wording", () => {
@@ -3287,6 +3677,7 @@ const checks = [
       "`openclaw` writes to `assets/<article-slug>-openclaw/`",
       "`gopher` writes to `assets/<article-slug>-gopher/`",
       "`caixukun` writes to `assets/<article-slug>-caixukun/`",
+      "`hermes` writes to `assets/<article-slug>-hermes/`",
     ], "mixed-IP isolated reference and output-directory wording");
   }),
   defineCheck("REFS-XH-001", "Xiaohei canonical operational references and index exist", () => {
@@ -3487,6 +3878,48 @@ const checks = [
       "fandom promotion",
       "route leakage",
     ], "Cai Xukun route-local sample gate, route block, public-figure boundary, and drift markers");
+  }),
+  defineCheck("REFS-HERMES-001", "Hermes Agent canonical route references and shared markers exist", () => {
+    const hermesFiles = hermesOperationalRefs();
+    assertReadableFiles(hermesFiles, path.join(REFERENCES_DIR, "ips", "hermes"), "Hermes Agent seven-file pack");
+    for (const relativePath of hermesFiles) {
+      assertIncludes(requireFile(relativePath), relativePath, [
+        "hermes",
+        "Hermes Agent",
+        "source-reviewed",
+        "source.md",
+        "assets/<article-slug>-hermes/",
+        "Generated image 1 (16).jpeg",
+        "official Hermes Agent context",
+        "MIT license context",
+        "release review",
+        ...hermesUploadedVisualMarkers(),
+      ], "Hermes Agent route-local shared operational markers");
+    }
+    assertIncludes(combinedText([
+      path.join(REFERENCES_DIR, "ips", "hermes", "index.md"),
+      path.join(REFERENCES_DIR, "ips", "hermes", "prompt-template.md"),
+      path.join(REFERENCES_DIR, "ips", "hermes", "qa-checklist.md"),
+    ]), path.join(REFERENCES_DIR, "ips", "hermes"), [
+      "Hermes Agent route block",
+      "Public sample review boundary",
+      "generic anime or assistant drift",
+      "mythological Hermes imagery",
+      "missing wide white headset band",
+      "missing three-quarter left-facing face",
+      "missing large almond eyes with dark upper lashes",
+      "missing slim pointed nose, small slightly parted lips, or pointed chin",
+      "missing cool reserved expression",
+      "missing blunt bangs",
+      "missing large C-shaped curled hair ends",
+      "missing fitted spaghetti-strap mini dress",
+      "missing small white A-like collar tag",
+      "missing thigh-high stockings or Mary Jane platform high heels",
+      "product-poster drift",
+      "passive placement",
+      "route leakage",
+      "copied composition",
+    ], "Hermes Agent route-local sample gate, route block, mythology/product boundaries, and drift markers");
   }),
   defineCheck("LEGACY-XH-001", "root Xiaohei compatibility files expose the current contract heading", () => {
     for (const item of legacyXiaoheiRefs()) {
@@ -3708,6 +4141,32 @@ const checks = [
       "Unaffected-Content Preservation",
       "Cai Xukun route block",
     ], "Cai Xukun planning fields, generation prompt, uploaded-image authority, public-figure repair, save reminder, and edit prompt families");
+  }),
+  defineCheck("PROMPT-HERMES-001", "Hermes Agent prompt template preserves planning, generation, edit, and source-boundary markers", () => {
+    const relativePath = path.join(REFERENCES_DIR, "ips", "hermes", "prompt-template.md");
+    assertIncludes(requireFile(relativePath), relativePath, [
+      "Hermes Agent planning fields gate",
+      "Hermes Agent state",
+      "Hermes Agent action",
+      "Source context note",
+      "Mythology-drift note",
+      "Product-poster boundary note",
+      "assets/<article-slug>-hermes/",
+      "Hermes Agent one-image generation gate",
+      "Generated image 1 (16).jpeg",
+      "Official source context and MIT license context",
+      "Stronger Hermes Participation",
+      "Uploaded-Image Identity Repair",
+      "Mythology-Drift Repair",
+      "Product-Poster Repair",
+      "Route Leakage Repair",
+      "Unaffected-Content Preservation",
+      "delivery report states selected visual IP",
+      "mythology-drift status",
+      "product-poster boundary status",
+      ...hermesUploadedVisualMarkers(),
+      ...hermesBoundaryMarkers(),
+    ], "Hermes Agent planning fields, generation prompt, source/MIT boundary, save reminder, and edit prompt families");
   }),
   defineCheck("IP-XH-001", "Xiaohei canonical pack preserves objective IP markers", () => {
     const text = combinedText([
@@ -3954,6 +4413,41 @@ const checks = [
       "copied composition",
     ], "Cai Xukun source authority, uploaded-image identity cues, cognitive action gates, article metaphors, public-figure boundaries, drift markers, and output path");
   }),
+  defineCheck("IP-HERMES-001", "Hermes Agent canonical pack preserves uploaded-image identity and action gates", () => {
+    const text = combinedText([
+      path.join(REFERENCES_DIR, "ips", "hermes", "index.md"),
+      path.join(REFERENCES_DIR, "ips", "hermes", "source.md"),
+      path.join(REFERENCES_DIR, "ips", "hermes", "style-dna.md"),
+      path.join(REFERENCES_DIR, "ips", "hermes", "hermes-ip.md"),
+      path.join(REFERENCES_DIR, "ips", "hermes", "composition-patterns.md"),
+    ]);
+    assertIncludes(text, path.join(REFERENCES_DIR, "ips", "hermes"), [
+      "source-reviewed",
+      "uploaded visual authority",
+      "Generated image 1 (16).jpeg",
+      "official Hermes Agent context",
+      "MIT license context",
+      "Hermes Agent Active-Composition Gate",
+      "Hermes Agent must perform the central cognitive action",
+      "article metaphor",
+      "source.md",
+      ...hermesUploadedVisualMarkers(),
+      ...hermesBoundaryMarkers(),
+      "generic anime or assistant drift",
+      "missing wide white headset band",
+      "missing three-quarter left-facing face",
+      "missing large almond eyes with dark upper lashes",
+      "missing slim pointed nose, small slightly parted lips, or pointed chin",
+      "missing cool reserved expression",
+      "missing blunt bangs",
+      "missing large C-shaped curled hair ends",
+      "missing fitted spaghetti-strap mini dress",
+      "missing small white A-like collar tag",
+      "missing thigh-high stockings or Mary Jane platform high heels",
+      "route leakage",
+      "copied composition",
+    ], "Hermes Agent source authority, uploaded-image identity cues, cognitive action gates, article metaphors, source/MIT boundaries, drift markers, and output path");
+  }),
   defineCheck("QA-TOM-001", "Tom QA checklist preserves protected-route pass, fail, repair, and delivery markers", () => {
     const relativePath = path.join(REFERENCES_DIR, "ips", "tom", "qa-checklist.md");
     assertIncludes(requireFile(relativePath), relativePath, [
@@ -4163,6 +4657,46 @@ const checks = [
       "Accepted Cai Xukun images keep Cai Xukun as the action subject",
     ], "Cai Xukun QA pass criteria, public-figure failures, route leakage failure, repair gates, and delivery judgment");
   }),
+  defineCheck("QA-HERMES-001", "Hermes Agent QA checklist preserves source-reviewed pass, fail, repair, and delivery markers", () => {
+    const relativePath = path.join(REFERENCES_DIR, "ips", "hermes", "qa-checklist.md");
+    assertIncludes(requireFile(relativePath), relativePath, [
+      "Hermes Agent QA source-reviewed gate",
+      "Hermes Agent QA uploaded-image identity gate",
+      "Hermes Agent QA source and MIT license context gate",
+      "Hermes Agent QA article-metaphor gate",
+      "Hermes Agent QA route isolation gate",
+      "Hermes Agent performs active cognitive participation",
+      "Source and MIT license context is preserved through `source.md`",
+      "Delivery path uses `assets/<article-slug>-hermes/`",
+      "generic anime or assistant drift",
+      "mythological Hermes imagery",
+      "missing wide white headset band",
+      "missing three-quarter left-facing face",
+      "missing large almond eyes with dark upper lashes",
+      "missing slim pointed nose, small slightly parted lips, or pointed chin",
+      "missing cool reserved expression",
+      "missing blunt bangs",
+      "missing large C-shaped curled hair ends",
+      "missing fitted spaghetti-strap mini dress",
+      "missing small white A-like collar tag",
+      "missing thigh-high stockings or Mary Jane platform high heels",
+      "product-poster drift",
+      "route leakage",
+      "Hermes Agent QA generic anime or assistant drift failure",
+      "Hermes Agent QA mythology-drift failure",
+      "Hermes Agent QA passive placement failure",
+      "Hermes Agent QA product-poster failure",
+      "Hermes Agent QA route leakage failure",
+      "Stronger Hermes Participation",
+      "Uploaded-Image Identity Repair",
+      "Mythology-drift repair",
+      "Product-poster repair",
+      "Route leakage repair",
+      "Hermes Agent QA unaffected-content preservation gate",
+      "Accepted Hermes Agent images keep Hermes Agent as the action subject",
+      ...hermesUploadedVisualMarkers(),
+    ], "Hermes Agent QA pass criteria, source/MIT failures, mythology/product failures, route leakage failure, repair gates, and delivery judgment");
+  }),
   defineCheck("RIGHTS-TOM-001", "Tom rights record preserves required Phase 6 rights markers", () => {
     const relativePath = path.join(REFERENCES_DIR, "ips", "tom", "rights.md");
     assertIncludes(requireFile(relativePath), relativePath, [
@@ -4352,6 +4886,30 @@ const checks = [
       "fandom promotion",
     ], "Cai Xukun source headings, uploaded-image authority, public-figure boundary, source-image context, route status, output path, and sample gate");
   }),
+  defineCheck("SOURCE-HERMES-001", "Hermes Agent source record preserves source, MIT, uploaded-image, and sample gate markers", () => {
+    const relativePath = path.join(REFERENCES_DIR, "ips", "hermes", "source.md");
+    assertIncludes(requireFile(relativePath), relativePath, [
+      "# Hermes Agent Source Record",
+      "## Source",
+      "## Official Source Context",
+      "## Uploaded Hermes Visual Markers",
+      "## Sample Policy",
+      "## Route Status",
+      "## Allowed Use",
+      "## Restricted Use",
+      "## Distribution Boundary",
+      "## Review Owner",
+      ...hermesSourceMarkers(),
+      ...hermesUploadedVisualMarkers(),
+      "third-party icon context outcome",
+      "official source outcome",
+      "MIT license outcome",
+      "uploaded-image identity outcome",
+      "mythology-drift outcome",
+      "product-poster boundary outcome",
+      "public-sample decision",
+    ], "Hermes Agent source headings, official source, MIT license, uploaded-image authority, route status, output path, and sample gate");
+  }),
   defineCheck("LOGO-SEAL-001", "Seal route keeps mascot logo-free", () => {
     const routeLocalFiles = [
       path.join(REFERENCES_DIR, "ips", "seal", "index.md"),
@@ -4486,11 +5044,14 @@ const checks = [
       "skills/visual-ip-illustrations/references/ips/gopher/source.md",
       "skills/visual-ip-illustrations/references/ips/caixukun/",
       "skills/visual-ip-illustrations/references/ips/caixukun/source.md",
+      "skills/visual-ip-illustrations/references/ips/hermes/",
+      "skills/visual-ip-illustrations/references/ips/hermes/source.md",
       "Xiaohei",
       "Littlebox",
       "OpenClaw",
       "Go Gopher",
       "Cai Xukun",
+      "Hermes Agent",
     ], "public route docs, canonical pack paths, and route names");
   }),
   defineCheck("DOC-TOM-001", "public docs expose Tom gated route markers", () => {
@@ -4715,7 +5276,7 @@ const checks = [
       "Cai Xukun Metadata",
       "Source-image context:",
       "public generated sample release review",
-      "Mixed requests across Xiaohei, Littlebox, Tom, Ferris, Seal, OpenClaw, Go Gopher, and Cai Xukun create separate route groups",
+      "Mixed requests across Xiaohei, Littlebox, Tom, Ferris, Seal, OpenClaw, Go Gopher, Cai Xukun, and Hermes create separate route groups",
       "stylized mascot article-illustration route",
     ], "Cai Xukun routing metadata keeps equivalent source-image, review, route separation, and stylized mascot markers");
     assertIncludes(requireFile("NOTICE.md"), "NOTICE.md", [
@@ -4734,7 +5295,7 @@ const checks = [
       "蔡徐坤",
       "gated-public-figure",
       "stylized mascot-only route",
-      "public-figure likeness boundary",
+      "uploaded-image authority",
     ], "Cai Xukun agent metadata route status wording");
     assertIncludes(
       combinedText(["README.md", "examples/prompts.md", "NOTICE.md", "RELEASE_CHECKLIST.md", ROUTING_FILE, OPENAI_AGENT_FILE]),
@@ -4764,6 +5325,78 @@ const checks = [
         "Phase 47",
       ],
       "Cai Xukun docs, metadata, source authority, path-token consistency, public sample policy, and validator ownership markers",
+    );
+  }),
+  defineCheck("DOC-HERMES-001", "public docs expose Hermes Agent source-reviewed route and source-boundary markers", () => {
+    for (const relativePath of readmeVariantFiles()) {
+      assertIncludes(requireFile(relativePath), relativePath, [
+        "Hermes Agent",
+        "source-reviewed",
+        "skills/visual-ip-illustrations/references/ips/hermes/source.md",
+        "assets/<article-slug>-hermes/",
+        "assets/&lt;article-slug&gt;-hermes/",
+      ], "Hermes Agent README variant route status, source authority, and path markers");
+    }
+    for (const relativePath of [
+      "README.md",
+      "examples/prompts.md",
+      "RELEASE_CHECKLIST.md",
+      ROUTING_FILE,
+      SKILL_FILE,
+    ]) {
+      assertIncludes(requireFile(relativePath), relativePath, [
+        "Hermes Agent",
+        "Hermes",
+        "hermes-agent",
+        "source-reviewed",
+        "Generated image 1 (16).jpeg",
+        "references/ips/hermes/source.md",
+        "assets/<article-slug>-hermes/",
+        "assets/&lt;article-slug&gt;-hermes/",
+        "uploaded-image authority",
+        "MIT license context",
+        "mythology-drift boundary",
+        "product-poster",
+      ], "Hermes Agent route status, aliases, source authority, uploaded-image boundary, and path markers");
+    }
+    assertIncludes(requireFile("NOTICE.md"), "NOTICE.md", [
+      "Hermes Agent Source Attribution and Public Sample Gate",
+      "Route: Hermes Agent",
+      "Route status: `source-reviewed`",
+      "Source authority: `skills/visual-ip-illustrations/references/ips/hermes/source.md`",
+      "Generated image 1 (16).jpeg",
+      "MIT license context",
+      "mythology-drift boundary",
+      "product-poster boundary",
+      "uploaded-character-only article illustration output",
+    ], "Hermes Agent NOTICE source boundary and public sample gate wording");
+    assertIncludes(requireFile(OPENAI_AGENT_FILE), OPENAI_AGENT_FILE, [
+      "Hermes Agent",
+      "source-reviewed",
+      "uploaded-image article-illustration route",
+      "MIT license context",
+      "mythology",
+      "product-poster",
+    ], "Hermes Agent agent metadata route status wording");
+    assertIncludes(
+      combinedText(["README.md", "examples/prompts.md", "NOTICE.md", "RELEASE_CHECKLIST.md", ROUTING_FILE, OPENAI_AGENT_FILE, SKILL_FILE]),
+      "README.md + examples/prompts.md + NOTICE.md + RELEASE_CHECKLIST.md + routing.md + openai.yaml + SKILL.md",
+      [
+        "skills/visual-ip-illustrations/references/ips/hermes/",
+        "skills/visual-ip-illustrations/references/ips/hermes/source.md",
+        "Hermes Agent Source and MIT License Review",
+        "Hermes Agent Public Asset Policy",
+        "Hermes Agent Generated Sample Policy",
+        "uploaded-image authority",
+        "official source context",
+        "MIT license context",
+        "public generated Hermes samples",
+        "mythology-drift boundary",
+        "product-poster boundary",
+        "uploaded-character-only article illustration output",
+        "Phase 52",
+      ],
+      "Hermes Agent docs, metadata, source authority, path-token consistency, public sample policy, and validator ownership markers",
     );
   }),
   defineCheck("NOTICE-IAN-001", "NOTICE keeps Ian Xiaohei attribution markers", () => {
@@ -4896,6 +5529,33 @@ const checks = [
       "article-metaphor quality outcome",
       "public-sample decision",
     ], "Cai Xukun NOTICE source boundary, public-figure boundary, review outcomes, and public sample gate");
+  }),
+  defineCheck("NOTICE-HERMES-001", "NOTICE keeps Hermes Agent source and public sample gate markers", () => {
+    assertIncludes(requireFile("NOTICE.md"), "NOTICE.md", [
+      "Hermes Agent Source Attribution and Public Sample Gate",
+      "source-reviewed",
+      "Route: Hermes Agent",
+      "Route id: `hermes`",
+      "Aliases: `Hermes Agent`, `Hermes`, `hermes`, `hermes-agent`, `Hermes logo`, `Hermes Agent logo`",
+      "Source authority: `skills/visual-ip-illustrations/references/ips/hermes/source.md`",
+      "Output path: `assets/<article-slug>-hermes/`",
+      "Docs validation token: `assets/&lt;article-slug&gt;-hermes/`",
+      "Uploaded-image authority",
+      "Generated image 1 (16).jpeg",
+      "official source context",
+      "MIT license context",
+      "mythology-drift boundary",
+      "product-poster boundary",
+      "route isolation",
+      "uploaded-character-only article illustration output",
+      "official source outcome",
+      "MIT license outcome",
+      "uploaded-image identity outcome",
+      "mythology-drift outcome",
+      "product-poster boundary outcome",
+      "route-isolation outcome",
+      "public-sample decision",
+    ], "Hermes Agent NOTICE source boundary, source/MIT review outcomes, and public sample gate");
   }),
   defineCheck("SMOKE-DEFAULT-001", "examples prompts cover omitted-IP default Xiaohei smoke path", () => {
     assertIncludes(requireFile("examples/prompts.md"), "examples/prompts.md", [
@@ -5042,6 +5702,30 @@ const checks = [
       "### Smoke: Cai Xukun gated-public-figure route status",
     ], "text-only explicit Cai Xukun route smoke, planning, generation, edit, path, source authority, public-figure boundaries, and public-sample gate prompts");
   }),
+  defineCheck("SMOKE-HERMES-001", "examples prompts cover explicit Hermes Agent route smoke path", () => {
+    assertIncludes(requireFile("examples/prompts.md"), "examples/prompts.md", [
+      "## Route Smoke: Explicit Hermes Agent",
+      "Hermes Agent is an explicit `source-reviewed` uploaded-image article-illustration route",
+      "Explicit Hermes Agent aliases include Hermes Agent, Hermes, hermes, hermes-agent, Hermes logo, and Hermes Agent logo",
+      "Use $ian-xiaohei-illustrations with the Hermes Agent / Hermes / hermes / hermes-agent / Hermes logo / Hermes Agent logo route",
+      "route status `source-reviewed`",
+      "source authority `skills/visual-ip-illustrations/references/ips/hermes/source.md`",
+      "route-local reference directory `skills/visual-ip-illustrations/references/ips/hermes/`",
+      "planning fields include Placement, Core idea, Structure type, Hermes Agent state, Hermes Agent action, Supporting objects, Visible labels, Source context note, Mythology-drift note, Product-poster boundary note, and Output path",
+      "assets/<article-slug>-hermes/",
+      "assets/&lt;article-slug&gt;-hermes/",
+      "uploaded-image authority from `Generated image 1 (16).jpeg`",
+      "official source context",
+      "MIT license context",
+      "mythology-drift boundary",
+      "product-poster boundary",
+      "public sample review gate",
+      "route isolation",
+      "uploaded-character-only article illustration output",
+      "### Explicit Hermes Agent: route smoke check",
+      "### Smoke: Hermes Agent source-reviewed route status",
+    ], "text-only explicit Hermes Agent route smoke, planning, generation, edit, path, source/MIT boundaries, and public-sample gate prompts");
+  }),
   defineCheck("SMOKE-MIXED-001", "examples prompts cover mixed-IP variant smoke path", () => {
     assertIncludes(requireFile("examples/prompts.md"), "examples/prompts.md", [
       "## Route Notes: Mixed-IP Requests",
@@ -5103,12 +5787,12 @@ const checks = [
       "keeps docs validation token `assets/&lt;article-slug&gt;-gopher/`",
       "route-local `skills/visual-ip-illustrations/references/ips/gopher/gopher.png` visual authority",
       "public sample gate",
-      "Go Gopher variant group, and Cai Xukun variant group each use their own route-local references",
+      "Go Gopher variant group, Cai Xukun variant group, and Hermes Agent variant group each use their own route-local references",
     ], "Go Gopher mixed prompt separation, route-local pack, source/license authority, output path, local visual identity, and public-sample gate");
   }),
-  defineCheck("SMOKE-MIXED-CAIXUKUN-001", "examples prompts cover eight-route mixed-IP Cai Xukun variant behavior", () => {
+  defineCheck("SMOKE-MIXED-CAIXUKUN-001", "examples prompts cover nine-route mixed-IP Cai Xukun variant behavior", () => {
     assertIncludes(requireFile("examples/prompts.md"), "examples/prompts.md", [
-      "eight separate variant groups: Xiaohei, Littlebox, Tom, Ferris, Seal, OpenClaw, Go Gopher, and Cai Xukun",
+      "nine separate variant groups: Xiaohei, Littlebox, Tom, Ferris, Seal, OpenClaw, Go Gopher, Cai Xukun, and Hermes Agent",
       "Xiaohei variant group",
       "Littlebox variant group",
       "Tom variant group",
@@ -5117,6 +5801,7 @@ const checks = [
       "OpenClaw variant group",
       "Go Gopher variant group",
       "Cai Xukun variant group",
+      "Hermes Agent variant group",
       "Cai Xukun canonical pack is at `skills/visual-ip-illustrations/references/ips/caixukun/`",
       "Cai Xukun source authority is at `skills/visual-ip-illustrations/references/ips/caixukun/source.md`",
       "Expected: Cai Xukun variant group uses `skills/visual-ip-illustrations/references/ips/caixukun/`",
@@ -5130,8 +5815,37 @@ const checks = [
       "route isolation",
       "stylized mascot-only output",
       "endorsement, affiliation, impersonation, campaign, advertising, and fandom-promotion claims",
-      "Cai Xukun variant group each use their own route-local references",
-    ], "eight-route mixed prompt separation, Cai Xukun route-local pack, source authority, output path, uploaded-image authority, public-figure boundary, and public-sample gate");
+      "Cai Xukun variant group, and Hermes Agent variant group each use their own route-local references",
+    ], "nine-route mixed prompt separation, Cai Xukun route-local pack, source authority, output path, uploaded-image authority, public-figure boundary, and public-sample gate");
+  }),
+  defineCheck("SMOKE-MIXED-HERMES-001", "examples prompts cover nine-route mixed-IP Hermes Agent variant behavior", () => {
+    assertIncludes(requireFile("examples/prompts.md"), "examples/prompts.md", [
+      "nine separate variant groups: Xiaohei, Littlebox, Tom, Ferris, Seal, OpenClaw, Go Gopher, Cai Xukun, and Hermes Agent",
+      "Xiaohei variant group",
+      "Littlebox variant group",
+      "Tom variant group",
+      "Ferris variant group",
+      "Seal variant group",
+      "OpenClaw variant group",
+      "Go Gopher variant group",
+      "Cai Xukun variant group",
+      "Hermes Agent variant group",
+      "Hermes Agent canonical pack is at `skills/visual-ip-illustrations/references/ips/hermes/`",
+      "Hermes Agent source authority is at `skills/visual-ip-illustrations/references/ips/hermes/source.md`",
+      "Expected: Hermes Agent variant group uses `skills/visual-ip-illustrations/references/ips/hermes/`",
+      "outputs to `assets/<article-slug>-hermes/`",
+      "keeps docs validation token `assets/&lt;article-slug&gt;-hermes/`",
+      "route status `source-reviewed`",
+      "uploaded-image authority from `Generated image 1 (16).jpeg`",
+      "official source context",
+      "MIT license context",
+      "mythology-drift boundary",
+      "product-poster boundary",
+      "public sample review gate",
+      "route isolation",
+      "uploaded-character-only article illustration output",
+      "Hermes Agent variant group each use their own route-local references",
+    ], "nine-route mixed prompt separation, Hermes Agent route-local pack, source authority, output path, uploaded-image authority, mythology/product boundary, and public-sample gate");
   }),
   defineCheck("RELEASE-TOM-001", "release checklist keeps Tom rights and public sample gate markers", () => {
     assertIncludes(requireFile("RELEASE_CHECKLIST.md"), "RELEASE_CHECKLIST.md", [
@@ -5331,6 +6045,43 @@ const checks = [
       "node --test scripts/validate-skill-package.test.mjs",
       "git diff --check",
     ], "Cai Xukun release checklist source boundary, public-figure boundary, leakage, public asset, generated sample, validator, and final review markers");
+  }),
+  defineCheck("RELEASE-HERMES-001", "release checklist keeps Hermes Agent source, MIT, uploaded-image, and public sample gates", () => {
+    assertIncludes(requireFile("RELEASE_CHECKLIST.md"), "RELEASE_CHECKLIST.md", [
+      "## Hermes Agent Source, MIT License, Uploaded-Image Authority, and Public Sample Gate",
+      "Hermes Agent Source and MIT License Review",
+      "Hermes Agent Uploaded-Image and Boundary Review",
+      "Hermes Agent Prompt Leakage Scan",
+      "Hermes Agent Public Asset Policy",
+      "Hermes Agent Generated Sample Policy",
+      "Final Hermes Release Review",
+      "skills/visual-ip-illustrations/references/ips/hermes/source.md",
+      "source-reviewed",
+      "https://hermes-agent.nousresearch.com/",
+      "https://github.com/NousResearch/hermes-agent",
+      "https://github.com/NousResearch/hermes-agent/blob/main/LICENSE",
+      "https://hermes-agent.nousresearch.com/docs/",
+      "Generated image 1 (16).jpeg",
+      "official source outcome",
+      "MIT license outcome",
+      "uploaded-image identity outcome",
+      "mythology-drift outcome",
+      "product-poster boundary outcome",
+      "route-isolation outcome",
+      "uploaded-character-only article illustration outcome",
+      "Hermes Agent public asset policy for",
+      "Record generated sample review",
+      "allowed directories / release channels",
+      "endorsement, affiliation, sponsorship, approval, impersonation review outcome",
+      "article-metaphor quality outcome",
+      "public-sample decision",
+      "assets/<article-slug>-hermes/",
+      "assets/&lt;article-slug&gt;-hermes/",
+      "Phase 52 validator parity",
+      "node scripts/validate-skill-package.mjs",
+      "node --test scripts/validate-skill-package.test.mjs",
+      "git diff --check",
+    ], "Hermes Agent release checklist source/MIT, uploaded-image authority, leakage, public asset, generated sample, validator, and final review markers");
   }),
   defineCheck("REBRAND-CANON-001", "runtime metadata preserves Visual IP Illustrations canonical identity", () => {
     assertIncludes(requireFile(SKILL_FILE), SKILL_FILE, [
@@ -5648,6 +6399,41 @@ const checks = [
       "VAL-05",
     ], "Phase 47 exact command summaries, route smoke, uploaded-image smoke, docs consistency, leakage, sample gates, scope evidence, and requirement traceability");
   }),
+  defineCheck("VAL-HERMES-EVIDENCE-001", "Phase 52 records Hermes Agent validation and release evidence", () => {
+    const evidencePath = path.join(
+      ".planning",
+      "phases",
+      "52-hermes-validation-and-release-evidence",
+      "52-RELEASE-EVIDENCE.md",
+    );
+    assertIncludes(requireFile(evidencePath), evidencePath, [
+      "# Phase 52 Release Evidence: Hermes Validation",
+      "node scripts/validate-skill-package.mjs",
+      "Summary: total=161 passed=161 failed=0 skipped=0",
+      "node --test scripts/validate-skill-package.test.mjs",
+      "tests 114",
+      "pass 114",
+      "fail 0",
+      "git diff --check",
+      "Hermes route smoke",
+      "uploaded-image smoke",
+      "source/MIT boundary smoke",
+      "docs consistency",
+      "leakage scan",
+      "mythology-drift scan",
+      "public sample gate",
+      "generated sample gate",
+      "dirty-worktree scope",
+      "BOUNDARY-HERMES-LEAK-001",
+      "BOUNDARY-HERMES-IMG-001",
+      "BOUNDARY-HERMES-GEN-001",
+      "VAL-01",
+      "VAL-02",
+      "VAL-03",
+      "VAL-04",
+      "VAL-05",
+    ], "Phase 52 exact command summaries, route smoke, uploaded-image smoke, source/MIT boundary smoke, docs consistency, leakage, mythology drift, sample gates, scope evidence, and requirement traceability");
+  }),
   defineCheck("BOUNDARY-IMG-001", "example asset directories do not import rendered Littlebox images", () => {
     const matches = legacyImageAssetPaths().filter((relativePath) => /littlebox|小盒|carton/i.test(relativePath));
     if (matches.length > 0) {
@@ -5842,6 +6628,55 @@ const checks = [
       assertNoMarkers(requireFile(relativePath), relativePath, leakMarkers, "no Cai Xukun route text leakage");
     }
   }),
+  defineCheck("BOUNDARY-HERMES-LEAK-001", "non-Hermes route references keep Hermes Agent source-reviewed markers isolated", () => {
+    const leakMarkers = [
+      "Hermes Agent",
+      "hermes-agent",
+      "references/ips/hermes",
+      "assets/<article-slug>-hermes/",
+      "assets/&lt;article-slug&gt;-hermes/",
+      "Generated image 1 (16).jpeg",
+      "source-reviewed Hermes Agent context",
+      "three-quarter left-facing manga face",
+      "large almond eyes with dark upper lashes",
+      "slim pointed nose",
+      "small slightly parted lips",
+      "pointed chin",
+      "cool reserved expression",
+      "blunt straight bangs",
+      "shoulder-length black hair with large C-shaped curled ends on both sides",
+      "bright white hair highlights",
+      "wide white over-head headset band",
+      "small black circular ear cup",
+      "fitted black sleeveless spaghetti-strap mini dress",
+      "flared pleated skirt",
+      "small white neck/collar tag",
+      "thigh-high stockings",
+      "Mary Jane platform high heels",
+      "reserved fashion-model posture",
+      "mythology-drift boundary",
+      "product-poster boundary",
+    ];
+    const scannedPaths = [
+      path.join(REFERENCES_DIR, "ips", "xiaohei", "index.md"),
+      ...xiaoheiOperationalRefs(),
+      path.join(REFERENCES_DIR, "ips", "littlebox", "index.md"),
+      ...littleboxOperationalRefs(),
+      path.join(REFERENCES_DIR, "ips", "tom", "index.md"),
+      ...tomOperationalRefs(),
+      path.join(REFERENCES_DIR, "ips", "ferris", "index.md"),
+      path.join(REFERENCES_DIR, "ips", "ferris", "source.md"),
+      ...ferrisOperationalRefs(),
+      ...sealOperationalRefs(),
+      ...openclawOperationalRefs(),
+      ...gopherOperationalRefs(),
+      ...caixukunOperationalRefs(),
+      ...legacyXiaoheiRefs().map((item) => item.root),
+    ];
+    for (const relativePath of scannedPaths) {
+      assertNoMarkers(requireFile(relativePath), relativePath, leakMarkers, "no Hermes Agent route text leakage");
+    }
+  }),
   defineCheck("BOUNDARY-TOM-IMG-001", "example asset directories keep Tom rendered assets behind release approval", () => {
     const releaseChecklist = requireFile("RELEASE_CHECKLIST.md");
     const approval = parsePublicTomSampleApproval(releaseChecklist);
@@ -5924,6 +6759,21 @@ const checks = [
       );
     }
   }),
+  defineCheck("BOUNDARY-HERMES-IMG-001", "example asset directories keep Hermes Agent rendered assets behind release approval", () => {
+    const releaseChecklist = requireFile("RELEASE_CHECKLIST.md");
+    const approval = parsePublicHermesSampleApproval(releaseChecklist);
+    if (!approval.found) {
+      throw new Error("RELEASE_CHECKLIST.md expected Hermes Agent public asset policy approval record; observed missing line");
+    }
+    const matches = imageAssetPaths().filter((relativePath) =>
+      /hermes|hermes-agent/i.test(relativePath),
+    );
+    if (!approval.complete && matches.length > 0) {
+      throw new Error(
+        `examples/images, examples/images-en, and ${PACKAGE_DIR}/assets/examples expected no rendered Hermes Agent assets until public-sample approval is complete; observed ${matches.join(", ")}; approval status=${approval.status || "missing"}, reviewer=${approval.reviewerPresent ? "present" : "missing"}, date=${approval.datePresent ? "present" : "missing"}, allowed directories=${approval.allowedDirectoriesPresent ? "present" : "missing"}, release channels=${approval.releaseChannelsPresent ? "present" : "missing"}, official source outcome=${approval.sourceOutcomePresent ? "present" : "missing"}, MIT license outcome=${approval.licenseOutcomePresent ? "present" : "missing"}, uploaded-image identity outcome=${approval.uploadedImageIdentityOutcomePresent ? "present" : "missing"}, mythology-drift outcome=${approval.mythologyDriftOutcomePresent ? "present" : "missing"}, product-poster boundary outcome=${approval.productPosterBoundaryOutcomePresent ? "present" : "missing"}, route-isolation outcome=${approval.routeIsolationOutcomePresent ? "present" : "missing"}, uploaded-character-only article illustration outcome=${approval.uploadedCharacterOnlyOutcomePresent ? "present" : "missing"}, article-metaphor quality outcome=${approval.articleMetaphorOutcomePresent ? "present" : "missing"}, public-sample decision=${approval.publicSampleOutcomePresent ? "present" : "missing"}`,
+      );
+    }
+  }),
   defineCheck("BOUNDARY-FERRIS-GEN-001", "Ferris generated samples stay distinct from public rendered sample release gates", () => {
     const releaseChecklist = requireFile("RELEASE_CHECKLIST.md");
     const approval = parseGeneratedFerrisSampleApproval(releaseChecklist);
@@ -5985,6 +6835,20 @@ const checks = [
       "endorsement, affiliation, impersonation, campaign, advertising, fandom-promotion review outcome",
       "article-metaphor quality outcome",
     ], "Cai Xukun generated sample workspace and public release distinction");
+  }),
+  defineCheck("BOUNDARY-HERMES-GEN-001", "Hermes Agent generated samples stay distinct from public rendered sample release gates", () => {
+    const releaseChecklist = requireFile("RELEASE_CHECKLIST.md");
+    const approval = parseGeneratedHermesSampleApproval(releaseChecklist);
+    if (!approval.found) {
+      throw new Error("RELEASE_CHECKLIST.md expected Hermes Agent generated sample review record; observed missing line");
+    }
+    assertIncludes(releaseChecklist, "RELEASE_CHECKLIST.md", [
+      "Internal review samples under `assets/<article-slug>-hermes/` may be used",
+      "Public generated samples from `assets/<article-slug>-hermes/` require Hermes Agent Public Asset Policy approval",
+      "Record generated sample review: PENDING / reviewer / date / approval status / internal review directories / public directories / release channels / official source outcome / MIT license outcome / uploaded-image identity outcome / mythology-drift outcome / product-poster boundary outcome / route-isolation outcome",
+      "endorsement, affiliation, sponsorship, approval, impersonation review outcome",
+      "article-metaphor quality outcome",
+    ], "Hermes Agent generated sample workspace and public release distinction");
   }),
   defineCheck("BOUNDARY-P5-001", "validator enforces live package and workspace output boundaries", () => {
     for (const row of routeRows()) {

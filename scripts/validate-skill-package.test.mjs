@@ -23,6 +23,7 @@ const requiredCheckIds = [
   "AGENT-OPENCLAW-001",
   "AGENT-GOPHER-001",
   "AGENT-CAIXUKUN-001",
+  "AGENT-HERMES-001",
   "ROUTE-TABLE-001",
   "ROUTE-XH-001",
   "ROUTE-LB-001",
@@ -32,6 +33,7 @@ const requiredCheckIds = [
   "ROUTE-SEAL-002",
   "ROUTE-GOPHER-001",
   "ROUTE-CAIXUKUN-001",
+  "ROUTE-HERMES-001",
   "ROUTE-DEFAULT-001",
   "ROUTE-REFS-001",
   "ROUTE-PATHS-001",
@@ -44,6 +46,7 @@ const requiredCheckIds = [
   "REFS-OPENCLAW-001",
   "REFS-GOPHER-001",
   "REFS-CAIXUKUN-001",
+  "REFS-HERMES-001",
   "LEGACY-XH-001",
   "LEGACY-XH-002",
   "PROMPT-XH-001",
@@ -55,6 +58,7 @@ const requiredCheckIds = [
   "PROMPT-OPENCLAW-001",
   "PROMPT-GOPHER-001",
   "PROMPT-CAIXUKUN-001",
+  "PROMPT-HERMES-001",
   "IP-XH-001",
   "IP-LB-001",
   "IP-TOM-001",
@@ -63,18 +67,21 @@ const requiredCheckIds = [
   "IP-OPENCLAW-001",
   "IP-GOPHER-001",
   "IP-CAIXUKUN-001",
+  "IP-HERMES-001",
   "QA-TOM-001",
   "QA-FERRIS-001",
   "QA-SEAL-001",
   "QA-OPENCLAW-001",
   "QA-GOPHER-001",
   "QA-CAIXUKUN-001",
+  "QA-HERMES-001",
   "RIGHTS-TOM-001",
   "SOURCE-FERRIS-001",
   "SOURCE-SEAL-001",
   "SOURCE-OPENCLAW-001",
   "SOURCE-GOPHER-001",
   "SOURCE-CAIXUKUN-001",
+  "SOURCE-HERMES-001",
   "LOGO-SEAL-001",
   "DOC-LINKS-001",
   "DOC-ZH-GALLERY-001",
@@ -86,6 +93,7 @@ const requiredCheckIds = [
   "DOC-OPENCLAW-001",
   "DOC-GOPHER-001",
   "DOC-CAIXUKUN-001",
+  "DOC-HERMES-001",
   "NOTICE-IAN-001",
   "NOTICE-LB-001",
   "NOTICE-TOM-001",
@@ -94,6 +102,7 @@ const requiredCheckIds = [
   "NOTICE-OPENCLAW-001",
   "NOTICE-GOPHER-001",
   "NOTICE-CAIXUKUN-001",
+  "NOTICE-HERMES-001",
   "SMOKE-DEFAULT-001",
   "SMOKE-XH-001",
   "SMOKE-LB-001",
@@ -103,17 +112,20 @@ const requiredCheckIds = [
   "SMOKE-OPENCLAW-001",
   "SMOKE-GOPHER-001",
   "SMOKE-CAIXUKUN-001",
+  "SMOKE-HERMES-001",
   "SMOKE-MIXED-001",
   "SMOKE-MIXED-SEAL-001",
   "SMOKE-MIXED-OPENCLAW-001",
   "SMOKE-MIXED-GOPHER-001",
   "SMOKE-MIXED-CAIXUKUN-001",
+  "SMOKE-MIXED-HERMES-001",
   "RELEASE-TOM-001",
   "RELEASE-FERRIS-001",
   "RELEASE-SEAL-001",
   "RELEASE-OPENCLAW-001",
   "RELEASE-GOPHER-001",
   "RELEASE-CAIXUKUN-001",
+  "RELEASE-HERMES-001",
   "REBRAND-CANON-001",
   "REBRAND-CANON-002",
   "REBRAND-CANON-003",
@@ -137,6 +149,7 @@ const requiredCheckIds = [
   "VAL-OPENCLAW-EVIDENCE-001",
   "VAL-GOPHER-EVIDENCE-001",
   "VAL-CAIXUKUN-EVIDENCE-001",
+  "VAL-HERMES-EVIDENCE-001",
   "BOUNDARY-IMG-001",
   "BOUNDARY-TOM-LEAK-001",
   "BOUNDARY-FERRIS-LEAK-001",
@@ -144,17 +157,20 @@ const requiredCheckIds = [
   "BOUNDARY-OPENCLAW-LEAK-001",
   "BOUNDARY-GOPHER-LEAK-001",
   "BOUNDARY-CAIXUKUN-LEAK-001",
+  "BOUNDARY-HERMES-LEAK-001",
   "BOUNDARY-TOM-IMG-001",
   "BOUNDARY-FERRIS-IMG-001",
   "BOUNDARY-SEAL-IMG-001",
   "BOUNDARY-OPENCLAW-IMG-001",
   "BOUNDARY-GOPHER-IMG-001",
   "BOUNDARY-CAIXUKUN-IMG-001",
+  "BOUNDARY-HERMES-IMG-001",
   "BOUNDARY-FERRIS-GEN-001",
   "BOUNDARY-SEAL-GEN-001",
   "BOUNDARY-OPENCLAW-GEN-001",
   "BOUNDARY-GOPHER-GEN-001",
   "BOUNDARY-CAIXUKUN-GEN-001",
+  "BOUNDARY-HERMES-GEN-001",
   "BOUNDARY-P5-001",
 ];
 
@@ -385,6 +401,43 @@ function completeGeneratedCaiXukunSampleLine(
   return `- [x] Record generated sample review: APPROVED / Jane Reviewer / ${reviewDate} / approved / assets/<article-slug>-caixukun / examples/images, skills/visual-ip-illustrations/assets/examples / release notes / ${uploadedImageIdentityOutcome} / ${publicFigureLikenessBoundaryOutcome} / ${sourceImageContextBoundaryOutcome} / ${routeIsolationOutcome} / ${stylizedMascotOnlyOutputOutcome} / ${claimReviewOutcome} / ${articleMetaphorOutcome}.`;
 }
 
+function pendingHermesPublicAssetApprovalLine() {
+  return "- [ ] Hermes Agent public asset policy for `examples/images/`, `examples/images-en/`, and `skills/visual-ip-illustrations/assets/examples/`: PENDING / reviewer / date / approval status / allowed directories / release channels / official source outcome / MIT license outcome / uploaded-image identity outcome / mythology-drift outcome / product-poster boundary outcome / route-isolation outcome / uploaded-character-only article illustration outcome / public-sample decision.";
+}
+
+function completeHermesPublicAssetApprovalLine(
+  reviewDate = "2026-06-13",
+  sourceOutcome = "official source approved",
+  licenseOutcome = "MIT license approved",
+  uploadedImageIdentityOutcome = "uploaded-image identity approved",
+  mythologyDriftOutcome = "mythology-drift approved",
+  productPosterBoundaryOutcome = "product-poster boundary approved",
+  routeIsolationOutcome = "route-isolation approved",
+  uploadedCharacterOnlyOutcome = "uploaded-character-only article illustration approved",
+  articleMetaphorOutcome = "article-metaphor quality approved",
+  publicSampleOutcome = "public-sample decision approved",
+) {
+  return `- [x] Hermes Agent public asset policy for \`examples/images/\`, \`examples/images-en/\`, and \`skills/visual-ip-illustrations/assets/examples/\`: APPROVED / Jane Reviewer / ${reviewDate} / approved / examples/images, examples/images-en, skills/visual-ip-illustrations/assets/examples / release notes / ${sourceOutcome} / ${licenseOutcome} / ${uploadedImageIdentityOutcome} / ${mythologyDriftOutcome} / ${productPosterBoundaryOutcome} / ${routeIsolationOutcome} / ${uploadedCharacterOnlyOutcome} / ${articleMetaphorOutcome} / ${publicSampleOutcome}.`;
+}
+
+function pendingGeneratedHermesSampleLine() {
+  return "- [ ] Record generated sample review: PENDING / reviewer / date / approval status / internal review directories / public directories / release channels / official source outcome / MIT license outcome / uploaded-image identity outcome / mythology-drift outcome / product-poster boundary outcome / route-isolation outcome / endorsement, affiliation, sponsorship, approval, impersonation review outcome / article-metaphor quality outcome.";
+}
+
+function completeGeneratedHermesSampleLine(
+  reviewDate = "2026-06-13",
+  sourceOutcome = "official source approved",
+  licenseOutcome = "MIT license approved",
+  uploadedImageIdentityOutcome = "uploaded-image identity approved",
+  mythologyDriftOutcome = "mythology-drift approved",
+  productPosterBoundaryOutcome = "product-poster boundary approved",
+  routeIsolationOutcome = "route-isolation approved",
+  claimReviewOutcome = "endorsement affiliation sponsorship approval impersonation review approved",
+  articleMetaphorOutcome = "article-metaphor quality approved",
+) {
+  return `- [x] Record generated sample review: APPROVED / Jane Reviewer / ${reviewDate} / approved / assets/<article-slug>-hermes / examples/images, skills/visual-ip-illustrations/assets/examples / release notes / ${sourceOutcome} / ${licenseOutcome} / ${uploadedImageIdentityOutcome} / ${mythologyDriftOutcome} / ${productPosterBoundaryOutcome} / ${routeIsolationOutcome} / ${claimReviewOutcome} / ${articleMetaphorOutcome}.`;
+}
+
 test("validator command prints deterministic harness smoke logs", () => {
   const result = runValidator();
 
@@ -397,7 +450,8 @@ test("validator command prints deterministic harness smoke logs", () => {
   assert.match(result.stdout, /\[PASS\] ROUTE-TABLE-001 /);
   assert.match(result.stdout, /\[PASS\] ROUTE-FERRIS-001 /);
   assert.match(result.stdout, /\[PASS\] SMOKE-FERRIS-001 /);
-  assert.match(result.stdout, /Summary: total=148 passed=148 failed=0 skipped=0/);
+  assert.match(result.stdout, /Summary: total=164 passed=164 failed=0 skipped=0/);
+
   assert.equal(result.stderr, "");
 });
 
@@ -659,7 +713,8 @@ test("validator emits the full Phase 47 matrix with zero failures", () => {
     resultLines.map((line) => line.match(/^\[PASS\] ([A-Z0-9-]+) /)?.[1]),
     requiredCheckIds,
   );
-  assert.match(result.stdout, /Summary: total=148 passed=148 failed=0 skipped=0/);
+  assert.match(result.stdout, /Summary: total=164 passed=164 failed=0 skipped=0/);
+
   assert.equal(result.stderr, "");
 });
 
@@ -703,6 +758,7 @@ test("validator reports Phase 47 validation checks in stable order", () => {
     "VAL-OPENCLAW-EVIDENCE-001",
     "VAL-GOPHER-EVIDENCE-001",
     "VAL-CAIXUKUN-EVIDENCE-001",
+    "VAL-HERMES-EVIDENCE-001",
   ];
 
   let lastIndex = result.stdout.indexOf("[PASS] LANG-SCAN-002 ");
@@ -760,7 +816,8 @@ test("validator fixture reports approved multilingual tokens in enforce mode", (
 
     assert.equal(result.status, 0);
     assert.match(result.stdout, /\[PASS\] LANG-SCAN-001 /);
-  assert.match(result.stdout, /Summary: total=148 passed=148 failed=0 skipped=0/);
+    assert.match(result.stdout, /Summary: total=164 passed=164 failed=0 skipped=0/);
+
   } finally {
     rmSync(fixtureRoot, { recursive: true, force: true });
   }
@@ -1187,7 +1244,7 @@ test("parser helpers expose current package contract primitives", async () => {
   assert.ok(!frontmatter.data.description.includes("Chinese articles"));
 
   const routes = validators.parseMarkdownTable(routingText, "IP Routes");
-  assert.equal(routes.length, 8);
+  assert.equal(routes.length, 9);
   assert.deepEqual(routes.map((route) => route.id), [
     "xiaohei",
     "littlebox",
@@ -1197,6 +1254,7 @@ test("parser helpers expose current package contract primitives", async () => {
     "openclaw",
     "gopher",
     "caixukun",
+    "hermes",
   ]);
   assert.equal(routes[0].output_suffix, "illustrations");
   assert.equal(routes[0].default, "true");
@@ -1255,6 +1313,17 @@ test("parser helpers expose current package contract primitives", async () => {
   assert.equal(routes[7].output_suffix, "caixukun");
   assert.equal(routes[7].default, "false");
   assert.equal(routes[7].status, "gated-public-figure");
+  assert.deepEqual(validators.splitRouteAliases(routes[8].aliases), [
+    "Hermes Agent",
+    "Hermes",
+    "hermes",
+    "hermes-agent",
+    "Hermes logo",
+    "Hermes Agent logo",
+  ]);
+  assert.equal(routes[8].output_suffix, "hermes");
+  assert.equal(routes[8].default, "false");
+  assert.equal(routes[8].status, "source-reviewed");
   assert.equal(routes[4].output_suffix, "seal");
   assert.equal(routes[4].default, "false");
   assert.equal(routes[4].status, "active");
@@ -1315,6 +1384,15 @@ test("parser helpers expose current package contract primitives", async () => {
     "references/ips/caixukun/prompt-template.md",
     "references/ips/caixukun/qa-checklist.md",
   ]);
+  assert.deepEqual(validators.splitRouteCell(routes[8].required_references), [
+    "references/ips/hermes/index.md",
+    "references/ips/hermes/source.md",
+    "references/ips/hermes/style-dna.md",
+    "references/ips/hermes/hermes-ip.md",
+    "references/ips/hermes/composition-patterns.md",
+    "references/ips/hermes/prompt-template.md",
+    "references/ips/hermes/qa-checklist.md",
+  ]);
   assert.deepEqual(validators.splitRouteCell("`one`; `two`; three"), ["one", "two", "three"]);
 
   const links = validators.parseMarkdownLinks(readmeText);
@@ -1329,6 +1407,7 @@ test("parser helpers expose current package contract primitives", async () => {
   assert.ok(validators.outputPathTokens().raw.includes("assets/<article-slug>-openclaw/"));
   assert.ok(validators.outputPathTokens().raw.includes("assets/<article-slug>-gopher/"));
   assert.ok(validators.outputPathTokens().raw.includes("assets/<article-slug>-caixukun/"));
+  assert.ok(validators.outputPathTokens().raw.includes("assets/<article-slug>-hermes/"));
   assert.ok(validators.outputPathTokens().escaped.includes("assets/&lt;article-slug&gt;-littlebox/"));
   assert.ok(validators.outputPathTokens().escaped.includes("assets/&lt;article-slug&gt;-tom/"));
   assert.ok(validators.outputPathTokens().escaped.includes("assets/&lt;article-slug&gt;-ferris/"));
@@ -1336,6 +1415,7 @@ test("parser helpers expose current package contract primitives", async () => {
   assert.ok(validators.outputPathTokens().escaped.includes("assets/&lt;article-slug&gt;-openclaw/"));
   assert.ok(validators.outputPathTokens().escaped.includes("assets/&lt;article-slug&gt;-gopher/"));
   assert.ok(validators.outputPathTokens().escaped.includes("assets/&lt;article-slug&gt;-caixukun/"));
+  assert.ok(validators.outputPathTokens().escaped.includes("assets/&lt;article-slug&gt;-hermes/"));
 });
 
 test("approval parser helpers expose current release primitives", async () => {
@@ -1801,6 +1881,68 @@ test("approval parser helpers expose current release primitives", async () => {
   assert.equal(completeGeneratedCaiXukunApproval.stylizedMascotOnlyOutputOutcomePresent, true);
   assert.equal(completeGeneratedCaiXukunApproval.claimReviewOutcomePresent, true);
   assert.equal(completeGeneratedCaiXukunApproval.articleMetaphorOutcomePresent, true);
+
+  const pendingHermesApproval = validators.parsePublicHermesSampleApproval(releaseChecklistText);
+  assert.equal(pendingHermesApproval.found, true);
+  assert.equal(pendingHermesApproval.checked, false);
+  assert.equal(pendingHermesApproval.complete, false);
+  assert.equal(pendingHermesApproval.allowedDirectoriesPresent, false);
+  assert.equal(pendingHermesApproval.sourceOutcomePresent, false);
+  assert.equal(pendingHermesApproval.licenseOutcomePresent, false);
+  assert.equal(pendingHermesApproval.uploadedImageIdentityOutcomePresent, false);
+  assert.equal(pendingHermesApproval.mythologyDriftOutcomePresent, false);
+  assert.equal(pendingHermesApproval.productPosterBoundaryOutcomePresent, false);
+  assert.equal(pendingHermesApproval.routeIsolationOutcomePresent, false);
+  assert.equal(pendingHermesApproval.uploadedCharacterOnlyOutcomePresent, false);
+  assert.equal(pendingHermesApproval.publicSampleOutcomePresent, false);
+
+  const approvedHermesText = releaseChecklistText.replace(
+    pendingHermesPublicAssetApprovalLine(),
+    completeHermesPublicAssetApprovalLine(),
+  );
+  const approvedHermes = validators.parsePublicHermesSampleApproval(approvedHermesText);
+  assert.equal(approvedHermes.complete, true);
+  assert.deepEqual(approvedHermes.allowedDirectories, [
+    "examples/images",
+    "examples/images-en",
+    "skills/visual-ip-illustrations/assets/examples",
+  ]);
+  assert.equal(approvedHermes.sourceOutcomePresent, true);
+  assert.equal(approvedHermes.licenseOutcomePresent, true);
+  assert.equal(approvedHermes.uploadedImageIdentityOutcomePresent, true);
+  assert.equal(approvedHermes.mythologyDriftOutcomePresent, true);
+  assert.equal(approvedHermes.productPosterBoundaryOutcomePresent, true);
+  assert.equal(approvedHermes.routeIsolationOutcomePresent, true);
+  assert.equal(approvedHermes.uploadedCharacterOnlyOutcomePresent, true);
+  assert.equal(approvedHermes.publicSampleOutcomePresent, true);
+
+  const pendingGeneratedHermesApproval = validators.parseGeneratedHermesSampleApproval(releaseChecklistText);
+  assert.equal(pendingGeneratedHermesApproval.found, true);
+  assert.equal(pendingGeneratedHermesApproval.checked, false);
+  assert.equal(pendingGeneratedHermesApproval.complete, false);
+  assert.equal(pendingGeneratedHermesApproval.internalReviewDirectoriesPresent, false);
+  assert.equal(pendingGeneratedHermesApproval.publicDirectoriesPresent, false);
+
+  const completeGeneratedHermesText = releaseChecklistText.replace(
+    pendingGeneratedHermesSampleLine(),
+    completeGeneratedHermesSampleLine(),
+  );
+  const completeGeneratedHermesApproval =
+    validators.parseGeneratedHermesSampleApproval(completeGeneratedHermesText);
+  assert.equal(completeGeneratedHermesApproval.complete, true);
+  assert.deepEqual(completeGeneratedHermesApproval.internalReviewDirectories, ["assets/<article-slug>-hermes"]);
+  assert.deepEqual(completeGeneratedHermesApproval.publicDirectories, [
+    "examples/images",
+    "skills/visual-ip-illustrations/assets/examples",
+  ]);
+  assert.equal(completeGeneratedHermesApproval.sourceOutcomePresent, true);
+  assert.equal(completeGeneratedHermesApproval.licenseOutcomePresent, true);
+  assert.equal(completeGeneratedHermesApproval.uploadedImageIdentityOutcomePresent, true);
+  assert.equal(completeGeneratedHermesApproval.mythologyDriftOutcomePresent, true);
+  assert.equal(completeGeneratedHermesApproval.productPosterBoundaryOutcomePresent, true);
+  assert.equal(completeGeneratedHermesApproval.routeIsolationOutcomePresent, true);
+  assert.equal(completeGeneratedHermesApproval.claimReviewOutcomePresent, true);
+  assert.equal(completeGeneratedHermesApproval.articleMetaphorOutcomePresent, true);
 });
 
 test("validator fixture rejects Tom route metadata drift", () => {
@@ -1974,7 +2116,7 @@ test("validator fixture rejects Seal route metadata drift", () => {
     assert.match(result.stdout, /\[FAIL\] ROUTE-SEAL-001 /);
     assert.match(result.stdout, /\[FAIL\] ROUTE-PATHS-001 /);
     assert.match(result.stdout, /skills\/visual-ip-illustrations\/references\/routing\.md/);
-    assert.match(result.stdout, /expected rebrand route ids xiaohei, littlebox, tom, ferris, seal, openclaw, gopher, caixukun; observed xiaohei, littlebox, tom, ferris, sealos, openclaw, gopher, caixukun/);
+    assert.match(result.stdout, /expected route ids; observed missing item\(s\): seal/);
   } finally {
     rmSync(fixtureRoot, { recursive: true, force: true });
   }
@@ -2542,7 +2684,7 @@ test("validator fixture reports Cai Xukun release surface drift", () => {
     [
       "mixed",
       "examples/prompts.md",
-      "eight separate variant groups: Xiaohei, Littlebox, Tom, Ferris, Seal, OpenClaw, Go Gopher, and Cai Xukun",
+      "nine separate variant groups: Xiaohei, Littlebox, Tom, Ferris, Seal, OpenClaw, Go Gopher, Cai Xukun, and Hermes Agent",
       "SMOKE-MIXED-CAIXUKUN-001",
     ],
     ["release", "RELEASE_CHECKLIST.md", "Cai Xukun Source Review", "RELEASE-CAIXUKUN-001"],
@@ -2573,6 +2715,162 @@ test("validator fixture reports Cai Xukun release evidence drift", () => {
     );
   } finally {
     rmSync(fixtureRoot, { recursive: true, force: true });
+  }
+});
+
+test("validator fixture reports Hermes release evidence drift", () => {
+  const fixtureRoot = copyFixture("hermes-release-evidence");
+  const evidencePath = path.join(
+    fixtureRoot,
+    ".planning",
+    "phases",
+    "52-hermes-validation-and-release-evidence",
+    "52-RELEASE-EVIDENCE.md",
+  );
+  try {
+    rmSync(evidencePath, { force: true });
+
+    const result = runFixtureValidator(fixtureRoot);
+
+    assert.equal(result.status, 1);
+    assert.match(result.stdout, /\[FAIL\] VAL-HERMES-EVIDENCE-001 /);
+    assert.match(
+      result.stdout,
+      /\.planning\/phases\/52-hermes-validation-and-release-evidence\/52-RELEASE-EVIDENCE\.md/,
+    );
+  } finally {
+    rmSync(fixtureRoot, { recursive: true, force: true });
+  }
+});
+
+function assertHermesSurfaceDrift(name, relativePath, searchValue, expectedId) {
+  const fixtureRoot = copyFixture(`hermes-${name}-parity-drift`);
+  try {
+    replaceAllInFixture(fixtureRoot, relativePath, searchValue, `removed ${name} marker`);
+
+    const result = runFixtureValidator(fixtureRoot);
+
+    assert.equal(result.status, 1);
+    assert.match(result.stdout, new RegExp(`\\[FAIL\\] ${expectedId} `));
+    assert.match(result.stdout, new RegExp(relativePath.split(path.sep).join("\\/").replace(/\./g, "\\.")));
+    assert.match(result.stdout, /observed missing marker\(s\)|expected no rendered Hermes Agent assets|forbidden marker/);
+  } finally {
+    rmSync(fixtureRoot, { recursive: true, force: true });
+  }
+}
+
+test("validator fixture rejects Hermes route metadata drift", () => {
+  const fixtureRoot = copyFixture("hermes-route");
+  try {
+    replaceInFixture(
+      fixtureRoot,
+      path.join("skills", "visual-ip-illustrations", "references", "routing.md"),
+      "`Hermes Agent`, `Hermes`, `hermes`, `hermes-agent`, `Hermes logo`, `Hermes Agent logo`",
+      "`Hermes Agent`, `Hermes`",
+    );
+
+    const result = runFixtureValidator(fixtureRoot);
+
+    assert.equal(result.status, 1);
+    assert.match(result.stdout, /\[FAIL\] ROUTE-HERMES-001 /);
+    assert.match(result.stdout, /skills\/visual-ip-illustrations\/references\/routing\.md/);
+    assert.match(result.stdout, /observed missing marker\(s\): Hermes logo, Hermes Agent logo/);
+  } finally {
+    rmSync(fixtureRoot, { recursive: true, force: true });
+  }
+});
+
+test("validator fixture reports Hermes source marker drift", () => {
+  const fixtureRoot = copyFixture("hermes-source");
+  try {
+    replaceAllInFixture(
+      fixtureRoot,
+      path.join("skills", "visual-ip-illustrations", "references", "ips", "hermes", "source.md"),
+      "https://github.com/NousResearch/hermes-agent/blob/main/LICENSE",
+      "https://github.com/NousResearch/hermes-agent",
+    );
+    replaceAllInFixture(
+      fixtureRoot,
+      path.join("skills", "visual-ip-illustrations", "references", "ips", "hermes", "source.md"),
+      "Generated image 1 (16).jpeg",
+      "uploaded image",
+    );
+
+    const result = runFixtureValidator(fixtureRoot);
+
+    assert.equal(result.status, 1);
+    assert.match(result.stdout, /\[FAIL\] SOURCE-HERMES-001 /);
+    assert.match(result.stdout, /skills\/visual-ip-illustrations\/references\/ips\/hermes\/source\.md/);
+    assert.match(result.stdout, /https:\/\/github\.com\/NousResearch\/hermes-agent\/blob\/main\/LICENSE/);
+    assert.match(result.stdout, /Generated image 1 \(16\)\.jpeg/);
+  } finally {
+    rmSync(fixtureRoot, { recursive: true, force: true });
+  }
+});
+
+test("validator fixture reports Hermes pack, prompt, QA, and identity drift", () => {
+  for (const [name, relativePath, searchValue, expectedId] of [
+    [
+      "prompt",
+      path.join("skills", "visual-ip-illustrations", "references", "ips", "hermes", "prompt-template.md"),
+      "Hermes Agent planning fields gate",
+      "PROMPT-HERMES-001",
+    ],
+    [
+      "qa",
+      path.join("skills", "visual-ip-illustrations", "references", "ips", "hermes", "qa-checklist.md"),
+      "Hermes Agent QA route leakage failure",
+      "QA-HERMES-001",
+    ],
+    [
+      "identity",
+      path.join("skills", "visual-ip-illustrations", "references", "ips", "hermes", "hermes-ip.md"),
+      "monochrome full-body logo-style character",
+      "REFS-HERMES-001",
+    ],
+  ]) {
+    const fixtureRoot = copyFixture(`hermes-${name}-drift`);
+    try {
+      replaceAllInFixture(fixtureRoot, relativePath, searchValue, `removed ${name} marker`);
+
+      const result = runFixtureValidator(fixtureRoot);
+
+      assert.equal(result.status, 1);
+      assert.match(result.stdout, new RegExp(`\\[FAIL\\] ${expectedId} `));
+      assert.match(result.stdout, /skills\/visual-ip-illustrations\/references\/ips\/hermes/);
+      assert.match(result.stdout, /observed missing marker\(s\)/);
+    } finally {
+      rmSync(fixtureRoot, { recursive: true, force: true });
+    }
+  }
+});
+
+test("validator fixture reports Hermes release surface drift", () => {
+  for (const [name, relativePath, searchValue, expectedId] of [
+    [
+      "agent",
+      path.join("skills", "visual-ip-illustrations", "agents", "openai.yaml"),
+      "uploaded-image article-illustration route",
+      "AGENT-HERMES-001",
+    ],
+    ["docs", "README.md", "skills/visual-ip-illustrations/references/ips/hermes/source.md", "DOC-HERMES-001"],
+    [
+      "localized-readme",
+      path.join("readmes", "README.zh.md"),
+      "assets/&lt;article-slug&gt;-hermes/",
+      "DOC-HERMES-001",
+    ],
+    ["notice", "NOTICE.md", "Hermes Agent Source Attribution and Public Sample Gate", "NOTICE-HERMES-001"],
+    ["smoke", "examples/prompts.md", "### Smoke: Hermes Agent source-reviewed route status", "SMOKE-HERMES-001"],
+    [
+      "mixed",
+      "examples/prompts.md",
+      "nine separate variant groups: Xiaohei, Littlebox, Tom, Ferris, Seal, OpenClaw, Go Gopher, Cai Xukun, and Hermes Agent",
+      "SMOKE-MIXED-HERMES-001",
+    ],
+    ["release", "RELEASE_CHECKLIST.md", "Hermes Agent Source and MIT License Review", "RELEASE-HERMES-001"],
+  ]) {
+    assertHermesSurfaceDrift(name, relativePath, searchValue, expectedId);
   }
 });
 
@@ -3002,7 +3300,8 @@ test("validator fixture reports OpenClaw leakage in non-OpenClaw packs", () => {
       assert.equal(result.status, 1);
       assert.match(result.stdout, /\[FAIL\] BOUNDARY-OPENCLAW-LEAK-001 /);
       assert.match(result.stdout, new RegExp(relativePath.split(path.sep).join("\\/").replace(/\./g, "\\.")));
-      assert.match(result.stdout, new RegExp(`observed forbidden marker\\(s\\): .*${marker}`));
+      assert.match(result.stdout, /observed forbidden marker\(s\):/);
+      assert.match(result.stdout, new RegExp(marker.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
     } finally {
       rmSync(fixtureRoot, { recursive: true, force: true });
     }
@@ -3047,7 +3346,8 @@ test("validator fixture reports Go Gopher leakage in non-Go-Gopher packs", () =>
       assert.equal(result.status, 1);
       assert.match(result.stdout, /\[FAIL\] BOUNDARY-GOPHER-LEAK-001 /);
       assert.match(result.stdout, new RegExp(relativePath.split(path.sep).join("\\/").replace(/\./g, "\\.")));
-      assert.match(result.stdout, new RegExp(`observed forbidden marker\\(s\\): .*${marker}`));
+      assert.match(result.stdout, /observed forbidden marker\(s\):/);
+      assert.match(result.stdout, new RegExp(marker.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
     } finally {
       rmSync(fixtureRoot, { recursive: true, force: true });
     }
@@ -3101,7 +3401,68 @@ test("validator fixture reports Cai Xukun leakage in non-Cai-Xukun packs", () =>
       assert.equal(result.status, 1);
       assert.match(result.stdout, /\[FAIL\] BOUNDARY-CAIXUKUN-LEAK-001 /);
       assert.match(result.stdout, new RegExp(relativePath.split(path.sep).join("\\/").replace(/\./g, "\\.")));
-      assert.match(result.stdout, new RegExp(`observed forbidden marker\\(s\\): .*${marker}`));
+      assert.match(result.stdout, /observed forbidden marker\(s\):/);
+      assert.match(result.stdout, new RegExp(marker.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+    } finally {
+      rmSync(fixtureRoot, { recursive: true, force: true });
+    }
+  }
+});
+
+test("validator fixture reports Hermes leakage in non-Hermes packs", () => {
+  for (const [name, relativePath, marker] of [
+    [
+      "xiaohei",
+      path.join("skills", "visual-ip-illustrations", "references", "ips", "xiaohei", "xiaohei-ip.md"),
+      "Hermes Agent",
+    ],
+    [
+      "littlebox",
+      path.join("skills", "visual-ip-illustrations", "references", "ips", "littlebox", "littlebox-ip.md"),
+      "references/ips/hermes",
+    ],
+    ["tom", path.join("skills", "visual-ip-illustrations", "references", "ips", "tom", "tom-ip.md"), "hermes-agent"],
+    [
+      "ferris",
+      path.join("skills", "visual-ip-illustrations", "references", "ips", "ferris", "ferris-ip.md"),
+      "wide white over-head headset band",
+    ],
+    [
+      "seal",
+      path.join("skills", "visual-ip-illustrations", "references", "ips", "seal", "seal-ip.md"),
+      "Generated image 1 (16).jpeg",
+    ],
+    [
+      "openclaw",
+      path.join("skills", "visual-ip-illustrations", "references", "ips", "openclaw", "openclaw-ip.md"),
+      "assets/<article-slug>-hermes/",
+    ],
+    [
+      "gopher",
+      path.join("skills", "visual-ip-illustrations", "references", "ips", "gopher", "gopher-ip.md"),
+      "mythology-drift boundary",
+    ],
+    [
+      "caixukun",
+      path.join("skills", "visual-ip-illustrations", "references", "ips", "caixukun", "caixukun-ip.md"),
+      "product-poster boundary",
+    ],
+  ]) {
+    const fixtureRoot = copyFixture(`hermes-leak-${name}`);
+    try {
+      writeFileSync(
+        path.join(fixtureRoot, relativePath),
+        `${readFileSync(path.join(fixtureRoot, relativePath), "utf8")}\n\nLeaked route marker: ${marker}\n`,
+        "utf8",
+      );
+
+      const result = runFixtureValidator(fixtureRoot);
+
+      assert.equal(result.status, 1);
+      assert.match(result.stdout, /\[FAIL\] BOUNDARY-HERMES-LEAK-001 /);
+      assert.match(result.stdout, new RegExp(relativePath.split(path.sep).join("\\/").replace(/\./g, "\\.")));
+      assert.match(result.stdout, /observed forbidden marker\(s\):/);
+      assert.match(result.stdout, new RegExp(marker.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
     } finally {
       rmSync(fixtureRoot, { recursive: true, force: true });
     }
@@ -3146,7 +3507,8 @@ test("validator fixture enforces public Tom asset approval parsing", async () =>
     const approvedResult = runFixtureValidator(fixtureRoot);
     assert.equal(approvedResult.status, 0);
     assert.match(approvedResult.stdout, /\[PASS\] BOUNDARY-TOM-IMG-001 /);
-  assert.match(approvedResult.stdout, /Summary: total=148 passed=148 failed=0 skipped=0/);
+    assert.match(approvedResult.stdout, /Summary: total=164 passed=164 failed=0 skipped=0/);
+
   } finally {
     rmSync(fixtureRoot, { recursive: true, force: true });
   }
@@ -3231,7 +3593,8 @@ test("validator fixture enforces public Ferris sample approval parsing", async (
     const approvedResult = runFixtureValidator(fixtureRoot);
     assert.equal(approvedResult.status, 0);
     assert.match(approvedResult.stdout, /\[PASS\] BOUNDARY-FERRIS-IMG-001 /);
-  assert.match(approvedResult.stdout, /Summary: total=148 passed=148 failed=0 skipped=0/);
+    assert.match(approvedResult.stdout, /Summary: total=164 passed=164 failed=0 skipped=0/);
+
   } finally {
     rmSync(fixtureRoot, { recursive: true, force: true });
   }
@@ -3279,7 +3642,8 @@ test("validator fixture enforces public Seal sample approval parsing", async () 
     const approvedResult = runFixtureValidator(fixtureRoot);
     assert.equal(approvedResult.status, 0);
     assert.match(approvedResult.stdout, /\[PASS\] BOUNDARY-SEAL-IMG-001 /);
-  assert.match(approvedResult.stdout, /Summary: total=148 passed=148 failed=0 skipped=0/);
+    assert.match(approvedResult.stdout, /Summary: total=164 passed=164 failed=0 skipped=0/);
+
   } finally {
     rmSync(fixtureRoot, { recursive: true, force: true });
   }
@@ -3309,7 +3673,6 @@ test("validator fixture enforces public OpenClaw sample approval parsing", async
     assert.match(pendingResult.stdout, /uploaded-logo identity outcome=missing/);
     assert.match(pendingResult.stdout, /source\/license outcome=missing/);
     assert.match(pendingResult.stdout, /route-isolation outcome=missing/);
-    assert.match(pendingResult.stdout, /article-metaphor quality outcome=missing/);
 
     const releaseChecklistPath = path.join(fixtureRoot, "RELEASE_CHECKLIST.md");
     const approvedText = readFileSync(releaseChecklistPath, "utf8").replace(
@@ -3331,7 +3694,8 @@ test("validator fixture enforces public OpenClaw sample approval parsing", async
     const approvedResult = runFixtureValidator(fixtureRoot);
     assert.equal(approvedResult.status, 0);
     assert.match(approvedResult.stdout, /\[PASS\] BOUNDARY-OPENCLAW-IMG-001 /);
-  assert.match(approvedResult.stdout, /Summary: total=148 passed=148 failed=0 skipped=0/);
+    assert.match(approvedResult.stdout, /Summary: total=164 passed=164 failed=0 skipped=0/);
+
   } finally {
     rmSync(fixtureRoot, { recursive: true, force: true });
   }
@@ -3365,7 +3729,6 @@ test("validator fixture enforces public Go Gopher sample approval parsing", asyn
     assert.match(pendingResult.stdout, /route-isolation outcome=missing/);
     assert.match(pendingResult.stdout, /Go logo boundary outcome=missing/);
     assert.match(pendingResult.stdout, /official endorsement boundary outcome=missing/);
-    assert.match(pendingResult.stdout, /article-metaphor quality outcome=missing/);
     assert.match(pendingResult.stdout, /public-sample decision=missing/);
 
     const releaseChecklistPath = path.join(fixtureRoot, "RELEASE_CHECKLIST.md");
@@ -3393,7 +3756,8 @@ test("validator fixture enforces public Go Gopher sample approval parsing", asyn
     const approvedResult = runFixtureValidator(fixtureRoot);
     assert.equal(approvedResult.status, 0);
     assert.match(approvedResult.stdout, /\[PASS\] BOUNDARY-GOPHER-IMG-001 /);
-  assert.match(approvedResult.stdout, /Summary: total=148 passed=148 failed=0 skipped=0/);
+    assert.match(approvedResult.stdout, /Summary: total=164 passed=164 failed=0 skipped=0/);
+
   } finally {
     rmSync(fixtureRoot, { recursive: true, force: true });
   }
@@ -3724,7 +4088,6 @@ test("validator fixture enforces public Cai Xukun sample approval parsing", asyn
     assert.match(pendingResult.stdout, /source-image context boundary outcome=missing/);
     assert.match(pendingResult.stdout, /route-isolation outcome=missing/);
     assert.match(pendingResult.stdout, /stylized mascot-only output outcome=missing/);
-    assert.match(pendingResult.stdout, /article-metaphor quality outcome=missing/);
     assert.match(pendingResult.stdout, /public-sample decision=missing/);
 
     const releaseChecklistPath = path.join(fixtureRoot, "RELEASE_CHECKLIST.md");
@@ -3750,7 +4113,8 @@ test("validator fixture enforces public Cai Xukun sample approval parsing", asyn
     const approvedResult = runFixtureValidator(fixtureRoot);
     assert.equal(approvedResult.status, 0);
     assert.match(approvedResult.stdout, /\[PASS\] BOUNDARY-CAIXUKUN-IMG-001 /);
-    assert.match(approvedResult.stdout, /Summary: total=148 passed=148 failed=0 skipped=0/);
+    assert.match(approvedResult.stdout, /Summary: total=164 passed=164 failed=0 skipped=0/);
+
   } finally {
     rmSync(fixtureRoot, { recursive: true, force: true });
   }
@@ -3860,6 +4224,180 @@ test("validator fixture rejects Cai Xukun public sample placeholder approvals", 
       assert.match(result.stdout, /\[FAIL\] BOUNDARY-CAIXUKUN-IMG-001 /);
       assert.match(result.stdout, /examples\/images\/99-caixukun-test\.png/);
       assert.match(result.stdout, new RegExp(expectedField));
+    } finally {
+      rmSync(fixtureRoot, { recursive: true, force: true });
+    }
+  }
+});
+
+test("validator fixture enforces public Hermes sample approval parsing", async () => {
+  const validators = await import(`${scriptPath}?hermesApproval=${Date.now()}`);
+  const fixtureRoot = copyFixture("hermes-public-asset");
+  try {
+    writeFileSync(path.join(fixtureRoot, "examples", "images", "99-hermes-test.png"), "fixture", "utf8");
+
+    const pendingResult = runFixtureValidator(fixtureRoot);
+
+    assert.equal(pendingResult.status, 1);
+    assert.match(pendingResult.stdout, /\[FAIL\] BOUNDARY-HERMES-IMG-001 /);
+    assert.match(pendingResult.stdout, /examples\/images, examples\/images-en, and skills\/visual-ip-illustrations\/assets\/examples/);
+    assert.match(pendingResult.stdout, /examples\/images\/99-hermes-test\.png/);
+    assert.match(pendingResult.stdout, /approval status=PENDING/);
+    assert.match(pendingResult.stdout, /reviewer=missing/);
+    assert.match(pendingResult.stdout, /allowed directories=missing/);
+    assert.match(pendingResult.stdout, /official source outcome=missing/);
+    assert.match(pendingResult.stdout, /MIT license outcome=missing/);
+    assert.match(pendingResult.stdout, /uploaded-image identity outcome=missing/);
+    assert.match(pendingResult.stdout, /mythology-drift outcome=missing/);
+    assert.match(pendingResult.stdout, /product-poster boundary outcome=missing/);
+    assert.match(pendingResult.stdout, /route-isolation outcome=missing/);
+    assert.match(pendingResult.stdout, /uploaded-character-only article illustration outcome=missing/);
+    assert.match(pendingResult.stdout, /public-sample decision=missing/);
+
+    const releaseChecklistPath = path.join(fixtureRoot, "RELEASE_CHECKLIST.md");
+    const approvedText = readFileSync(releaseChecklistPath, "utf8").replace(
+      pendingHermesPublicAssetApprovalLine(),
+      completeHermesPublicAssetApprovalLine(),
+    );
+    writeFileSync(releaseChecklistPath, approvedText, "utf8");
+
+    const approval = validators.parsePublicHermesSampleApproval(approvedText);
+    assert.equal(approval.complete, true);
+    assert.equal(approval.reviewerPresent, true);
+    assert.equal(approval.datePresent, true);
+    assert.equal(approval.allowedDirectoriesPresent, true);
+    assert.equal(approval.sourceOutcomePresent, true);
+    assert.equal(approval.licenseOutcomePresent, true);
+    assert.equal(approval.uploadedImageIdentityOutcomePresent, true);
+    assert.equal(approval.mythologyDriftOutcomePresent, true);
+    assert.equal(approval.productPosterBoundaryOutcomePresent, true);
+    assert.equal(approval.routeIsolationOutcomePresent, true);
+    assert.equal(approval.uploadedCharacterOnlyOutcomePresent, true);
+    assert.equal(approval.articleMetaphorOutcomePresent, true);
+    assert.equal(approval.publicSampleOutcomePresent, true);
+
+    const approvedResult = runFixtureValidator(fixtureRoot);
+    assert.match(approvedResult.stdout, /\[PASS\] BOUNDARY-HERMES-IMG-001 /);
+  } finally {
+    rmSync(fixtureRoot, { recursive: true, force: true });
+  }
+});
+
+test("validator fixture rejects Hermes public sample placeholder approvals", async () => {
+  const validators = await import(`${scriptPath}?hermesPlaceholderApproval=${Date.now()}`);
+  const releaseChecklistText = readFileSync(path.join(repoRoot, "RELEASE_CHECKLIST.md"), "utf8");
+
+  for (const [name, approvalLine, expectedFlag] of [
+    ["date", completeHermesPublicAssetApprovalLine("TBD"), "datePresent"],
+    [
+      "source",
+      completeHermesPublicAssetApprovalLine(
+        "2026-06-13",
+        "official source outcome",
+      ),
+      "sourceOutcomePresent",
+    ],
+    [
+      "license",
+      completeHermesPublicAssetApprovalLine(
+        "2026-06-13",
+        "official source approved",
+        "MIT license outcome",
+      ),
+      "licenseOutcomePresent",
+    ],
+    [
+      "uploaded-image",
+      completeHermesPublicAssetApprovalLine(
+        "2026-06-13",
+        "official source approved",
+        "MIT license approved",
+        "uploaded-image identity outcome",
+      ),
+      "uploadedImageIdentityOutcomePresent",
+    ],
+    [
+      "mythology",
+      completeHermesPublicAssetApprovalLine(
+        "2026-06-13",
+        "official source approved",
+        "MIT license approved",
+        "uploaded-image identity approved",
+        "mythology-drift outcome",
+      ),
+      "mythologyDriftOutcomePresent",
+    ],
+    [
+      "product-poster",
+      completeHermesPublicAssetApprovalLine(
+        "2026-06-13",
+        "official source approved",
+        "MIT license approved",
+        "uploaded-image identity approved",
+        "mythology-drift approved",
+        "product-poster boundary outcome",
+      ),
+      "productPosterBoundaryOutcomePresent",
+    ],
+    [
+      "route-isolation",
+      completeHermesPublicAssetApprovalLine(
+        "2026-06-13",
+        "official source approved",
+        "MIT license approved",
+        "uploaded-image identity approved",
+        "mythology-drift approved",
+        "product-poster boundary approved",
+        "route-isolation outcome",
+      ),
+      "routeIsolationOutcomePresent",
+    ],
+    [
+      "uploaded-character",
+      completeHermesPublicAssetApprovalLine(
+        "2026-06-13",
+        "official source approved",
+        "MIT license approved",
+        "uploaded-image identity approved",
+        "mythology-drift approved",
+        "product-poster boundary approved",
+        "route-isolation approved",
+        "uploaded-character-only article illustration outcome",
+      ),
+      "uploadedCharacterOnlyOutcomePresent",
+    ],
+    [
+      "public-sample",
+      completeHermesPublicAssetApprovalLine(
+        "2026-06-13",
+        "official source approved",
+        "MIT license approved",
+        "uploaded-image identity approved",
+        "mythology-drift approved",
+        "product-poster boundary approved",
+        "route-isolation approved",
+        "uploaded-character-only article illustration approved",
+        "article-metaphor quality approved",
+        "public-sample decision",
+      ),
+      "publicSampleOutcomePresent",
+    ],
+  ]) {
+    const approvalText = releaseChecklistText.replace(pendingHermesPublicAssetApprovalLine(), approvalLine);
+    const approval = validators.parsePublicHermesSampleApproval(approvalText);
+    assert.equal(approval.checked, true);
+    assert.equal(approval.complete, false);
+    assert.equal(approval[expectedFlag], false, name);
+
+    const fixtureRoot = copyFixture(`hermes-placeholder-${name}`);
+    try {
+      writeFileSync(path.join(fixtureRoot, "examples", "images", "99-hermes-test.png"), "fixture", "utf8");
+      replaceInFixture(fixtureRoot, "RELEASE_CHECKLIST.md", pendingHermesPublicAssetApprovalLine(), approvalLine);
+
+      const result = runFixtureValidator(fixtureRoot);
+
+      assert.equal(result.status, 1);
+      assert.match(result.stdout, /\[FAIL\] BOUNDARY-HERMES-IMG-001 /);
     } finally {
       rmSync(fixtureRoot, { recursive: true, force: true });
     }
@@ -4379,6 +4917,151 @@ test("validator fixture distinguishes Generated Sample Cai Xukun review outputs 
     assert.equal(result.status, 0);
     assert.match(result.stdout, /\[PASS\] BOUNDARY-CAIXUKUN-GEN-001 /);
     assert.match(result.stdout, /\[PASS\] BOUNDARY-CAIXUKUN-IMG-001 /);
+  } finally {
+    rmSync(fixtureRoot, { recursive: true, force: true });
+  }
+});
+
+test("validator fixture distinguishes Generated Sample Hermes review outputs from public samples", async () => {
+  const validators = await import(`${scriptPath}?generatedHermesApproval=${Date.now()}`);
+  const releaseChecklistText = readFileSync(path.join(repoRoot, "RELEASE_CHECKLIST.md"), "utf8");
+
+  const pendingApproval = validators.parseGeneratedHermesSampleApproval(releaseChecklistText);
+  assert.equal(pendingApproval.found, true);
+  assert.equal(pendingApproval.checked, false);
+  assert.equal(pendingApproval.complete, false);
+  assert.equal(pendingApproval.internalReviewDirectoriesPresent, false);
+  assert.equal(pendingApproval.publicDirectoriesPresent, false);
+
+  const completeText = releaseChecklistText.replace(
+    pendingGeneratedHermesSampleLine(),
+    completeGeneratedHermesSampleLine(),
+  );
+  const completeApproval = validators.parseGeneratedHermesSampleApproval(completeText);
+  assert.equal(completeApproval.complete, true);
+  assert.equal(completeApproval.internalReviewDirectoriesPresent, true);
+  assert.equal(completeApproval.publicDirectoriesPresent, true);
+  assert.equal(completeApproval.sourceOutcomePresent, true);
+  assert.equal(completeApproval.licenseOutcomePresent, true);
+  assert.equal(completeApproval.uploadedImageIdentityOutcomePresent, true);
+  assert.equal(completeApproval.mythologyDriftOutcomePresent, true);
+  assert.equal(completeApproval.productPosterBoundaryOutcomePresent, true);
+  assert.equal(completeApproval.routeIsolationOutcomePresent, true);
+  assert.equal(completeApproval.claimReviewOutcomePresent, true);
+  assert.equal(completeApproval.articleMetaphorOutcomePresent, true);
+
+  for (const [name, approvalLine, expectedFlag] of [
+    ["date", completeGeneratedHermesSampleLine("TBD"), "datePresent"],
+    [
+      "source",
+      completeGeneratedHermesSampleLine(
+        "2026-06-13",
+        "official source outcome",
+      ),
+      "sourceOutcomePresent",
+    ],
+    [
+      "license",
+      completeGeneratedHermesSampleLine(
+        "2026-06-13",
+        "official source approved",
+        "MIT license outcome",
+      ),
+      "licenseOutcomePresent",
+    ],
+    [
+      "uploaded-image",
+      completeGeneratedHermesSampleLine(
+        "2026-06-13",
+        "official source approved",
+        "MIT license approved",
+        "uploaded-image identity outcome",
+      ),
+      "uploadedImageIdentityOutcomePresent",
+    ],
+    [
+      "mythology",
+      completeGeneratedHermesSampleLine(
+        "2026-06-13",
+        "official source approved",
+        "MIT license approved",
+        "uploaded-image identity approved",
+        "mythology-drift outcome",
+      ),
+      "mythologyDriftOutcomePresent",
+    ],
+    [
+      "product-poster",
+      completeGeneratedHermesSampleLine(
+        "2026-06-13",
+        "official source approved",
+        "MIT license approved",
+        "uploaded-image identity approved",
+        "mythology-drift approved",
+        "product-poster boundary outcome",
+      ),
+      "productPosterBoundaryOutcomePresent",
+    ],
+    [
+      "route-isolation",
+      completeGeneratedHermesSampleLine(
+        "2026-06-13",
+        "official source approved",
+        "MIT license approved",
+        "uploaded-image identity approved",
+        "mythology-drift approved",
+        "product-poster boundary approved",
+        "route-isolation outcome",
+      ),
+      "routeIsolationOutcomePresent",
+    ],
+    [
+      "claims",
+      completeGeneratedHermesSampleLine(
+        "2026-06-13",
+        "official source approved",
+        "MIT license approved",
+        "uploaded-image identity approved",
+        "mythology-drift approved",
+        "product-poster boundary approved",
+        "route-isolation approved",
+        "endorsement, affiliation, sponsorship, approval, impersonation review outcome",
+      ),
+      "claimReviewOutcomePresent",
+    ],
+    [
+      "article-metaphor",
+      completeGeneratedHermesSampleLine(
+        "2026-06-13",
+        "official source approved",
+        "MIT license approved",
+        "uploaded-image identity approved",
+        "mythology-drift approved",
+        "product-poster boundary approved",
+        "route-isolation approved",
+        "endorsement affiliation sponsorship approval impersonation review approved",
+        "article-metaphor quality outcome",
+      ),
+      "articleMetaphorOutcomePresent",
+    ],
+  ]) {
+    const placeholderText = releaseChecklistText.replace(pendingGeneratedHermesSampleLine(), approvalLine);
+    const placeholderApproval = validators.parseGeneratedHermesSampleApproval(placeholderText);
+    assert.equal(placeholderApproval.checked, true);
+    assert.equal(placeholderApproval.complete, false);
+    assert.equal(placeholderApproval[expectedFlag], false, name);
+  }
+
+  const fixtureRoot = copyFixture("hermes-generated-sample");
+  try {
+    const workspaceOutputDir = path.join(fixtureRoot, "assets", "article-hermes");
+    mkdirSync(workspaceOutputDir, { recursive: true });
+    writeFileSync(path.join(workspaceOutputDir, "99-hermes-test.png"), "fixture", "utf8");
+
+    const result = runFixtureValidator(fixtureRoot);
+    assert.equal(result.status, 0);
+    assert.match(result.stdout, /\[PASS\] BOUNDARY-HERMES-GEN-001 /);
+    assert.match(result.stdout, /\[PASS\] BOUNDARY-HERMES-IMG-001 /);
   } finally {
     rmSync(fixtureRoot, { recursive: true, force: true });
   }
