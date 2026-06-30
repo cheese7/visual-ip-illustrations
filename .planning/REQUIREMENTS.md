@@ -23,10 +23,10 @@
 
 ### Runtime Integration
 
-- [ ] **RUN-01**: User can invoke Linux Mascot through the skill controller, route selection rules, progressive reference loading, planning fields, generation dispatch, edit routing, QA dispatch, and delivery reports.
-- [ ] **RUN-02**: User can request mixed-IP output where Linux Mascot and all existing routes create separate route groups with their own references, prompts, QA rules, and output paths.
-- [ ] **RUN-03**: User receives Linux Mascot delivery reports with selected visual IP, image count, purpose per image, saved path under `assets/<article-slug>-linux/`, uploaded-image authority note, source/trademark note, and route stability notes.
-- [ ] **RUN-04**: Agent metadata and skill instructions present Linux Mascot as a selectable source-reviewed route while preserving Visual IP Illustrations identity and the legacy `$ian-xiaohei-illustrations` alias.
+- [x] **RUN-01**: User can invoke Linux Mascot through the skill controller, route selection rules, progressive reference loading, planning fields, generation dispatch, edit routing, QA dispatch, and delivery reports.
+- [x] **RUN-02**: User can request mixed-IP output where Linux Mascot and all existing routes create separate route groups with their own references, prompts, QA rules, and output paths.
+- [x] **RUN-03**: User receives Linux Mascot delivery reports with selected visual IP, image count, purpose per image, saved path under `assets/<article-slug>-linux/`, uploaded-image authority note, source/trademark note, and route stability notes.
+- [x] **RUN-04**: Agent metadata and skill instructions present Linux Mascot as a selectable source-reviewed route while preserving Visual IP Illustrations identity and the legacy `$ian-xiaohei-illustrations` alias.
 
 ### Public Documentation
 
@@ -97,10 +97,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | PACK-03 | Phase 54 | Complete |
 | PACK-04 | Phase 54 | Complete |
 | PACK-05 | Phase 54 | Complete |
-| RUN-01 | Phase 55 | Pending |
-| RUN-02 | Phase 55 | Pending |
-| RUN-03 | Phase 55 | Pending |
-| RUN-04 | Phase 55 | Pending |
+| RUN-01 | Phase 55 | Complete |
+| RUN-02 | Phase 55 | Complete |
+| RUN-03 | Phase 55 | Complete |
+| RUN-04 | Phase 55 | Complete |
 | DOC-01 | Phase 56 | Pending |
 | DOC-02 | Phase 56 | Pending |
 | DOC-03 | Phase 56 | Pending |

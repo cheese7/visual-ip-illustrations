@@ -19,7 +19,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 53: Linux Mascot Source and Route Contract** - Users can select Linux Mascot through an explicit source-reviewed route with stable aliases, `default=false`, route id `linux`, output suffix `linux`, output path `assets/<article-slug>-linux/`, Tux source/trademark context, and uploaded-image authority. (completed 2026-06-30)
 - [x] **Phase 54: Linux Mascot Canonical Pack** - Users can plan, prompt, edit, and QA Linux Mascot article illustrations through route-local references that preserve the uploaded Tux identity and source boundary. (completed 2026-06-30)
-- [ ] **Phase 55: Linux Mascot Skill Controller Integration** - Users can invoke Linux Mascot through the skill controller, mixed-IP workflows, generation/edit dispatch, QA routing, and delivery reports while all existing routes remain stable.
+- [x] **Phase 55: Linux Mascot Skill Controller Integration** - Users can invoke Linux Mascot through the skill controller, mixed-IP workflows, generation/edit dispatch, QA routing, and delivery reports while all existing routes remain stable. (completed 2026-06-30)
 - [ ] **Phase 56: Linux Mascot Public Documentation and Release Surface** - Users and maintainers can learn, invoke, review, and release Linux Mascot through README variants, examples, NOTICE, release checklist, skill instructions, and agent metadata.
 - [ ] **Phase 57: Linux Mascot Validation and Release Evidence** - Maintainers can verify Linux Mascot route metadata, uploaded-image markers, Tux attribution markers, Linux trademark-boundary markers, output paths, docs, smoke prompts, leakage checks, public sample gates, and release readiness locally.
 
@@ -79,7 +79,7 @@ Plans:
 
 Plans:
 
-- [ ] 55-01-PLAN.md - Linux Mascot skill controller integration
+- [x] 55-01-PLAN.md - Linux Mascot skill controller integration
 
 ### Phase 56: Linux Mascot Public Documentation and Release Surface
 
@@ -128,6 +128,6 @@ Phases execute in numeric order: 53 -> 54 -> 55 -> 56 -> 57
 |-------|----------------|--------|-----------|
 | 53. Linux Mascot Source and Route Contract | 1/1 | Complete    | 2026-06-30 |
 | 54. Linux Mascot Canonical Pack | 1/1 | Complete   | 2026-06-30 |
-| 55. Linux Mascot Skill Controller Integration | 0/1 | Pending | - |
+| 55. Linux Mascot Skill Controller Integration | 1/1 | Complete   | 2026-06-30 |
 | 56. Linux Mascot Public Documentation and Release Surface | 0/1 | Pending | - |
 | 57. Linux Mascot Validation and Release Evidence | 0/1 | Pending | - |
