@@ -58,6 +58,16 @@ Preserve these uploaded Linux Mascot visual markers together:
 - Phase 54 converts these markers into detailed identity, style, prompt, edit, and QA behavior.
 - Sample copy should present Linux Mascot as a source-reviewed uploaded-image article-illustration route with Tux attribution, Linux trademark-boundary context, and uploaded local image authority.
 
+## Route-Local Pack Navigation
+
+- `references/ips/linux/index.md`: pack navigation, route contract, references, uploaded marker set, failure categories, operational coherence, and Phase 54 scope boundary.
+- `references/ips/linux/source.md`: source authority for Larry Ewing Tux attribution, The GIMP attribution condition, Linux Foundation trademark guidance, Linux mark ownership context, uploaded visual authority, SHA-256, sample policy, distribution boundary, and review fields.
+- `references/ips/linux/style-dna.md`: sparse visual style, uploaded Tux marker preservation, trademark-boundary gate, product-output gate, visual vetoes, and route isolation gate.
+- `references/ips/linux/linux-ip.md`: Tux identity, recognition rules, cognitive action responsibility, physical action verbs, source and trademark boundaries, route boundary, and failure modes.
+- `references/ips/linux/composition-patterns.md`: composition families, original article-metaphor invention, Tux action patterns, supporting object pool, anti-repeat rules, trademark drift guardrails, and route leakage boundary.
+- `references/ips/linux/prompt-template.md`: planning fields, one-image generation prompt, edit gates, source and trademark notes, route leakage repair, and output reminder.
+- `references/ips/linux/qa-checklist.md`: pass criteria, identity checks, failure signals, iteration moves, route leakage repair, public sample boundary, and delivery judgment.
+
 ## Sample Policy
 
 - Public generated Linux Mascot samples require release review before publication.
@@ -69,8 +79,8 @@ Preserve these uploaded Linux Mascot visual markers together:
 
 - Current status: `source-reviewed`.
 - Status meaning: Tux attribution, GIMP attribution condition, Linux trademark context, uploaded-image authority, public-sample review boundary, distro-logo boundary, endorsement/certification boundary, distribution boundary, and official claim boundary are documented for route metadata and maintainer review.
-- Current route-local pack: this source record is the authority record inside the Phase 53 Linux Mascot route source contract under `references/ips/linux/`.
-- Pending later phases: full route-local pack, runtime controller behavior, public docs expansion, release surfaces, final validator hardening, Node tests, and release evidence.
+- Current route-local pack: Phase 54 adds the full seven-file Linux Mascot route-local pack under `references/ips/linux/`, with this source record as the authority record.
+- Pending later phases: runtime controller behavior, public docs expansion, release surfaces, final validator hardening, Node tests, and release evidence.
 
 ## Allowed Use
 
