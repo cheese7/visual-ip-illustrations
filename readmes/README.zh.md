@@ -4,7 +4,7 @@
 
 [![skills.sh](https://skills.sh/b/yangchuansheng/visual-ip-illustrations)](https://skills.sh/yangchuansheng/visual-ip-illustrations)
 
-> Visual IP Illustrations 是一个用于文章正文配图的多视觉 IP Codex Skill。Xiaohei 是隐式默认路线；Littlebox 是显式且 active 的路线；Tom 是显式 protected-character 路线，状态为 `gated-authorized`；Ferris 是显式 Rust-community mascot 路线，状态为 `source-reviewed`；Seal 是显式 product-neutral hoodie seal 路线，状态为 `active`；OpenClaw 是显式 logo-mascot 路线，状态为 `source-reviewed`。 Go Gopher is an explicit source-reviewed article-illustration mascot route with output path `assets/<article-slug>-gopher/`. Cai Xukun is an explicit `gated-public-figure` stylized mascot-only route with aliases `蔡徐坤`, `caixukun`, and `cxk`, source pointer `skills/visual-ip-illustrations/references/ips/caixukun/source.md`, output path `assets/<article-slug>-caixukun/`, uploaded-image authority, public-figure likeness boundary, source-image context boundary, public sample review gate, route isolation, and safety review for endorsement, affiliation, impersonation, campaign, advertising, and fandom-promotion claims. Hermes Agent is an explicit `source-reviewed` uploaded-image article-illustration route with aliases `Hermes Agent`, `Hermes`, `hermes`, `hermes-agent`, `Hermes logo`, and `Hermes Agent logo`, source pointer `skills/visual-ip-illustrations/references/ips/hermes/source.md`, output path `assets/<article-slug>-hermes/`, uploaded-image authority from `Generated image 1 (16).jpeg`, official source context, MIT license context, mythology-drift boundary, product-poster boundary, public sample review gate, route isolation, and uploaded-character-only article illustration output.
+> Visual IP Illustrations 是一个用于文章正文配图的多视觉 IP Codex Skill。Xiaohei 是隐式默认路线；Littlebox 是显式且 active 的路线；Tom 是显式 protected-character 路线，状态为 `gated-authorized`；Ferris 是显式 Rust-community mascot 路线，状态为 `source-reviewed`；Seal 是显式 product-neutral hoodie seal 路线，状态为 `active`；OpenClaw 是显式 logo-mascot 路线，状态为 `source-reviewed`。 Go Gopher is an explicit source-reviewed article-illustration mascot route with output path `assets/<article-slug>-gopher/`. Cai Xukun is an explicit `gated-public-figure` stylized mascot-only route with aliases `蔡徐坤`, `caixukun`, and `cxk`, source pointer `skills/visual-ip-illustrations/references/ips/caixukun/source.md`, output path `assets/<article-slug>-caixukun/`, uploaded-image authority, public-figure likeness boundary, source-image context boundary, public sample review gate, route isolation, and safety review for endorsement, affiliation, impersonation, campaign, advertising, and fandom-promotion claims. Hermes Agent is an explicit `source-reviewed` uploaded-image article-illustration route with aliases `Hermes Agent`, `Hermes`, `hermes`, `hermes-agent`, `Hermes logo`, and `Hermes Agent logo`, source pointer `skills/visual-ip-illustrations/references/ips/hermes/source.md`, output path `assets/<article-slug>-hermes/`, uploaded-image authority from `Generated image 1 (16).jpeg`, official source context, MIT license context, mythology-drift boundary, product-poster boundary, public sample review gate, route isolation, and uploaded-character-only article illustration output. Linux Mascot is an explicit `source-reviewed` uploaded-image article-illustration route with aliases `Linux Mascot`, `Linux mascot`, `Linux`, `linux`, `Tux`, `tux`, `Linux penguin`, and `Tux penguin`, source pointer `skills/visual-ip-illustrations/references/ips/linux/source.md`, output path `assets/<article-slug>-linux/`, uploaded-image authority from `/Users/longnv/Downloads/Linux-logo.jpg`, Larry Ewing Tux attribution, The GIMP attribution condition, Linux trademark boundary, distro-logo boundary, product-output boundary, public sample review gate, route isolation, and review terms for official endorsement, certification, compatibility, Linux Foundation logo use, product-poster output, CLI screenshots, web hero graphics, kernel dashboard screenshots, and operating-system marketing graphics.
 >
 > 16:9 横图 | 多视觉 IP | 文章正文配图 | 标准调用方式：`$visual-ip-illustrations`
 
@@ -33,6 +33,7 @@ Visual IP Illustrations 引导 AI agent 为文章、帖子、博客、Notion 文
 - **Go Gopher**: explicit source-reviewed article-illustration mascot route. Requests that name `Go Gopher`, `Gopher`, `golang gopher`, `Go mascot`, `Go 吉祥物`, `Gopher 吉祥物`, or Go Gopher aliases listed in `skills/visual-ip-illustrations/references/routing.md` use the Go Gopher route.
 - **Cai Xukun**: explicit `gated-public-figure` stylized mascot-only route. Requests that name `Cai Xukun`, `蔡徐坤`, `caixukun`, or `cxk` use the Cai Xukun route with uploaded-image authority, public-figure likeness boundary, source-image context boundary, public sample review gate, route isolation, source pointer `skills/visual-ip-illustrations/references/ips/caixukun/source.md`, output path `assets/<article-slug>-caixukun/`, and safety review for endorsement, affiliation, impersonation, campaign, advertising, and fandom-promotion claims.
 - **Hermes Agent**: explicit `source-reviewed` uploaded-image article-illustration route. Requests that name `Hermes Agent`, `Hermes`, `hermes`, `hermes-agent`, `Hermes logo`, or `Hermes Agent logo` use the Hermes route with source pointer `skills/visual-ip-illustrations/references/ips/hermes/source.md`, output path `assets/<article-slug>-hermes/`, uploaded-image authority from `Generated image 1 (16).jpeg`, official source context, MIT license context, public sample review gate, mythology-drift boundary, product-poster boundary, route isolation, uploaded-character-only article illustration output, and release review for official endorsement, affiliation, sponsorship, approval, and impersonation claims.
+- **Linux Mascot**: explicit `source-reviewed` uploaded-image article-illustration route. Requests that name `Linux Mascot`, `Linux mascot`, `Linux`, `linux`, `Tux`, `tux`, `Linux penguin`, or `Tux penguin` use the Linux Mascot route with source pointer `skills/visual-ip-illustrations/references/ips/linux/source.md`, output path `assets/<article-slug>-linux/`, uploaded-image authority from `/Users/longnv/Downloads/Linux-logo.jpg`, Larry Ewing Tux attribution, The GIMP attribution condition, Linux Foundation trademark guidance, Linux mark ownership context, public sample review gate, route isolation, distro-logo boundary, product-output boundary, and release review for official endorsement, certification, compatibility, Linux Foundation logo use, product-poster output, CLI screenshots, web hero graphics, kernel dashboard screenshots, and operating-system marketing graphics.
 
 核心价值：用户可以选择一个视觉 IP，并得到在角色、风格规则、提示词、QA 门槛、保存输出、署名、来源上下文和品牌边界上都与该 IP 保持一致的文章配图资产。
 
@@ -61,10 +62,12 @@ Release 1.4 的公开身份使用 `Visual IP Illustrations`，标准本地检出
 - Go Gopher 输出到工作区路径 `assets/<article-slug>-gopher/`。
 - Cai Xukun outputs to workspace path `assets/<article-slug>-caixukun/`.
 - Hermes Agent outputs to workspace path `assets/<article-slug>-hermes/`.
+- Linux Mascot outputs to workspace path `assets/<article-slug>-linux/`.
 
 文档验证也保留 HTML 转义后的路径标记：`assets/&lt;article-slug&gt;-illustrations/`、`assets/&lt;article-slug&gt;-littlebox/`、`assets/&lt;article-slug&gt;-tom/`、`assets/&lt;article-slug&gt;-ferris/`、`assets/&lt;article-slug&gt;-seal/` 和 `assets/&lt;article-slug&gt;-openclaw/`。
 文档验证也保留 Go Gopher HTML 转义路径标记：`assets/&lt;article-slug&gt;-gopher/`。
 Docs validation also keeps Hermes Agent escaped marker: `assets/&lt;article-slug&gt;-hermes/`.
+Docs validation also keeps Linux Mascot escaped marker: `assets/&lt;article-slug&gt;-linux/`.
 
 ---
 
@@ -120,6 +123,14 @@ Aliases: `Hermes Agent`, `Hermes`, `hermes`, `hermes-agent`, `Hermes logo`, `Her
 
 Release boundary: generated public Hermes Agent sample assets remain pending behind the public sample review gate, and release copy for official endorsement, affiliation, sponsorship, approval, impersonation, broad assistant, Greek messenger, winged sandals, and caduceus claims requires review.
 
+### Linux Mascot
+
+Linux Mascot is an explicit `source-reviewed` uploaded-image article-illustration route. The uploaded visual authority is `/Users/longnv/Downloads/Linux-logo.jpg`, and public docs use source pointer `skills/visual-ip-illustrations/references/ips/linux/source.md`, Larry Ewing Tux attribution, The GIMP attribution condition, Linux Foundation trademark guidance, Linux mark ownership context, output path `assets/<article-slug>-linux/`, public sample review gate, route isolation, distro-logo boundary, product-output boundary, and uploaded-image-only Tux article illustration output. It works for sparse 16:9 article illustrations where Tux performs the central cognitive action.
+
+Aliases: `Linux Mascot`, `Linux mascot`, `Linux`, `linux`, `Tux`, `tux`, `Linux penguin`, `Tux penguin`.
+
+Release boundary: generated public Linux Mascot sample assets remain pending behind the public sample review gate, and release copy for official endorsement, certification, compatibility, Linux Foundation logo use, distro-logo use, product-poster output, CLI screenshots, web hero graphics, kernel dashboard screenshots, and operating-system marketing graphics requires review.
+
 ### 路线参考
 
 维护者可以在 `skills/visual-ip-illustrations/references/routing.md` 中检查路线元数据字段：`id`、`display_name`、`aliases`、`default`、`output_suffix`、`required_references`、`attribution_context` 和 `status`。
@@ -134,10 +145,13 @@ Release boundary: generated public Hermes Agent sample assets remain pending beh
 - OpenClaw：`skills/visual-ip-illustrations/references/ips/openclaw/`，来源/许可证权威文件 `skills/visual-ip-illustrations/references/ips/openclaw/source.md`
 - Go Gopher：`skills/visual-ip-illustrations/references/ips/gopher/`，来源/许可证权威文件 `skills/visual-ip-illustrations/references/ips/gopher/source.md`
 - Hermes Agent: `skills/visual-ip-illustrations/references/ips/hermes/`, source authority `skills/visual-ip-illustrations/references/ips/hermes/source.md`
+- Linux Mascot: `skills/visual-ip-illustrations/references/ips/linux/`, source authority `skills/visual-ip-illustrations/references/ips/linux/source.md`
 
 当一个请求要求多个视觉 IP 时，按独立变体组交付，并把每一组写入自己的输出目录。Xiaohei 是隐式默认路线；Littlebox 是显式 active 路线；Tom 是显式 protected-character 路线，状态为 `gated-authorized`；Ferris 是显式 Rust-community mascot 路线，状态为 `source-reviewed`；Seal 是显式 product-neutral hoodie seal 路线，状态为 `active`；OpenClaw 是显式 logo-mascot 路线，状态为 `source-reviewed`；Go Gopher 是显式 Go language mascot 路线，状态为 `source-reviewed`。
 
 Hermes Agent route usage keeps `source-reviewed`, route id `hermes`, aliases `Hermes Agent`, `Hermes`, `hermes`, `hermes-agent`, `Hermes logo`, and `Hermes Agent logo`, source authority `skills/visual-ip-illustrations/references/ips/hermes/source.md`, uploaded-image authority from `Generated image 1 (16).jpeg`, official source context, MIT license context, public sample review gate, mythology-drift boundary, product-poster boundary, route isolation, uploaded-character-only article illustration output, `assets/<article-slug>-hermes/`, and `assets/&lt;article-slug&gt;-hermes/` attached to planning, generation, edit, QA, delivery, and release review.
+
+Linux Mascot route usage keeps `source-reviewed`, route id `linux`, aliases `Linux Mascot`, `Linux mascot`, `Linux`, `linux`, `Tux`, `tux`, `Linux penguin`, and `Tux penguin`, source authority `skills/visual-ip-illustrations/references/ips/linux/source.md`, uploaded-image authority from `/Users/longnv/Downloads/Linux-logo.jpg`, Larry Ewing Tux attribution, The GIMP attribution condition, Linux Foundation trademark guidance, Linux mark ownership context, public sample review gate, distro-logo boundary, product-output boundary, route isolation, uploaded-image-only Tux article illustration output, `assets/<article-slug>-linux/`, and `assets/&lt;article-slug&gt;-linux/` attached to planning, generation, edit, QA, delivery, and release review.
 
 操作路线事实：
 
@@ -147,6 +161,7 @@ Hermes Agent route usage keeps `source-reviewed`, route id `hermes`, aliases `He
 - OpenClaw：路线 id `openclaw`；default=false；状态 `source-reviewed`；来源/许可证权威文件 `skills/visual-ip-illustrations/references/ips/openclaw/source.md`；输出路径 `assets/<article-slug>-openclaw/`；文档验证标记 `assets/&lt;article-slug&gt;-openclaw/`；输出后缀 `openclaw`；uploaded-logo identity 使用红色圆形身体、两侧爪形手臂、两根触角、黑色眼睛、青色瞳孔和短腿；公开渲染样例需要 `RELEASE_CHECKLIST.md` public-sample gate 和最终 OpenClaw release evidence。
 - Go Gopher：路线 id `gopher`；default=false；状态 `source-reviewed`；来源/许可证权威文件 `skills/visual-ip-illustrations/references/ips/gopher/source.md`；输出路径 `assets/<article-slug>-gopher/`；文档验证标记 `assets/&lt;article-slug&gt;-gopher/`；输出后缀 `gopher`；本地视觉权威来自 `skills/visual-ip-illustrations/references/ips/gopher/gopher.png`；署名 Renee French；许可边界 Creative Commons Attribution 4.0；公开渲染样例需要 `RELEASE_CHECKLIST.md` public-sample gate 和 Phase 42 Go Gopher release evidence；Go logo boundary 和 official endorsement boundary 随路线交付记录一起保留。
 - Hermes Agent: route id `hermes`; default=false; status `source-reviewed`; source authority `skills/visual-ip-illustrations/references/ips/hermes/source.md`; output path `assets/<article-slug>-hermes/`; docs validation token `assets/&lt;article-slug&gt;-hermes/`; output suffix `hermes`; aliases `Hermes Agent`, `Hermes`, `hermes`, `hermes-agent`, `Hermes logo`, and `Hermes Agent logo`; uploaded-image authority from `Generated image 1 (16).jpeg`; official website, official repository, docs URL, and MIT license context stay attached; public generated Hermes samples remain pending behind the public sample review gate; mythology-drift boundary, product-poster boundary, route isolation, uploaded-character-only article illustration output, and endorsement, affiliation, sponsorship, approval, and impersonation review wording stay attached.
+- Linux Mascot: route id `linux`; default=false; status `source-reviewed`; source authority `skills/visual-ip-illustrations/references/ips/linux/source.md`; output path `assets/<article-slug>-linux/`; docs validation token `assets/&lt;article-slug&gt;-linux/`; output suffix `linux`; uploaded-image authority `/Users/longnv/Downloads/Linux-logo.jpg`; Tux source context uses Larry Ewing Tux attribution, Linux 2.0 Penguins source, and The GIMP attribution condition; Linux word-mark guidance uses Linux Foundation trademark guidance and Linux mark ownership context; public generated Linux Mascot samples remain pending behind the public sample review gate; distro-logo boundary, product-output boundary, route isolation, and endorsement/certification/compatibility review wording stay attached.
 
 ---
 
@@ -236,7 +251,7 @@ Release 1.4 兼容性：
 
 ## 快速示例
 
-`{visual IP}` 可以是 `Xiaohei`、`Littlebox`、`Tom`、`Ferris`、`Seal`, `OpenClaw`, `Go Gopher`, `Cai Xukun`, `Hermes Agent` 或受支持的别名。省略视觉 IP 时选择 Xiaohei。
+`{visual IP}` 可以是 `Xiaohei`、`Littlebox`、`Tom`、`Ferris`、`Seal`, `OpenClaw`, `Go Gopher`, `Cai Xukun`, `Hermes Agent`, `Linux Mascot` 或受支持的别名。省略视觉 IP 时选择 Xiaohei。
 
 ### 规划 Shot List
 
@@ -270,7 +285,7 @@ Requirements: hand-drawn, spacious, sparse visible labels in the user's language
 
 ```text
 Use $visual-ip-illustrations. Do not generate images yet.
-Create separate Xiaohei, Littlebox, Tom, Ferris, Seal, OpenClaw, Go Gopher, Cai Xukun, and Hermes Agent shot-list groups from the same idea.
+Create separate Xiaohei, Littlebox, Tom, Ferris, Seal, OpenClaw, Go Gopher, Cai Xukun, Hermes Agent, and Linux Mascot shot-list groups from the same idea.
 Each group must keep its own IP, character action, visible labels, and output path.
 
 Idea: trust is built by placing one piece of evidence after another.
@@ -285,12 +300,12 @@ Protected-character、source-reviewed、active source-history、gated-public-fig
 ## 工作流
 
 1. 读取文章、Markdown、Notion 内容、截图或用户提供的主题。
-2. 选择视觉 IP：省略 IP 时选择 Xiaohei；显式 Littlebox 选择 Littlebox；显式 Tom 别名选择 Tom protected-character 路线；显式 Ferris 别名选择 Ferris source-reviewed pack；显式 Seal 别名选择 active Seal pack；显式 OpenClaw 别名选择 OpenClaw source-reviewed pack。 Explicit Go Gopher aliases select the Go Gopher source-reviewed pack. Explicit Cai Xukun aliases select the Cai Xukun gated-public-figure pack. Explicit Hermes Agent aliases select the Hermes Agent source-reviewed pack.
+2. 选择视觉 IP：省略 IP 时选择 Xiaohei；显式 Littlebox 选择 Littlebox；显式 Tom 别名选择 Tom protected-character 路线；显式 Ferris 别名选择 Ferris source-reviewed pack；显式 Seal 别名选择 active Seal pack；显式 OpenClaw 别名选择 OpenClaw source-reviewed pack。 Explicit Go Gopher aliases select the Go Gopher source-reviewed pack. Explicit Cai Xukun aliases select the Cai Xukun gated-public-figure pack. Explicit Hermes Agent aliases select the Hermes Agent source-reviewed pack. Explicit Linux Mascot aliases select the Linux Mascot source-reviewed pack.
 3. 提取核心主张、认知转折、工作流结构和可视化段落。
 4. 先产出 shot list；每张图对应一个认知锚点。
 5. 为每张图选择一种结构类型：Workflow、system local view、before/after、character state、concept metaphor、method layers、map route 或 comic panels。
-6. 加载所选 IP 的标准包，组装提示词，并逐张生成图片。混合 IP 请求会创建独立 route groups 和独立输出目录，Xiaohei, Littlebox, Tom, Ferris, Seal, OpenClaw, Go Gopher, Cai Xukun, and Hermes Agent each keeping route-local references。
-7. 根据所选 IP 的 QA checklist 检查角色身份、构图、背景、标签和输出路径。Tom 保留 `gated-authorized` 和 `skills/visual-ip-illustrations/references/ips/tom/rights.md`；Ferris 保留 `source-reviewed`、source/trademark note 和 `skills/visual-ip-illustrations/references/ips/ferris/source.md`；Seal 保留 `active`、source-history authority、hoodie seal identity note、logo-free note 和 `skills/visual-ip-illustrations/references/ips/seal/source.md`；OpenClaw 保留 `source-reviewed`、source/license authority、uploaded-logo identity、public-sample gate 和 `skills/visual-ip-illustrations/references/ips/openclaw/source.md`。 Go Gopher keeps `source-reviewed`, source/license authority, route-local `skills/visual-ip-illustrations/references/ips/gopher/gopher.png`, public-sample gate, and `references/ips/gopher/source.md` in the delivery notes. Cai Xukun keeps `gated-public-figure`, uploaded-image authority, public-figure likeness boundary, source-image context boundary, public sample review gate, route isolation, stylized mascot-only output, `skills/visual-ip-illustrations/references/ips/caixukun/source.md`, and `assets/<article-slug>-caixukun/` in the delivery notes. Hermes Agent keeps `source-reviewed`, source authority `skills/visual-ip-illustrations/references/ips/hermes/source.md`, uploaded-image authority from `Generated image 1 (16).jpeg`, official source context, MIT license context, mythology-drift boundary, product-poster boundary, public sample review gate, route isolation, uploaded-character-only article illustration output, and `assets/<article-slug>-hermes/` in the delivery notes.
+6. 加载所选 IP 的标准包，组装提示词，并逐张生成图片。混合 IP 请求会创建独立 route groups 和独立输出目录，Xiaohei, Littlebox, Tom, Ferris, Seal, OpenClaw, Go Gopher, Cai Xukun, Hermes Agent, and Linux Mascot each keeping route-local references。
+7. 根据所选 IP 的 QA checklist 检查角色身份、构图、背景、标签和输出路径。Tom 保留 `gated-authorized` 和 `skills/visual-ip-illustrations/references/ips/tom/rights.md`；Ferris 保留 `source-reviewed`、source/trademark note 和 `skills/visual-ip-illustrations/references/ips/ferris/source.md`；Seal 保留 `active`、source-history authority、hoodie seal identity note、logo-free note 和 `skills/visual-ip-illustrations/references/ips/seal/source.md`；OpenClaw 保留 `source-reviewed`、source/license authority、uploaded-logo identity、public-sample gate 和 `skills/visual-ip-illustrations/references/ips/openclaw/source.md`。 Go Gopher keeps `source-reviewed`, source/license authority, route-local `skills/visual-ip-illustrations/references/ips/gopher/gopher.png`, public-sample gate, and `references/ips/gopher/source.md` in the delivery notes. Cai Xukun keeps `gated-public-figure`, uploaded-image authority, public-figure likeness boundary, source-image context boundary, public sample review gate, route isolation, stylized mascot-only output, `skills/visual-ip-illustrations/references/ips/caixukun/source.md`, and `assets/<article-slug>-caixukun/` in the delivery notes. Hermes Agent keeps `source-reviewed`, source authority `skills/visual-ip-illustrations/references/ips/hermes/source.md`, uploaded-image authority from `Generated image 1 (16).jpeg`, official source context, MIT license context, mythology-drift boundary, product-poster boundary, public sample review gate, route isolation, uploaded-character-only article illustration output, and `assets/<article-slug>-hermes/` in the delivery notes. Linux Mascot keeps `source-reviewed`, source authority `skills/visual-ip-illustrations/references/ips/linux/source.md`, uploaded-image authority from `/Users/longnv/Downloads/Linux-logo.jpg`, Larry Ewing Tux attribution, The GIMP attribution condition, Linux trademark boundary, distro-logo boundary, product-output boundary, public sample review gate, route isolation, and `assets/<article-slug>-linux/` in the delivery notes.
 8. 保存最终 PNG，并报告用途和路径。
 
 ---
@@ -399,11 +414,19 @@ Protected-character、source-reviewed、active source-history、gated-public-fig
                 │   ├── composition-patterns.md
                 │   ├── prompt-template.md
                 │   └── qa-checklist.md
-                └── hermes/
+                ├── hermes/
+                │   ├── index.md
+                │   ├── source.md
+                │   ├── style-dna.md
+                │   ├── hermes-ip.md
+                │   ├── composition-patterns.md
+                │   ├── prompt-template.md
+                │   └── qa-checklist.md
+                └── linux/
                     ├── index.md
                     ├── source.md
                     ├── style-dna.md
-                    ├── hermes-ip.md
+                    ├── linux-ip.md
                     ├── composition-patterns.md
                     ├── prompt-template.md
                     └── qa-checklist.md
@@ -426,7 +449,7 @@ node scripts/validate-skill-package.mjs
 ```
 
 验证覆盖 skill 包结构、路线表、Xiaohei、Littlebox、Tom、Ferris、Seal、OpenClaw 和 Go Gopher 标准包、legacy Xiaohei 路径、公开文档链接、输出路径标记、NOTICE 署名、Tom `gated-authorized` 路线标记、Ferris `source-reviewed` 路线标记、Seal `active` 路线标记、OpenClaw `source-reviewed` 路线标记、source-history authority、source/license authority、uploaded-logo identity note、hoodie seal identity note、logo-free note、Phase 32 full validator restoration evidence 和 Phase 37 final release evidence。
-Validation also covers Go Gopher canonical pack markers, Go Gopher `source-reviewed` route markers, source/license authority, route-local `skills/visual-ip-illustrations/references/ips/gopher/gopher.png`, public sample gate, Phase 42 final release evidence, and Go Gopher validator checks. Phase 46 public docs cover Cai Xukun canonical pack markers, Cai Xukun `gated-public-figure` route markers, source authority `skills/visual-ip-illustrations/references/ips/caixukun/source.md`, uploaded-image authority, public-figure likeness boundary, source-image context boundary, public sample review gate, route isolation, stylized mascot-only output, `assets/<article-slug>-caixukun/`, `assets/&lt;article-slug&gt;-caixukun/`, and endorsement, affiliation, impersonation, campaign, advertising, and fandom-promotion review terms; Phase 47 owns validator hardening and final release evidence. Phase 51 public docs cover Hermes Agent public route markers, source pointer `skills/visual-ip-illustrations/references/ips/hermes/source.md`, uploaded-image authority from `Generated image 1 (16).jpeg`, MIT license context, public sample review gate, mythology-drift boundary, product-poster boundary, route isolation, uploaded-character-only article illustration output, `assets/<article-slug>-hermes/`, and `assets/&lt;article-slug&gt;-hermes/`; Phase 52 owns Hermes validator hardening, Node tests, final release evidence, leakage scan, and public sample gate automation.
+Validation also covers Go Gopher canonical pack markers, Go Gopher `source-reviewed` route markers, source/license authority, route-local `skills/visual-ip-illustrations/references/ips/gopher/gopher.png`, public sample gate, Phase 42 final release evidence, and Go Gopher validator checks. Phase 46 public docs cover Cai Xukun canonical pack markers, Cai Xukun `gated-public-figure` route markers, source authority `skills/visual-ip-illustrations/references/ips/caixukun/source.md`, uploaded-image authority, public-figure likeness boundary, source-image context boundary, public sample review gate, route isolation, stylized mascot-only output, `assets/<article-slug>-caixukun/`, `assets/&lt;article-slug&gt;-caixukun/`, and endorsement, affiliation, impersonation, campaign, advertising, and fandom-promotion review terms; Phase 47 owns validator hardening and final release evidence. Phase 51 public docs cover Hermes Agent public route markers, source pointer `skills/visual-ip-illustrations/references/ips/hermes/source.md`, uploaded-image authority from `Generated image 1 (16).jpeg`, MIT license context, public sample review gate, mythology-drift boundary, product-poster boundary, route isolation, uploaded-character-only article illustration output, `assets/<article-slug>-hermes/`, and `assets/&lt;article-slug&gt;-hermes/`; Phase 52 owns Hermes validator hardening, Node tests, final release evidence, leakage scan, and public sample gate automation. Phase 56 public docs cover Linux Mascot public route markers, source pointer `skills/visual-ip-illustrations/references/ips/linux/source.md`, uploaded-image authority from `/Users/longnv/Downloads/Linux-logo.jpg`, Larry Ewing Tux attribution, The GIMP attribution condition, Linux Foundation trademark guidance, Linux mark ownership context, public sample review gate, distro-logo boundary, product-output boundary, route isolation, `assets/<article-slug>-linux/`, and `assets/&lt;article-slug&gt;-linux/`; Phase 57 owns Linux Mascot validator hardening, Node tests, final release evidence, leakage scan, route smoke, public sample gate automation, and generated sample gate automation.
 
 当前维护者验证命令：
 
