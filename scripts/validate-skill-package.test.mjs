@@ -162,6 +162,7 @@ const requiredCheckIds = [
   "VAL-GOPHER-EVIDENCE-001",
   "VAL-CAIXUKUN-EVIDENCE-001",
   "VAL-HERMES-EVIDENCE-001",
+  "VAL-LINUX-EVIDENCE-001",
   "BOUNDARY-IMG-001",
   "BOUNDARY-TOM-LEAK-001",
   "BOUNDARY-FERRIS-LEAK-001",
@@ -505,7 +506,7 @@ test("validator command prints deterministic harness smoke logs", () => {
   assert.match(result.stdout, /\[PASS\] ROUTE-TABLE-001 /);
   assert.match(result.stdout, /\[PASS\] ROUTE-FERRIS-001 /);
   assert.match(result.stdout, /\[PASS\] SMOKE-FERRIS-001 /);
-  assert.match(result.stdout, /Summary: total=179 passed=179 failed=0 skipped=0/);
+  assert.match(result.stdout, /Summary: total=180 passed=180 failed=0 skipped=0/);
 
   assert.equal(result.stderr, "");
 });
@@ -768,7 +769,7 @@ test("validator emits the full Phase 47 matrix with zero failures", () => {
     resultLines.map((line) => line.match(/^\[PASS\] ([A-Z0-9-]+) /)?.[1]),
     requiredCheckIds,
   );
-  assert.match(result.stdout, /Summary: total=179 passed=179 failed=0 skipped=0/);
+  assert.match(result.stdout, /Summary: total=180 passed=180 failed=0 skipped=0/);
 
   assert.equal(result.stderr, "");
 });
@@ -871,7 +872,7 @@ test("validator fixture reports approved multilingual tokens in enforce mode", (
 
     assert.equal(result.status, 0);
     assert.match(result.stdout, /\[PASS\] LANG-SCAN-001 /);
-    assert.match(result.stdout, /Summary: total=179 passed=179 failed=0 skipped=0/);
+    assert.match(result.stdout, /Summary: total=180 passed=180 failed=0 skipped=0/);
 
   } finally {
     rmSync(fixtureRoot, { recursive: true, force: true });
@@ -2890,6 +2891,31 @@ test("validator fixture reports Hermes release evidence drift", () => {
   }
 });
 
+test("validator fixture reports Linux Mascot release evidence drift", () => {
+  const fixtureRoot = copyFixture("linux-release-evidence");
+  const evidencePath = path.join(
+    fixtureRoot,
+    ".planning",
+    "phases",
+    "57-linux-mascot-validation-and-release-evidence",
+    "57-RELEASE-EVIDENCE.md",
+  );
+  try {
+    rmSync(evidencePath, { force: true });
+
+    const result = runFixtureValidator(fixtureRoot);
+
+    assert.equal(result.status, 1);
+    assert.match(result.stdout, /\[FAIL\] VAL-LINUX-EVIDENCE-001 /);
+    assert.match(
+      result.stdout,
+      /\.planning\/phases\/57-linux-mascot-validation-and-release-evidence\/57-RELEASE-EVIDENCE\.md/,
+    );
+  } finally {
+    rmSync(fixtureRoot, { recursive: true, force: true });
+  }
+});
+
 function assertHermesSurfaceDrift(name, relativePath, searchValue, expectedId) {
   const fixtureRoot = copyFixture(`hermes-${name}-parity-drift`);
   try {
@@ -3786,7 +3812,7 @@ test("validator fixture enforces public Tom asset approval parsing", async () =>
     const approvedResult = runFixtureValidator(fixtureRoot);
     assert.equal(approvedResult.status, 0);
     assert.match(approvedResult.stdout, /\[PASS\] BOUNDARY-TOM-IMG-001 /);
-    assert.match(approvedResult.stdout, /Summary: total=179 passed=179 failed=0 skipped=0/);
+    assert.match(approvedResult.stdout, /Summary: total=180 passed=180 failed=0 skipped=0/);
 
   } finally {
     rmSync(fixtureRoot, { recursive: true, force: true });
@@ -3872,7 +3898,7 @@ test("validator fixture enforces public Ferris sample approval parsing", async (
     const approvedResult = runFixtureValidator(fixtureRoot);
     assert.equal(approvedResult.status, 0);
     assert.match(approvedResult.stdout, /\[PASS\] BOUNDARY-FERRIS-IMG-001 /);
-    assert.match(approvedResult.stdout, /Summary: total=179 passed=179 failed=0 skipped=0/);
+    assert.match(approvedResult.stdout, /Summary: total=180 passed=180 failed=0 skipped=0/);
 
   } finally {
     rmSync(fixtureRoot, { recursive: true, force: true });
@@ -3921,7 +3947,7 @@ test("validator fixture enforces public Seal sample approval parsing", async () 
     const approvedResult = runFixtureValidator(fixtureRoot);
     assert.equal(approvedResult.status, 0);
     assert.match(approvedResult.stdout, /\[PASS\] BOUNDARY-SEAL-IMG-001 /);
-    assert.match(approvedResult.stdout, /Summary: total=179 passed=179 failed=0 skipped=0/);
+    assert.match(approvedResult.stdout, /Summary: total=180 passed=180 failed=0 skipped=0/);
 
   } finally {
     rmSync(fixtureRoot, { recursive: true, force: true });
@@ -3973,7 +3999,7 @@ test("validator fixture enforces public OpenClaw sample approval parsing", async
     const approvedResult = runFixtureValidator(fixtureRoot);
     assert.equal(approvedResult.status, 0);
     assert.match(approvedResult.stdout, /\[PASS\] BOUNDARY-OPENCLAW-IMG-001 /);
-    assert.match(approvedResult.stdout, /Summary: total=179 passed=179 failed=0 skipped=0/);
+    assert.match(approvedResult.stdout, /Summary: total=180 passed=180 failed=0 skipped=0/);
 
   } finally {
     rmSync(fixtureRoot, { recursive: true, force: true });
@@ -4035,7 +4061,7 @@ test("validator fixture enforces public Go Gopher sample approval parsing", asyn
     const approvedResult = runFixtureValidator(fixtureRoot);
     assert.equal(approvedResult.status, 0);
     assert.match(approvedResult.stdout, /\[PASS\] BOUNDARY-GOPHER-IMG-001 /);
-    assert.match(approvedResult.stdout, /Summary: total=179 passed=179 failed=0 skipped=0/);
+    assert.match(approvedResult.stdout, /Summary: total=180 passed=180 failed=0 skipped=0/);
 
   } finally {
     rmSync(fixtureRoot, { recursive: true, force: true });
@@ -4392,7 +4418,7 @@ test("validator fixture enforces public Cai Xukun sample approval parsing", asyn
     const approvedResult = runFixtureValidator(fixtureRoot);
     assert.equal(approvedResult.status, 0);
     assert.match(approvedResult.stdout, /\[PASS\] BOUNDARY-CAIXUKUN-IMG-001 /);
-    assert.match(approvedResult.stdout, /Summary: total=179 passed=179 failed=0 skipped=0/);
+    assert.match(approvedResult.stdout, /Summary: total=180 passed=180 failed=0 skipped=0/);
 
   } finally {
     rmSync(fixtureRoot, { recursive: true, force: true });

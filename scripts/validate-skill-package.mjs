@@ -7204,6 +7204,40 @@ const checks = [
       "VAL-05",
     ], "Phase 52 exact command summaries, route smoke, uploaded-image smoke, source/MIT boundary smoke, docs consistency, leakage, mythology drift, sample gates, scope evidence, and requirement traceability");
   }),
+  defineCheck("VAL-LINUX-EVIDENCE-001", "Phase 57 records Linux Mascot validation and release evidence", () => {
+    const evidencePath = path.join(
+      ".planning",
+      "phases",
+      "57-linux-mascot-validation-and-release-evidence",
+      "57-RELEASE-EVIDENCE.md",
+    );
+    assertIncludes(requireFile(evidencePath), evidencePath, [
+      "# Phase 57 Release Evidence: Linux Mascot Validation",
+      "node scripts/validate-skill-package.mjs",
+      "Summary: total=180 passed=180 failed=0 skipped=0",
+      "node --test scripts/validate-skill-package.test.mjs",
+      "tests 126",
+      "pass 126",
+      "fail 0",
+      "git diff --check",
+      "Linux Mascot route smoke",
+      "uploaded-image smoke",
+      "source/trademark boundary smoke",
+      "docs consistency",
+      "leakage scan",
+      "public sample gate",
+      "generated sample gate",
+      "dirty-worktree scope",
+      "BOUNDARY-LINUX-LEAK-001",
+      "BOUNDARY-LINUX-IMG-001",
+      "BOUNDARY-LINUX-GEN-001",
+      "VAL-01",
+      "VAL-02",
+      "VAL-03",
+      "VAL-04",
+      "VAL-05",
+    ], "Phase 57 exact command summaries, route smoke, uploaded-image smoke, source/trademark boundary smoke, docs consistency, leakage, sample gates, scope evidence, and requirement traceability");
+  }),
   defineCheck("BOUNDARY-IMG-001", "example asset directories do not import rendered Littlebox images", () => {
     const matches = legacyImageAssetPaths().filter((relativePath) => /littlebox|小盒|carton/i.test(relativePath));
     if (matches.length > 0) {
