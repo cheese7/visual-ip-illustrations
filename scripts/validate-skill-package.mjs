@@ -1831,6 +1831,15 @@ function parseHermesApprovalLine(approvalLine, kind) {
   };
 }
 
+function approvedLinuxOutcomePresent(value, placeholderPattern) {
+  return (
+    Boolean(value) &&
+    !placeholderPattern.test(value) &&
+    /\b(approved|complete|completed|granted)\b/i.test(value) &&
+    !/\b(pending|tbd|todo|incomplete|reviewer|approval status)\b/i.test(value)
+  );
+}
+
 function parseLinuxApprovalLine(approvalLine, kind) {
   if (!approvalLine) {
     return emptyLinuxApproval();
@@ -1900,28 +1909,39 @@ function parseLinuxApprovalLine(approvalLine, kind) {
     kind === "generated" &&
     generatedRequiredPublicDirectories.every((directory) => publicDirectories.includes(directory));
   const releaseChannelsPresent = Boolean(releaseChannels) && !/^release channels\.?$/i.test(releaseChannels);
-  const sourceOutcomePresent = Boolean(sourceOutcome) && !/^Tux source outcome\.?$/i.test(sourceOutcome);
-  const gimpAttributionOutcomePresent =
-    Boolean(gimpAttributionOutcome) && !/^GIMP attribution outcome\.?$/i.test(gimpAttributionOutcome);
-  const trademarkOutcomePresent = Boolean(trademarkOutcome) && !/^Linux trademark outcome\.?$/i.test(trademarkOutcome);
-  const uploadedImageIdentityOutcomePresent =
-    Boolean(uploadedImageIdentityOutcome) && !/^uploaded-image identity outcome\.?$/i.test(uploadedImageIdentityOutcome);
-  const distroLogoBoundaryOutcomePresent =
-    Boolean(distroLogoBoundaryOutcome) && !/^distro-logo boundary outcome\.?$/i.test(distroLogoBoundaryOutcome);
-  const endorsementCertificationBoundaryOutcomePresent =
-    Boolean(endorsementCertificationBoundaryOutcome) &&
-    !/^endorsement\/certification boundary outcome\.?$/i.test(endorsementCertificationBoundaryOutcome);
-  const productOutputOutcomePresent =
-    Boolean(productOutputOutcome) && !/^product-output outcome\.?$/i.test(productOutputOutcome);
-  const routeIsolationOutcomePresent =
-    Boolean(routeIsolationOutcome) && !/^route-isolation outcome\.?$/i.test(routeIsolationOutcome);
+  const sourceOutcomePresent = approvedLinuxOutcomePresent(sourceOutcome, /^Tux source outcome\.?$/i);
+  const gimpAttributionOutcomePresent = approvedLinuxOutcomePresent(
+    gimpAttributionOutcome,
+    /^GIMP attribution outcome\.?$/i,
+  );
+  const trademarkOutcomePresent = approvedLinuxOutcomePresent(trademarkOutcome, /^Linux trademark outcome\.?$/i);
+  const uploadedImageIdentityOutcomePresent = approvedLinuxOutcomePresent(
+    uploadedImageIdentityOutcome,
+    /^uploaded-image identity outcome\.?$/i,
+  );
+  const distroLogoBoundaryOutcomePresent = approvedLinuxOutcomePresent(
+    distroLogoBoundaryOutcome,
+    /^distro-logo boundary outcome\.?$/i,
+  );
+  const endorsementCertificationBoundaryOutcomePresent = approvedLinuxOutcomePresent(
+    endorsementCertificationBoundaryOutcome,
+    /^endorsement\/certification boundary outcome\.?$/i,
+  );
+  const productOutputOutcomePresent = approvedLinuxOutcomePresent(productOutputOutcome, /^product-output outcome\.?$/i);
+  const routeIsolationOutcomePresent = approvedLinuxOutcomePresent(
+    routeIsolationOutcome,
+    /^route-isolation outcome\.?$/i,
+  );
   const uploadedImageOnlyOutcomePresent =
-    Boolean(uploadedImageOnlyOutcome) &&
-    !/^uploaded-image-only Tux article illustration outcome\.?$/i.test(uploadedImageOnlyOutcome);
-  const articleMetaphorOutcomePresent =
-    Boolean(articleMetaphorOutcome) && !/^article-metaphor quality outcome\.?$/i.test(articleMetaphorOutcome);
-  const publicSampleOutcomePresent =
-    Boolean(publicSampleOutcome) && !/^public-sample decision\.?$/i.test(publicSampleOutcome);
+    approvedLinuxOutcomePresent(uploadedImageOnlyOutcome, /^uploaded-image-only Tux article illustration outcome\.?$/i);
+  const articleMetaphorOutcomePresent = approvedLinuxOutcomePresent(
+    articleMetaphorOutcome,
+    /^article-metaphor quality outcome\.?$/i,
+  );
+  const publicSampleOutcomePresent = approvedLinuxOutcomePresent(
+    publicSampleOutcome,
+    /^public-sample decision\.?$/i,
+  );
   const directoryFieldsPresent =
     kind === "public" ? allowedDirectoriesPresent : internalReviewDirectoriesPresent && publicDirectoriesPresent;
   const sharedOutcomesPresent =
@@ -3036,6 +3056,12 @@ function imageAssetPaths() {
       .filter((entry) => entry.type === "file")
       .map((entry) => entry.path),
   ].sort((a, b) => a.localeCompare(b, "en"));
+}
+
+function linuxGeneratedSamplePaths() {
+  return sortedFileEntriesRecursive("assets").filter((relativePath) =>
+    /(?:^|\/)(?:[^/]*linux[^/]*|[^/]*tux[^/]*)(?:\/|$)|(?:linux|tux)[^/]*\.(?:png|jpe?g|webp|gif)$/i.test(relativePath),
+  );
 }
 
 function legacyImageAssetPaths() {
@@ -7714,10 +7740,15 @@ const checks = [
     if (!approval.found) {
       throw new Error("RELEASE_CHECKLIST.md expected Linux Mascot generated sample review record; observed missing line");
     }
+    const matches = linuxGeneratedSamplePaths();
+    if (!approval.complete && matches.length > 0) {
+      throw new Error(
+        `assets/<article-slug>-linux expected no generated Linux Mascot samples until generated sample approval is complete; observed ${matches.join(", ")}; approval status=${approval.status || "missing"}, reviewer=${approval.reviewerPresent ? "present" : "missing"}, date=${approval.datePresent ? "present" : "missing"}, internal review directories=${approval.internalReviewDirectoriesPresent ? "present" : "missing"}, public directories=${approval.publicDirectoriesPresent ? "present" : "missing"}, release channels=${approval.releaseChannelsPresent ? "present" : "missing"}, Tux source outcome=${approval.sourceOutcomePresent ? "present" : "missing"}, GIMP attribution outcome=${approval.gimpAttributionOutcomePresent ? "present" : "missing"}, Linux trademark outcome=${approval.trademarkOutcomePresent ? "present" : "missing"}, uploaded-image identity outcome=${approval.uploadedImageIdentityOutcomePresent ? "present" : "missing"}, distro-logo boundary outcome=${approval.distroLogoBoundaryOutcomePresent ? "present" : "missing"}, endorsement/certification boundary outcome=${approval.endorsementCertificationBoundaryOutcomePresent ? "present" : "missing"}, product-output outcome=${approval.productOutputOutcomePresent ? "present" : "missing"}, route-isolation outcome=${approval.routeIsolationOutcomePresent ? "present" : "missing"}, article-metaphor quality outcome=${approval.articleMetaphorOutcomePresent ? "present" : "missing"}`,
+      );
+    }
     assertIncludes(releaseChecklist, "RELEASE_CHECKLIST.md", [
       "Internal review samples under `assets/<article-slug>-linux/` may be used",
       "Public generated samples from `assets/<article-slug>-linux/` require Linux Mascot Public Asset Policy approval",
-      "Record generated sample review: PENDING / reviewer / date / approval status / internal review directories / public directories / release channels / Tux source outcome / GIMP attribution outcome / Linux trademark outcome / uploaded-image identity outcome / distro-logo boundary outcome / endorsement/certification boundary outcome / product-output outcome / route-isolation outcome / article-metaphor quality outcome",
     ], "Linux Mascot generated sample workspace and public release distinction");
   }),
   defineCheck("BOUNDARY-P5-001", "validator enforces live package and workspace output boundaries", () => {

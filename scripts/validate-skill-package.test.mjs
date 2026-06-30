@@ -4970,6 +4970,78 @@ test("validator fixture rejects Linux Mascot public sample placeholder approvals
   }
 });
 
+test("validator fixture rejects Linux Mascot public sample pending approval outcomes", async () => {
+  const validators = await import(`${scriptPath}?linuxPendingApproval=${Date.now()}`);
+  const releaseChecklistText = readFileSync(path.join(repoRoot, "RELEASE_CHECKLIST.md"), "utf8");
+
+  for (const [name, approvalLine, expectedField] of [
+    [
+      "source-pending",
+      completeLinuxPublicAssetApprovalLine(
+        "2026-06-13",
+        "Tux source pending",
+      ),
+      "Tux source outcome=missing",
+    ],
+    [
+      "gimp-tbd",
+      completeLinuxPublicAssetApprovalLine(
+        "2026-06-13",
+        "Tux source approved",
+        "GIMP attribution TBD",
+      ),
+      "GIMP attribution outcome=missing",
+    ],
+    [
+      "trademark-incomplete",
+      completeLinuxPublicAssetApprovalLine(
+        "2026-06-13",
+        "Tux source approved",
+        "GIMP attribution approved",
+        "Linux trademark incomplete",
+      ),
+      "Linux trademark outcome=missing",
+    ],
+    [
+      "public-sample-pending",
+      completeLinuxPublicAssetApprovalLine(
+        "2026-06-13",
+        "Tux source approved",
+        "GIMP attribution approved",
+        "Linux trademark approved",
+        "uploaded-image identity approved",
+        "distro-logo boundary approved",
+        "endorsement/certification boundary approved",
+        "product-output approved",
+        "route-isolation approved",
+        "uploaded-image-only Tux article illustration approved",
+        "article-metaphor quality approved",
+        "public-sample decision pending",
+      ),
+      "public-sample decision=missing",
+    ],
+  ]) {
+    const approvalText = releaseChecklistText.replace(pendingLinuxPublicAssetApprovalLine(), approvalLine);
+    const approval = validators.parsePublicLinuxSampleApproval(approvalText);
+    assert.equal(approval.checked, true);
+    assert.equal(approval.complete, false);
+
+    const fixtureRoot = copyFixture(`linux-pending-${name}`);
+    try {
+      writeFileSync(path.join(fixtureRoot, "examples", "images", "99-linux-test.png"), "fixture", "utf8");
+      replaceInFixture(fixtureRoot, "RELEASE_CHECKLIST.md", pendingLinuxPublicAssetApprovalLine(), approvalLine);
+
+      const result = runFixtureValidator(fixtureRoot);
+
+      assert.equal(result.status, 1);
+      assert.match(result.stdout, /\[FAIL\] BOUNDARY-LINUX-IMG-001 /);
+      assert.match(result.stdout, new RegExp(expectedField));
+    } finally {
+      rmSync(fixtureRoot, { recursive: true, force: true });
+    }
+  }
+});
+
 test("validator fixture distinguishes Generated Sample Ferris review outputs from public samples", async () => {
   const validators = await import(`${scriptPath}?generatedFerrisApproval=${Date.now()}`);
   const releaseChecklistText = readFileSync(path.join(repoRoot, "RELEASE_CHECKLIST.md"), "utf8");
@@ -5780,11 +5852,72 @@ test("validator fixture distinguishes Generated Sample Linux Mascot review outpu
     assert.equal(placeholderApproval[expectedFlag], false, name);
   }
 
+  for (const [name, approvalLine, expectedFlag, expectedField] of [
+    [
+      "source-pending",
+      completeGeneratedLinuxSampleLine(
+        "2026-06-13",
+        "Tux source pending",
+      ),
+      "sourceOutcomePresent",
+      "Tux source outcome=missing",
+    ],
+    [
+      "gimp-tbd",
+      completeGeneratedLinuxSampleLine(
+        "2026-06-13",
+        "Tux source approved",
+        "GIMP attribution TBD",
+      ),
+      "gimpAttributionOutcomePresent",
+      "GIMP attribution outcome=missing",
+    ],
+    [
+      "trademark-incomplete",
+      completeGeneratedLinuxSampleLine(
+        "2026-06-13",
+        "Tux source approved",
+        "GIMP attribution approved",
+        "Linux trademark incomplete",
+      ),
+      "trademarkOutcomePresent",
+      "Linux trademark outcome=missing",
+    ],
+  ]) {
+    const approvalText = releaseChecklistText.replace(pendingGeneratedLinuxSampleLine(), approvalLine);
+    const approval = validators.parseGeneratedLinuxSampleApproval(approvalText);
+    assert.equal(approval.checked, true);
+    assert.equal(approval.complete, false);
+    assert.equal(approval[expectedFlag], false, name);
+
+    const fixtureRoot = copyFixture(`linux-generated-pending-${name}`);
+    try {
+      const workspaceOutputDir = path.join(fixtureRoot, "assets", "article-linux");
+      mkdirSync(workspaceOutputDir, { recursive: true });
+      writeFileSync(path.join(workspaceOutputDir, "99-linux-test.png"), "fixture", "utf8");
+      replaceInFixture(fixtureRoot, "RELEASE_CHECKLIST.md", pendingGeneratedLinuxSampleLine(), approvalLine);
+
+      const result = runFixtureValidator(fixtureRoot);
+
+      assert.equal(result.status, 1);
+      assert.match(result.stdout, /\[FAIL\] BOUNDARY-LINUX-GEN-001 /);
+      assert.match(result.stdout, new RegExp(expectedField));
+    } finally {
+      rmSync(fixtureRoot, { recursive: true, force: true });
+    }
+  }
+
   const fixtureRoot = copyFixture("linux-generated-sample");
   try {
     const workspaceOutputDir = path.join(fixtureRoot, "assets", "article-linux");
     mkdirSync(workspaceOutputDir, { recursive: true });
     writeFileSync(path.join(workspaceOutputDir, "99-linux-test.png"), "fixture", "utf8");
+    replaceInFixture(
+      fixtureRoot,
+      "RELEASE_CHECKLIST.md",
+      pendingGeneratedLinuxSampleLine(),
+      completeGeneratedLinuxSampleLine(),
+    );
 
     const result = runFixtureValidator(fixtureRoot);
     assert.equal(result.status, 0);
