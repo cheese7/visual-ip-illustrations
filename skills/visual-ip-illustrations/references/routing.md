@@ -17,7 +17,9 @@ This file defines visual-IP selection rules and verifiable route metadata for th
 - Cai Xukun route matching requires `蔡徐坤`, `Cai Xukun`, `caixukun`, or `cxk`; broad celebrity, idol, duck, yellow mascot, and fandom words remain outside the Cai Xukun alias set.
 - `Hermes Agent`, `Hermes`, `hermes`, `hermes-agent`, `Hermes logo`, and `Hermes Agent logo` select the same `hermes` route and keep route status `source-reviewed`.
 - Hermes Agent route matching requires `Hermes Agent`, `Hermes`, `hermes`, `hermes-agent`, `Hermes logo`, or `Hermes Agent logo`; broad assistant, AI agent, logo, anime, monochrome girl, fashion figure, Greek messenger, winged sandals, and caduceus terms remain outside the Phase 48 Hermes alias set.
-- Mixed requests across Xiaohei, Littlebox, Tom, Ferris, Seal, OpenClaw, Go Gopher, Cai Xukun, and Hermes create separate route groups. Compatibility marker: 每个 route group 只加载自己的 `required_references`; each group writes to its own output directory.
+- `Linux Mascot`, `Linux mascot`, `Linux`, `linux`, `Tux`, `tux`, `Linux penguin`, and `Tux penguin` select the same `linux` route and keep route status `source-reviewed`.
+- Linux Mascot route matching requires `Linux Mascot`, `Linux mascot`, `Linux`, `linux`, `Tux`, `tux`, `Linux penguin`, or `Tux penguin`; broad penguin, server, kernel, distro, distro-logo, Linux Foundation, operating-system, CLI, terminal, product, brand-campaign, and generic mascot terms remain outside the Phase 53 Linux Mascot alias set.
+- Mixed requests across Xiaohei, Littlebox, Tom, Ferris, Seal, OpenClaw, Go Gopher, Cai Xukun, Hermes Agent, and Linux Mascot create separate route groups. Compatibility marker: 每个 route group 只加载自己的 `required_references`; each group writes to its own output directory.
 - Routes store only selection, references, output suffixes, and attribution context. Style, character identity, prompt wording, and QA rules live in the selected IP's reference files.
 - Ferris is an explicit Rust-community mascot route with status source-reviewed; generated public Ferris samples require release review for Rust trademark and endorsement-safe wording.
 - Ferris route-local reference directory: `skills/visual-ip-illustrations/references/ips/ferris/`.
@@ -37,6 +39,9 @@ This file defines visual-IP selection rules and verifiable route metadata for th
 - Hermes Agent is an explicit source-reviewed uploaded-image article-illustration route; generated public Hermes samples require release review for official Hermes Agent context, MIT license context, uploaded-image authority from conversation attachment `Generated image 1 (16).jpeg`, product-poster output boundary, mythology-drift boundary, and official endorsement, affiliation, sponsorship, approval, and impersonation claim boundaries.
 - Hermes Agent route-local reference directory: `skills/visual-ip-illustrations/references/ips/hermes/`.
 - Hermes Agent source and uploaded-image authority: `skills/visual-ip-illustrations/references/ips/hermes/source.md`.
+- Linux Mascot is an explicit source-reviewed uploaded-image article-illustration route; generated public Linux Mascot samples require release review for Larry Ewing Tux attribution, The GIMP attribution condition, Linux Foundation trademark guidance, Linux mark ownership context, uploaded local image authority `/Users/longnv/Downloads/Linux-logo.jpg`, distro-logo boundary, and official endorsement, certification, compatibility, Linux Foundation logo use, product-poster output, CLI screenshots, web hero graphics, kernel dashboard screenshots, and operating-system marketing graphics boundaries.
+- Linux Mascot route-local reference directory: `skills/visual-ip-illustrations/references/ips/linux/`.
+- Linux Mascot source and uploaded-image authority: `skills/visual-ip-illustrations/references/ips/linux/source.md`.
 
 ## IP Routes
 
@@ -51,6 +56,7 @@ This file defines visual-IP selection rules and verifiable route metadata for th
 | `gopher` | Go Gopher | `Go Gopher`, `Gopher`, `golang gopher`, `Go mascot`, `Go 吉祥物`, `Gopher 吉祥物` | `false` | `gopher` | `references/ips/gopher/index.md`; `references/ips/gopher/source.md`; `references/ips/gopher/style-dna.md`; `references/ips/gopher/gopher-ip.md`; `references/ips/gopher/composition-patterns.md`; `references/ips/gopher/prompt-template.md`; `references/ips/gopher/qa-checklist.md` | Official Go blog source https://go.dev/blog/gopher; Go Gopher created by Renee French; Creative Commons Attribution 4.0 license context; route-local `skills/visual-ip-illustrations/references/ips/gopher/gopher.png` visual authority; public generated Go Gopher samples require release review; Go logo identity and official Go project affiliation, approval, sponsorship, and endorsement claims stay outside positive route identity | `source-reviewed` |
 | `caixukun` | Cai Xukun | `蔡徐坤`, `Cai Xukun`, `caixukun`, `cxk` | `false` | `caixukun` | `references/ips/caixukun/index.md`; `references/ips/caixukun/source.md`; `references/ips/caixukun/style-dna.md`; `references/ips/caixukun/caixukun-ip.md`; `references/ips/caixukun/composition-patterns.md`; `references/ips/caixukun/prompt-template.md`; `references/ips/caixukun/qa-checklist.md` | Route-local uploaded visual authority recorded in `references/ips/caixukun/source.md` as uploaded reference image A and uploaded reference image B; gated public-figure stylized mascot route; public generated Cai Xukun samples require release review; realistic-person portrait output, official endorsement, affiliation, impersonation, campaign, celebrity advertising, and fandom promotion claims stay outside route identity | `gated-public-figure` |
 | `hermes` | Hermes Agent | `Hermes Agent`, `Hermes`, `hermes`, `hermes-agent`, `Hermes logo`, `Hermes Agent logo` | `false` | `hermes` | `references/ips/hermes/index.md`; `references/ips/hermes/source.md`; `references/ips/hermes/style-dna.md`; `references/ips/hermes/hermes-ip.md`; `references/ips/hermes/composition-patterns.md`; `references/ips/hermes/prompt-template.md`; `references/ips/hermes/qa-checklist.md` | Hermes Agent source-reviewed uploaded-image route; official website https://hermes-agent.nousresearch.com/; official repository https://github.com/NousResearch/hermes-agent; MIT license context https://github.com/NousResearch/hermes-agent/blob/main/LICENSE; documentation https://hermes-agent.nousresearch.com/docs/; conversation attachment `Generated image 1 (16).jpeg` visual authority; public generated Hermes samples require release review; product-poster output, mythology-first imagery, official endorsement, affiliation, sponsorship, approval, and impersonation claims stay outside route identity | `source-reviewed` |
+| `linux` | Linux Mascot | `Linux Mascot`, `Linux mascot`, `Linux`, `linux`, `Tux`, `tux`, `Linux penguin`, `Tux penguin` | `false` | `linux` | `references/ips/linux/source.md` | Linux Mascot source-reviewed uploaded-image article-illustration route; Tux creator Larry Ewing; Linux 2.0 Penguins source https://isc.tamu.edu/~lewing/linux/; The GIMP attribution condition; Linux Foundation trademark guidance https://www.linuxfoundation.org/legal/trademark-usage; Linux mark ownership context https://www.linuxfoundation.org/legal/the-linux-mark; uploaded local image `/Users/longnv/Downloads/Linux-logo.jpg` visual authority; public generated Linux Mascot samples require release review; official endorsement, certification, compatibility, Linux Foundation logo use, distro-logo drift, product-poster output, CLI screenshots, web hero graphics, kernel dashboard screenshots, and operating-system marketing graphics stay outside route identity | `source-reviewed` |
 
 ## OpenClaw Metadata
 
@@ -104,6 +110,24 @@ This file defines visual-IP selection rules and verifiable route metadata for th
 - Mythology boundary: mythological Hermes imagery stays outside default route behavior; winged sandals, winged helmet, caduceus, Greek messenger scenes, Olympian deity framing, and mythology-first symbols are mythology-drift markers.
 - Drift boundary: generic anime assistant drift, generic logo mascot drift, passive placement, route leakage, excessive text, and copied composition stay outside positive route identity.
 
+## Linux Mascot Metadata
+
+- Route id: `linux`.
+- Display name: Linux Mascot.
+- Default marker: `default=false`.
+- Uploaded image authority: `/Users/longnv/Downloads/Linux-logo.jpg`.
+- Route status: `source-reviewed`.
+- Output path: `assets/<article-slug>-linux/`; escaped marker `assets/&lt;article-slug&gt;-linux/`.
+- Source record: `references/ips/linux/source.md`.
+- Route framing: Linux Mascot is a source-reviewed uploaded-image article-illustration route with Tux attribution and Linux trademark-boundary context.
+- Source authority: Tux creator Larry Ewing, Linux 2.0 Penguins source `https://isc.tamu.edu/~lewing/linux/`, The GIMP attribution condition, Linux Foundation trademark guidance `https://www.linuxfoundation.org/legal/trademark-usage`, and Linux mark ownership context `https://www.linuxfoundation.org/legal/the-linux-mark`.
+- Source-image context: glossy black rounded penguin head and body, white face eye patches, large oval eyes with dark pupils and small highlights, yellow-orange beak with two nostril dots, white oval belly, long black flippers, seated rounded posture, and oversized yellow-orange webbed feet.
+- Sample policy: public generated Linux Mascot samples require release review before publication.
+- Output boundary: Generated Linux Mascot outputs stay sparse 16:9 article illustrations.
+- Trademark boundary: official endorsement, affiliation, sponsorship, approval, certification, compatibility, Linux Foundation campaign framing, Linux Foundation logo use, distro-logo use, and distro branding stay outside route identity.
+- Product boundary: product advertising, product-poster output, CLI screenshots, web hero graphics, kernel dashboard screenshots, and operating-system marketing graphics stay outside route identity.
+- Drift boundary: generic penguin drift, generic server mascot drift, distro-logo drift, passive placement, route leakage, excessive text, and copied composition stay outside positive route identity.
+
 ## Seal Metadata
 
 - `source_history`: former Sealos Seal route identity migrated to product-neutral Seal
@@ -143,7 +167,9 @@ Root Xiaohei reference paths remain available during migration and point to cano
 - `caixukun` filenames use ordered English slugs such as `01-topic-name.png`.
 - `hermes` output directory is `assets/<article-slug>-hermes/`; validation also keeps escaped marker `assets/&lt;article-slug&gt;-hermes/`.
 - `hermes` filenames use ordered English slugs such as `01-topic-name.png`.
-- Mixed-IP requests split by IP into separate route groups: `xiaohei` 写入 `assets/<article-slug>-illustrations/`, `littlebox` 写入 `assets/<article-slug>-littlebox/`, `tom` 写入 `assets/<article-slug>-tom/`, `ferris` 写入 `assets/<article-slug>-ferris/`, `seal` writes to `assets/<article-slug>-seal/`, `openclaw` writes to `assets/<article-slug>-openclaw/`, `gopher` writes to `assets/<article-slug>-gopher/`, `caixukun` writes to `assets/<article-slug>-caixukun/`, and `hermes` writes to `assets/<article-slug>-hermes/`.
+- `linux` output directory is `assets/<article-slug>-linux/`; validation also keeps escaped marker `assets/&lt;article-slug&gt;-linux/`.
+- `linux` filenames use ordered English slugs such as `01-topic-name.png`.
+- Mixed-IP requests split by IP into separate route groups: `xiaohei` 写入 `assets/<article-slug>-illustrations/`, `littlebox` 写入 `assets/<article-slug>-littlebox/`, `tom` 写入 `assets/<article-slug>-tom/`, `ferris` 写入 `assets/<article-slug>-ferris/`, `seal` writes to `assets/<article-slug>-seal/`, `openclaw` writes to `assets/<article-slug>-openclaw/`, `gopher` writes to `assets/<article-slug>-gopher/`, `caixukun` writes to `assets/<article-slug>-caixukun/`, `hermes` writes to `assets/<article-slug>-hermes/`, and `linux` writes to `assets/<article-slug>-linux/`.
 - Before output, inspect the target directory and choose a new filename to preserve historical results.
 
 ## Delivery Report Fields
