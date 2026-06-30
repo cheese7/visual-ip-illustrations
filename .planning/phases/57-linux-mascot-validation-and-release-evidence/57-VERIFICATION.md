@@ -83,7 +83,7 @@ overrides_applied: 0
 |------|------|---------|----------|--------|
 | `scripts/validate-skill-package.test.mjs` | Multiple | `TBD`, `pending`, placeholder approvals | INFO | Intentional negative fixtures for approval-date and approval-field rejection. |
 | `RELEASE_CHECKLIST.md` | 50 | Unchecked release checklist item | INFO | Release checklist template state, outside Phase 57 completion gate; validator confirms Linux Mascot policy markers are present. |
-| `.planning/STATE.md` | 4-13 | Human-readable status still says Phase 57 planned | INFO | `roadmap.analyze` and `ROADMAP.md` show Phase 57 complete and 100% progress. This is state metadata drift, documented here and not blocking the phase goal. |
+| `.planning/STATE.md` | 4-13 | Human-readable status aligned after final gate metadata fix | INFO | `roadmap.analyze`, `ROADMAP.md`, and `.planning/STATE.md` now show Phase 57 complete, 5/5 phases complete, 5/5 plans complete, and 100% progress. |
 
 ### Human Verification Required
 

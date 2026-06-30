@@ -79,7 +79,7 @@ Later phases own runtime controller integration, public docs, metadata, NOTICE, 
 - The planner may choose exact Markdown section ordering inside each Linux pack file, provided D-01 through D-35 remain explicit and grep-friendly.
 - The planner should use Hermes Phase 49 as the closest source-reviewed uploaded-image pack precedent, Go Gopher as the strongest source-reviewed mascot pack precedent, and OpenClaw as the compact uploaded-logo repair precedent.
 - The planner may add deterministic marker phrases that help Phase 57 validation, provided they stay Linux route-local and English-default.
-- Subagent execution constraint: the user requested subagents for every stage, and tool discovery in this Codex session exposed GitHub and CodeGraph tools but no `spawn_agent`, `wait`, or `close_agent`. This DISCUSS stage was executed inline using the same stage roles and audit trail.
+- Subagent execution constraint: the user requested subagents for every stage. The parent Codex thread delegated Phase 54 stage work to subagents during the phases 53-57 rollout. Inside the Phase 54 stage agent, tool discovery exposed GitHub and CodeGraph tools but no callable `spawn_agent`, `wait`, or `close_agent`, so nested GSD discussion roles ran inline within that delegated agent and kept the same audit trail.
 
 </decisions>
 

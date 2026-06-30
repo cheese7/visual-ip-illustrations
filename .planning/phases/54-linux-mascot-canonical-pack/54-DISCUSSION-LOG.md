@@ -74,15 +74,17 @@
 
 ---
 
-## Execution Mode
+## Execution Mode and Delegation Evidence
 
 | Option | Description | Selected |
 |--------|-------------|----------|
 | Use subagents where available | Follow the user's subagent preference when `spawn_agent`, `wait`, and `close_agent` are exposed. | |
 | Inline stage roles when subagent tools are unavailable | Use the same stage roles inline and record the runtime limitation. | yes |
 
-**User's choice:** User requested subagents for every stage and authorized autonomous choices. Runtime tool discovery exposed GitHub and CodeGraph tools but no `spawn_agent`, `wait`, or `close_agent`.
-**Notes:** The DISCUSS stage was completed inline because the Codex session did not expose subagent lifecycle tools.
+**User's choice:** User requested subagents for every stage and authorized autonomous choices.
+**Parent Codex thread evidence:** The parent Codex thread delegated Phase 54 stage work to subagents as part of the phases 53-57 staged rollout.
+**Nested GSD runtime limitation:** Inside the Phase 54 stage agent, tool discovery exposed GitHub and CodeGraph tools but no callable `spawn_agent`, `wait`, or `close_agent`. The nested GSD role split for discussion, planning, and checking therefore ran inline inside that already-delegated stage agent.
+**Notes:** The inline statements in this Phase 54 artifact describe nested role execution within the delegated stage agent. The parent thread's stage-level subagent delegation remains the outer execution context.
 
 ---
 

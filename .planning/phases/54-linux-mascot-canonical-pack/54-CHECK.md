@@ -78,4 +78,4 @@ The plan is scoped to Linux route-local pack files, optional Linux `source.md` n
 
 ## Subagent Constraint Note
 
-The user requested subagents for every phase stage. This Codex session exposed no callable `spawn_agent`, `wait`, or `close_agent` tools after tool discovery. The planning work was executed inline with separate researcher, planner, and checker roles and with this check note as the checker artifact.
+The user requested subagents for every phase stage. The parent Codex thread delegated Phase 54 stage work to subagents during the phases 53-57 rollout. Inside the Phase 54 stage agent, tool discovery exposed no callable `spawn_agent`, `wait`, or `close_agent` lifecycle tools, so nested GSD researcher, planner, and checker roles ran inline within that delegated agent. This check note records the nested-role runtime limitation and is consistent with the parent thread's stage-level subagent delegation.
