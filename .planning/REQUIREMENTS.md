@@ -15,11 +15,11 @@
 
 ### Linux Mascot IP Pack
 
-- [ ] **PACK-01**: User can read a Linux Mascot route-local pack that isolates style, identity, composition, prompt, QA, source, trademark-boundary guardrails, sample policy, and output behavior from other IP routes.
-- [ ] **PACK-02**: User can plan Linux Mascot shots with route-specific fields for mascot state, mascot action, core article idea, structure type, objects, labels, source context notes, trademark-boundary notes, and output path.
-- [ ] **PACK-03**: User can generate Linux Mascot prompts where Tux performs the central cognitive article action in a sparse 16:9 illustration.
-- [ ] **PACK-04**: User can apply Linux Mascot edit prompts for stronger participation, uploaded-image identity repair, title removal, text reduction, trademark-boundary repair, and unaffected-content preservation.
-- [ ] **PACK-05**: User can use Linux Mascot QA gates that reject generic penguin drift, distro-logo drift, missing white belly, missing yellow-orange beak, missing oversized yellow-orange webbed feet, missing seated Tux posture, official endorsement claims, passive placement, route leakage, excessive text, and copied composition.
+- [x] **PACK-01**: User can read a Linux Mascot route-local pack that isolates style, identity, composition, prompt, QA, source, trademark-boundary guardrails, sample policy, and output behavior from other IP routes.
+- [x] **PACK-02**: User can plan Linux Mascot shots with route-specific fields for mascot state, mascot action, core article idea, structure type, objects, labels, source context notes, trademark-boundary notes, and output path.
+- [x] **PACK-03**: User can generate Linux Mascot prompts where Tux performs the central cognitive article action in a sparse 16:9 illustration.
+- [x] **PACK-04**: User can apply Linux Mascot edit prompts for stronger participation, uploaded-image identity repair, title removal, text reduction, trademark-boundary repair, and unaffected-content preservation.
+- [x] **PACK-05**: User can use Linux Mascot QA gates that reject generic penguin drift, distro-logo drift, missing white belly, missing yellow-orange beak, missing oversized yellow-orange webbed feet, missing seated Tux posture, official endorsement claims, passive placement, route leakage, excessive text, and copied composition.
 
 ### Runtime Integration
 
@@ -92,11 +92,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 | ROUTE-03 | Phase 53 | Complete |
 | SRC-01 | Phase 53 | Complete |
 | SRC-02 | Phase 53 | Complete |
-| PACK-01 | Phase 54 | Pending |
-| PACK-02 | Phase 54 | Pending |
-| PACK-03 | Phase 54 | Pending |
-| PACK-04 | Phase 54 | Pending |
-| PACK-05 | Phase 54 | Pending |
+| PACK-01 | Phase 54 | Complete |
+| PACK-02 | Phase 54 | Complete |
+| PACK-03 | Phase 54 | Complete |
+| PACK-04 | Phase 54 | Complete |
+| PACK-05 | Phase 54 | Complete |
 | RUN-01 | Phase 55 | Pending |
 | RUN-02 | Phase 55 | Pending |
 | RUN-03 | Phase 55 | Pending |
