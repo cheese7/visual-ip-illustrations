@@ -316,6 +316,21 @@ Hermes Agent shot-list entries use `references/ips/hermes/prompt-template.md` an
 
 Hermes Agent planning prose can follow the user's language. Hermes Agent image-generation prompts stay English. Visible labels are copied exactly in the user's requested language. Hermes Agent performs the central cognitive action as a source-reviewed uploaded-image article-illustration route. Preserve uploaded visual authority from `Generated image 1 (16).jpeg`, keep official source context and MIT license context attached through `references/ips/hermes/source.md`, keep generated output in sparse 16:9 white-background article style, keep mythology-drift and product-poster boundary notes visible, and preserve the public sample review boundary.
 
+Linux Mascot shot-list entries use `references/ips/linux/prompt-template.md` and include:
+
+- Placement
+- Core idea
+- Structure type
+- Linux Mascot state
+- Linux Mascot action
+- Supporting objects
+- Visible labels
+- Source context note
+- Trademark-boundary note
+- Output path: `assets/<article-slug>-linux/`
+
+Linux Mascot planning prose can follow the user's language. Linux Mascot image-generation prompts stay English. Visible labels copied exactly in the user's requested language. Linux Mascot performs the central cognitive action as a source-reviewed uploaded-image article-illustration route. Preserve uploaded visual authority from `/Users/longnv/Downloads/Linux-logo.jpg`, keep Larry Ewing Tux attribution, The GIMP attribution condition, Linux trademark context, and public sample review boundary attached through `references/ips/linux/source.md`, keep generated output in sparse 16:9 white-background article style, keep trademark-boundary and product-output notes visible, and preserve route isolation status.
+
 Mixed-IP shot lists first state the shared core idea, then split into independent selected route groups:
 
 - Xiaohei variant group: Xiaohei action, white-background hand-drawn metaphor, suggested labels, `references/ips/xiaohei/` QA, `assets/<article-slug>-illustrations/`
@@ -327,6 +342,7 @@ Mixed-IP shot lists first state the shared core idea, then split into independen
 - Go Gopher variant group: Gopher state, Gopher action, supporting objects, visible labels, `references/ips/gopher/` QA, `assets/<article-slug>-gopher/`, route status `source-reviewed`, source pointer `references/ips/gopher/source.md`, route-local `gopher.png` identity note, source/license note, public sample review boundary, route isolation status
 - Cai Xukun variant group: route id `caixukun`, Cai Xukun mascot state, Cai Xukun mascot action, supporting objects, visible labels as neutral article-concept labels, required references `references/ips/caixukun/`, prompt template `references/ips/caixukun/prompt-template.md`, composition rules `references/ips/caixukun/composition-patterns.md`, QA checklist `references/ips/caixukun/qa-checklist.md`, edit gates from `references/ips/caixukun/prompt-template.md`, output_suffix: caixukun, route note, output directory `assets/<article-slug>-caixukun/`, route status `gated-public-figure`, source pointer `references/ips/caixukun/source.md`, uploaded-image identity status, public-figure likeness boundary status, source-image context status, public sample review boundary when relevant, and route isolation status
 - Hermes Agent variant group: route id `hermes`, Hermes Agent state, Hermes Agent action, supporting objects, visible labels, required references `references/ips/hermes/`, prompt template `references/ips/hermes/prompt-template.md`, composition rules `references/ips/hermes/composition-patterns.md`, QA checklist `references/ips/hermes/qa-checklist.md`, edit gates from `references/ips/hermes/prompt-template.md`, output_suffix: hermes, route note, output directory `assets/<article-slug>-hermes/`, route status `source-reviewed`, source pointer `references/ips/hermes/source.md`, uploaded-image authority status, source context note, MIT license context, mythology-drift boundary status, product-poster boundary status, public sample review boundary when relevant, and route isolation status
+- Linux Mascot variant group: route id `linux`, Linux Mascot state, Linux Mascot action, supporting objects, visible labels, required references `references/ips/linux/`, prompt template `references/ips/linux/prompt-template.md`, composition rules `references/ips/linux/composition-patterns.md`, QA checklist `references/ips/linux/qa-checklist.md`, edit gates from `references/ips/linux/prompt-template.md`, output_suffix: linux, route note, output directory `assets/<article-slug>-linux/`, route status `source-reviewed`, source pointer `references/ips/linux/source.md`, uploaded-image authority note from `/Users/longnv/Downloads/Linux-logo.jpg`, Tux attribution note, The GIMP attribution condition, Linux trademark-boundary note, public sample review boundary when relevant, and route isolation status
 
 Default to 4-8 images. Short articles usually need 1-3. Long articles usually stay within 9 images.
 
@@ -499,11 +515,35 @@ Hermes Agent loads only Hermes Agent `required_references`, uses `references/ips
 
 Hermes Agent repair behavior uses the edit prompts in `references/ips/hermes/prompt-template.md`: Stronger Hermes Participation, Uploaded-Image Identity Repair, Title Removal, Text Reduction, Mythology-Drift Repair, Product-Poster Repair, Route Leakage Repair, and Unaffected-Content Preservation. Every repair keeps `source-reviewed`, source pointer `references/ips/hermes/source.md`, uploaded-image authority note, source context note, MIT license context, mythology-drift boundary, product-poster boundary, public sample review boundary, route-local QA context, route isolation status, and `assets/<article-slug>-hermes/`.
 
-Mixed-IP generation uses the same shared core idea to generate separated selected route groups. Xiaohei loads only `references/ips/xiaohei/`; Littlebox loads only `references/ips/littlebox/`; Tom loads only `references/ips/tom/`; Ferris loads only `references/ips/ferris/`; Seal loads only `references/ips/seal/`; OpenClaw loads only `references/ips/openclaw/`; Go Gopher loads only `references/ips/gopher/`; Cai Xukun loads only `references/ips/caixukun/`; Hermes Agent loads only `references/ips/hermes/`. Each group calls its own prompt template, composition rules, language rules, qa-checklist, edit gates, output_suffix, and route note. Go Gopher uses its own prompt template, composition rules, QA checklist, edit gates, output suffix, route note, and `assets/<article-slug>-gopher/`. Cai Xukun uses its own prompt template, composition rules, QA checklist, edit gates, output suffix, route note, and `assets/<article-slug>-caixukun/`, with uploaded-image identity status, public-figure likeness boundary status, source-image context status, public sample review boundary, and route isolation status. Hermes Agent uses its own prompt template, composition rules, QA checklist, edit gates, output suffix, route note, and `assets/<article-slug>-hermes/`, with uploaded-image authority status, source context note, MIT license context, mythology-drift boundary status, product-poster boundary status, public sample review boundary, and route isolation status. `assets/examples/` only calibrates style density and character participation; current-article metaphors are invented fresh.
+Linux Mascot loads only Linux Mascot `required_references`, uses `references/ips/linux/prompt-template.md` plus `references/ips/linux/composition-patterns.md`, then checks output with `references/ips/linux/qa-checklist.md`. Linux Mascot generation context always keeps route status `source-reviewed`, source pointer `references/ips/linux/source.md`, uploaded-image authority from `/Users/longnv/Downloads/Linux-logo.jpg`, Larry Ewing Tux attribution, The GIMP attribution condition, Linux trademark boundary, distro-logo boundary, product-output boundary, public sample review boundary, route isolation status, and output path `assets/<article-slug>-linux/`. Linux Mascot prompts keep:
+
+- one standalone sparse 16:9 article illustration
+- white or very light background
+- rough black hand-drawn outlines with generous whitespace
+- Linux Mascot as the central cognitive action subject
+- uploaded-image authority from `/Users/longnv/Downloads/Linux-logo.jpg`
+- glossy black rounded penguin head and body
+- white face eye patches
+- large oval eyes with dark pupils and small highlights
+- yellow-orange beak with two nostril dots
+- white oval belly
+- long black flippers
+- seated rounded posture
+- oversized yellow-orange webbed feet
+- sparse visible labels copied exactly in the user's requested language
+- original article metaphor objects
+- Source context note: Tux creator Larry Ewing, Linux 2.0 Penguins source, The GIMP attribution condition, uploaded visual authority, and public sample review boundary are recorded in `references/ips/linux/source.md`
+- Trademark-boundary note: Linux word-mark use stays factual and attribution-aware; official endorsement claims, certification claims, compatibility claims, Linux Foundation logo use, distro-logo use, distro branding, and Linux Foundation campaign framing fail the route
+- save reminder: `assets/<article-slug>-linux/`
+- Linux Mascot route block: generic penguin drift, generic server mascot drift, distro-logo drift, missing glossy black rounded penguin head and body, missing white face eye patches, missing large oval eyes with dark pupils and small highlights, missing yellow-orange beak with two nostril dots, missing white oval belly, missing long black flippers, missing seated rounded posture, missing oversized yellow-orange webbed feet, source-image pose copying, official endorsement claims, certification claims, compatibility claims, Linux Foundation logo use, product-poster drift, passive placement, route leakage, excessive text, copied composition, product-output drift, kernel dashboard screenshots, and operating-system marketing graphics all fail the route
+
+Linux Mascot repair behavior uses the edit prompts in `references/ips/linux/prompt-template.md`: Stronger Linux Mascot Participation, Uploaded-Image Identity Repair, Title Removal, Text Reduction, Trademark-Boundary Repair, Route Leakage Repair, and Unaffected-Content Preservation. Every repair keeps `source-reviewed`, source pointer `references/ips/linux/source.md`, uploaded-image authority note, Tux attribution note, The GIMP attribution condition, Linux trademark-boundary note, public sample review boundary, route-local QA context, route isolation status, and `assets/<article-slug>-linux/`.
+
+Mixed-IP generation uses the same shared core idea to generate separated selected route groups. Xiaohei loads only `references/ips/xiaohei/`; Littlebox loads only `references/ips/littlebox/`; Tom loads only `references/ips/tom/`; Ferris loads only `references/ips/ferris/`; Seal loads only `references/ips/seal/`; OpenClaw loads only `references/ips/openclaw/`; Go Gopher loads only `references/ips/gopher/`; Cai Xukun loads only `references/ips/caixukun/`; Hermes Agent loads only `references/ips/hermes/`; Linux Mascot loads only `references/ips/linux/`. Each group calls its own prompt template, composition rules, language rules, qa-checklist, edit gates, output_suffix, and route note. Go Gopher uses its own prompt template, composition rules, QA checklist, edit gates, output suffix, route note, and `assets/<article-slug>-gopher/`. Cai Xukun uses its own prompt template, composition rules, QA checklist, edit gates, output suffix, route note, and `assets/<article-slug>-caixukun/`, with uploaded-image identity status, public-figure likeness boundary status, source-image context status, public sample review boundary, and route isolation status. Hermes Agent uses its own prompt template, composition rules, QA checklist, edit gates, output suffix, route note, and `assets/<article-slug>-hermes/`, with uploaded-image authority status, source context note, MIT license context, mythology-drift boundary status, product-poster boundary status, public sample review boundary, and route isolation status. Linux Mascot uses its own prompt template, composition rules, QA checklist, edit gates, output suffix, route note, and `assets/<article-slug>-linux/`, with uploaded-image authority note, Tux attribution note, Linux trademark-boundary note, public sample review boundary, and route isolation status. `assets/examples/` only calibrates style density and character participation; current-article metaphors are invented fresh.
 
 ### 5. QA and Iteration
 
-After generation, check the selected IP's QA reference. Xiaohei uses `references/ips/xiaohei/qa-checklist.md`; Littlebox uses `references/ips/littlebox/qa-checklist.md`; Tom uses `references/ips/tom/qa-checklist.md`; Ferris uses `references/ips/ferris/qa-checklist.md`; Seal uses `references/ips/seal/qa-checklist.md`; OpenClaw uses `references/ips/openclaw/qa-checklist.md`; Go Gopher uses `references/ips/gopher/qa-checklist.md`; Cai Xukun uses `references/ips/caixukun/qa-checklist.md`; Hermes Agent uses `references/ips/hermes/qa-checklist.md`; `references/qa-checklist.md` remains the legacy root compatibility entry point.
+After generation, check the selected IP's QA reference. Xiaohei uses `references/ips/xiaohei/qa-checklist.md`; Littlebox uses `references/ips/littlebox/qa-checklist.md`; Tom uses `references/ips/tom/qa-checklist.md`; Ferris uses `references/ips/ferris/qa-checklist.md`; Seal uses `references/ips/seal/qa-checklist.md`; OpenClaw uses `references/ips/openclaw/qa-checklist.md`; Go Gopher uses `references/ips/gopher/qa-checklist.md`; Cai Xukun uses `references/ips/caixukun/qa-checklist.md`; Hermes Agent uses `references/ips/hermes/qa-checklist.md`; Linux Mascot uses `references/ips/linux/qa-checklist.md`; `references/qa-checklist.md` remains the legacy root compatibility entry point.
 
 Xiaohei high-risk failures:
 
@@ -703,7 +743,43 @@ Hermes high-risk failures:
 - missing `references/ips/hermes/source.md`
 - missing `assets/<article-slug>-hermes/`
 
-When QA finds a failure, regenerate or edit through the selected IP's qa-checklist. Littlebox repairs prioritize closed lid, side-seam arms, single amber jagged seam tape, near-white body, rough linework, user's-language labels, balanced background, and active placement. Tom repairs use `references/ips/tom/prompt-template.md` edit gates: Tom edit participation repair gate, Tom off-model identity repair gate, Tom title removal edit gate, Tom text reduction edit gate, and Tom unaffected-content preservation gate; every repair keeps `gated-authorized`, `references/ips/tom/rights.md`, and route-local QA context. Ferris repairs use `references/ips/ferris/prompt-template.md` edit gates: participation, identity, trademark-boundary, title removal, text reduction, and unaffected-content preservation; every repair keeps `source-reviewed`, `references/ips/ferris/source.md`, source/trademark note, and route-local QA context. Seal repairs use `references/ips/seal/prompt-template.md` edit prompts; every repair keeps `active`, `references/ips/seal/source.md`, hoodie seal identity note, Logo-free note, product-neutral article metaphor context, route-local QA context, and `assets/<article-slug>-seal/`. OpenClaw repairs use `references/ips/openclaw/prompt-template.md` edit prompts; every repair keeps `source-reviewed`, `references/ips/openclaw/source.md`, uploaded-logo identity note, source/license note, original article-metaphor context, route-local QA context, and `assets/<article-slug>-openclaw/`. Go Gopher repairs use `references/ips/gopher/prompt-template.md` edit prompts; every repair keeps `source-reviewed`, `references/ips/gopher/source.md`, route-local `gopher.png` identity note, source/license note, original article-metaphor context, route-local QA context, public sample review boundary, route isolation status, and `assets/<article-slug>-gopher/`. Cai Xukun uses `references/ips/caixukun/qa-checklist.md` and repairs through `references/ips/caixukun/prompt-template.md`; every repair keeps `gated-public-figure`, `references/ips/caixukun/source.md`, uploaded-image identity note, public-figure likeness boundary, source-image context boundary, public sample review boundary, route-local QA context, route isolation status, and `assets/<article-slug>-caixukun/`. Hermes Agent uses `references/ips/hermes/qa-checklist.md` and repairs through `references/ips/hermes/prompt-template.md`; every repair keeps `source-reviewed`, `references/ips/hermes/source.md`, uploaded-image authority status, source context note, MIT license context, original article-metaphor context, mythology-drift boundary, product-poster boundary, public sample review boundary, route-local QA context, route isolation status, and `assets/<article-slug>-hermes/`.
+Linux Mascot high-risk failures:
+
+- generic penguin drift
+- generic server mascot drift
+- missing glossy black rounded penguin head and body
+- missing white face eye patches
+- missing large oval eyes with dark pupils and small highlights
+- missing yellow-orange beak with two nostril dots
+- missing white oval belly
+- missing long black flippers
+- missing seated rounded posture
+- missing oversized yellow-orange webbed feet
+- distro-logo drift
+- Linux Foundation logo use
+- official endorsement claims
+- certification claims
+- compatibility claims
+- product-poster drift
+- product-output drift
+- passive placement
+- route leakage
+- excessive text
+- copied composition
+- formal diagrams
+- UI screenshots
+- CLI screenshots
+- web hero graphics
+- kernel dashboard screenshots
+- operating-system marketing graphics
+- missing uploaded-image authority note
+- missing Tux source attribution note
+- missing Linux trademark-boundary note
+- missing `source-reviewed`
+- missing `references/ips/linux/source.md`
+- missing `assets/<article-slug>-linux/`
+
+When QA finds a failure, regenerate or edit through the selected IP's qa-checklist. Littlebox repairs prioritize closed lid, side-seam arms, single amber jagged seam tape, near-white body, rough linework, user's-language labels, balanced background, and active placement. Tom repairs use `references/ips/tom/prompt-template.md` edit gates: Tom edit participation repair gate, Tom off-model identity repair gate, Tom title removal edit gate, Tom text reduction edit gate, and Tom unaffected-content preservation gate; every repair keeps `gated-authorized`, `references/ips/tom/rights.md`, and route-local QA context. Ferris repairs use `references/ips/ferris/prompt-template.md` edit gates: participation, identity, trademark-boundary, title removal, text reduction, and unaffected-content preservation; every repair keeps `source-reviewed`, `references/ips/ferris/source.md`, source/trademark note, and route-local QA context. Seal repairs use `references/ips/seal/prompt-template.md` edit prompts; every repair keeps `active`, `references/ips/seal/source.md`, hoodie seal identity note, Logo-free note, product-neutral article metaphor context, route-local QA context, and `assets/<article-slug>-seal/`. OpenClaw repairs use `references/ips/openclaw/prompt-template.md` edit prompts; every repair keeps `source-reviewed`, `references/ips/openclaw/source.md`, uploaded-logo identity note, source/license note, original article-metaphor context, route-local QA context, and `assets/<article-slug>-openclaw/`. Go Gopher repairs use `references/ips/gopher/prompt-template.md` edit prompts; every repair keeps `source-reviewed`, `references/ips/gopher/source.md`, route-local `gopher.png` identity note, source/license note, original article-metaphor context, route-local QA context, public sample review boundary, route isolation status, and `assets/<article-slug>-gopher/`. Cai Xukun uses `references/ips/caixukun/qa-checklist.md` and repairs through `references/ips/caixukun/prompt-template.md`; every repair keeps `gated-public-figure`, `references/ips/caixukun/source.md`, uploaded-image identity note, public-figure likeness boundary, source-image context boundary, public sample review boundary, route-local QA context, route isolation status, and `assets/<article-slug>-caixukun/`. Hermes Agent uses `references/ips/hermes/qa-checklist.md` and repairs through `references/ips/hermes/prompt-template.md`; every repair keeps `source-reviewed`, `references/ips/hermes/source.md`, uploaded-image authority status, source context note, MIT license context, original article-metaphor context, mythology-drift boundary, product-poster boundary, public sample review boundary, route-local QA context, route isolation status, and `assets/<article-slug>-hermes/`. Linux Mascot uses `references/ips/linux/qa-checklist.md` and repairs through `references/ips/linux/prompt-template.md`; every repair keeps `source-reviewed`, `references/ips/linux/source.md`, uploaded-image authority note, Tux source attribution note, The GIMP attribution condition, Linux trademark-boundary note, distro-logo boundary status, product-output boundary status, original article-metaphor context, public sample review boundary, route-local QA context, route isolation status, and `assets/<article-slug>-linux/`.
 
 ### 6. Save and Deliver
 
