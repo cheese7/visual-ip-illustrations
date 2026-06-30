@@ -208,11 +208,54 @@ Preserve successful Hermes Agent action, uploaded-image identity cues, existing 
 Save outputs under `assets/<article-slug>-hermes/`; docs validation token: `assets/&lt;article-slug&gt;-hermes/`.
 ```
 
+### Linux Mascot: canonical planning
+
+```text
+Use $visual-ip-illustrations with the Linux Mascot route. Do not generate images yet.
+Create a 4-image Linux Mascot route shot list for the article below.
+Aliases include Linux Mascot, Linux mascot, Linux, linux, Tux, tux, Linux penguin, and Tux penguin.
+Use route-local references from `skills/visual-ip-illustrations/references/ips/linux/` and source authority `skills/visual-ip-illustrations/references/ips/linux/source.md`.
+Keep route status `source-reviewed`, uploaded-image authority from `/Users/longnv/Downloads/Linux-logo.jpg`, Larry Ewing Tux attribution, The GIMP attribution condition, Linux trademark-boundary note, public sample review gate, route isolation, distro-logo boundary, and product-output boundary.
+For each image, include Placement, Core idea, Structure type, Linux Mascot state, Linux Mascot action, Supporting objects, Visible labels, Source context note, Trademark-boundary note, and Output path.
+Visible labels are copied exactly in the user's requested language.
+Save outputs under `assets/<article-slug>-linux/`; docs validation token: `assets/&lt;article-slug&gt;-linux/`.
+
+<paste article>
+```
+
+### Linux Mascot: canonical generation
+
+```text
+Use $visual-ip-illustrations with the Linux Mascot / Linux mascot / Linux / linux / Tux / tux / Linux penguin / Tux penguin route to generate 2 article body illustrations for the article below.
+Generate each image separately and use `skills/visual-ip-illustrations/references/ips/linux/` route-local references.
+Keep route status `source-reviewed` and source authority `skills/visual-ip-illustrations/references/ips/linux/source.md`.
+Preserve uploaded-image authority from `/Users/longnv/Downloads/Linux-logo.jpg` and these Tux markers: glossy black rounded penguin head and body, white face eye patches, large oval eyes with dark pupils and small highlights, yellow-orange beak with two nostril dots, white oval belly, long black flippers, seated rounded posture, and oversized yellow-orange webbed feet.
+Keep Larry Ewing Tux attribution, The GIMP attribution condition, Linux Foundation trademark guidance, Linux mark ownership context, public sample review gate, route isolation, and uploaded-image-only Tux article illustration output attached to the delivery report.
+Make Linux Mascot carry the core idea through sparse 16:9 article illustrations and physical article metaphors.
+Visible labels are copied exactly in the user's requested language.
+Use no endorsement/certification/compatibility claims, no distro-logo identity, no Linux Foundation logo, no product-poster output, no CLI screenshots, no web hero graphics, no kernel dashboard screenshots, and no operating-system marketing graphics.
+Save outputs under `assets/<article-slug>-linux/`; docs validation token: `assets/&lt;article-slug&gt;-linux/`.
+Delivery report states that public generated Linux Mascot samples remain pending behind the public sample review gate.
+
+<paste article>
+```
+
+### Linux Mascot: edit existing image
+
+```text
+Use $visual-ip-illustrations with the Linux Mascot route to edit this image.
+Preserve the selected Linux Mascot route, route status `source-reviewed`, source authority `skills/visual-ip-illustrations/references/ips/linux/source.md`, output path, aspect ratio, article meaning, and preservation of unaffected content.
+Keep uploaded-image authority from `/Users/longnv/Downloads/Linux-logo.jpg`, Larry Ewing Tux attribution, The GIMP attribution condition, Linux trademark-boundary note, public sample review gate, route isolation, distro-logo boundary, product-output boundary, and uploaded-image-only Tux article illustration output attached to the delivery report.
+Edit only the named issue: [participation / uploaded-image identity / title / text density / label typo / route leakage / trademark drift / distro-logo drift / product-output drift].
+Preserve successful Linux Mascot action, Tux markers, existing composition, visible labels that remain correct, supporting objects, paths, line style, color accents, 16:9 aspect ratio, and image quality.
+Save outputs under `assets/<article-slug>-linux/`; docs validation token: `assets/&lt;article-slug&gt;-linux/`.
+```
+
 ### Multi-IP: canonical planning
 
 ```text
 Use $visual-ip-illustrations. Do not generate images yet.
-Use one shared core idea to produce nine separate variant groups: Xiaohei, Littlebox, Tom, Ferris, Seal, OpenClaw, Go Gopher, Cai Xukun, and Hermes Agent.
+Use one shared core idea to produce ten separate variant groups: Xiaohei, Littlebox, Tom, Ferris, Seal, OpenClaw, Go Gopher, Cai Xukun, Hermes Agent, and Linux Mascot.
 Each group must use route-local references, route-local prompt template, route-local QA, and an independent output path.
 Xiaohei group uses `skills/visual-ip-illustrations/references/ips/xiaohei/` and `assets/<article-slug>-illustrations/`.
 Littlebox group uses `skills/visual-ip-illustrations/references/ips/littlebox/` and `assets/<article-slug>-littlebox/`.
@@ -223,6 +266,7 @@ OpenClaw group uses `skills/visual-ip-illustrations/references/ips/openclaw/`, r
 Go Gopher group uses `skills/visual-ip-illustrations/references/ips/gopher/`, route status `source-reviewed`, source/license authority `skills/visual-ip-illustrations/references/ips/gopher/source.md`, route-local `skills/visual-ip-illustrations/references/ips/gopher/gopher.png` visual authority, Renee French attribution, Creative Commons Attribution 4.0 boundary, public sample gate, and `assets/<article-slug>-gopher/`.
 Cai Xukun group uses `skills/visual-ip-illustrations/references/ips/caixukun/`, route status `gated-public-figure`, source authority `skills/visual-ip-illustrations/references/ips/caixukun/source.md`, uploaded-image authority, public-figure likeness boundary, source-image context boundary, public sample review gate, route isolation, stylized mascot-only output, and `assets/<article-slug>-caixukun/`.
 Hermes Agent group uses `skills/visual-ip-illustrations/references/ips/hermes/`, route status `source-reviewed`, source authority `skills/visual-ip-illustrations/references/ips/hermes/source.md`, uploaded-image authority from `Generated image 1 (16).jpeg`, official source context, MIT license context, mythology-drift boundary, product-poster boundary, public sample review gate, route isolation, uploaded-character-only article illustration output, and `assets/<article-slug>-hermes/`.
+Linux Mascot group uses `skills/visual-ip-illustrations/references/ips/linux/`, route status `source-reviewed`, source authority `skills/visual-ip-illustrations/references/ips/linux/source.md`, uploaded-image authority from `/Users/longnv/Downloads/Linux-logo.jpg`, Larry Ewing Tux attribution, The GIMP attribution condition, Linux trademark-boundary note, public sample review gate, route isolation, distro-logo boundary, product-output boundary, and `assets/<article-slug>-linux/`.
 
 Core idea: trust is built by placing one piece of evidence after another.
 ```
@@ -741,17 +785,84 @@ Expected: planning fields include Placement, Core idea, Structure type, Hermes A
 Expected: public sample review gate is controlled by RELEASE_CHECKLIST.md; public generated Hermes samples require release review.
 ```
 
+## Route Smoke: Explicit Linux Mascot
+
+Linux Mascot is an explicit `source-reviewed` uploaded-image article-illustration route. Public generated Linux Mascot samples remain pending behind the public sample review gate.
+
+Explicit Linux Mascot aliases include Linux Mascot, Linux mascot, Linux, linux, Tux, tux, Linux penguin, and Tux penguin. Source authority is `skills/visual-ip-illustrations/references/ips/linux/source.md`.
+
+### Explicit Linux Mascot: planning only
+
+```text
+Use $ian-xiaohei-illustrations with the Linux Mascot / Linux mascot / Linux / linux / Tux / tux / Linux penguin / Tux penguin route. Do not generate images yet.
+Create a 3-image Linux Mascot route shot list for the article below.
+For each image, include:
+- Placement
+- Core idea
+- Structure type
+- Linux Mascot state
+- Linux Mascot action
+- Supporting objects
+- Visible labels
+- Source context note
+- Trademark-boundary note
+- Output path
+Keep route status `source-reviewed`.
+Keep route-local reference directory `skills/visual-ip-illustrations/references/ips/linux/`.
+Keep source authority `skills/visual-ip-illustrations/references/ips/linux/source.md`.
+Keep uploaded-image authority from `/Users/longnv/Downloads/Linux-logo.jpg`, Larry Ewing Tux attribution, The GIMP attribution condition, Linux Foundation trademark guidance, Linux mark ownership context, public sample review gate, route isolation, distro-logo boundary, product-output boundary, and uploaded-image-only Tux article illustration output.
+Visible labels are copied exactly in the user's requested language.
+Save outputs under `assets/<article-slug>-linux/`; docs validation token: `assets/&lt;article-slug&gt;-linux/`.
+
+<paste article>
+```
+
+### Explicit Linux Mascot: direct generation
+
+```text
+Use $ian-xiaohei-illustrations with the Linux Mascot route to generate 2 article body illustrations for the article below.
+Linux Mascot aliases include Linux Mascot, Linux mascot, Linux, linux, Tux, tux, Linux penguin, and Tux penguin.
+Generate each image separately and use `skills/visual-ip-illustrations/references/ips/linux/` route-local references.
+Linux Mascot must carry the core idea's cognitive action as uploaded-image-only Tux article illustration output.
+Keep route status `source-reviewed`.
+Keep source authority `skills/visual-ip-illustrations/references/ips/linux/source.md`.
+Preserve uploaded-image authority from `/Users/longnv/Downloads/Linux-logo.jpg` and Tux markers: glossy black rounded penguin head and body, white face eye patches, large oval eyes with dark pupils and small highlights, yellow-orange beak with two nostril dots, white oval belly, long black flippers, seated rounded posture, and oversized yellow-orange webbed feet.
+Keep Larry Ewing Tux attribution, The GIMP attribution condition, Linux trademark-boundary note, public sample review gate, route isolation, distro-logo boundary, and product-output boundary attached to the delivery report.
+Save outputs under `assets/<article-slug>-linux/`; docs validation token: `assets/&lt;article-slug&gt;-linux/`.
+Delivery report states that public generated Linux Mascot samples remain pending behind the public sample review gate.
+
+<paste article>
+```
+
+### Explicit Linux Mascot: route smoke check
+
+```text
+Use $ian-xiaohei-illustrations. Do not generate images yet.
+Text-only maintainer route audit. Use the Linux Mascot / Linux mascot / Linux / linux / Tux / tux / Linux penguin / Tux penguin route to create 1 route smoke shot list for this idea:
+Idea: turn a source-sensitive infrastructure claim into one accountable review step.
+Expected: selected IP is Linux Mascot.
+Expected: aliases include Linux Mascot, Linux mascot, Linux, linux, Tux, tux, Linux penguin, and Tux penguin.
+Expected: route status is `source-reviewed`.
+Expected: source authority is `skills/visual-ip-illustrations/references/ips/linux/source.md`.
+Expected: route-local reference directory is `skills/visual-ip-illustrations/references/ips/linux/`.
+Expected: uploaded-image authority from `/Users/longnv/Downloads/Linux-logo.jpg`, Larry Ewing Tux attribution, The GIMP attribution condition, Linux Foundation trademark guidance, Linux mark ownership context, public sample review gate, route isolation, distro-logo boundary, product-output boundary, and uploaded-image-only Tux article illustration output are attached.
+Expected: output path is `assets/<article-slug>-linux/`.
+Expected: docs validation token is `assets/&lt;article-slug&gt;-linux/`.
+Expected: planning fields include Placement, Core idea, Structure type, Linux Mascot state, Linux Mascot action, Supporting objects, Visible labels, Source context note, Trademark-boundary note, and Output path.
+Expected: public sample review gate is controlled by RELEASE_CHECKLIST.md; public generated Linux Mascot samples require release review.
+```
+
 ## Route Notes: Mixed-IP Requests
 
-The same core idea can create separate variant groups by IP. Xiaohei group uses `assets/<article-slug>-illustrations/`, Littlebox group uses `assets/<article-slug>-littlebox/`, Tom group uses `assets/<article-slug>-tom/`, Ferris group uses `assets/<article-slug>-ferris/`, Seal group uses `assets/<article-slug>-seal/`, OpenClaw group uses `assets/<article-slug>-openclaw/`, Go Gopher group uses `assets/<article-slug>-gopher/`, Cai Xukun group uses `assets/<article-slug>-caixukun/`, and Hermes Agent group uses `assets/<article-slug>-hermes/`; each group loads its own references, prompt template, QA, and output path.
+The same core idea can create separate variant groups by IP. Xiaohei group uses `assets/<article-slug>-illustrations/`, Littlebox group uses `assets/<article-slug>-littlebox/`, Tom group uses `assets/<article-slug>-tom/`, Ferris group uses `assets/<article-slug>-ferris/`, Seal group uses `assets/<article-slug>-seal/`, OpenClaw group uses `assets/<article-slug>-openclaw/`, Go Gopher group uses `assets/<article-slug>-gopher/`, Cai Xukun group uses `assets/<article-slug>-caixukun/`, Hermes Agent group uses `assets/<article-slug>-hermes/`, and Linux Mascot group uses `assets/<article-slug>-linux/`; each group loads its own references, prompt template, QA, and output path.
 
-Maintainer reference: Xiaohei canonical pack is at `skills/visual-ip-illustrations/references/ips/xiaohei/`, Littlebox canonical pack is at `skills/visual-ip-illustrations/references/ips/littlebox/`, Tom canonical pack is at `skills/visual-ip-illustrations/references/ips/tom/`, Tom rights record is at `skills/visual-ip-illustrations/references/ips/tom/rights.md`, Ferris canonical pack is at `skills/visual-ip-illustrations/references/ips/ferris/`, Ferris source/trademark authority is at `skills/visual-ip-illustrations/references/ips/ferris/source.md`, Seal canonical pack is at `skills/visual-ip-illustrations/references/ips/seal/`, Seal source-history authority is at `skills/visual-ip-illustrations/references/ips/seal/source.md`, OpenClaw canonical pack is at `skills/visual-ip-illustrations/references/ips/openclaw/`, OpenClaw source/license authority is at `skills/visual-ip-illustrations/references/ips/openclaw/source.md`, Go Gopher canonical pack is at `skills/visual-ip-illustrations/references/ips/gopher/`, Go Gopher source/license authority is at `skills/visual-ip-illustrations/references/ips/gopher/source.md`, `skills/visual-ip-illustrations/references/ips/gopher/gopher.png` is local visual authority, Cai Xukun canonical pack is at `skills/visual-ip-illustrations/references/ips/caixukun/`, Cai Xukun source authority is at `skills/visual-ip-illustrations/references/ips/caixukun/source.md`, Hermes Agent canonical pack is at `skills/visual-ip-illustrations/references/ips/hermes/`, Hermes Agent source authority is at `skills/visual-ip-illustrations/references/ips/hermes/source.md`, and route metadata is at `skills/visual-ip-illustrations/references/routing.md`.
+Maintainer reference: Xiaohei canonical pack is at `skills/visual-ip-illustrations/references/ips/xiaohei/`, Littlebox canonical pack is at `skills/visual-ip-illustrations/references/ips/littlebox/`, Tom canonical pack is at `skills/visual-ip-illustrations/references/ips/tom/`, Tom rights record is at `skills/visual-ip-illustrations/references/ips/tom/rights.md`, Ferris canonical pack is at `skills/visual-ip-illustrations/references/ips/ferris/`, Ferris source/trademark authority is at `skills/visual-ip-illustrations/references/ips/ferris/source.md`, Seal canonical pack is at `skills/visual-ip-illustrations/references/ips/seal/`, Seal source-history authority is at `skills/visual-ip-illustrations/references/ips/seal/source.md`, OpenClaw canonical pack is at `skills/visual-ip-illustrations/references/ips/openclaw/`, OpenClaw source/license authority is at `skills/visual-ip-illustrations/references/ips/openclaw/source.md`, Go Gopher canonical pack is at `skills/visual-ip-illustrations/references/ips/gopher/`, Go Gopher source/license authority is at `skills/visual-ip-illustrations/references/ips/gopher/source.md`, `skills/visual-ip-illustrations/references/ips/gopher/gopher.png` is local visual authority, Cai Xukun canonical pack is at `skills/visual-ip-illustrations/references/ips/caixukun/`, Cai Xukun source authority is at `skills/visual-ip-illustrations/references/ips/caixukun/source.md`, Hermes Agent canonical pack is at `skills/visual-ip-illustrations/references/ips/hermes/`, Hermes Agent source authority is at `skills/visual-ip-illustrations/references/ips/hermes/source.md`, Linux Mascot canonical pack is at `skills/visual-ip-illustrations/references/ips/linux/`, Linux Mascot source authority is at `skills/visual-ip-illustrations/references/ips/linux/source.md`, and route metadata is at `skills/visual-ip-illustrations/references/routing.md`.
 
 ### Mixed IP: variant planning only
 
 ```text
 Use $ian-xiaohei-illustrations. Do not generate images yet.
-Use one core idea to produce nine separate variant groups: Xiaohei, Littlebox, Tom, Ferris, Seal, OpenClaw, Go Gopher, Cai Xukun, and Hermes Agent.
+Use one core idea to produce ten separate variant groups: Xiaohei, Littlebox, Tom, Ferris, Seal, OpenClaw, Go Gopher, Cai Xukun, Hermes Agent, and Linux Mascot.
 Each group must use its own route-local references, planning fields, QA gates, route-specific status, source/rights/source-history note, and output directory.
 
 Xiaohei variant group:
@@ -839,13 +950,24 @@ Hermes Agent variant group:
 - Uploaded-image authority from `Generated image 1 (16).jpeg`, official source context, MIT license context, public sample review gate, route isolation, and uploaded-character-only article illustration output stay attached
 - Public generated Hermes samples are controlled by the RELEASE_CHECKLIST.md public sample review gate
 
+Linux Mascot variant group:
+- Use `skills/visual-ip-illustrations/references/ips/linux/`
+- Keep source authority `skills/visual-ip-illustrations/references/ips/linux/source.md`
+- Keep route status `source-reviewed`
+- Aliases include Linux Mascot, Linux mascot, Linux, linux, Tux, tux, Linux penguin, and Tux penguin
+- Include Linux Mascot state, Linux Mascot action, Supporting objects, Visible labels, Source context note, Trademark-boundary note, and Output path
+- Output to `assets/<article-slug>-linux/`
+- Docs validation token is `assets/&lt;article-slug&gt;-linux/`
+- Uploaded-image authority from `/Users/longnv/Downloads/Linux-logo.jpg`, Larry Ewing Tux attribution, The GIMP attribution condition, Linux Foundation trademark guidance, Linux mark ownership context, public sample review gate, route isolation, distro-logo boundary, and product-output boundary stay attached
+- Public generated Linux Mascot samples are controlled by the RELEASE_CHECKLIST.md public sample review gate
+
 <paste article or single idea>
 ```
 
-### Mixed IP: generate eight groups from one idea
+### Mixed IP: generate ten groups from one idea
 
 ```text
-Use $ian-xiaohei-illustrations to generate nine separate variant groups: Xiaohei variant group, Littlebox variant group, Tom variant group, Ferris variant group, Seal variant group, OpenClaw variant group, Go Gopher variant group, Cai Xukun variant group, and Hermes Agent variant group from the same core idea.
+Use $ian-xiaohei-illustrations to generate ten separate variant groups: Xiaohei variant group, Littlebox variant group, Tom variant group, Ferris variant group, Seal variant group, OpenClaw variant group, Go Gopher variant group, Cai Xukun variant group, Hermes Agent variant group, and Linux Mascot variant group from the same core idea.
 
 Core idea: trust is built by placing one piece of evidence after another.
 
@@ -956,11 +1078,22 @@ Hermes Agent variant group:
 - Output to `assets/<article-slug>-hermes/`
 - Docs validation token is `assets/&lt;article-slug&gt;-hermes/`
 - Public generated Hermes samples are controlled by the RELEASE_CHECKLIST.md public sample review gate
+
+Linux Mascot variant group:
+- Use `skills/visual-ip-illustrations/references/ips/linux/`
+- Keep source authority `skills/visual-ip-illustrations/references/ips/linux/source.md`
+- Keep route status `source-reviewed`
+- Aliases include Linux Mascot, Linux mascot, Linux, linux, Tux, tux, Linux penguin, and Tux penguin
+- Include Linux Mascot state, Linux Mascot action, Supporting objects, Visible labels, Source context note, Trademark-boundary note, and Output path
+- Output to `assets/<article-slug>-linux/`
+- Docs validation token is `assets/&lt;article-slug&gt;-linux/`
+- Uploaded-image authority from `/Users/longnv/Downloads/Linux-logo.jpg`, Larry Ewing Tux attribution, The GIMP attribution condition, Linux Foundation trademark guidance, Linux mark ownership context, public sample review gate, route isolation, distro-logo boundary, and product-output boundary stay attached
+- Public generated Linux Mascot samples are controlled by the RELEASE_CHECKLIST.md public sample review gate
 ```
 
 ## Maintainer Validation Smoke Prompts
 
-Phase 46 owns Cai Xukun public documentation and release-surface parity. Phase 47 owns Cai Xukun validator hardening, Node tests, final release evidence, leakage scan, and public sample gate automation. Phase 51 owns Hermes Agent public documentation and release-surface parity. Phase 52 owns Hermes Agent validator hardening, Node tests, final release evidence, leakage scan, and public sample gate automation.
+Phase 46 owns Cai Xukun public documentation and release-surface parity. Phase 47 owns Cai Xukun validator hardening, Node tests, final release evidence, leakage scan, and public sample gate automation. Phase 51 owns Hermes Agent public documentation and release-surface parity. Phase 52 owns Hermes Agent validator hardening, Node tests, final release evidence, leakage scan, and public sample gate automation. Phase 56 owns Linux Mascot public documentation and release-surface parity. Phase 57 owns Linux Mascot validator hardening, Node tests, final release evidence, leakage scan, route smoke, public sample gate automation, and generated sample gate automation.
 
 Phase 42 owns Go Gopher validator parity, Node tests, final release evidence, docs consistency, leakage scan, and public sample gate automation.
 
@@ -1064,7 +1197,7 @@ Expected: planning fields include Placement, Core idea, Structure type, Hermes A
 
 ```text
 Use $ian-xiaohei-illustrations. Do not generate images yet.
-Use one core idea to create nine separate variant groups: Xiaohei variant group, Littlebox variant group, Tom variant group, Ferris variant group, Seal variant group, OpenClaw variant group, Go Gopher variant group, Cai Xukun variant group, and Hermes Agent variant group:
+Use one core idea to create ten separate variant groups: Xiaohei variant group, Littlebox variant group, Tom variant group, Ferris variant group, Seal variant group, OpenClaw variant group, Go Gopher variant group, Cai Xukun variant group, Hermes Agent variant group, and Linux Mascot variant group:
 Idea: a good workflow places the next action directly in someone's hand.
 Expected: Xiaohei variant group uses `skills/visual-ip-illustrations/references/ips/xiaohei/` and outputs to `assets/<article-slug>-illustrations/`.
 Expected: Littlebox variant group uses `skills/visual-ip-illustrations/references/ips/littlebox/` and outputs to `assets/<article-slug>-littlebox/`.
@@ -1075,7 +1208,8 @@ Expected: OpenClaw variant group uses `skills/visual-ip-illustrations/references
 Expected: Go Gopher variant group uses `skills/visual-ip-illustrations/references/ips/gopher/`, outputs to `assets/<article-slug>-gopher/`, keeps docs validation token `assets/&lt;article-slug&gt;-gopher/`, route status `source-reviewed`, source/license authority `skills/visual-ip-illustrations/references/ips/gopher/source.md`, route-local `skills/visual-ip-illustrations/references/ips/gopher/gopher.png` visual authority, Renee French attribution, Creative Commons Attribution 4.0 boundary, public sample gate, and Source/license note.
 Expected: Cai Xukun variant group uses `skills/visual-ip-illustrations/references/ips/caixukun/`, outputs to `assets/<article-slug>-caixukun/`, keeps docs validation token `assets/&lt;article-slug&gt;-caixukun/`, route status `gated-public-figure`, source authority `skills/visual-ip-illustrations/references/ips/caixukun/source.md`, uploaded-image authority, public-figure likeness boundary, source-image context boundary, public sample review gate, route isolation, stylized mascot-only output, and neutral article-concept label review for endorsement, affiliation, impersonation, campaign, advertising, and fandom-promotion claims.
 Expected: Hermes Agent variant group uses `skills/visual-ip-illustrations/references/ips/hermes/`, outputs to `assets/<article-slug>-hermes/`, keeps docs validation token `assets/&lt;article-slug&gt;-hermes/`, route status `source-reviewed`, source authority `skills/visual-ip-illustrations/references/ips/hermes/source.md`, uploaded-image authority from `Generated image 1 (16).jpeg`, official source context, MIT license context, mythology-drift boundary, product-poster boundary, public sample review gate, route isolation, uploaded-character-only article illustration output, Source context note, Mythology-drift note, and Product-poster boundary note.
-Expected: Xiaohei variant group, Littlebox variant group, Tom variant group, Ferris variant group, Seal variant group, OpenClaw variant group, Go Gopher variant group, Cai Xukun variant group, and Hermes Agent variant group each use their own route-local references, planning fields, QA gates, route-specific status, source/rights/source-history/source-image note, and output directory.
+Expected: Linux Mascot variant group uses `skills/visual-ip-illustrations/references/ips/linux/`, outputs to `assets/<article-slug>-linux/`, keeps docs validation token `assets/&lt;article-slug&gt;-linux/`, route status `source-reviewed`, source authority `skills/visual-ip-illustrations/references/ips/linux/source.md`, uploaded-image authority from `/Users/longnv/Downloads/Linux-logo.jpg`, Larry Ewing Tux attribution, The GIMP attribution condition, Linux trademark-boundary note, public sample review gate, route isolation, distro-logo boundary, product-output boundary, Source context note, and Trademark-boundary note.
+Expected: Xiaohei variant group, Littlebox variant group, Tom variant group, Ferris variant group, Seal variant group, OpenClaw variant group, Go Gopher variant group, Cai Xukun variant group, Hermes Agent variant group, and Linux Mascot variant group each use their own route-local references, planning fields, QA gates, route-specific status, source/rights/source-history/source-image note, and output directory.
 ```
 
 Legacy six-route OpenClaw smoke fixture marker for validator compatibility:
