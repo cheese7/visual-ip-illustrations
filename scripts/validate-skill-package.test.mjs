@@ -1,6 +1,7 @@
 import { cpSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
+import crypto from "node:crypto";
 import { spawnSync } from "node:child_process";
 import test from "node:test";
 import assert from "node:assert/strict";
@@ -237,6 +238,32 @@ function replaceAllInFixture(fixtureRoot, relativePath, searchValue, replaceValu
   const original = readFileSync(absolutePath, "utf8");
   assert.ok(original.includes(searchValue), `${relativePath} should contain fixture marker ${searchValue}`);
   writeFileSync(absolutePath, original.replaceAll(searchValue, replaceValue), "utf8");
+}
+
+function sha256FixtureFile(fixtureRoot, relativePath) {
+  return crypto.createHash("sha256").update(readFileSync(path.join(fixtureRoot, relativePath))).digest("hex");
+}
+
+function refreshLinuxReleaseEvidenceHashes(fixtureRoot) {
+  const evidencePath = path.join(
+    fixtureRoot,
+    ".planning",
+    "phases",
+    "57-linux-mascot-validation-and-release-evidence",
+    "57-RELEASE-EVIDENCE.md",
+  );
+  let evidenceText = readFileSync(evidencePath, "utf8");
+  for (const relativePath of [
+    "scripts/validate-skill-package.mjs",
+    "scripts/validate-skill-package.test.mjs",
+    "RELEASE_CHECKLIST.md",
+  ]) {
+    evidenceText = evidenceText.replace(
+      new RegExp(`- \`${relativePath.replaceAll("/", "\\/")}\`: \`sha256:[a-f0-9]{64}\``),
+      `- \`${relativePath}\`: \`sha256:${sha256FixtureFile(fixtureRoot, relativePath)}\``,
+    );
+  }
+  writeFileSync(evidencePath, evidenceText, "utf8");
 }
 
 function pendingPublicApprovalLine(routeName) {
@@ -2916,6 +2943,26 @@ test("validator fixture reports Linux Mascot release evidence drift", () => {
   }
 });
 
+test("validator fixture reports stale Linux Mascot release evidence source hashes", () => {
+  const fixtureRoot = copyFixture("linux-release-evidence-stale-hash");
+  try {
+    replaceInFixture(
+      fixtureRoot,
+      ".planning/phases/57-linux-mascot-validation-and-release-evidence/57-RELEASE-EVIDENCE.md",
+      "sha256:",
+      "sha256:stale-",
+    );
+
+    const result = runFixtureValidator(fixtureRoot);
+
+    assert.equal(result.status, 1);
+    assert.match(result.stdout, /\[FAIL\] VAL-LINUX-EVIDENCE-001 /);
+    assert.match(result.stdout, /expected current source hash marker/);
+  } finally {
+    rmSync(fixtureRoot, { recursive: true, force: true });
+  }
+});
+
 function assertHermesSurfaceDrift(name, relativePath, searchValue, expectedId) {
   const fixtureRoot = copyFixture(`hermes-${name}-parity-drift`);
   try {
@@ -3809,6 +3856,7 @@ test("validator fixture enforces public Tom asset approval parsing", async () =>
     assert.equal(approval.datePresent, true);
     assert.equal(approval.allowedDirectoriesPresent, true);
 
+    refreshLinuxReleaseEvidenceHashes(fixtureRoot);
     const approvedResult = runFixtureValidator(fixtureRoot);
     assert.equal(approvedResult.status, 0);
     assert.match(approvedResult.stdout, /\[PASS\] BOUNDARY-TOM-IMG-001 /);
@@ -3895,6 +3943,7 @@ test("validator fixture enforces public Ferris sample approval parsing", async (
       "skills/visual-ip-illustrations/assets/examples",
     ]);
 
+    refreshLinuxReleaseEvidenceHashes(fixtureRoot);
     const approvedResult = runFixtureValidator(fixtureRoot);
     assert.equal(approvedResult.status, 0);
     assert.match(approvedResult.stdout, /\[PASS\] BOUNDARY-FERRIS-IMG-001 /);
@@ -3944,6 +3993,7 @@ test("validator fixture enforces public Seal sample approval parsing", async () 
     assert.equal(approval.identityOutcomePresent, true);
     assert.equal(approval.noLogoOutcomePresent, true);
 
+    refreshLinuxReleaseEvidenceHashes(fixtureRoot);
     const approvedResult = runFixtureValidator(fixtureRoot);
     assert.equal(approvedResult.status, 0);
     assert.match(approvedResult.stdout, /\[PASS\] BOUNDARY-SEAL-IMG-001 /);
@@ -3996,6 +4046,7 @@ test("validator fixture enforces public OpenClaw sample approval parsing", async
     assert.equal(approval.routeIsolationOutcomePresent, true);
     assert.equal(approval.articleMetaphorOutcomePresent, true);
 
+    refreshLinuxReleaseEvidenceHashes(fixtureRoot);
     const approvedResult = runFixtureValidator(fixtureRoot);
     assert.equal(approvedResult.status, 0);
     assert.match(approvedResult.stdout, /\[PASS\] BOUNDARY-OPENCLAW-IMG-001 /);
@@ -4058,6 +4109,7 @@ test("validator fixture enforces public Go Gopher sample approval parsing", asyn
     assert.equal(approval.articleMetaphorOutcomePresent, true);
     assert.equal(approval.publicSampleOutcomePresent, true);
 
+    refreshLinuxReleaseEvidenceHashes(fixtureRoot);
     const approvedResult = runFixtureValidator(fixtureRoot);
     assert.equal(approvedResult.status, 0);
     assert.match(approvedResult.stdout, /\[PASS\] BOUNDARY-GOPHER-IMG-001 /);
@@ -4415,6 +4467,7 @@ test("validator fixture enforces public Cai Xukun sample approval parsing", asyn
     assert.equal(approval.articleMetaphorOutcomePresent, true);
     assert.equal(approval.publicSampleOutcomePresent, true);
 
+    refreshLinuxReleaseEvidenceHashes(fixtureRoot);
     const approvedResult = runFixtureValidator(fixtureRoot);
     assert.equal(approvedResult.status, 0);
     assert.match(approvedResult.stdout, /\[PASS\] BOUNDARY-CAIXUKUN-IMG-001 /);
@@ -6068,6 +6121,7 @@ test("validator fixture distinguishes Generated Sample Linux Mascot review outpu
       completeGeneratedLinuxSampleLine(),
     );
 
+    refreshLinuxReleaseEvidenceHashes(fixtureRoot);
     const result = runFixtureValidator(fixtureRoot);
     assert.equal(result.status, 0);
     assert.match(result.stdout, /\[PASS\] BOUNDARY-LINUX-GEN-001 /);

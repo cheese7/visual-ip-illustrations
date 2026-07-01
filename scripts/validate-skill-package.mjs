@@ -1,4 +1,5 @@
 import fs from "node:fs";
+import crypto from "node:crypto";
 import path from "node:path";
 import process from "node:process";
 
@@ -433,6 +434,10 @@ function requireFile(relativePath) {
     throw new Error(`${relativePath} is missing`);
   }
   return readUtf8(relativePath);
+}
+
+function sha256File(relativePath) {
+  return crypto.createHash("sha256").update(fs.readFileSync(repoPath(relativePath))).digest("hex");
 }
 
 function safePackagePath(relativePath) {
@@ -2128,6 +2133,15 @@ function assertIncludes(text, relativePath, markers, relation) {
     throw new Error(
       `${relativePath} expected ${relation}; observed missing marker(s): ${missing.join(", ")}`,
     );
+  }
+}
+
+function assertFreshnessHashes(text, relativePath, sourcePaths) {
+  const missing = sourcePaths
+    .map((sourcePath) => `- \`${sourcePath}\`: \`sha256:${sha256File(sourcePath)}\``)
+    .filter((marker) => !text.includes(marker));
+  if (missing.length > 0) {
+    throw new Error(`${relativePath} expected current source hash marker(s); observed missing marker(s): ${missing.join(", ")}`);
   }
 }
 
@@ -7241,15 +7255,17 @@ const checks = [
       "57-linux-mascot-validation-and-release-evidence",
       "57-RELEASE-EVIDENCE.md",
     );
-    assertIncludes(requireFile(evidencePath), evidencePath, [
+    const evidenceText = requireFile(evidencePath);
+    assertIncludes(evidenceText, evidencePath, [
       "# Phase 57 Release Evidence: Linux Mascot Validation",
       "node scripts/validate-skill-package.mjs",
       "Summary: total=180 passed=180 failed=0 skipped=0",
       "node --test scripts/validate-skill-package.test.mjs",
-      "tests 126",
-      "pass 126",
+      "tests 129",
+      "pass 129",
       "fail 0",
       "git diff --check",
+      "## Freshness Metadata",
       "Linux Mascot route smoke",
       "uploaded-image smoke",
       "source/trademark boundary smoke",
@@ -7267,6 +7283,11 @@ const checks = [
       "VAL-04",
       "VAL-05",
     ], "Phase 57 exact command summaries, route smoke, uploaded-image smoke, source/trademark boundary smoke, docs consistency, leakage, sample gates, scope evidence, and requirement traceability");
+    assertFreshnessHashes(evidenceText, evidencePath, [
+      "scripts/validate-skill-package.mjs",
+      "scripts/validate-skill-package.test.mjs",
+      "RELEASE_CHECKLIST.md",
+    ]);
   }),
   defineCheck("BOUNDARY-IMG-001", "example asset directories do not import rendered Littlebox images", () => {
     const matches = legacyImageAssetPaths().filter((relativePath) => /littlebox|小盒|carton/i.test(relativePath));
