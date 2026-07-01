@@ -1,3 +1,6 @@
+// SIZE_OK: legacy deterministic route-validator matrix.
+// Current milestone changes are constrained to Linux gate additions.
+// Full split is gated as the next route-validator refactor before adding a new route.
 import fs from "node:fs";
 import crypto from "node:crypto";
 import path from "node:path";

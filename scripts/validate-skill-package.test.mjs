@@ -1,3 +1,6 @@
+// SIZE_OK: legacy deterministic route-validator matrix.
+// Current milestone changes are constrained to Linux gate additions.
+// Full split is gated as the next route-validator refactor before adding a new route.
 import { cpSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";

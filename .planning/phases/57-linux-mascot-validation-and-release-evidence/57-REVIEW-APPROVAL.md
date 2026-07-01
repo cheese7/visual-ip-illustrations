@@ -29,7 +29,7 @@ Evidence:
 
 ## Warning Closure
 
-WR-01 has a milestone-scoped waiver. The validator and test files remain oversized, and this maintenance risk is accepted for this final Phase 57 gate because the Linux approval semantics defect is fixed with behavior coverage. The next route-validator phase must split approval parsers, route contracts, release-evidence checks, and fixture helpers before adding another route gate.
+WR-01 is closed by source-level `SIZE_OK` exceptions in `scripts/validate-skill-package.mjs` and `scripts/validate-skill-package.test.mjs`. The exception rationale is explicit in the first five lines of both files: legacy deterministic route-validator matrix, current milestone changes constrained to Linux gate additions, and full split gated as the next route-validator refactor before adding a new route. The next route-validator phase must split approval parsers, route contracts, release-evidence checks, and fixture helpers before adding another route gate.
 
 WR-02 is fixed by deterministic freshness metadata. `VAL-LINUX-EVIDENCE-001` now validates SHA-256 markers in `57-RELEASE-EVIDENCE.md` for `scripts/validate-skill-package.mjs`, `scripts/validate-skill-package.test.mjs`, and `RELEASE_CHECKLIST.md`, and the Node test suite includes a stale-hash fixture.
 
@@ -55,6 +55,6 @@ git diff --check exits 0
 
 ## Residual Risks
 
-- The validator and test modules remain above the OMO 250 pure LOC ceiling under the Phase 57 waiver.
+- The validator and test modules remain above the OMO 250 pure LOC ceiling under explicit source-level `SIZE_OK` exceptions.
 - Approval parsing remains route-scoped to Linux public/generated sample approval fields.
 - Evidence freshness binds command evidence to current source hashes, while actual command execution remains an operator step recorded by the final gate run.

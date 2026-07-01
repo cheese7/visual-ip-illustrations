@@ -2,7 +2,7 @@
 phase: 57
 status: pass
 created: 2026-07-01T06:00:00Z
-freshness_checked: 2026-07-01T00:21:30Z
+freshness_checked: 2026-07-01T00:48:21Z
 requirements:
   - VAL-01
   - VAL-02
@@ -80,8 +80,8 @@ No whitespace errors.
 
 `VAL-LINUX-EVIDENCE-001` validates these SHA-256 markers against the current worktree before accepting this evidence file:
 
-- `scripts/validate-skill-package.mjs`: `sha256:3a904957ca238d9c23f6a6b517ad76fce62fbb4a89381f4b282c770384f2397e`
-- `scripts/validate-skill-package.test.mjs`: `sha256:96cd6aeb9200cb56d000048b5d672d4e8e9038efda7d360eeaf8728505e8d22b`
+- `scripts/validate-skill-package.mjs`: `sha256:c5f073cfc1c029dbf2c65b39f852169c52d07942b25161b052432b7bcb9754ee`
+- `scripts/validate-skill-package.test.mjs`: `sha256:134dd18b7c4d7f1ab0a3d1b6d9d270e2589a167cbcc1c1766b3479135b5d0932`
 - `RELEASE_CHECKLIST.md`: `sha256:e7b0e60f170a565554bb27dc4778ab651b855f5acb1abe6a9cda70be9cae22c6`
 
 Linux Mascot route smoke: `SMOKE-LINUX-001` and `SMOKE-MIXED-LINUX-001` passed, covering explicit Linux Mascot requests and ten-route mixed-IP routing.
