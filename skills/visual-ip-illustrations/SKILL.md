@@ -62,7 +62,7 @@ Linux Mascot imagery preserves uploaded-image identity markers from `references/
 
 Read `references/routing.md` first, then load only the selected route's required references. Keep context route-local and task-scoped.
 
-For every generation task, also read `references/mobile-reading.md`. It is the shared contract for deciding when to split an idea into a sequence, requiring a 9:16 vertical phone-first canvas, and checking phone-sized text readability; it applies in addition to the selected route's style and QA files. Its portrait aspect-ratio contract overrides legacy 16:9 or horizontal wording in route-local templates, QA files, source records, and examples.
+For every generation task, also read `references/mobile-reading.md`. It is the shared contract for deciding when to split an idea into a sequence, requiring a 9:16 vertical phone-first canvas, and checking phone-sized text readability; it applies in addition to the selected route's style and QA files. Its portrait aspect-ratio and information-rich infographic contracts override legacy 16:9, horizontal, sparse-label, excessive-text, or anti-infographic wording in route-local templates, QA files, source records, and examples.
 
 - `references/routing.md`: visual IP routes, aliases, defaults, output suffixes, required references, attribution contexts, and route statuses.
 - `references/ips/xiaohei/index.md`: Xiaohei canonical pack navigation, file responsibilities, and output path.
@@ -204,7 +204,7 @@ When the user asks for planning, analysis, or placement recommendations, return 
 
 Plan for phone reading by default. Do not compress an article section, workflow, comparison, or method into one image just because it is one heading or one paragraph. First identify the smallest independently understandable cognitive units, then make one image for each unit. Keep each image to one core action or relationship and make the set read as a sequence: setup/context, change or decision, then outcome or next action when those are distinct.
 
-Split into multiple images whenever a proposed image would need any of the following: more than one core action or relationship, more than 4 short labels, a label longer than 12 Chinese characters or 4 English words, text that needs to become smaller than the mobile-reading baseline, a dense before/after plus workflow, or a comparison with more than two alternatives. Do not split a simple idea merely to meet a numerical quota. When the user specifies an image count, honor it where possible while preserving the mobile-reading baseline; otherwise state when the requested count cannot carry the information legibly.
+Split into multiple images whenever a proposed image would need more than one primary action or relationship, more than 8 scan-friendly text units, text that needs to become smaller than the mobile-reading baseline, a dense before/after plus workflow that cannot be grouped into clear bands, or a comparison with more than three alternatives. An image may contain a primary action plus supporting definitions, labels, steps, examples, or outcomes when those form one coherent infographic. Do not split a simple idea merely to meet a numerical quota. When the user specifies an image count, honor it where possible while preserving the mobile-reading baseline; otherwise state when the requested count cannot carry the information legibly.
 
 For every planned image, include its sequence number and role (`setup`, `decision`, `action`, `comparison`, `outcome`, or `next step`) so adjacent images do not repeat the same information.
 
@@ -360,7 +360,7 @@ When the user explicitly asks to generate, output, make, or create images, call 
 
 Each image explains one core structure. Load the selected route's `required_references`, then assemble the prompt with that IP's template, character rules, composition rules, and QA references.
 
-Add the shared mobile-reading constraints from `references/mobile-reading.md` verbatim in substance to every generation prompt. In particular, labels must be large enough to read on a phone without zooming; never solve a crowded prompt by shrinking type. If a generated image violates the shared contract, split the content and regenerate the affected images rather than retaining a dense one.
+Add the shared mobile-reading constraints from `references/mobile-reading.md` verbatim in substance to every generation prompt. Generate a phone-first explanatory infographic rather than a minimal decorative illustration: include the core action plus useful keywords, full explanatory sentences in grouped 2-3-line callout cards, and grouped steps or comparisons when they improve understanding. Labels and sentence cards must be large enough to read on a phone without zooming; never solve a crowded prompt by shrinking type, reducing sentences to keywords, or dropping source-language content. If a generated image violates the shared contract, regroup or split the content and regenerate the affected images rather than retaining an unscannable one.
 
 Every new canvas must be a standalone 9:16 vertical illustration. Compose from top to bottom with the main action in the central vertical band, breathable space above and below it, and no landscape-only left-to-right layout. Existing 16:9 references are visual-style calibration only; do not reuse their aspect ratio for new output.
 
