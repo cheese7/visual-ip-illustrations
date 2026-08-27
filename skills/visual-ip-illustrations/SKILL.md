@@ -62,6 +62,8 @@ Linux Mascot imagery preserves uploaded-image identity markers from `references/
 
 Read `references/routing.md` first, then load only the selected route's required references. Keep context route-local and task-scoped.
 
+For every generation task, also read `references/mobile-reading.md`. It is the shared contract for deciding when to split an idea into a sequence and for checking phone-sized text readability; it applies in addition to the selected route's style and QA files.
+
 - `references/routing.md`: visual IP routes, aliases, defaults, output suffixes, required references, attribution contexts, and route statuses.
 - `references/ips/xiaohei/index.md`: Xiaohei canonical pack navigation, file responsibilities, and output path.
 - `references/ips/xiaohei/style-dna.md`: Xiaohei style DNA, color, text, and vetoes.
@@ -174,7 +176,7 @@ Read `references/routing.md` first and choose the route for the current task.
 - Hermes Agent `required_references` point to `references/ips/hermes/`: `index.md`, `source.md`, `style-dna.md`, `hermes-ip.md`, `composition-patterns.md`, `prompt-template.md`, and `qa-checklist.md`.
 - Linux Mascot `required_references` point to `references/ips/linux/`: `index.md`, `source.md`, `style-dna.md`, `linux-ip.md`, `composition-patterns.md`, `prompt-template.md`, and `qa-checklist.md`.
 - Each variant group loads only its own `required_references` and uses its own action library, metaphor rules, background rules, labels, QA, and output path.
-- The shared workflow handles article comprehension, cognitive-anchor selection, shot planning, one-image generation, QA handoff, asset preservation, and delivery reporting.
+- The shared workflow handles article comprehension, cognitive-anchor selection, information-volume-based sequence planning, one-image-per-canvas generation, QA handoff, asset preservation, and delivery reporting.
 - Visual style, character identity, prompt wording, and QA details come from the selected IP's reference files.
 
 ### 2. Read and Digest the Source Article
@@ -199,6 +201,12 @@ When the user asks for planning, analysis, or placement recommendations, return 
 - selected visual IP's central action
 - suggested elements
 - suggested visible labels in the user's language
+
+Plan for phone reading by default. Do not compress an article section, workflow, comparison, or method into one image just because it is one heading or one paragraph. First identify the smallest independently understandable cognitive units, then make one image for each unit. Keep each image to one core action or relationship and make the set read as a sequence: setup/context, change or decision, then outcome or next action when those are distinct.
+
+Split into multiple images whenever a proposed image would need any of the following: more than one core action or relationship, more than 4 short labels, a label longer than 12 Chinese characters or 4 English words, text that needs to become smaller than the mobile-reading baseline, a dense before/after plus workflow, or a comparison with more than two alternatives. Do not split a simple idea merely to meet a numerical quota. When the user specifies an image count, honor it where possible while preserving the mobile-reading baseline; otherwise state when the requested count cannot carry the information legibly.
+
+For every planned image, include its sequence number and role (`setup`, `decision`, `action`, `comparison`, `outcome`, or `next step`) so adjacent images do not repeat the same information.
 
 Littlebox shot-list entries also include:
 
@@ -344,13 +352,15 @@ Mixed-IP shot lists first state the shared core idea, then split into independen
 - Hermes Agent variant group: route id `hermes`, Hermes Agent state, Hermes Agent action, supporting objects, visible labels, required references `references/ips/hermes/`, prompt template `references/ips/hermes/prompt-template.md`, composition rules `references/ips/hermes/composition-patterns.md`, QA checklist `references/ips/hermes/qa-checklist.md`, edit gates from `references/ips/hermes/prompt-template.md`, output_suffix: hermes, route note, output directory `assets/<article-slug>-hermes/`, route status `source-reviewed`, source pointer `references/ips/hermes/source.md`, uploaded-image authority status, source context note, MIT license context, mythology-drift boundary status, product-poster boundary status, public sample review boundary when relevant, and route isolation status
 - Linux Mascot variant group: route id `linux`, Linux Mascot state, Linux Mascot action, supporting objects, visible labels, required references `references/ips/linux/`, prompt template `references/ips/linux/prompt-template.md`, composition rules `references/ips/linux/composition-patterns.md`, QA checklist `references/ips/linux/qa-checklist.md`, edit gates from `references/ips/linux/prompt-template.md`, output_suffix: linux, route note, output directory `assets/<article-slug>-linux/`, route status `source-reviewed`, source pointer `references/ips/linux/source.md`, uploaded-image authority note from `/Users/longnv/Downloads/Linux-logo.jpg`, Tux attribution note, The GIMP attribution condition, Linux trademark-boundary note, public sample review boundary when relevant, and route isolation status
 
-Default to 4-8 images. Short articles usually need 1-3. Long articles usually stay within 9 images.
+Choose the image count from information volume, not a fixed quota. A short article with one simple idea can use 1 image; a dense section should normally become a 2-4 image sequence; a full article commonly needs 4-8 images. Long articles can exceed 9 images when that is necessary to preserve one cognitive unit and phone-readable labels per canvas.
 
 ### 4. Generate One Image at a Time
 
 When the user explicitly asks to generate, output, make, or create images, call the host-provided `image_gen` capability directly. Compatibility markers: generate each image separately; keep each image on its own canvas. Use one image-generation call per image.
 
 Each image explains one core structure. Load the selected route's `required_references`, then assemble the prompt with that IP's template, character rules, composition rules, and QA references.
+
+Add the shared mobile-reading constraints from `references/mobile-reading.md` verbatim in substance to every generation prompt. In particular, labels must be large enough to read on a phone without zooming; never solve a crowded prompt by shrinking type. If a generated image violates the shared contract, split the content and regenerate the affected images rather than retaining a dense one.
 
 Xiaohei continues to use the canonical references: `references/ips/xiaohei/style-dna.md`, `references/ips/xiaohei/xiaohei-ip.md`, `references/ips/xiaohei/composition-patterns.md`, `references/ips/xiaohei/prompt-template.md`, and `references/ips/xiaohei/qa-checklist.md`. Legacy root paths `references/style-dna.md`, `references/xiaohei-ip.md`, `references/composition-patterns.md`, `references/prompt-template.md`, and `references/qa-checklist.md` remain legacy compatibility entry points. Xiaohei prompts keep these markers:
 
@@ -834,6 +844,8 @@ Pre-generation strategy output should be short and precise. Post-generation deli
 - purpose per image
 - saved path
 - stability notes
+- sequence order and role per image
+- mobile-reading status: label count, longest label, and shared mobile-reading QA result
 
 When the selected visual IP is `Cai Xukun`, post-generation delivery must include selected IP `Cai Xukun`, image count, purpose per image, save path `assets/<article-slug>-caixukun/`, route status `gated-public-figure`, source pointer `references/ips/caixukun/source.md`, uploaded-image identity status, public-figure likeness boundary status, source-image context status, route isolation status, public sample review boundary when relevant, route stability notes, and confirmation that prompt/report text uses the source pointer rather than maintainer-local source-image paths.
 

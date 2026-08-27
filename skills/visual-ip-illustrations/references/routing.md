@@ -181,3 +181,5 @@ Each generated-image delivery states:
 - purpose per image
 - saved path
 - stability notes: strongest images and optional images
+- sequence order and role per image
+- mobile-reading status: label count, longest label, and shared mobile-reading QA result
