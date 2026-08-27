@@ -149,6 +149,10 @@ Root Xiaohei reference paths remain available during migration and point to cano
 
 ## Output Paths
 
+## Shared Canvas Contract
+
+All newly generated route outputs use the shared 9:16 vertical phone-first canvas contract in `mobile-reading.md`. Any route-local 16:9 or horizontal wording is legacy calibration only and does not control new output aspect ratios.
+
 - `xiaohei` output directory remains `assets/<article-slug>-illustrations/`; validation also keeps escaped marker `assets/&lt;article-slug&gt;-illustrations/`.
 - `xiaohei` filenames continue to use ordered English slugs such as `01-topic-name.png`.
 - `littlebox` output directory is `assets/<article-slug>-littlebox/`; validation also keeps escaped marker `assets/&lt;article-slug&gt;-littlebox/`.

@@ -7,7 +7,7 @@ description: Visual IP Illustrations generates selectable visual-IP article-body
 
 ## Core Positioning
 
-Visual IP Illustrations designs and generates 16:9 horizontal article-body illustrations. The goal is to turn a key judgment, process, structure, state, or metaphor from the article into a clean, strange, creative, readable hand-drawn explanatory image.
+Visual IP Illustrations designs and generates 9:16 vertical, phone-first article-body illustrations. The goal is to turn a key judgment, process, structure, state, or metaphor from the article into a clean, strange, creative, readable hand-drawn explanatory image.
 
 Canonical invocation: `$visual-ip-illustrations`.
 
@@ -62,7 +62,7 @@ Linux Mascot imagery preserves uploaded-image identity markers from `references/
 
 Read `references/routing.md` first, then load only the selected route's required references. Keep context route-local and task-scoped.
 
-For every generation task, also read `references/mobile-reading.md`. It is the shared contract for deciding when to split an idea into a sequence and for checking phone-sized text readability; it applies in addition to the selected route's style and QA files.
+For every generation task, also read `references/mobile-reading.md`. It is the shared contract for deciding when to split an idea into a sequence, requiring a 9:16 vertical phone-first canvas, and checking phone-sized text readability; it applies in addition to the selected route's style and QA files. Its portrait aspect-ratio contract overrides legacy 16:9 or horizontal wording in route-local templates, QA files, source records, and examples.
 
 - `references/routing.md`: visual IP routes, aliases, defaults, output suffixes, required references, attribution contexts, and route statuses.
 - `references/ips/xiaohei/index.md`: Xiaohei canonical pack navigation, file responsibilities, and output path.
@@ -361,6 +361,8 @@ When the user explicitly asks to generate, output, make, or create images, call 
 Each image explains one core structure. Load the selected route's `required_references`, then assemble the prompt with that IP's template, character rules, composition rules, and QA references.
 
 Add the shared mobile-reading constraints from `references/mobile-reading.md` verbatim in substance to every generation prompt. In particular, labels must be large enough to read on a phone without zooming; never solve a crowded prompt by shrinking type. If a generated image violates the shared contract, split the content and regenerate the affected images rather than retaining a dense one.
+
+Every new canvas must be a standalone 9:16 vertical illustration. Compose from top to bottom with the main action in the central vertical band, breathable space above and below it, and no landscape-only left-to-right layout. Existing 16:9 references are visual-style calibration only; do not reuse their aspect ratio for new output.
 
 Xiaohei continues to use the canonical references: `references/ips/xiaohei/style-dna.md`, `references/ips/xiaohei/xiaohei-ip.md`, `references/ips/xiaohei/composition-patterns.md`, `references/ips/xiaohei/prompt-template.md`, and `references/ips/xiaohei/qa-checklist.md`. Legacy root paths `references/style-dna.md`, `references/xiaohei-ip.md`, `references/composition-patterns.md`, `references/prompt-template.md`, and `references/qa-checklist.md` remain legacy compatibility entry points. Xiaohei prompts keep these markers:
 
